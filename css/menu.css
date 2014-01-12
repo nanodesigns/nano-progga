@@ -1,0 +1,73 @@
+/*
+*
+* SITE MENU CSS
+* applicable for media only 'SCREEN', and
+* viewport 800+ screens
+*
+*/
+/*--------------------------------------------------
+  LESS GLOBALS
+--------------------------------------------------*/
+/*--------------------------------------------------
+  LESS GLOBALS END
+--------------------------------------------------*/
+.main-menu ul,
+.main-menu ul ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  list-style-position: outside;
+  position: relative;
+  line-height: 1.5em;
+  margin: auto;
+}
+.main-menu ul ul ul {
+  top: auto;
+}
+.main-menu ul li ul ul {
+  left: 12em;
+  margin: 0px 0 0 10px;
+}
+.main-menu ul li:hover ul ul,
+.main-menu ul li:hover ul ul ul,
+.main-menu ul li:hover ul ul ul ul {
+  display: none;
+}
+.main-menu ul ul {
+  position: absolute;
+  display: none;
+  width: 12em;
+  top: 1.5em;
+}
+.main-menu ul li {
+  float: left;
+  position: relative;
+}
+.main-menu ul li ul a {
+  width: 12em;
+  height: auto;
+  float: left;
+  background-color: #494a5a;
+  color: #fff;
+  border-bottom: 1px solid #555568;
+  text-align: left;
+}
+.main-menu ul li:hover ul,
+.main-menu ul li li:hover ul,
+.main-menu ul li li li:hover ul,
+.main-menu ul li li li li:hover ul {
+  display: block;
+  position: absolute;
+  z-index: 5000;
+}
+.main-menu ul a {
+  display: block;
+  padding: 0px 10px;
+  color: #fff;
+  text-decoration: none;
+  background-color: #606176;
+}
+.main-menu ul a:hover {
+  background-color: #fff;
+  color: #333;
+}

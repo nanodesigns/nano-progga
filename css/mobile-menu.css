@@ -1,0 +1,35 @@
+/*
+*
+* MOBILE MENU CSS
+* applicable for media only 'SCREEN', and
+* viewport < 799 screens
+*
+*/
+/*--------------------------------------------------
+  LESS GLOBALS
+--------------------------------------------------*/
+/*--------------------------------------------------
+  LESS GLOBALS END
+--------------------------------------------------*/
+.main-menu #hide-menu {
+  height: 100px;
+  overflow: scroll;
+  overflow-x: hidden;
+  display: none;
+}
+.main-menu ul {
+  width: 100%;
+}
+.main-menu ul li {
+  display: block;
+  list-style: disc !important;
+  text-align: left;
+  margin-left: 20px;
+}
+.main-menu ul li a {
+  color: #ffffff;
+}
+.main-menu ul li:hover,
+.main-menu ul li a:hover {
+  color: #2e2e38;
+}
