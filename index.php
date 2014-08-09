@@ -1,16 +1,23 @@
 <?php get_header(); ?>
-        <content>
-            
-            <?php while ( have_posts() ) : the_post() ?>
+        	
+			<div class="wrapper">
 
-                <?php get_template_part( 'content','general' ); ?>
+                <div class="content hfeed">
+                    <?php if( have_posts() ) : ?>
+                        <?php while( have_posts() ) : the_post(); ?>
+                
+                            <?php get_template_part( 'template-parts/content-archive-post' ); ?>
+                
+                        <?php endwhile; ?>
+                    <?php endif; ?>
+                    
+                    <?php nano_pagination(); ?>
+                </div> <!-- .content -->
+                    
+                <?php get_sidebar(); ?>
+                
+                <div class="clearfix"></div>
 
-            <?php endwhile; ?>
+            </div> <!-- .wrapper -->
 
-            <?php nano_pagination(); ?>
-
-        </content>
-
-        <?php get_sidebar(); ?>
-
-    <?php get_footer(); ?>
+<?php get_footer(); ?>

@@ -1,14 +1,17 @@
-<aside>
+<aside id="right-sidebar">
 
-    <h2 class="sidebar-head"><?php _e( 'সাইডবার', 'nano-progga' ); ?></h2>
+    <h2 class="sidebar-head"><?php _e( 'Sidebar', 'nano-progga' ); ?></h2>
 
     <?php if( is_active_sidebar('right_sidebar') ) { ?>
+
         <div id="primary" class="widget-area">
             <ul class="xoxo">
                 <?php dynamic_sidebar('right_sidebar'); ?>
             </ul>
         </div><!-- #primary .widget-area -->
+
     <?php } else { ?>
+
         <div id="primary" class="widget-area">
             <ul class="xoxo">
 
@@ -28,5 +31,7 @@
 
             </ul> <!-- .xoxo -->
         </div><!-- #primary .widget-area -->
+
     <?php } //endif( is_active_sidebar ?>
+
 </aside>

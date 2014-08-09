@@ -1,30 +1,51 @@
 <?php get_header(); ?>
+        	
+			<div class="wrapper">
 
-        <?php the_post(); ?>
+                <?php the_post(); ?>
 
-        <?php if ( is_day() ) : ?>
-            <h1 class="page-title"><?php printf( __( 'Daily Archives: <span>%s</span>', 'nano-progga' ), get_the_time(get_option('date_format')) ) ?></h1>
-        <?php elseif ( is_month() ) : ?>
-            <h1 class="page-title"><?php printf( __( 'Monthly Archives: <span>%s</span>', 'nano-progga' ), get_the_time('F Y') ) ?></h1>
-        <?php elseif ( is_year() ) : ?>
-            <h1 class="page-title"><?php printf( __( 'Yearly Archives: <span>%s</span>', 'nano-progga' ), get_the_time('Y') ) ?></h1>
-        <?php elseif ( isset($_GET['paged']) && !empty($_GET['paged']) ) : ?>
-            <h1 class="page-title"><?php _e( 'Blog Archives', 'nano-progga' ) ?></h1>
-        <?php endif; ?>
+                <?php get_sidebar( 'left' ); ?>
 
-        <content>
-            <?php rewind_posts(); ?>
+                <div class="content archive-content hfeed">
+                    <h2 class="entry-title archive-title row">
+                    <?php if ( is_day() ) : ?>
+                        <span class="fa fa-archive" title="<?php _e( 'Daily Archives', 'nano-progga' ); ?>"></span> <?php echo get_the_time(get_option('date_format') ); ?>
+                    <?php elseif ( is_month() ) : ?>
+                        <span class="fa fa-archive" title="<?php _e( 'Monthly Archives', 'nano-progga' ); ?>"></span> <?php echo get_the_time(get_the_time('F Y')); ?>
+                    <?php elseif ( is_year() ) : ?>
+                        <span class="fa fa-archive" title="<?php _e( 'Yearly Archives', 'nano-progga' ); ?>"></span> <?php echo get_the_time(get_the_time('Y')); ?>
+                    <?php elseif ( is_category() ) : ?>
+                         <span class="fa fa-folder-open-o" title="<?php _e( 'Categories Archive', 'nano-progga' ); ?>"></span> <?php single_cat_title(); ?>
+                         <?php $categorydesc = category_description();
+                        if ( !empty($categorydesc) )
+                            echo apply_filters( 'archive_meta', '<span class="archive-meta">' . $categorydesc . '</span>' ); ?>
+                    <?php elseif ( is_tag() ) : ?>
+                        <span class="fa fa-tags" title="<?php _e( 'Tags Archive', 'nano-progga' ); ?>"></span> <?php single_tag_title(); ?>
+                             <?php $tagdesc = tag_description();
+                            if ( !empty($tagdesc) )
+                                echo apply_filters( 'archive_meta', '<span class="archive-meta">' . $tagdesc . '</span>' ); ?>
+                    <?php elseif ( is_author() ) : ?>
+                        <span class="fa fa-user" title="<?php _e( 'User Archive', 'nano-progga' ); ?>"></span> <?php printf( __( '<span class="vcard">%s</span>', 'nano-progga' ), "<a class='url fn n' href='$authordata->user_url' title='$authordata->display_name' rel='me'>$authordata->display_name</a>" ); ?>
+                    <?php elseif ( isset($_GET['paged']) && !empty($_GET['paged']) ) : ?>
+                        <?php _e( 'Blog Archives', 'nano-progga' ); ?>
+                    <?php endif; ?>
+                    </h2>
 
-            <?php while ( have_posts() ) : the_post(); ?>
+                    <?php rewind_posts(); ?>
 
-                <?php get_template_part( 'content','general' ); ?>
+                        <?php while( have_posts() ) : the_post(); ?>
+                
+                            <?php get_template_part( 'template-parts/content-archive-post' ); ?>
+                
+                        <?php endwhile; ?>
+                    
+                    <?php nano_pagination(); ?>
+                </div> <!-- .content -->
 
-            <?php endwhile; ?>
+                <?php get_sidebar(); ?>
 
-            <?php nano_pagination(); ?>
+                <div class="clearfix"></div>
 
-        </content>
+            </div> <!-- .wrapper -->
 
-        <?php get_sidebar(); ?>
-
-    <?php get_footer(); ?>
+<?php get_footer(); ?>

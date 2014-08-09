@@ -1,80 +1,119 @@
-<?php
-// HEADER OF NANO BANGLA
-?>
 <!DOCTYPE html>
-<!--[if IE 7 | IE 8]>
-<html class="ie" lang="en-US">
-<![endif]-->
-<!--[if !(IE 7) | !(IE 8)  ]><!-->
-<html <?php language_attributes(); ?>>
-<!--<![endif]-->
-<head>
-    <title>	<?php wp_title('',true,'right'); ?></title>
+<html <?php language_attributes(); ?>
 
-    <meta http-equiv="content-type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
-    <meta name="viewport" content="width=device-width, minimumscale=1.0, maximum-scale=1.0">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <head>
 
-    <?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
+        <title><?php wp_title(' • ',true,'right'); ?></title>
 
-    <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
+        <meta http-equiv="content-type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        <!--[if lt IE 9]>
+            <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <meta name="HandheldFriendly" content="True"/>
+        <meta name="MobileOptimized" content="320"/>
 
-    <?php wp_head(); ?>
-</head>
+        <!-- Responsive and mobile friendly stuff -->
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<body <?php body_class(); ?>>
+        <!--[if lt IE 9]>
+        <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
-<!--[if lt IE 9]>
-<div class="chromeframe">Your browser is out of date. Please <a href="http://browsehappy.com/">upgrade your browser </a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a>.</div>
-<![endif]-->
+        <?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
+        <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 
-<div id="access">
-    <div class="skip-link">
-        <a href="#content" title="<?php _e( 'মূল লেখায় চলো', 'nano-progga' ) ?>"><?php _e( 'মূল লেখায় চলো', 'nano-progga' ) ?></a>
-        <script type="text/javascript">
-            function show_menu(){
-                var menu = document.getElementById( 'hide-menu' );
+        <?php wp_head(); ?>
 
-                if( menu.style.display == 'none' || menu.style.display == '' ){
-                    menu.style.display = 'block';
-                } else {
-                    menu.style.display = 'none';
-                }
-            }
-        </script>
-        <div id="menu-toggle" onclick="show_menu()"></div>
-    </div> <!-- .skip-link -->
-    <div class="main-menu wrapper">
-        <div id="hide-menu">
-            <?php wp_nav_menu ( array ( 'theme_location'=>'menu_top', 'fallback_cb'=>'') ); ?>
-        </div>
-    </div>
-</div> <!-- #access -->
+    </head>
 
-<div class="clear"></div>
+    <body <?php body_class(); ?>>
 
-<?php $header_image = get_header_image(); ?>
-<?php /*  if ( !empty( $header_image ) ) : ?>
-    <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_url( $header_image ); ?>" class="header-image" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" alt="" /></a>
-<?php endif; */ ?>
+        <!--[if lt IE 6]>
+        <div class="chromeframe">Old days are good, but not Internet Explorer. Please <a href="http://browsehappy.com/">upgrade your browser </a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a>.</div>
+        <![endif]-->
 
-<header id="branding" role="banner"
-        <?php if ( !empty( $header_image ) ) : ?>
-            style="background: url('<?php echo $header_image; ?>') no-repeat center center;"
-        <?php endif; ?>
-    >
-    <div id="header" class="wrapper">
-        <hgroup>
-            <h1 id="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-            <h2 id="site-description"><?php bloginfo( 'description' ) ?></h2>
-        </hgroup>
-    </div> <!-- #header -->
-</header> <!-- #branding -->
+        <?php
+        // Retrive Data from Theme Options page
+        $option = get_option('site_options');
+        ?>
 
-<div class="clear"></div>
+        <div class="top-head row">
+    		<div class="wrapper">
+                <div class="social-connections">
+                    <a href="#site-content" class="skip-link" title="<?php _e( 'Skip to content', 'nano-progga' ); ?>">
+                        <span class="fa fa-caret-down"></span>
+                        <?php _e( 'Skip to content', 'nano-progga' ); ?>
+                    </a>
 
-<div id="content" class="wrapper area hfeed">
+                    <?php
+                    // Dynamically show/hide social icons
+                    $fbURL = $option['facebookURL']; //Facebook
+                    $twtURL = $option['twitterURL']; //Twitter
+                    $lnkdinURL = $option['linkedinURL']; //LinkedIn
+                    $gplusURL = $option['googleplusURL']; //Google+
+                    $flickrURL = $option['flickrURL']; //Flickr
+                    $pinterestURL = $option['pinterestURL']; //Pinterest
+                    $tubmlrURL = $option['tubmlrURL']; //Tumblr
+                    $youtubeURL = $option['youtubeURL']; //YouTube
+                    ?>
+                    <div class="sr-only"><?php _e('Our Social Links', 'nano-progga'); ?></div>
+                    <a class="s-rss" href="<?php echo get_feed_link(); ?>" title="RSS Feed URL"><span class="fa fa-rss"></span></a>
+                    <?php if($fbURL) { ?>
+                        <a class="s-facebook" href="<?php echo $fbURL; ?>" target="_blank" title="Facebook Page URL"><span class="fa fa-facebook"></span></a>
+                    <?php } ?>
+                    <?php if($twtURL) { ?>
+                        <a class="s-twitter" href="<?php echo $twtURL; ?>" target="_blank" title="Twitter Account URL"><span class="fa fa-twitter"></span></a>
+                    <?php } ?>
+                    <?php if($lnkdinURL) { ?>
+                        <a class="s-linkedin" href="<?php echo $lnkdinURL; ?>" target="_blank" title="LinkedIn Page URL"><span class="fa fa-linkedin"></span></a>
+                    <?php } ?>
+                    <?php if($gplusURL) { ?>
+                        <a class="s-gplus" href="<?php echo $gplusURL; ?>" target="_blank" title="Google Plus Page URL"><span class="fa fa-google-plus"></span></a>
+                    <?php } ?>
+                    <?php if($flickrURL) { ?>
+                        <a class="s-flickr" href="<?php echo $flickrURL; ?>" target="_blank" title="Flickr Account URL"><span class="fa fa-flickr"></span></a>
+                    <?php } ?>
+                    <?php if($pinterestURL) { ?>
+                        <a class="s-pinterest" href="<?php echo $pinterestURL; ?>" target="_blank" title="Pinterest Account URL"><span class="fa fa-pinterest"></span></a>
+                    <?php } ?>
+                    <?php if($tubmlrURL) { ?>
+                        <a class="s-tumblr" href="<?php echo $tubmlrURL; ?>" target="_blank" title="Tumblr Blog URL"><span class="fa fa-tumblr"></span></a>
+                    <?php } ?>
+                    <?php if($youtubeURL) { ?>
+                        <a class="s-youtube" href="<?php echo $youtubeURL; ?>" target="_blank" title="YouTube Channel URL"><span class="fa fa-youtube"></span></a>
+                    <?php } ?>
+                    <div class="clearfix"></div>
+                </div> <!-- .social-connections -->
+                <nav id="site-navigation">
+                    <?php wp_nav_menu( array( 'walker' => new arrow_walker_nav_menu, 'theme_location'=>'main-menu', 'menu_class' => 'main-menu', 'container_class' => 'main-menu-container row' , 'fallback_cb'=>'wp_page_menu') ); ?>
+                </nav>                
+                <div class="clearfix"></div>
+            </div> <!-- .wrapper -->
+    	</div> <!-- .top-head -->
 
+        <?php $logo_url = $option['logo'] != '' ? $option['logo'] : ''; ?>
+
+        <header id="print-head" class="row">
+            <div class="wrapper">
+                <img class="print-logo" src="<?php echo $logo_url; ?>" alt="<?php bloginfo( 'name' ) ?>">
+                <div id="print-site-title"><?php bloginfo( 'name' ); ?></div>
+                <div id="print-site-description"><?php bloginfo( 'description' ); ?></div>
+            </div>
+        </header>
+
+    	<header id="site-head" class="row" role="banner">
+    		<div class="wrapper">
+    			<a class="logo" href="<?php echo home_url('/'); ?>">
+					<img src="<?php echo $logo_url; ?>" alt="<?php bloginfo( 'name' ) ?>">
+				</a>
+    			<h1 id="site-title"><a href="<?php echo home_url('/'); ?>" title="<?php bloginfo( 'name' ) ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+				<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
+    		</div>
+    	</header>
+
+        <div id="site-content" class="main-area row">

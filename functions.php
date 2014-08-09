@@ -1,447 +1,270 @@
 <?php
 /**
- * All the functions for the theme "NANO PROGGA"
+ * FUNCTIONS for the WordPress Theme
+ * @theme: nano progga
+ * @developer: Mayeenul Islam (@mayeenulislam)
  */
 
-/**
- * ENABLE ADMIN PANEL
- */
-
-get_template_part('admin/nano', 'admin');
-
-
 
 /**
- * CHANGE THE 'WPLANG' IN wp-config.php TO bn_BD ON THEME SWITCHING
- * Thanks: toscho
- * Source: http://wordpress.stackexchange.com/a/121136/22728
--------------------------------------------------- */
-
-add_filter( 'locale', 'toscho_change_language' );
-
-function toscho_change_language( $locale ) {
-    return 'bn_BD';
-}
-
-
-
-/**
- * MAKE THE THEME TRANSLATION-READY
- * Thanks: Konstantinos Kouratoras & Robert Treacy
- * Source:
- * 1. http://wp.smashingmagazine.com/2011/12/29/internationalizing-localizing-wordpress-theme/
- * 2. http://wp.tutsplus.com/tutorials/theme-development/translating-your-theme/
--------------------------------------------------- */
-
-add_action('after_setup_theme', 'nanoprogga_setup');
-
-function nanoprogga_setup(){
-    load_theme_textdomain('nano-progga', get_template_directory() . '/languages');
-}
-
-
-
-/**
- * ENQUEUE STYLES
--------------------------------------------------- */
-
-add_action( 'wp_enqueue_scripts', 'nanoprogga_styles' );
-
-function nanoprogga_styles(){
-
-    wp_register_style( 'site-styles', get_template_directory_uri() . '/style.css', '', '', 'screen' );
-    wp_register_style( 'menu-styles', get_template_directory_uri() . '/css/menu.css', '', '', 'screen and (min-device-width: 800px)' );
-    wp_register_style( 'mobile-menu-styles', get_template_directory_uri() . '/css/mobile-menu.css', '', '', 'screen and (max-device-width: 799px)' );
-
-    wp_enqueue_style( 'site-styles' );
-    wp_enqueue_style( 'menu-styles' );
-    wp_enqueue_style( 'mobile-menu-styles' );
-
-}
-
-
-
-/**
- * ENQUEUE SCRIPTS
--------------------------------------------------- */
-
-add_action( 'wp_enqueue_scripts', 'nanoprogga_js' );
-
-function nanoprogga_js(){
-    wp_register_script( 'responsive-scripts', get_template_directory_uri() . '/js/respond.min.js' );
-
-    wp_enqueue_script( 'responsive-scripts' );
-}
-
-
-
-/**
- * ENABLING CUSTOM HEADER
--------------------------------------------------- */
-
-$args = array(
-    // default things
-    'default-text-color' => '606176',
-
-    // assign sizes
-    'width' => 1600,
-    'height'=> 317,
-    'max-height' => 317,
-    'max-width' => 2000,
-
-    //callback functions
-    'wp-head-callback' => 'nanodesigns_header_style',
-);
-
-add_theme_support( 'custom-header', $args );
-
-
-function nanodesigns_header_style() {
-    $text_color = get_header_textcolor();
-
-    // If no custom options for text are set, let's bail
-    if ( $text_color == get_theme_support( 'custom-header', 'default-text-color' ) )
-        return;
-
-        ?>
-    <style type="text/css" id="nanodesigns-header-css">
-
-        <?php if ( ! display_header_text() ) { ?>
-
-            h1#site-title,
-            h2#site-description{
-                position: absolute;
-                clip: rect(1px 1px 1px 1px); /* IE7 */
-                clip: rect(1px, 1px, 1px, 1px);
-            }
-
-        header{
-            min-height: 100px;
-        }
-
-        <?php } else { ?>
-
-            h1#site-title a,
-            h2#site-description{
-                color: #<?php echo $text_color; ?>;
-            }
-
-        <?php } ?>
-    </style>
-    <?php
-}
-
-
-
-/**
- * ENABLING CUSTOM MENUS
--------------------------------------------------- */
-
-register_nav_menus(
-    array(
-        'menu_top'=>__('Top Menu')
-    )
-);
-
-
-/**
- * CUSTOM WIDTH
--------------------------------------------------- */
-
-if ( ! isset( $content_width ) ) $content_width = 1000;
-
-
-/**
- * AUTOMATIC FEED LINKS
--------------------------------------------------- */
-
-add_theme_support( 'automatic-feed-links'  );
-
-
-
-/**
- * CUSTOM EDITOR STYLES
--------------------------------------------------- */
-// This theme styles the visual editor with editor-style.css to match the theme style.
-
-add_editor_style();
-
-
-
-/**
- * FEATURED IMAGE SUPPORT
--------------------------------------------------- */
-
-add_theme_support( 'post-thumbnails' );
-set_post_thumbnail_size( 705, 9999 ); // Unlimited height, soft crop
-
-
-
-/**
- * ENABLING THE PAGINATION
--------------------------------------------------- */
-
-function get_page_number() {
-    if( get_query_var( 'paged' ) ) {
-        print ' | ' . __( 'Page ' , 'nano-progga') . get_query_var('paged');
-    }
-} // end get_page_number
-
-
-function nano_pagination() {
-
-    if( is_attachment() ) { ?>
-
-    <div id="nav-below" class="navigation">
-
-        <div class="nav-previous"><?php previous_image_link( false, __( '<span class="meta-nav">&laquo;</span> আগের ছবি', 'nano-progga' ) ) ?></div>
-        <div class="nav-next"><?php next_image_link( false, __( 'পরের ছবি <span class="meta-nav">&raquo;</span>', 'nano-progga' ) ) ?></div>
-
-    </div><!-- #nav-below -->
-
-    <?php } else {
-
-        global $wp_query;
-        $total_pages = $wp_query->max_num_pages;
-        if ( $total_pages > 1 ) { ?>
-
-            <div id="nav-below" class="navigation">
-
-                <div class="nav-previous"><?php next_posts_link(__( '<span class="meta-nav">&laquo;</span> পুরোন পোস্টসমূহ', 'nano-progga' )) ?></div>
-                <div class="nav-next"><?php previous_posts_link(__( 'সাম্প্রতিক পোস্টসমূহ <span class="meta-nav">&raquo;</span>', 'nano-progga' )) ?></div>
-
-            </div><!-- #nav-below -->
-
-        <?php } //endif ( $total_pages > 1 )
-
-    } //endif( is_attachment() )
-}
-
-
-
-/**
- * REGISTER WIDGET AREAS
--------------------------------------------------- */
-
-add_action( 'init', 'nano_widgets_init' );
-
-function nano_widgets_init() {
-    // Sidebar Widgets Area
-    register_sidebar(
-        array (
-        'name' => 'Right Sidebar',
-        'id' => 'right_sidebar',
-        'description' => 'Assign necessary widgets to show into the right sidebar of the website.',
-        'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-        'after_widget' => "</li>",
-        'before_title' => '<h3 class="widget-title">',
-        'after_title' => '</h3>',
-        )
-    );
-
-    // Footer Widgets Area
-    register_sidebar(
-        array (
-            'name' => 'Footer Widgets Area',
-            'id' => 'footer_widgets_area',
-            'description' => 'Assign Maximum 4 (Four) widgets into this footer widget area to show at the bottom of the website',
-            'class' => 'theClass',
-            'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-            'after_widget' => "</li>",
-            'before_title' => '<h3 class="widget-title">',
-            'after_title' => '</h3>'
-        )
-    );
-} // end nano_widgets_init
-
-
-
-
-/**
- * CUSTOM SEARCH FORM
--------------------------------------------------- */
-
-add_action('pre_get_search_form', 'search_form_no_filters');
-
-function search_form_no_filters() {
-    // look for local searchform template
-    $search_form_template = locate_template( 'searchform.php' );
-    if ( '' !== $search_form_template ) {
-        // searchform.php exists, remove all filters
-        remove_all_filters('get_search_form');
-    }
-}
-
-
-
-
-/**
- * TRUNCK STRING TO SHORTEN THE STRING
--------------------------------------------------- */
-
-function trunck_string($str = "", $len = 150, $more = 'true') {
-
-    if ($str == "") return $str;
-    if (is_array($str)) return $str;
-    $str = strip_tags($str);
-    $str = trim($str);
-    // if it's les than the size given, then return it
-
-    if (strlen($str) <= $len) return $str;
-
-    // else get that size of text
-    $str = substr($str, 0, $len);
-    // backtrack to the end of a word
-    if ($str != "") {
-        // check to see if there are any spaces left
-        if (!substr_count($str , " ")) {
-            if ($more == 'true') $str .= "...";
-            return $str;
-        }
-        // backtrack
-        while(strlen($str) && ($str[strlen($str)-1] != " ")) {
-            $str = substr($str, 0, -1);
-        }
-        $str = substr($str, 0, -1);
-        if ($more == 'true') $str .= "...";
-        if ($more != 'true' and $more != 'false') $str .= $more;
-    }
-    return $str;
-}
-
-
-
-/**
- * GRAB THE FIRST IMAGE FROM THE POST CONTENT
- * Get the_content() but exclude <img> or <img/>
- * tags then echo the_content()
--------------------------------------------------- */
-
-/*function nano_excerpt( $Trunckvalue = '1000' ) {
-    $our_excerpt = get_the_excerpt();
-    echo trunck_string( $our_excerpt, $Trunckvalue, true ); ?>
-    <a class="read-more" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" rel="bookmark"><?php _e( 'বিস্তারিত&raquo;', 'nano-progga'); ?></a>
-<?php
-}*/
-
-
-
-class Excerpt {
-
-    // Default length (by WordPress)
-    public static $length = 55;
-
-    // So you can call: nano_excerpt('short');
-    public static $types = array(
-        'short' => 25,
-        'regular' => 55,
-        'long' => 100
-    );
-
-    /**
-     * Sets the length for the excerpt,
-     * then it adds the WP filter
-     * And automatically calls the_excerpt();
-     *
-     * @param string $new_length
-     * @return void
-     * @author Baylor Rae'
-     * SOURCE: http://stackoverflow.com/questions/4082662/multiple-excerpt-lengths-in-wordpress
-     */
-    public static function length($new_length = 55) {
-        Excerpt::$length = $new_length;
-
-        add_filter('excerpt_length', 'Excerpt::new_length');
-
-        Excerpt::output();
-    }
-
-    // Tells WP the new length
-    public static function new_length() {
-        if( isset(Excerpt::$types[Excerpt::$length]) )
-            return Excerpt::$types[Excerpt::$length];
-        else
-            return Excerpt::$length;
-    }
-
-    // Echoes out the excerpt
-    public static function output() {
-        the_excerpt(); ?>
-        <a class="read-more" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" rel="bookmark"><?php _e( 'বিস্তারিত&raquo;', 'nano-progga'); ?></a>
-    <?php
-    }
-
-}
-
-/* An alias to the class
-function nano_excerpt($length = 70) {
-    Excerpt::length($length);
-}
+*   BANGLA SUPPORT TO THE THEME
 */
 
-function nano_super_excerpt( $length_callback = '', $more_callback = '' ) {
+require_once ( get_template_directory() .'/inc/functions-bangla.php' );
 
-    if ( function_exists( $length_callback ) )
-        add_filter( 'excerpt_length', $length_callback );
 
-    if ( function_exists( $more_callback ) )
-        add_filter( 'excerpt_more', $more_callback );
+/**
+ * ADMIN PANEL - THEME OPTIONS
+ * to make the site's feature dynamic for the user
+ */
+  
+require_once ( get_template_directory() . '/admin-panel/theme-options.php' );
 
-    $output = get_the_excerpt();
-    $output = apply_filters( 'wptexturize', $output );
-    $output = apply_filters( 'convert_chars', $output );
-    $output = '<p>' . $output . '</p>';
-    echo $output;
+function styles_for_admin(){
+
+    wp_register_style( 'admin-style', get_template_directory_uri() . '/css/admin-style.css', '', '', 'screen' );
+
+    wp_enqueue_style( 'admin-style' ); // stylesheet for admin panel
 }
 
-function nano_excerpt_more( $more ) {
-    return '<a class="read-more" href="' . get_permalink() . '" title="' . get_the_title() . '"rel="bookmark"> বিস্তারিত&raquo;</a>';
+add_action( 'admin_enqueue_scripts', 'styles_for_admin' );
+  
+  
+/**
+ *  ADD SITE OPTIONS PAGE CAPABILITY TO 'Editor'
+ *  Source: http://tuts.nanodesignsbd.com/editors-to-access-and-save-theme-options/
+ */
+  
+function options_page_capability( $capability ) {
+    return 'edit_theme_options';
 }
-
-function nano_excerpt( $length ) {
-    return 95;
-}
+add_filter( 'option_page_capability_site_options', 'options_page_capability' );
 
 
 
 
 /**
- * REMOVE rel ATTRIBUTE FROM CATEGORY LIST
- * Credit: Joseph
- * Link: http://josephleedy.me/blog/make-wordpress-category-list-valid-by-removing-rel-attribute/
--------------------------------------------------- */
+*   LOAD ALL THE NECESSARY THINGS WITH A SINGLE HOOK
+*/
+  
+add_action('after_setup_theme', 'nano_progga_setup');
+  
+function nano_progga_setup(){
+    /**
+    *   MAKE THE THEME TRANSLATION-READY
+    *   Thanks: Konstantinos Kouratoras & Robert Treacy
+    *   Source:
+    *    1. http://wp.smashingmagazine.com/2011/12/29/internationalizing-localizing-wordpress-theme/
+    *    2. http://wp.tutsplus.com/tutorials/theme-development/translating-your-theme/
+    */
+    load_theme_textdomain( 'nano-progga', get_template_directory() . '/lang' );
+  
+  
+    // ADD RSS LINK ON <head> TAG
+    add_theme_support( 'automatic-feed-links' );
 
-add_filter('wp_list_categories', 'frank_remove_category_list_rel');
-add_filter('the_category', 'frank_remove_category_list_rel');
+    // LOAD EDITOR STYLES - Load visual editor styles from editor-style.css to match the theme style
+    add_editor_style();
 
-function frank_remove_category_list_rel( $output ) {
-    $output = str_replace(' rel="category tag"', '', $output);
-    return $output;
+
+    // SUPPORT FOR POST FORMATS
+    add_theme_support( 'post-formats', array(
+        'aside', 'image', 'video', 'audio', 'quote', 'link', 'gallery', 'status', 'chat',
+    ) );
+  
+  
+    // ENABLE FEATURED IMAGE FEATURE
+    add_theme_support( 'post-thumbnails' );
+  
+    // REGISTER DYNAMIC MENUS
+    register_nav_menus(
+        array(
+            'main-menu'=>__('Main Menu'),
+            'footer-menu'=>__('Footer Menu')
+        )
+    );
+
+    //ENABLING ARROW ON PARENT MENU
+    //Source: http://stackoverflow.com/a/3594567/1743124
+
+    class arrow_walker_nav_menu extends walker_nav_menu {
+        function display_element($element, &$children_elements, $max_depth, $depth=0, $args, &$output) {
+            $id_field = $this->db_fields['id'];
+            if ( !empty( $children_elements[$element->$id_field] ) ) { 
+                $element->classes[] = 'arrow'; //CSS classname here
+                $element->title .= '<span class="arrow fa fa-caret-down"></span>'; //append html here
+            }
+            walker_nav_menu::display_element($element, $children_elements, $max_depth, $depth, $args, $output);
+        }
+    } //end class
+  
 }
 
 
 
 
-/**
- * GRAB THE FIRST IMAGE FROM THE POST CONTENT
--------------------------------------------------- */
 
-function grab_first_image() {
+/**
+ * ENQUEUE ALL THE NECESSARY CSS
+ * -------------------------------------------------------------------------------- */
+function nano_progga_styles(){  
+    wp_enqueue_style( 'main-style', get_template_directory_uri() . '/style.css', '', '', 'all' );
+    wp_enqueue_style( 'print-style', get_template_directory_uri() . '/print-style.css', '', '', 'print' );
+    wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/font-awesome.min.css' );
+}
+
+add_action( 'wp_enqueue_scripts', 'nano_progga_styles' );
+
+
+
+
+
+/**
+ * ENQUEUE ALL THE NECESSARY JS
+ * -------------------------------------------------------------------------------- */
+function nano_progga_js(){
+    wp_enqueue_script( 'jquery-latest', get_template_directory_uri() . '/js/jquery-1.11.1.min.js' );
+    //wp_enqueue_script( 'jquery-latest', 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js' );
+    
+    wp_localize_script( 'jquery-fallback', 'styleSheetURL', get_stylesheet_directory_uri() );    
+    wp_enqueue_script( 'jquery-fallback', get_template_directory_uri() . '/js/jquery-fallback.js', array( 'jquery-latest' ) );
+    wp_enqueue_script( 'mobile-nav-scripts', get_template_directory_uri() . '/js/tinynav.min.js', '', '', true );
+    wp_enqueue_script( 'responsive-scripts', get_template_directory_uri() . '/js/respond.min.js', '', '', true );
+    wp_enqueue_script( 'nanodesigns-custom', get_template_directory_uri() . '/js/nanoprogga.custom.js', '', '', true );
+}
+
+add_action( 'wp_enqueue_scripts', 'nano_progga_js' );
+
+
+/**
+ * SET DEFAULT WIDTH OF THE SITE
+ * -------------------------------------------------------------------------------- */
+if ( ! isset( $content_width ) ) $content_width = 900;
+
+
+
+
+/**
+ * REUSABLE POST_META FUNCTION
+ */
+
+function has_custom_field( $fieldName = '' ) {
     global $post;
-    $first_image = '';
-    ob_start();
-    ob_end_clean();
-    if( $the_output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches) )
-    $first_image = $matches[1][0];
+    $fetchedCustomField = get_post_meta($post->ID, $fieldName, true);
+    $CFchecker = ($fetchedCustomField == '') ? '0' : '1';
+    return (bool) $CFchecker;
+}
 
-    return $first_image;
+function custom_field( $fieldName = '' ) {
+    global $post;
+    $fetchedCustomField = get_post_meta($post->ID, $fieldName, true);
+    return $fetchedCustomField;
 }
 
 
 
+/**
+ * GET THE PAGE NUMBER
+* -------------------------------------------------------------------------------- */
+  
+function get_page_number() {
+    if (get_query_var('paged')) {
+        print ' | ' . __( 'Pages ' , 'nano-progga') . get_query_var('paged');
+    }
+} // end get_page_number
+  
+  
+/**
+ * For category lists on category archives:
+ * Returns other categories except the current one (redundant)
+ */
+  
+function cats_meow($glue) {
+        $current_cat = single_cat_title( '', false );
+        $separator = "\n";
+        $cats = explode( $separator, get_the_category_list($separator) );
+        foreach ( $cats as $i => $str ) {
+                if ( strstr( $str, ">$current_cat<" ) ) {
+                        unset($cats[$i]);
+                        break;
+                }
+        }
+        if ( empty($cats) )
+                return false;
+  
+        return trim(join( $glue, $cats ));
+} // end cats_meow
+  
+  
+/**
+ * For tag lists on tag archives:
+ * Returns other tags except the current one (redundant)
+ * -------------------------------------------------------------------------------- */
+  
+function tag_ur_it($glue) {
+        $current_tag = single_tag_title( '', '',  false );
+        $separator = "\n";
+        $tags = explode( $separator, get_the_tag_list( "", "$separator", "" ) );
+        foreach ( $tags as $i => $str ) {
+                if ( strstr( $str, ">$current_tag<" ) ) {
+                        unset($tags[$i]);
+                        break;
+                }
+        }
+        if ( empty($tags) )
+                return false;
+  
+        return trim(join( $glue, $tags ));
+} // end tag_ur_it
+  
+  
+/**
+ * Register widgetized areas
+ * -------------------------------------------------------------------------------- */
+  
+function theme_widgets_init() {
+    register_sidebar( array (
+        'name' => 'Right Sidebar',
+        'id' => 'right_sidebar',
+        'description' => __( 'Appears on the right portion of the site', 'nano-progga' ),
+        'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
+        'after_widget' => "</li>",
+            'before_title' => '<h3 class="widget-title">',
+            'after_title' => '</h3>'
+    ) );
+
+    register_sidebar( array (
+        'name' => 'Archive Left Sidebar',
+        'id' => 'left_sidebar',
+        'description' => __( 'Appears on the left portion of the site only on archive pages', 'nano-progga' ),
+        'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
+        'after_widget' => "</li>",
+            'before_title' => '<h3 class="widget-title">',
+            'after_title' => '</h3>'
+    ) );
+  
+} // end theme_widgets_init
+  
+add_action( 'widgets_init', 'theme_widgets_init', 10 );
+  
+  
+// Produces an avatar image with the hCard-compliant photo class
+function commenter_link() {
+        $commenter = get_comment_author_link();
+        if ( ereg( '<a[^>]* class=[^>]+>', $commenter ) ) {
+                $commenter = ereg_replace( '(<a[^>]* class=[\'"]?)', '\\1url ' , $commenter );
+        } else {
+                $commenter = ereg_replace( '(<a )/', '\\1class="url "' , $commenter );
+        }
+        $avatar_email = get_comment_author_email();
+        $avatar = str_replace( "class='avatar", "class='photo avatar", get_avatar( $avatar_email, 80 ) );
+        echo $avatar . ' <span class="fn n">' . $commenter . '</span>';
+} // end commenter_link
+  
+  
 /**
  * TEMPLATE FOR COMMENTS AND PINGBACKS
--------------------------------------------------- */
+*/
 
 if ( ! function_exists( 'nano_comments' ) ) :
 
@@ -453,35 +276,37 @@ if ( ! function_exists( 'nano_comments' ) ) :
                 // Display trackbacks differently than normal comments.
                 ?>
                 <li <?php comment_class(); ?> id="comment-<?php comment_ID(); ?>">
-                <p><?php _e( 'পিংব্যাক:', 'nano-progga' ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( __( '(সম্পাদনা)', 'nano-progga' ), '<span class="edit-link">', '</span>' ); ?></p>
+                <p><?php _e( 'Pingback:', 'nano-progga' ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( __( '[ Edit ]', 'nano-progga' ), '<span class="edit-link">', '</span>' ); ?></p>
                 <?php
                 break;
             default :
                 // Proceed with normal comments.
                 global $post;
                 ?>
-                <li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
+                <?php // If current post author is also comment author, make it known visually.
+                $author_class = ( $comment->user_id === $post->post_author ) ? ' bypostauthor' : ''; ?>
+                <li <?php comment_class( array( $author_class ) ); ?> id="li-comment-<?php comment_ID(); ?>">
                     <article id="comment-<?php comment_ID(); ?>" class="comment">
-                        <header class="comment-meta comment-author vcard">
+                        <header class="comment-meta comment-author vcard row">
                             <?php
-                            echo get_avatar( $comment, 50 );
-                            printf( '<cite class="fn">%1$s %2$s</cite>',
-                                get_comment_author_link(),
-                                // If current post author is also comment author, make it known visually.
-                                ( $comment->user_id === $post->post_author ) ? '<sup class="the-author"> ' . __( 'লেখক', 'nano-progga' ) . '</sup>' : ''
+                            echo get_avatar( $comment, 80 );
+                            printf( '<cite class="fn">%1$s</cite>',
+                                get_comment_author_link()
                             );
+                            echo '<br>';
                             printf( '<a href="%1$s"><time datetime="%2$s">%3$s</time></a>',
                                 esc_url( get_comment_link( $comment->comment_ID ) ),
                                 get_comment_time( 'c' ),
                                 /* translators: 1: date, 2: time */
                                 sprintf( __( '%1$s : %2$s', 'nano-progga' ), get_comment_date(), get_comment_time() )
                             );
-                            edit_comment_link( __( '[ সম্পাদনা ]', 'nano-progga' ) );
+                            echo '<br>';
+                            edit_comment_link( __( '[ edit ]', 'nano-progga' ) );
                             ?>
                         </header><!-- .comment-meta -->
 
                         <?php if ( '0' == $comment->comment_approved ) : ?>
-                            <p class="comment-awaiting-moderation"><?php _e( 'আপনার মন্তব্যটি প্রকাশের অনুমতির অপেক্ষায় রয়েছে।', 'nano-progga' ); ?></p>
+                            <p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'nano-progga' ); ?></p>
                         <?php endif; ?>
 
                         <section class="comment-content comment">
@@ -489,7 +314,7 @@ if ( ! function_exists( 'nano_comments' ) ) :
                         </section><!-- .comment-content -->
 
                         <div class="reply">
-                            <?php comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'প্রত্যুত্তর', 'nano-progga' ), 'after' => ' <span>&darr;</span>', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+                            <?php comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Reply', 'nano-progga' ), 'before' => '<span class="fa fa-arrow-down"></span> ', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
                         </div><!-- .reply -->
                     </article><!-- #comment-## -->
                 <?php
@@ -497,134 +322,243 @@ if ( ! function_exists( 'nano_comments' ) ) :
         endswitch; // end comment_type check
     }
 endif;
-
-
-
+  
+  
 /**
- * REMOVE UNNECESSARY HEADER INFO
--------------------------------------------------- */
-
-function remove_header_info() {
-    remove_action('wp_head', 'rsd_link');
-    remove_action('wp_head', 'wlwmanifest_link');
-    remove_action('wp_head', 'wp_generator');
-    remove_action('wp_head', 'start_post_rel_link');
-    remove_action('wp_head', 'index_rel_link');
-    remove_action('wp_head', 'adjacent_posts_rel_link');         // for WordPress <  3.0
-    remove_action('wp_head', 'adjacent_posts_rel_link_wp_head'); // for WordPress >= 3.0
-}
-add_action('init', 'remove_header_info');
-
-
-
-/**
- * BANGLA NUMBERS, DATES, DAYS AND MONTHS
- * i.e. ২৮ নভেম্বর১৯৮৬
--------------------------------------------------- */
-
-function make_bangla_number($str)
-{
-    $engNumber = array('0','1','2','3','4','5','6','7','8','9');
-    $bangNumber = array('০','১','২','৩','৪','৫','৬','৭','৮','৯');
-    $converted = str_replace($engNumber, $bangNumber, $str);
-
-    return $converted;
-}
-function make_bangla_day($strDay)
-{
-    $engDay = array('Saturday','Sunday','Monday','Tuesday','Wednesday','Thursday','Friday');
-    $bangDay = array('শনিবার','রবিবার','সোমবার','মঙ্গলবার','বুধবার','বৃহঃস্পতিবার','শুক্রবার');
-    $convertedDay = str_replace($engDay, $bangDay, $strDay);
-
-    return $convertedDay;
-}
-function make_bangla_months($strM)
-{
-    $engM = array('January','February','March','April','May','June','July','August','September','October','November','December','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
-    $bangM = array('জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর','জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর');
-    $convertedM = str_replace($engM, $bangM, $strM);
-
-    return $convertedM;
-}
-
-
-add_filter( 'get_the_time', 'make_bangla_number' );
-add_filter( 'the_date', 'make_bangla_number' );
-add_filter( 'get_the_date', 'make_bangla_number' );
-
-add_filter( 'comments_number', 'make_bangla_number' ); // comment form and all comments
-add_filter( 'get_comment_date', 'make_bangla_number' ); // comment form and all comments
-add_filter( 'get_comment_date', 'make_bangla_months' ); // comment form and all comments
-add_filter( 'get_comment_time', 'make_bangla_number' ); // comment form and all comments
-
-add_filter( 'the weekday', 'make_bangla_day' );
-
-
-
-/**
- * LOAD SPECIAL CLASS TO THE FOOTER WIDGETS
--------------------------------------------------- */
-function widget_display_callback( $params ) {
-
-    global $wp_registered_widgets;
-    global $my_widget_num; // Global a counter array
-
-    $id = $params[0]['widget_id'];
-    $sidebar_id = $params[0]['id'];
-
-    /*  Set some count for each widgets  */
-    if( !$my_widget_num ) { // If the counter array doesn't exist, create it
-        $my_widget_num = array();
-    }
-
-    if( isset( $my_widget_num[ $sidebar_id ] ) ) { // See if the counter array has an entry for this sidebar
-        $my_widget_num[ $sidebar_id ] ++;
-    } else { // If not, create it starting with 1
-        $my_widget_num[ $sidebar_id ] = 1;
-    }
-
-    $widget_counter = $my_widget_num[ $sidebar_id ];
-    if( $widget_counter == 1 ) {
-        $the_class = ' footer-widget-1 ';
-    } elseif( $widget_counter == 2 ){
-        $the_class = ' footer-widget-2 ';
-    } elseif( $widget_counter == 3 ){
-        $the_class = ' footer-widget-3 ';
-    } else {
-        $the_class = ' footer-widget-4 ';
-    }
-
-    if ( !empty( $sidebar_id ) && $sidebar_id == 'footer_widgets_area' && !empty( $the_class ) ) {
-        // add  your classes
-        $classe_to_add = $the_class; // make sure you leave a space at the end
-        $classe_to_add = 'class=" ' . $classe_to_add;
-        $params[0]['before_widget'] = str_replace( 'class="', $classe_to_add, $params[0]['before_widget'] );
-    }
-    return $params;
-}
-add_filter( 'dynamic_sidebar_params', 'widget_display_callback', 10 );
-
-
-
-
-/**
- * FILTERING wp_title()
--------------------------------------------------- */
-
-function nanodesigns_filter_wp_title( $title ) {
-    // Get the Site Name
+*   Filtering wp_title()
+ * -------------------------------------------------------------------------------- */
+  
+function nano_progga_filter_wp_title( $title ) {
     $site_name = get_bloginfo( 'name' );
-    // Prepend it to the default output
-    $filtered_title =  $site_name . ' -- ' . $title;
-    // If site front page, append description
+    $filtered_title =  $site_name . ' • ' . $title;
     if ( is_front_page() ) {
-        // Get the Site Description
         $site_description = get_bloginfo( 'description' );
-        // Append Site Description to title
         $filtered_title .= $site_description;
     }
-    // Return the modified title
     return $filtered_title;
 }
-// Hook into 'wp_title'
-add_filter( 'wp_title', 'nanodesigns_filter_wp_title' );
+  
+add_filter( 'wp_title', 'nano_progga_filter_wp_title' );
+  
+  
+  
+  
+/**
+ * THE EXCERPT FILTERS
+ * 
+ * This group of functions will make a new controllable excerpt
+ *  called nano_excerpt()
+ * 
+ * Source: Codex - http://codex.wordpress.org/Function_Reference/the_excerpt
+ * Secondary Source: WP Spring by Mayeenul Islam (https://github.com/mayeenulislam/WP-CodeSpring)
+ * -------------------------------------------------------------------------------- */
+  
+function nano_excerpt( $limit = 75, $more = true ) {
+    if( $more == true ) {
+        $limited_excerpts = wp_trim_words( get_the_excerpt(), $limit, new_excerpt_more() );
+    } else {
+        $limited_excerpts = wp_trim_words( get_the_excerpt(), $limit );
+    }
+    echo $limited_excerpts;
+    return $limited_excerpts;
+}
+
+function block_excerpt_more( $readmore = 1 ) {
+    if( $readmore == 1 ) {
+        $read_more = '<a class="read-more" href="'. get_permalink( get_the_ID() ) . '">'. __( 'Read More', 'nano-progga' ) .'</a>';
+    } else {
+        $read_more = '<a class="read-more" href="'. get_permalink( get_the_ID() ) . '">'. __( 'See Details', 'nano-progga' ) .'</a>';
+    }
+    
+    return $read_more;
+}
+  
+function custom_excerpt_length( $length ) {
+    return 200;
+}
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+  
+  
+  
+  
+/**
+ * PAGINATION FUCNTION
+ * 
+ * A common function to call pagination in archive and attachment/image templates
+ * 
+ * Thanks to: nanodesigns (http://nanodesignsbd.com) and Mayeenul Islam (@mayeenulislam)
+ * Code taken from: nano progga (http://nanoprogga.nanodesignsbd.com)
+ * -------------------------------------------------------------------------------- */
+  
+function nano_pagination() {
+  
+    if( is_attachment() ) { ?>
+  
+    <div id="nav-below" class="navigation row">
+  
+        <div class="nav-previous"><?php previous_image_link( false, __( '<span class="meta-nav fa fa-chevron-left"></span> Older Image', 'nano-progga' ) ) ?></div>
+        <div class="nav-next"><?php next_image_link( false, __( 'Latest Image <span class="meta-nav fa fa-chevron-right"></span>', 'nano-progga' ) ) ?></div>
+  
+        <div style="clear: both;"></div>
+  
+    </div><!-- #nav-below -->
+  
+    <?php } else {
+  
+        global $wp_query;
+        $total_pages = $wp_query->max_num_pages;
+        if ( $total_pages > 1 ) { ?>
+  
+            <div id="nav-below" class="navigation row">
+  
+                <div class="nav-previous"><?php next_posts_link(__( '<span class="meta-nav fa fa-chevron-left"></span> Older', 'nano-progga' )) ?></div>
+                <div class="nav-next"><?php previous_posts_link(__( 'Latest <span class="meta-nav fa fa-chevron-right"></span>', 'nano-progga' )) ?></div>
+  
+                <div style="clear: both;"></div>
+  
+            </div><!-- #nav-below -->
+  
+        <?php } //endif ( $total_pages > 1 )
+  
+    } //endif( is_attachment() )
+}
+  
+  
+  
+  
+/**
+*   LOAD FONT AWESOME ICON ACCORDING TO THE URL PARAMETER
+*/
+  
+function font_awesome_class( $attachment_url = '' ) {
+  
+    $subString2 = substr( $attachment_url, -2 );
+    $subString3 = substr( $attachment_url, -3 );
+    $subString4 = substr( $attachment_url, -4 );
+  
+    if( $subString3 === 'pdf' ) {
+        $class = ' fa fa-file-pdf-o';
+    } elseif ( $subString3 === 'doc' || $subString4 === 'docx' || $subString3 === 'odt' ) {
+        $class = ' fa fa-file-word-o';
+    } elseif ( $subString3 === 'xls' || $subString4 === 'xlsx' ) {
+        $class = ' fa fa-file-excel-o';
+    } elseif ( $subString3 === 'ppt' || $subString4 === 'pptx' || $subString3 === 'pps' || $subString4 === 'ppsx' ) {
+        $class = ' fa fa-file-powerpoint-o';
+    } elseif( $subString3 === 'txt' ) {
+        $class = ' fa fa-file-text-o';
+    } elseif ( $subString3 === 'zip' || $subString3 === 'rar' || $subString2 === '7z' ) {
+        $class = ' fa fa-file-archive-o';
+    } elseif (  $subString3 === 'jpg' || $subString4 === 'jpeg' || $subString3 === 'gif' || $subString3 === 'png' ) {
+        $class = ' fa fa-file-image-o';
+    } elseif ( $subString3 === 'mp3' || $subString3 === 'm4a' || $subString3 === 'ogg' || $subString3 === 'wav' ) {
+        $class = ' fa fa-file-audio-o';
+    } elseif ( $subString3 === 'mp4' || $subString3 === 'm4v' || $subString3 === 'mov' || $subString3 === 'wmv' || $subString3 === 'avi' || $subString3 === 'mpg' || $subString3 === 'ogv' || $subString3 === '3gp' || $subString3 === '3g2' ) {
+        $class = ' fa fa-file-video-o';
+    } else {
+        $class = ' fa fa-file-o';
+    }
+  
+    // Fallback
+    // if attachment file is not found
+    $class = ( $attachment_url == '' ? ' fa fa-align-left' : $class );
+  
+    return $class;
+}
+  
+  
+  
+  
+/**
+*   FORCE SUB-CATEGORIES TO FOLLOW THE PARENT CATEGORY TEMPLATE
+*   Thanks: WerdsWords
+*   Source: http://werdswords.com/force-sub-categories-use-the-parent-category-template/
+*/
+  
+function new_subcategory_hierarchy() { 
+    $category = get_queried_object();
+   
+    $parent_id = $category->category_parent;
+   
+    $templates = array();
+       
+    if ( $parent_id == 0 ) {
+        // Use default values from get_category_template()
+        $templates[] = "category-{$category->slug}.php";
+        $templates[] = "category-{$category->term_id}.php";
+        $templates[] = 'category.php';     
+    } else {
+        // Create replacement $templates array
+        $parent = get_category( $parent_id );
+   
+        // Current first
+        $templates[] = "category-{$category->slug}.php";
+        $templates[] = "category-{$category->term_id}.php";
+   
+        // Parent second
+        $templates[] = "category-{$parent->slug}.php";
+        $templates[] = "category-{$parent->term_id}.php";
+        $templates[] = 'category.php'; 
+    }
+    return locate_template( $templates );
+}
+   
+add_filter( 'category_template', 'new_subcategory_hierarchy' );
+
+
+
+
+/**
+*   REMOVE rel ATTRIBUTE FROM CATEGORY LIST
+*   Credit: Joseph Leedy
+*
+*   Source:
+*   http://josephleedy.me/blog/make-wordpress-category-list-valid-by-removing-rel-attribute/
+*/
+
+add_filter( 'wp_list_categories', 'nanodesigns_remove_category_list_rel' );
+add_filter( 'the_category', 'nanodesigns_remove_category_list_rel' );
+
+function nanodesigns_remove_category_list_rel( $output ) {
+
+    // Remove rel attribute from the category list
+    return str_replace( ' rel="category tag"', '', $output );
+
+}
+
+
+
+
+/**
+*   AUTHOR META FIELDS
+*/
+
+function nano_progga_author_meta_fields( $methods ) {
+
+    $methods['nano_facebook'] = __('Facebook Profile URL [np]', 'nano-progga');
+    $methods['nano_twitter'] = __('Twitter URL [np]', 'nano-progga');
+    $methods['nano_google_plus'] = __('Google Plus URL [np]', 'nano-progga');
+    $methods['nano_linkedin'] = __('LinkedIn URL [np]', 'nano-progga');
+    $methods['nano_pinterest'] = __('Pinterest URL [np]', 'nano-progga');
+    $methods['nano_tumblr'] = __('Tumblr URL [np]', 'nano-progga');
+
+    return $methods;
+}
+
+add_filter( 'user_contactmethods', 'nano_progga_author_meta_fields' );
+  
+  
+  
+/**
+ * DEVELOPER TOOLS
+ */
+  
+function my_var_dump( $variable ) {
+    echo '<pre>';
+        print_r( $variable );
+    echo '</pre>';
+}
+
+function dequeue_devicepx() {
+wp_dequeue_script( 'devicepx' );
+}
+add_action( 'wp_enqueue_scripts', 'dequeue_devicepx', 20 );

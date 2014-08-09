@@ -1,0 +1,474 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: nano progga\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-08-01 22:59+0600\n"
+"PO-Revision-Date: 2014-08-01 23:02+0600\n"
+"Last-Translator: Mayeenul Islam <wz.islam@gmail.com>\n"
+"Language-Team: nanodesigns <info@nanodesignsbd.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;_e;__;_x\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: Bengali\n"
+"X-Poedit-Country: BANGLADESH\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../404.php:47
+msgid "Error 404 : Not Found"
+msgstr "৪০৪ ত্রুটি : পাওয়া যায়নি"
+
+#: ../404.php:51
+msgid "So, it's an infinite loop - you are looking for something, and we can't find"
+msgstr "তো এটা একটা আজীবন ঘূর্ণন - আপনি কিছু একটা খুঁজছেন, অথচ আমরা দিতে অপারগ"
+
+#: ../404.php:54
+msgid "Why not have some search?"
+msgstr "একটু খুঁজে দেখাই যাক না?"
+
+#: ../archive.php:12
+msgid "Daily Archives"
+msgstr "দৈনিক আর্কাইভ"
+
+#: ../archive.php:14
+msgid "Monthly Archives"
+msgstr "মাসিক আর্কাইভ"
+
+#: ../archive.php:16
+msgid "Yearly Archives"
+msgstr "বাৎসরিক আর্কাইভ"
+
+#: ../archive.php:18
+msgid "Categories Archive"
+msgstr "ক্যাটাগরি সংগ্রহশালা"
+
+#: ../archive.php:23
+msgid "Tags Archive"
+msgstr "ট্যাগ আর্কাইভ"
+
+#: ../archive.php:28
+msgid "User Archive"
+msgstr "লেখক আর্কাইভ"
+
+#: ../archive.php:28
+#, php-format
+msgid "<span class=\"vcard\">%s</span>"
+msgstr "<span class=\"vcard\">%s</span>"
+
+#: ../archive.php:30
+msgid "Blog Archives"
+msgstr "ব্লগ আর্কাইভ"
+
+#: ../comments.php:24
+msgid "Comment Navigation"
+msgstr "মন্তব্য নেভিগেশন"
+
+#: ../comments.php:25
+msgid "<span class=\"fa fa-chevron-left\"></span> Older Comments"
+msgstr "<span class=\"meta-nav fa fa-chevron-left\"></span> পুরেোন মন্তব্য"
+
+#: ../comments.php:26
+msgid "Newer Comments <span class=\"fa fa-chevron-right\"></span>"
+msgstr "সাম্প্রতিক মন্তব্য <span class=\"meta-nav fa fa-chevron-right\"></span>"
+
+#: ../comments.php:35
+msgid "Comment is Closed"
+msgstr "মন্তব্য রহিত আছে"
+
+#: ../comments.php:47
+#: ../image.php:97
+msgid "Comment Here"
+msgstr "মন্তব্য করুন"
+
+#: ../comments.php:48
+#, php-format
+msgid "Comment to %s"
+msgstr "%s'র প্রতি মন্তব্য করুন"
+
+#: ../comments.php:49
+msgid "[ Cancel Reply ]"
+msgstr "[ প্রত্যুত্তর বাতিল করুন ]"
+
+#: ../comments.php:50
+#: ../comments.php:52
+msgid "Comment"
+msgstr "মন্তব্য করুন"
+
+#: ../comments.php:58
+#, php-format
+msgid "You have to <a href=\"%s\">login</a> to comment"
+msgstr "মন্তব্য করতে আপনাকে <a href=\"%s\">লগইন</a> করতে হবে"
+
+#: ../comments.php:64
+#, php-format
+msgid "Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out from this account\">Log out?</a>"
+msgstr "<a href=\"%1$s\">%2$s</a> হিসেবে লগইন করেছেন। <a href=\"%3$s\" title=\"এই অ্যাকাউন্ট থেকে বেরিয়ে যান\">লগ আউট?</a>"
+
+#: ../comments.php:71
+msgid "Your email won't be public"
+msgstr "আপনার ইমেইল প্রকাশ করা হবে না"
+
+#: ../comments.php:76
+#, php-format
+msgid "You can use these <abbr title=\"HyperText Markup Language\">HTML</abbr> tags and markups: %s"
+msgstr "আপনি এই <abbr title=\"HyperText Markup Language\">HTML</abbr> ট্যাগ এবং মার্কআপগুলো ব্যবহার করতে পারেন: %s"
+
+#: ../comments.php:84
+msgid "Name"
+msgstr "আপনার নাম"
+
+#: ../comments.php:90
+msgid "Email"
+msgstr "আপনার ইমেইল"
+
+#: ../comments.php:97
+msgid "Website"
+msgstr "ওয়েবসাইট"
+
+#: ../footer.php:6
+msgid "GET TO TOP"
+msgstr "উপরে ফিরে চলো"
+
+#: ../footer.php:28
+msgid "Powered by <a href=\"http://wordpress.org/\" title=\"WordPress\" rel=\"generator\">WordPress</a> and the theme "
+msgstr "<a href=\"http://wordpress.org/\" title=\"WordPress\" rel=\"generator\">ওয়ার্ডপ্রেস</a> দ্বারা নিয়ন্ত্রীত এবং "
+
+#: ../footer.php:30
+msgid " is developed by <a href=\"http://nanodesignsbd.com/\" title=\"Developed by nanodesigns, Bangladesh\" rel=\"designer\"><strong>nano</strong>designs</a>"
+msgstr "থিমটি তৈরি করেছে <a href=\"http://nanodesignsbd.com/\" title=\"Developed by nanodesigns, Bangladesh\" rel=\"designer\"><strong>nano</strong>designs</a>"
+
+#: ../functions.php:92
+msgid "Main Menu"
+msgstr "প্রধান মেনু"
+
+#: ../functions.php:93
+msgid "Footer Menu"
+msgstr "ফুটার মেনু"
+
+#: ../functions.php:182
+msgid "Pages "
+msgstr "পাতাসমূহ"
+
+#: ../functions.php:239
+msgid "Appears on the right portion of the site"
+msgstr "সাইটের ডানদিকে দেখা যাবে"
+
+#: ../functions.php:249
+msgid "Appears on the left portion of the site only on archive pages"
+msgstr "সাইটের বামদিকে দেখা যাবে"
+
+#: ../functions.php:289
+msgid "Pingback:"
+msgstr "পিংব্যাক:"
+
+#: ../functions.php:289
+msgid "[ Edit ]"
+msgstr "[ সম্পাদনা ]"
+
+#: ../functions.php:311
+#, php-format
+msgid "%1$s : %2$s"
+msgstr "%1$s : %2$s"
+
+#: ../functions.php:314
+msgid "[ edit ]"
+msgstr "[ সম্পাদনা ]"
+
+#: ../functions.php:319
+msgid "Your comment is awaiting moderation."
+msgstr "আপনার মন্তব্যটি মডারেশনের অপেক্ষায় আছে"
+
+#: ../functions.php:327
+msgid "Reply"
+msgstr "প্রত্যুত্তর"
+
+#: ../functions.php:379
+msgid "Read More"
+msgstr "বিস্তারিত"
+
+#: ../functions.php:381
+msgid "See Details"
+msgstr "বিস্তারিত"
+
+#: ../functions.php:411
+msgid "<span class=\"meta-nav fa fa-chevron-left\"></span> Older Image"
+msgstr "<span class=\"meta-nav fa fa-chevron-left\"></span> পুরোন ছবি"
+
+#: ../functions.php:412
+msgid "Latest Image <span class=\"meta-nav fa fa-chevron-right\"></span>"
+msgstr "সাম্প্রতিক ছবি <span class=\"meta-nav fa fa-chevron-right\"></span>"
+
+#: ../functions.php:426
+msgid "<span class=\"meta-nav fa fa-chevron-left\"></span> Older"
+msgstr "<span class=\"meta-nav fa fa-chevron-left\"></span> পুরোন লেখা"
+
+#: ../functions.php:427
+msgid "Latest <span class=\"meta-nav fa fa-chevron-right\"></span>"
+msgstr "সাম্প্রতিক লেখা <span class=\"meta-nav fa fa-chevron-right\"></span>"
+
+#: ../functions.php:549
+msgid "Facebook Profile URL [np]"
+msgstr "ফেসবুক প্রোফাইল ইউআরএল [np]"
+
+#: ../functions.php:550
+msgid "Twitter URL [np]"
+msgstr "টুইটার ইউআরএল [np]"
+
+#: ../functions.php:551
+msgid "Google Plus URL [np]"
+msgstr "গুগল প্লাস ইউআরএল [np]"
+
+#: ../functions.php:552
+msgid "LinkedIn URL [np]"
+msgstr "লিংকেডইন ইউআরএল [np]"
+
+#: ../functions.php:553
+msgid "Pinterest URL [np]"
+msgstr "পিন্টারেস্ট ইউআরএল [np]"
+
+#: ../functions.php:554
+msgid "Tumblr URL [np]"
+msgstr "টাম্বলার ইউআরএল [np]"
+
+#: ../header.php:48
+#: ../header.php:50
+msgid "Skip to content"
+msgstr "লেখায় চলে যাও"
+
+#: ../header.php:64
+msgid "Our Social Links"
+msgstr "আমাদের সামাজিক সংযোগসমূহ"
+
+#: ../image.php:20
+msgid "Get to Main Article"
+msgstr "মূল লেখায় চলো"
+
+#: ../image.php:25
+msgid "This is an image of an article"
+msgstr "এটি একটি প্রকাশনার ছবি"
+
+#: ../image.php:36
+#: ../image.php:77
+#, php-format
+msgid "Permalink to %s"
+msgstr "%s-এর পার্মালিংক"
+
+#: ../image.php:59
+msgid "Pages:"
+msgstr "পাতাসমূহ:"
+
+#: ../image.php:67
+msgid "Author"
+msgstr "লিখেছেন"
+
+#: ../image.php:68
+#, php-format
+msgid "View all posts by %s"
+msgstr "%s-এর সকল পোস্ট দেখান"
+
+#: ../image.php:76
+msgid "Published on"
+msgstr "প্রকাশিত"
+
+#: ../image.php:96
+msgid "Comments"
+msgstr "মন্তব্য"
+
+#: ../image.php:97
+msgid "1 Comment"
+msgstr "১টি মন্তব্য"
+
+#: ../image.php:97
+msgid "% Comments"
+msgstr "%টি মন্তব্য"
+
+#: ../image.php:97
+msgid "Comment Closed"
+msgstr "মন্তব্য রহিত আছে"
+
+#: ../image.php:100
+msgid "[edit this image]"
+msgstr "[ছবিটি সম্পাদনা করুন]"
+
+#: ../search.php:13
+msgid "Search Results for "
+msgstr "অনুসন্ধানের ফলাফল "
+
+#: ../search.php:28
+msgid "Nothing Found"
+msgstr "কিছুই পাওয়া যায়নি"
+
+#: ../search.php:32
+msgid "Sorry, but nothing matched your search criteria. Please try again with some different keywords."
+msgstr "দুঃখিত, কিন্তু সত্যি বলতে কি আপনার অনুসন্ধান করা বিষয়বস্তু পাওয়া গেল না। অন্য কোনো শব্দ দিয়ে আবার চেষ্টা করতে পারেন।"
+
+#: ../searchform.php:8
+msgid "Search"
+msgstr "অনুসন্ধান"
+
+#: ../sidebar-left.php:3
+msgid "Sidebar Left"
+msgstr "সাইডবার"
+
+#: ../sidebar-left.php:32
+msgid "Author did not provided any public biography content"
+msgstr "লেখক পাবলিক কোনো পরিচিতর উল্লেখ করেননি"
+
+#: ../sidebar-left.php:72
+#: ../sidebar.php:19
+msgid "Archives"
+msgstr "আর্কাইভ"
+
+#: ../sidebar-left.php:79
+#: ../sidebar.php:26
+msgid "Pages"
+msgstr "পাতাসমূহ"
+
+#: ../sidebar.php:3
+msgid "Sidebar"
+msgstr "সাইডবার"
+
+#: ../admin-panel/theme-options.php:17
+msgid "Theme Options"
+msgstr "থিম অপশন্স"
+
+#: ../admin-panel/theme-options.php:30
+msgid " &mdash; Theme Options"
+msgstr " &mdash; থিম অপশন্‌স"
+
+#: ../admin-panel/theme-options.php:31
+msgid "Maintain your blog's static part from this theme options page."
+msgstr "ব্লগের স্ট্যাটিক অংশ এখান থেকে নিয়ন্ত্রণ করুন।"
+
+#: ../admin-panel/theme-options.php:34
+msgid "Settings saved"
+msgstr "সেটিংস সংরক্ষিত"
+
+#: ../admin-panel/theme-options.php:49
+msgid "Logo Image URL"
+msgstr "লগোর ছবির ইউআরএল"
+
+#: ../admin-panel/theme-options.php:66
+msgid "Show Author Bio"
+msgstr "লেখক পরিচিত দেখান"
+
+#: ../admin-panel/theme-options.php:70
+msgid "Control whether to show/hide author bio in <em>Author archives</em>"
+msgstr "লেখক পাতায় লেখক বিবরণ দেখাবেন কিনা নিয়ন্ত্রণ করুন"
+
+#: ../admin-panel/theme-options.php:85
+msgid "Facebook Page URL"
+msgstr "ফেসবুক পেজ ইউআরএল"
+
+#: ../admin-panel/theme-options.php:93
+msgid "Twitter Account URL"
+msgstr "টুইটার অ্যাকাউন্ট ইউআরএল"
+
+#: ../admin-panel/theme-options.php:101
+msgid "LinkedIn Page URL"
+msgstr "লিংকেডইন পেজ ইউআরএল"
+
+#: ../admin-panel/theme-options.php:109
+msgid "Google+ Page URL"
+msgstr "গুগল+ পেজ ইউআরএল"
+
+#: ../admin-panel/theme-options.php:117
+msgid "Flickr Account URL"
+msgstr "ফ্লিকার অ্যাকাউন্ট ইউআরএল"
+
+#: ../admin-panel/theme-options.php:125
+msgid "Pinterest Account URL"
+msgstr "পিন্টারেস্ট অ্যাকাউন্ট ইউআরএল"
+
+#: ../admin-panel/theme-options.php:133
+msgid "Tumblr Blog URL"
+msgstr "টাম্বলার ব্লগ ইউআরএল"
+
+#: ../admin-panel/theme-options.php:141
+msgid "YouTube Channel URL"
+msgstr "ইউটিউব চ্যানেল ইউআরএল"
+
+#: ../admin-panel/theme-options.php:152
+msgid "Save Options"
+msgstr "অপশন সংরক্ষণ করুন"
+
+#: ../template-parts/content-archive-post.php:22
+msgid "Post Format Gallery"
+msgstr ""
+
+#: ../template-parts/content-archive-post.php:26
+msgid "Post Format Image"
+msgstr ""
+
+#: ../template-parts/content-archive-post.php:30
+msgid "Post Format Video"
+msgstr ""
+
+#: ../template-parts/content-archive-post.php:34
+msgid "Post Format Audio"
+msgstr ""
+
+#: ../template-parts/content-archive-post.php:38
+msgid "Post Format Quote"
+msgstr ""
+
+#: ../template-parts/content-archive-post.php:42
+msgid "Post Format Link"
+msgstr ""
+
+#: ../template-parts/content-archive-post.php:46
+msgid "Post Format Aside"
+msgstr ""
+
+#: ../template-parts/content-archive-post.php:50
+msgid "Post Format Status"
+msgstr ""
+
+#: ../template-parts/content-archive-post.php:54
+msgid "Post Format Chat"
+msgstr ""
+
+#: ../template-parts/content-archive-post.php:64
+msgid "Featured Post"
+msgstr "বিশেষ প্রকাশনা"
+
+#: ../template-parts/content-archive-post.php:121
+msgid "Read More <span class=\"meta-nav\">&rarr;</span>"
+msgstr "বিস্তারিত <span class=\"meta-nav\">&rarr;</span>"
+
+#: ../template-parts/content-archive-post.php:126
+#: ../template-parts/content-archive-post.php:149
+#: ../template-parts/content-page.php:93
+msgid "Pages: "
+msgstr "পাতাসমূহ:"
+
+#: ../template-parts/content-page.php:144
+msgid "Categories"
+msgstr "ক্যাটাগরিসমূহ"
+
+#: ../template-parts/content-page.php:150
+msgid "Tags"
+msgstr "বিষয়বস্তু"
+
+#: ../template-parts/content-page.php:160
+msgid "[edit this page]"
+msgstr "[পাতাটি সম্পাদনা করুন]"
+
+#: ../template-parts/content-page.php:162
+msgid "[edit this post]"
+msgstr "[প্রকাশনাটি সম্পাদনা করুন]"
+
+#~ msgid "Read More &raquo;"
+#~ msgstr "আরো পড়ুন &raquo;"
+
+#, fuzzy
+#~ msgid "Comment is Closed in this page"
+#~ msgstr "মন্তব্য রহিত আছে"
+
+#, fuzzy
+#~ msgid "[Edit]"
+#~ msgstr "সম্পাদনা"
+
+#~ msgid "By %1$s on %2$s at %3$s"
+#~ msgstr "লিখেছেন %1$s তারিখ %2$s সময় %3$s"
