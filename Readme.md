@@ -1,5 +1,5 @@
-#NANO PROGGA#
-A search engine optimized blog theme, especially designed for blogging in Bengali (Bānglā) using WordPress.
+#nano progga#
+A search engine optimized blog theme, especially designed for blogging in Bengali (<em>Bānglā</em>) using WordPress.
 
 --------------------------
     TABLE OF CONTENTS
@@ -7,19 +7,18 @@ A search engine optimized blog theme, especially designed for blogging in Bengal
 1. Introduction
 2. Specifications
 3. Licenses
-   a. Code License
-   b. Design License
-   c. Font License
+:a. Code License
+:b. Design License
+:c. Font License
 4. Credits
 5. Conclusion
---------------------------
 
 ##INTRODUCTION##
-nano progga is a search engine optimized blog framework, especially designed for blogging in Bengali (Bānglā) using WordPress. It supports custom header, custom menu, sidebar widget area (one specifically for archive pages), and unlimited plugins. It is optimized specially for Bengali (Bānglā) blogging, with speed and less weight. But the theme is completely translation-ready and can be translated into any locals.
+nano progga is a search engine optimized blog framework, especially designed for blogging in Bengali (<em>Bānglā</em>) using WordPress. It supports custom header, custom menu, sidebar widget area (one specifically for archive pages), and unlimited plugins. It is optimized specially for Bengali (<em>Bānglā</em>) blogging, with speed and less weight. But the theme is completely translation-ready and can be translated into any locals.
 
 
 ##SPECIFICATIONS##
-nano progga theme is specially made for blogging in Bengali (Bānglā). A complete responsive theme. With sticky post facility user can stick a post or a couple of posts at the top of all the posts.
+nano progga theme is specially made for blogging in Bengali (<em>Bānglā</em>). A complete responsive theme. With sticky post facility user can stick a post or a couple of posts at the top of all the posts.
 
 ##LICENSES##
 
@@ -32,7 +31,7 @@ The layout design was totally made by nanodesigns. The license for the design is
 ###FONT LICENSE###
 The nano progga theme used two fonts for the layout: (1) Siyam Rupali, and (2) Font Awesome for icon fonts. The fonts are embeded with the theme so that they will not be loaded from any third party resources.
  • Siyam Rupali is an Open Source Font available in Github.com(https://github.com/potasiyam/Siyam-Rupali‎)
- • Font Awesome is another Open Source Icon Font available in Github.com (fortawesome.github.io/Font-Awesome)
+ • Font Awesome is another Open Source Icon Font available in Github.com (http://fontawesome.github.io/Font-Awesome)
 
 
 ##CREDITS##
@@ -40,7 +39,7 @@ All the credits goes to the God - ALLAH, the most benevolent, the most forgiving
 
 
 ##CONCLUSION##
-Let's use nano progga and take Bengali (Bānglā) blogging one step further.
+Let's use nano progga and take Bengali (<em>Bānglā</em>) blogging one step further.
 
 ______________________________
 We thee have not taken the world from our ancestors by law or will, but as a lend from our descendants
