@@ -6,10 +6,10 @@ A search engine optimized blog theme, especially designed for blogging in Bengal
 --------------------------
 1. Introduction
 2. Specifications
-3. Licenses
-:a. Code License
-:b. Design License
-:c. Font License
+3. Licenses<br>
+i. Code License<br>
+ii. Design License<br>
+iii. Font License<br>
 4. Credits
 5. Conclusion
 
@@ -42,5 +42,5 @@ All the credits goes to the God - ALLAH, the most benevolent, the most forgiving
 Let's use nano progga and take Bengali (<em>Bānglā</em>) blogging one step further.
 
 ______________________________
-We thee have not taken the world from our ancestors by law or will, but as a lend from our descendants
+We thee have not taken the world from our ancestors by law or will, but as a lend from our descendants<br>
 Love the Nature
