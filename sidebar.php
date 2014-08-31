@@ -1,6 +1,8 @@
 <aside id="right-sidebar">
 
-    <h2 class="sidebar-head"><?php _e( 'Sidebar', 'nano-progga' ); ?></h2>
+    <?php if ( !is_archive() ) { ?>
+        <h2 class="sidebar-head"><?php _e( 'Sidebar', 'nano-progga' ); ?></h2>
+    <?php } ?>
 
     <?php if( is_active_sidebar('right_sidebar') ) { ?>
 

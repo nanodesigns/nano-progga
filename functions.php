@@ -5,44 +5,6 @@
  * @developer: Mayeenul Islam (@mayeenulislam)
  */
 
-
-/**
-*   BANGLA SUPPORT TO THE THEME
-*/
-
-require_once ( get_template_directory() .'/inc/functions-bangla.php' );
-
-
-/**
- * ADMIN PANEL - THEME OPTIONS
- * to make the site's feature dynamic for the user
- */
-  
-require_once ( get_template_directory() . '/admin-panel/theme-options.php' );
-
-function styles_for_admin(){
-
-    wp_register_style( 'admin-style', get_template_directory_uri() . '/css/admin-style.css', '', '', 'screen' );
-
-    wp_enqueue_style( 'admin-style' ); // stylesheet for admin panel
-}
-
-add_action( 'admin_enqueue_scripts', 'styles_for_admin' );
-  
-  
-/**
- *  ADD SITE OPTIONS PAGE CAPABILITY TO 'Editor'
- *  Source: http://tuts.nanodesignsbd.com/editors-to-access-and-save-theme-options/
- */
-  
-function options_page_capability( $capability ) {
-    return 'edit_theme_options';
-}
-add_filter( 'option_page_capability_site_options', 'options_page_capability' );
-
-
-
-
 /**
 *   LOAD ALL THE NECESSARY THINGS WITH A SINGLE HOOK
 */
@@ -64,12 +26,12 @@ function nano_progga_setup(){
     add_theme_support( 'automatic-feed-links' );
 
     // LOAD EDITOR STYLES - Load visual editor styles from editor-style.css to match the theme style
-    add_editor_style();
+    //add_editor_style();
 
 
     // SUPPORT FOR POST FORMATS
     add_theme_support( 'post-formats', array(
-        'aside', 'image', 'video', 'audio', 'quote', 'link', 'gallery', 'status', 'chat',
+        'aside', 'audio', 'chat', 'gallery', 'image', 'link', 'quote', 'status', 'video',
     ) );
   
   
@@ -109,8 +71,8 @@ function nano_progga_setup(){
  * -------------------------------------------------------------------------------- */
 function nano_progga_styles(){  
     wp_enqueue_style( 'main-style', get_template_directory_uri() . '/style.css', '', '', 'all' );
-    wp_enqueue_style( 'print-style', get_template_directory_uri() . '/print-style.css', '', '', 'print' );
     wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/font-awesome.min.css' );
+    wp_enqueue_style( 'print-style', get_template_directory_uri() . '/print-style.css', '', '', 'print' );
 }
 
 add_action( 'wp_enqueue_scripts', 'nano_progga_styles' );
@@ -123,14 +85,13 @@ add_action( 'wp_enqueue_scripts', 'nano_progga_styles' );
  * ENQUEUE ALL THE NECESSARY JS
  * -------------------------------------------------------------------------------- */
 function nano_progga_js(){
-    wp_enqueue_script( 'jquery-latest', get_template_directory_uri() . '/js/jquery-1.11.1.min.js' );
-    //wp_enqueue_script( 'jquery-latest', 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js' );
-    
-    wp_localize_script( 'jquery-fallback', 'styleSheetURL', get_stylesheet_directory_uri() );    
-    wp_enqueue_script( 'jquery-fallback', get_template_directory_uri() . '/js/jquery-fallback.js', array( 'jquery-latest' ) );
+    if( !is_admin() ) {
+        wp_enqueue_script( 'jquery' );
+    }
+
     wp_enqueue_script( 'mobile-nav-scripts', get_template_directory_uri() . '/js/tinynav.min.js', '', '', true );
     wp_enqueue_script( 'responsive-scripts', get_template_directory_uri() . '/js/respond.min.js', '', '', true );
-    wp_enqueue_script( 'nanodesigns-custom', get_template_directory_uri() . '/js/nanoprogga.custom.js', '', '', true );
+    wp_enqueue_script( 'nanodesigns-custom', get_template_directory_uri() . '/js/nanoprogga.custom.min.js', '', '', true );
 }
 
 add_action( 'wp_enqueue_scripts', 'nano_progga_js' );
@@ -140,26 +101,6 @@ add_action( 'wp_enqueue_scripts', 'nano_progga_js' );
  * SET DEFAULT WIDTH OF THE SITE
  * -------------------------------------------------------------------------------- */
 if ( ! isset( $content_width ) ) $content_width = 900;
-
-
-
-
-/**
- * REUSABLE POST_META FUNCTION
- */
-
-function has_custom_field( $fieldName = '' ) {
-    global $post;
-    $fetchedCustomField = get_post_meta($post->ID, $fieldName, true);
-    $CFchecker = ($fetchedCustomField == '') ? '0' : '1';
-    return (bool) $CFchecker;
-}
-
-function custom_field( $fieldName = '' ) {
-    global $post;
-    $fetchedCustomField = get_post_meta($post->ID, $fieldName, true);
-    return $fetchedCustomField;
-}
 
 
 
@@ -242,6 +183,16 @@ function theme_widgets_init() {
             'before_title' => '<h3 class="widget-title">',
             'after_title' => '</h3>'
     ) );
+
+    register_sidebar( array (
+        'name' => 'Footer Sidebar',
+        'id' => 'footer_sidebar',
+        'description' => __( 'Appears on the footer portion of the site', 'nano-progga' ),
+        'before_widget' => '<li id="%1$s" class="widget-container footer-widgets %2$s">',
+        'after_widget' => "</li>",
+            'before_title' => '<h3 class="widget-title">',
+            'after_title' => '</h3>'
+    ) );
   
 } // end theme_widgets_init
   
@@ -286,7 +237,7 @@ if ( ! function_exists( 'nano_comments' ) ) :
                 <?php // If current post author is also comment author, make it known visually.
                 $author_class = ( $comment->user_id === $post->post_author ) ? ' bypostauthor' : ''; ?>
                 <li <?php comment_class( array( $author_class ) ); ?> id="li-comment-<?php comment_ID(); ?>">
-                    <article id="comment-<?php comment_ID(); ?>" class="comment">
+                    <article id="comment-<?php comment_ID(); ?>" class="comment hreview">
                         <header class="comment-meta comment-author vcard row">
                             <?php
                             echo get_avatar( $comment, 80 );
@@ -294,7 +245,7 @@ if ( ! function_exists( 'nano_comments' ) ) :
                                 get_comment_author_link()
                             );
                             echo '<br>';
-                            printf( '<a href="%1$s"><time datetime="%2$s">%3$s</time></a>',
+                            printf( '<a href="%1$s" class="dtreviewed"><time datetime="%2$s">%3$s</time></a>',
                                 esc_url( get_comment_link( $comment->comment_ID ) ),
                                 get_comment_time( 'c' ),
                                 /* translators: 1: date, 2: time */
@@ -309,7 +260,7 @@ if ( ! function_exists( 'nano_comments' ) ) :
                             <p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'nano-progga' ); ?></p>
                         <?php endif; ?>
 
-                        <section class="comment-content comment">
+                        <section class="comment-content comment description">
                             <?php comment_text(); ?>
                         </section><!-- .comment-content -->
 
@@ -353,18 +304,13 @@ add_filter( 'wp_title', 'nano_progga_filter_wp_title' );
  * Secondary Source: WP Spring by Mayeenul Islam (https://github.com/mayeenulislam/WP-CodeSpring)
  * -------------------------------------------------------------------------------- */
   
-function nano_excerpt( $limit = 75, $more = true ) {
-    if( $more == true ) {
-        $limited_excerpts = wp_trim_words( get_the_excerpt(), $limit, new_excerpt_more() );
-    } else {
-        $limited_excerpts = wp_trim_words( get_the_excerpt(), $limit );
-    }
+function nano_excerpt( $limit = 75 ) {
+    $limited_excerpts = wp_trim_words( get_the_excerpt(), $limit );
     echo $limited_excerpts;
-    return $limited_excerpts;
 }
 
-function block_excerpt_more( $readmore = 1 ) {
-    if( $readmore == 1 ) {
+function block_excerpt_more( $readmore = 'common' ) {
+    if( $readmore === 'common' ) {
         $read_more = '<a class="read-more" href="'. get_permalink( get_the_ID() ) . '">'. __( 'Read More', 'nano-progga' ) .'</a>';
     } else {
         $read_more = '<a class="read-more" href="'. get_permalink( get_the_ID() ) . '">'. __( 'See Details', 'nano-progga' ) .'</a>';
@@ -422,89 +368,6 @@ function nano_pagination() {
   
     } //endif( is_attachment() )
 }
-  
-  
-  
-  
-/**
-*   LOAD FONT AWESOME ICON ACCORDING TO THE URL PARAMETER
-*/
-  
-function font_awesome_class( $attachment_url = '' ) {
-  
-    $subString2 = substr( $attachment_url, -2 );
-    $subString3 = substr( $attachment_url, -3 );
-    $subString4 = substr( $attachment_url, -4 );
-  
-    if( $subString3 === 'pdf' ) {
-        $class = ' fa fa-file-pdf-o';
-    } elseif ( $subString3 === 'doc' || $subString4 === 'docx' || $subString3 === 'odt' ) {
-        $class = ' fa fa-file-word-o';
-    } elseif ( $subString3 === 'xls' || $subString4 === 'xlsx' ) {
-        $class = ' fa fa-file-excel-o';
-    } elseif ( $subString3 === 'ppt' || $subString4 === 'pptx' || $subString3 === 'pps' || $subString4 === 'ppsx' ) {
-        $class = ' fa fa-file-powerpoint-o';
-    } elseif( $subString3 === 'txt' ) {
-        $class = ' fa fa-file-text-o';
-    } elseif ( $subString3 === 'zip' || $subString3 === 'rar' || $subString2 === '7z' ) {
-        $class = ' fa fa-file-archive-o';
-    } elseif (  $subString3 === 'jpg' || $subString4 === 'jpeg' || $subString3 === 'gif' || $subString3 === 'png' ) {
-        $class = ' fa fa-file-image-o';
-    } elseif ( $subString3 === 'mp3' || $subString3 === 'm4a' || $subString3 === 'ogg' || $subString3 === 'wav' ) {
-        $class = ' fa fa-file-audio-o';
-    } elseif ( $subString3 === 'mp4' || $subString3 === 'm4v' || $subString3 === 'mov' || $subString3 === 'wmv' || $subString3 === 'avi' || $subString3 === 'mpg' || $subString3 === 'ogv' || $subString3 === '3gp' || $subString3 === '3g2' ) {
-        $class = ' fa fa-file-video-o';
-    } else {
-        $class = ' fa fa-file-o';
-    }
-  
-    // Fallback
-    // if attachment file is not found
-    $class = ( $attachment_url == '' ? ' fa fa-align-left' : $class );
-  
-    return $class;
-}
-  
-  
-  
-  
-/**
-*   FORCE SUB-CATEGORIES TO FOLLOW THE PARENT CATEGORY TEMPLATE
-*   Thanks: WerdsWords
-*   Source: http://werdswords.com/force-sub-categories-use-the-parent-category-template/
-*/
-  
-function new_subcategory_hierarchy() { 
-    $category = get_queried_object();
-   
-    $parent_id = $category->category_parent;
-   
-    $templates = array();
-       
-    if ( $parent_id == 0 ) {
-        // Use default values from get_category_template()
-        $templates[] = "category-{$category->slug}.php";
-        $templates[] = "category-{$category->term_id}.php";
-        $templates[] = 'category.php';     
-    } else {
-        // Create replacement $templates array
-        $parent = get_category( $parent_id );
-   
-        // Current first
-        $templates[] = "category-{$category->slug}.php";
-        $templates[] = "category-{$category->term_id}.php";
-   
-        // Parent second
-        $templates[] = "category-{$parent->slug}.php";
-        $templates[] = "category-{$parent->term_id}.php";
-        $templates[] = 'category.php'; 
-    }
-    return locate_template( $templates );
-}
-   
-add_filter( 'category_template', 'new_subcategory_hierarchy' );
-
-
 
 
 /**
@@ -545,6 +408,47 @@ function nano_progga_author_meta_fields( $methods ) {
 }
 
 add_filter( 'user_contactmethods', 'nano_progga_author_meta_fields' );
+
+
+
+/**
+ * ADMIN PANEL - THEME OPTIONS
+ * to make the site's feature dynamic for the user
+ */
+  
+require_once ( get_template_directory() . '/admin-panel/theme-options.php' );
+
+function styles_for_admin(){
+
+    wp_enqueue_style( 'admin-style', get_template_directory_uri() . '/css/admin-style.css', '', '', 'screen' ); // stylesheet for admin panel
+}
+
+add_action( 'admin_enqueue_scripts', 'styles_for_admin' );
+  
+  
+/**
+ *  ADD SITE OPTIONS PAGE CAPABILITY TO 'Editor'
+ *  Source: http://tuts.nanodesignsbd.com/editors-to-access-and-save-theme-options/
+ */
+  
+function options_page_capability( $capability ) {
+    return 'edit_theme_options';
+}
+add_filter( 'option_page_capability_site_options', 'options_page_capability' );
+
+
+
+
+/**
+*   BANGLA SUPPORT TO THE THEME
+*/
+
+// Retrive Data from Theme Options page
+$option = get_option('site_options');
+
+if( $option['bangla'] == 1 ) {
+    require_once ( get_template_directory() .'/inc/functions-bangla.php' );
+}
   
   
   
@@ -552,7 +456,7 @@ add_filter( 'user_contactmethods', 'nano_progga_author_meta_fields' );
  * DEVELOPER TOOLS
  */
   
-function my_var_dump( $variable ) {
+/* function my_var_dump( $variable ) {
     echo '<pre>';
         print_r( $variable );
     echo '</pre>';
@@ -561,4 +465,4 @@ function my_var_dump( $variable ) {
 function dequeue_devicepx() {
 wp_dequeue_script( 'devicepx' );
 }
-add_action( 'wp_enqueue_scripts', 'dequeue_devicepx', 20 );
+add_action( 'wp_enqueue_scripts', 'dequeue_devicepx', 20 ); */

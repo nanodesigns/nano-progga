@@ -2,7 +2,7 @@
 
     <h2 class="sidebar-head"><?php _e( 'Sidebar Left', 'nano-progga' ); ?></h2>
 
-    <?php if( is_active_sidebar('right_sidebar') ) { ?>
+    <?php if( is_active_sidebar('left_sidebar') ) { ?>
 
         <div id="secondary" class="widget-area">
             <ul class="xoxo">
@@ -18,7 +18,7 @@
                     // then show an author bio with social links
                     if ( is_author() ) : ?>
                         <?php global $authordata; ?>
-                        <li id="author-<?php echo $authordata->ID; ?>" class="widget-container author-profile">
+                        <li id="author-<?php echo $authordata->ID; ?>" class="widget-container author-profile vcard">
                             <?php
                             // avatar
                             $avatar = str_replace( "class='avatar", "class='photo avatar sidebar-avatar", get_avatar( $authordata->email, 80 ) );
@@ -29,14 +29,14 @@
                                 if ( !empty($authordesc) ) {
                                     echo apply_filters( 'archive_meta', $authordesc );
                                 } else {
-                                    echo __('Author did not provided any public biography content', 'nano-progga');
+                                    echo __('Author did not provide any public biography content', 'nano-progga');
                                 }
                             echo '</div>';
                             ?>
                             <div class="author-meta">
                                 <?php $url = $authordata->user_url; ?>
                                 <a href="mailto:<?php echo $authordata->user_email; ?>" class="fa fa-envelope-o"></a>
-                                <a href="<?php echo $url != '' ? $url : '#'; ?>" class="fa fa-globe"></a>
+                                <a href="<?php echo $url != '' ? $url : '#'; ?>" class="fa fa-globe url"></a>
 
                                 <?php
                                 // Meta Fields

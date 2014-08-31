@@ -4,6 +4,7 @@
 
 body{
 	color: #333;
+	background: transparent;
 }
 
 .content{
@@ -19,38 +20,25 @@ body{
 .post-edit-link,
 #respond,
 .image-to-article-link,
-.entry-link-icon{
+.entry-link-icon,
+.footer-ul{
 	display: none;
 }
 
 #site-head{
-	display: none;
+	border-bottom: 2px solid #ccc;
 }
 
-.print-logo{
-	width: 60px;
-	height: 60px;
-	float: left;
+#site-title{
+	font-size: 20px;
 }
 
-#print-head{
-  display: block;
-  padding: 10px 0;
-  margin-bottom: 10px;
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
+#site-description{
+	font-size: 16px;
 }
 
-#print-site-title{
-	font-size: 25px;
-	font-weight: bold;
-}
-
-#print-site-title,
-#print-site-description{
-	float: right;
-	text-align: right;
-	width: 90%;
+.archive-article{
+	border: 1px solid #ccc;
 }
 
 .block-read-more{
@@ -61,5 +49,11 @@ body{
 	.read-more{
 		float: right;
 		text-align: right;
+	}
+}
+
+div.comments-area{
+	article.comment{
+		border: 1px solid #ccc;
 	}
 }

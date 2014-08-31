@@ -43,7 +43,7 @@
 
                 <div class="content-full content-404 hfeed">
 
-                    <h2 class="entry-title page-title title-404 row">
+                    <h2 class="entry-title page-title title-404 row p-name">
                         <?php _e( 'Error 404 : Not Found', 'nano-progga' ); ?>
                     </h2>
                     

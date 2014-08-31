@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html <?php language_attributes(); ?>
+<html <?php language_attributes(); ?>>
 
     <head>
 
@@ -7,12 +7,6 @@
 
         <meta http-equiv="content-type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-        <!--[if lt IE 9]>
-            <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-        <meta name="HandheldFriendly" content="True"/>
-        <meta name="MobileOptimized" content="320"/>
 
         <!-- Responsive and mobile friendly stuff -->
         <meta name="HandheldFriendly" content="True">
@@ -22,7 +16,6 @@
         <!--[if lt IE 9]>
         <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
         <?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
         <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
@@ -34,7 +27,7 @@
     <body <?php body_class(); ?>>
 
         <!--[if lt IE 6]>
-        <div class="chromeframe">Old days are good, but not Internet Explorer. Please <a href="http://browsehappy.com/">upgrade your browser </a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a>.</div>
+        <div class="chromeframe">Old days are good, but not Internet Explorer. Please <a href="http://browsehappy.com/">upgrade your browser </a> or <a href="https://www.google.com/chrome/">install Google Chrome</a>.</div>
         <![endif]-->
 
         <?php
@@ -96,21 +89,8 @@
             </div> <!-- .wrapper -->
     	</div> <!-- .top-head -->
 
-        <?php $logo_url = $option['logo'] != '' ? $option['logo'] : ''; ?>
-
-        <header id="print-head" class="row">
-            <div class="wrapper">
-                <img class="print-logo" src="<?php echo $logo_url; ?>" alt="<?php bloginfo( 'name' ) ?>">
-                <div id="print-site-title"><?php bloginfo( 'name' ); ?></div>
-                <div id="print-site-description"><?php bloginfo( 'description' ); ?></div>
-            </div>
-        </header>
-
     	<header id="site-head" class="row" role="banner">
     		<div class="wrapper">
-    			<a class="logo" href="<?php echo home_url('/'); ?>">
-					<img src="<?php echo $logo_url; ?>" alt="<?php bloginfo( 'name' ) ?>">
-				</a>
     			<h1 id="site-title"><a href="<?php echo home_url('/'); ?>" title="<?php bloginfo( 'name' ) ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 				<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
     		</div>

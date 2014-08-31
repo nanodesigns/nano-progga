@@ -1,7 +1,7 @@
 <?php global $authordata; ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(array('archive-article row h-entry') ); ?>>
-    
+
     <div class="bookmark-text sr-only"><?php _e('Featured Post', 'nano-progga'); ?></div>
 
     <?php if( has_post_thumbnail() ) { ?>
@@ -13,6 +13,7 @@
     <?php } ?>
 
     <h2 class="entry-title row p-name">
+        <span title="" class="fa fa-th-large"></span>
         <a title="<?php printf( __('Permalink to %s', 'nano-progga'), the_title_attribute('echo=0') ); ?>" href="<?php the_permalink(); ?>">
             <?php the_title(); ?>
         </a>
@@ -59,9 +60,10 @@
 
     </div> <!-- .entry-meta .entry-meta-top -->
 
-    <div class="entry-excerpt row p-summary">
+    <div class="entry-content row e-content">
 
-        <?php nano_excerpt( $limit = 100 ); ?>
+        <?php the_content( __( 'Read More <span class="meta-nav">&rarr;</span>', 'nano-progga' ) ); ?>
+
         <div class="clearfix"></div>
         <?php
         wp_link_pages( array(
@@ -72,7 +74,6 @@
             ) );
         ?>
         
-    </div> <!-- .entry-excerpt -->
-    <div class="block-read-more"><?php echo block_excerpt_more(); ?></div>
+    </div> <!-- .entry-content -->
 
 </article> <!-- #post-<?php the_ID(); ?> -->

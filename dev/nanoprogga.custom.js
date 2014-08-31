@@ -1,19 +1,8 @@
 // noConflict Wrapper for jQuery loads
 jQuery(function($){
 
-
-
 	/* ----------------------------------------------------------- */
-	/*  1. jQuery : Make the right sidebar height equal to the content
-	/* ----------------------------------------------------------- */
-
-	/*$(document).ready(function() {
-		$("#right-sidebar").height(Math.max($(".content").height(),$("#right-sidebar").height()));
-	});*/
-
-
-	/* ----------------------------------------------------------- */
-	/*  2. TinyNav for Site Menu into Mobile
+	/*  1. TinyNav for Site Menu into Mobile
 	/* ----------------------------------------------------------- */
 
 	/* main-menu */
@@ -27,7 +16,7 @@ jQuery(function($){
 
 
 	/* ----------------------------------------------------------- */
-	/*  3. Scroll to Content
+	/*  2. Scroll to Content
 	/* ----------------------------------------------------------- */
 
     $("a.skip-link").click(function() {
@@ -38,14 +27,13 @@ jQuery(function($){
 
 
 	/* ----------------------------------------------------------- */
-	/*  4. Scroll to Top
+	/*  3. Scroll to Top
 	/* ----------------------------------------------------------- */
 
     $("a.scroll-to-top").click(function() {
 		$("html, body").animate({ scrollTop: 0 }, "slow");
 		return false;
-	});
-	
+	});	
 
 
 });

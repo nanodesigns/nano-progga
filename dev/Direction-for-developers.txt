@@ -1,14 +1,17 @@
-Copy/Cut the following files to the theme's root folder, and start developing yourself:
+DIRECTION FOR DEVELOPERS
+-------------------------------------------------
 
-- style.less
-- print-style.less
+Copy/Cut the following files to the theme's root folder, and start developing yourself:
+   - style.less
+   - print-style.less
+
+Edit the following file, and add the minified version to the root/js/ folder:
+   - nanoprogga.custom.js
 
 NO NEED TO COPY the following file:
+   - lessmixins.less
 
-- lessmixins.less
-
-
-
+__________________________________________________________
 nanodesigns
 Dhaka
 nanodesignsbd.com

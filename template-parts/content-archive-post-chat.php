@@ -13,6 +13,7 @@
     <?php } ?>
 
     <h2 class="entry-title row p-name">
+        <span title="" class="fa fa-comments-o"></span>
         <a title="<?php printf( __('Permalink to %s', 'nano-progga'), the_title_attribute('echo=0') ); ?>" href="<?php the_permalink(); ?>">
             <?php the_title(); ?>
         </a>

@@ -42,15 +42,17 @@ function theme_options_do_page() {
 
 				<?php
 				/**
-				 * SITE LOGO
+				 * Enable Bengali Support
 				 */
 				?>
 				<tr valign="top">
-					<th scope="row"><?php _e( 'Logo Image URL', 'nano-progga' ); ?></th>
+					<th scope="row"><?php _e( 'Enable Bengali (<em>Bangla</em>)', 'nano-progga' ); ?></th>
 					<td>
 						<div class="options-col-left">
-							<input id="site_options[logo]" class="regular-text" type="text" name="site_options[logo]" value="<?php echo esc_attr( $options['logo'] ); ?>" />
+							<input id="site_options[bangla]" name="site_options[bangla]" type="checkbox" value="1" <?php checked( '1', $options['bangla'] ); ?> />
+							<label class="description" for="site_options[bangla]"><?php _e( 'Control whether to enable/disable Bengali (<em>Bangla</em>) support to your blog', 'nano-progga' ); ?></label>
 						</div> <!-- .options-col-left -->
+						
 					</td>
 				</tr>
 				<tr>
@@ -160,14 +162,15 @@ function theme_options_do_page() {
  * Sanitize and validate input. Accepts an array, return a sanitized array.
  */
 function site_options_validate( $input ) {
-
-	// text input option must be safe text with the allowed tags for posts
-	$input['logo'] = wp_filter_post_kses( $input['logo'] );
-
+	
 	// Our checkbox value is either 0 or 1
 	if ( ! isset( $input['author_bio'] ) )
 		$input['author_bio'] = null;
 	$input['author_bio'] = ( $input['author_bio'] == 1 ? 1 : 0 );
+
+	if ( ! isset( $input['bangla'] ) )
+		$input['bangla'] = null;
+	$input['bangla'] = ( $input['bangla'] == 1 ? 1 : 0 );
 
 	$input['facebookURL'] = wp_filter_post_kses( $input['facebookURL'] );
 	$input['twitterURL'] = wp_filter_post_kses( $input['twitterURL'] );

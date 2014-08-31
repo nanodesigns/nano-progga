@@ -7,7 +7,7 @@
         <?php global $authordata; ?>
 
         <div class="content hfeed">
-            <article id="post-<?php the_ID(); ?>" <?php post_class(array('row') ); ?>>
+            <article id="post-<?php the_ID(); ?>" <?php post_class(array('row h-entry') ); ?>>
 
                 <?php
                 // If the image is attached to an article
@@ -30,13 +30,13 @@
                     
                 <?php } ?>
 
-                <h2 class="entry-title page-title row">
+                <h2 class="entry-title page-title row p-name">
                     <span class="fa fa-image"></span>
                     <?php the_title(); ?>
                     <a class="entry-link-icon" title="<?php printf( __('Permalink to %s', 'nano-progga'), the_title_attribute('echo=0') ); ?>" href="<?php the_permalink(); ?>"><span class="fa fa-link"></span></a>
                 </h2>
 
-                <div class="entry-content row">
+                <div class="entry-content row e-content">
 
                     <?php if( wp_attachment_is_image( $post->id ) ) {
                         $att_image = wp_get_attachment_image_src( $post->id, "full"); ?>
@@ -75,7 +75,7 @@
                     <span class="entry-meta-item entry-date">
                         <span class="fa fa-clock-o" title="<?php _e( 'Published on', 'nano-progga' ); ?>"></span>
                         <a href="<?php the_permalink(); ?>" title="<?php printf( __('Permalink to %s', 'nano-progga'), the_title_attribute('echo=0') ); ?>" rel="bookmark">
-                            <abbr class="published" title="<?php the_time('Y-m-d\TH:i:sO') ?>">
+                            <abbr class="published dt-published" title="<?php the_time('Y-m-d\TH:i:sO') ?>">
                                 <?php the_time( 'd M Y' ); ?>
                             </abbr>
                         </a>

@@ -1,10 +1,10 @@
 /*!
 Theme Name: nano progga
 Theme URI: http://nanoprogga.nanodesignsbd.com/
-Description: nano progga is a search engine optimized blog framework, especially designed for blogging in Bānglā using WordPress. It supports custom header, custom menu, sidebar widget area (one specifically for archive pages), and unlimited plugins. It is optimized specially for Bānglā blogging, with speed and less downloads. But the theme is completely translation-ready and can be translated into any locals.
+Description: nano progga is a search engine optimized blog framework, especially designed for blogging in Bengali (Bānglā) using WordPress. It supports custom header, custom menu, sidebar widget area (one specifically for archive pages), and unlimited plugins. It is optimized specially for Bengali (Bānglā) blogging, with speed and less weight. But the theme is completely translation-ready and can be translated into any locals.
 Author: Mayeenul Islam (@mayeenulislam)
 Author URI: http://nanodesignsbd.com/
-Version: 2.0
+Version: 2.1
 Tags: white, custom-header, threaded-comments, sticky-post, translation-ready, microformats, custom-menu, two-columns, three-columns, gray, light, right-sidebar, left-sidebar, fluid-layout, fixed-layout, featured-images
 .
 License: GNU General Public License v2.0
@@ -29,7 +29,6 @@ nano progga is distributed under the terms of the GNU GPL V2.0
   src: url('fonts/SiyamRupali.eot?version=1.070');
   src: local('Siyam Rupali'), url('fonts/SiyamRupali.woff?version=1.070') format('woff'),   url('fonts/SiyamRupali.ttf?version=1.070') format('truetype');
   font-style: normal;
-  //unicode-range: U+0980-09FF; //Bangla Range (source: http://www.unicode.org/charts/PDF/U0980.pdf‎‎)
 }
 
 
@@ -45,10 +44,9 @@ nano progga is distributed under the terms of the GNU GPL V2.0
 --------------------------------------------------*/
 
 // Color variables
-@base-color: #2A3744; //my default #2A3744
+@base-color: #049372; //my default #2A3744 (556FAA, )
 @secondary-color: #344454;
 @text-color: #333;
-@bg-color: #fff;
 @red-color: #9D0A0E;
 @link-color: #2F6BB3;
 @hover-color: darken( @link-color, 15% );
@@ -84,7 +82,7 @@ html{
 body{
   font-family: @site-font;
   font-size: 100%;
-  background-color: @bg-color;
+  background-color: #fafafa;
   color: @text-color;
   margin: 0;
   padding: 0;
@@ -359,7 +357,6 @@ select{
   max-width: 1200px; /* enable this to get a fixed width layout */
   display: block;
   margin: 0 auto;
-  //background-color: #ededed; /* testing */
 }
 
 .skip-link{
@@ -368,6 +365,7 @@ select{
 
 .top-head{
   border-top: 3px solid @base-color;
+  border-bottom: 1px solid #ccc;
 }
 
 
@@ -550,38 +548,10 @@ select{
 }
 
 #site-head{
-  background-color: @base-color;
-  color: #fff;
-  padding: 30px 0;
+  color: @base-color;
+  padding: 20px 0;
   margin-bottom: 20px;
-}
-
-.logo{
-  .border-radius(100%);
-  overflow: hidden;
-  display: inline-block;
-  width: 10%;
-  min-width: 120px;
-  max-width: 120px;
-  height: 120px;
-  float: left;
-  margin-right: 10px;
-  -webkit-box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-    -moz-box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-
-  &:hover{
-  -webkit-box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-    -moz-box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-  }
-}
-
-#site-title,
-#site-description{
-  float: left;
-  position: relative;
-  width: 85%;
+  text-align: center;
 }
 
 #site-title{
@@ -591,7 +561,11 @@ select{
   font-size: 50*@toRem;
 
   a{
-    color: #fff;
+    color: @base-color;
+
+    &:hover{
+      color: #333;
+    }
   }
 }
 
@@ -603,10 +577,23 @@ select{
 
 .main-area{
   .border-box();
-  border-bottom: 1px solid #ccc;
-  //margin-bottom: 10px;
 }
 
+
+/* HOME PAGE COLUMNS */
+
+.post-columns{
+  width: 49%;
+  float: left;
+}
+
+.first-col{
+  clear: both;
+}
+
+.second-col{
+  float: right;
+}
 
 
 /* CONTENT */
@@ -671,29 +658,33 @@ article.has-post-thumbnail{
     display: block;
     border-top: 1px solid #e1e1e1;
     padding: 10px 0;
+    .transition (@prop: all, @time: 0.5s, @ease: ease);
 
     &:hover{
       color: @hover-color;
       background-color: #f2f2f2;
+      .box-shadow-inset (@x: 0, @y: 2px, @blur: 3px, @alpha: 0.1);
+      .transition (@prop: all, @time: 0.5s, @ease: ease);
     }
   }
 }
 
 .entry-meta{
   margin: 10px 0;
-  color: #666;
+  color: @base-color;
   font-size: 14*@toRem;
   border-top: 1px solid #ededed;
   padding-top: 20px;
   padding-left: 10px;
   padding-right: 10px;
 
+  .published,
   a{
     color: #999;
+  }
 
-    &:hover{
-      color: @hover-color;
-    }
+  a:hover{
+    color: @hover-color;
   }
 }
 
@@ -739,6 +730,7 @@ abbr.published{
 
 
 // Post Format: Link
+
 .link-title{
   text-align: center;
 }
@@ -759,13 +751,69 @@ abbr.published{
 }
 
 // Post Format: Status
-.status-title{
-  text-align: center;
+
+article.archive-article.format-status{
+  background-color: @base-color;
+  color: #fff;
+  .box-shadow(0,0,3px,0.3);
+  position: relative;
+
+  a{
+    color: #fff;
+  }
+
+  .entry-link-icon{
+    background-color: darken(@base-color, 10%);
+
+    &:hover{
+      background-color: darken(@base-color, 20%);
+    }
+  }
+
+  .entry-content{
+    padding-top: 0;
+    text-align: left;
+
+    p:last-of-type{
+      margin-bottom: 3px;
+    }
+
+    a{
+      display: block;
+    }
+  }
+
+  .entry-meta-item{
+    padding: 0 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+
+    &.author:before{
+      position: absolute;
+      content: "-";
+      left: 10px;
+      display: block;
+    }
+  }
 }
 
-.status-content{
-  text-align: center;
-  font-size: 18*@toRem;
+
+// Post Format: Link
+
+article.archive-article.format-link{
+  .entry-content{
+    a{
+      margin-left: 25px;
+
+      &:before{
+        font-family: 'FontAwesome';
+        //font-size: 12*@toRem;
+        content: '\f08e';
+        margin: 0 10px 0 -15px;
+        color: @link-color;
+      }
+    }
+  }
 }
 
 
@@ -791,6 +839,7 @@ li.widget-container{
   margin-bottom: 20px;
   .box-shadow (@x: 0, @y: 0, @blur: 3px, @alpha: 0.4);
   background-color: #fff;
+  .border-box();
 
   ul{
 
@@ -808,7 +857,14 @@ li.widget-container{
         color: @link-color;
       }
     }
-  }  
+  }
+
+  /* Support for WordPress Popular Posts */
+  ul.wpp-list{
+    li:before{
+      display: none;
+    }
+  }
 }
 
 .widget-title{
@@ -823,13 +879,12 @@ li.widget-container{
 
 #left-sidebar{
   float: left;
-  width: 18%;
-  margin-right: 2%;
+  width: 28%;
 }
 
 // author bio
 li.author-profile{
-  border: 1px solid @base-color;
+  //border: 1px solid @base-color;
   padding: 10px 0 5px 0;
 
   .sidebar-avatar{
@@ -886,6 +941,8 @@ li.author-profile{
 
 .page-links{
   margin-top: 20px;
+  margin-bottom: 20px;
+
   a{
     span{
       background-color: @base-color;
@@ -911,6 +968,50 @@ li.author-profile{
 
 
 
+.page-article{
+
+  //Post Format : Status
+  &.format-status{
+    background-color: @base-color;
+    color: #fff;
+
+    .entry-title,
+    .entry-content{
+      text-align: center;
+    }
+
+    .entry-meta{
+      color: #fff;
+      
+      .published,
+      .disabled-comment,
+      .fa-folder-open-o,
+      .fa-tags,
+      a{
+        color: #fff;
+      }
+    }
+  }
+
+  //Post Format : Link
+  &.format-link{
+    .entry-content{
+      a{
+        margin-left: 25px;
+
+        &:before{
+          font-family: 'FontAwesome';
+          content: '\f08e';
+          margin: 0 10px 0 -15px;
+          color: @link-color;
+        }
+      }
+    }
+  }
+}
+
+
+
 /* SINGLE CSS */
 
 .structure-table{
@@ -926,12 +1027,12 @@ li.author-profile{
   width: 20px;
 }
 
-.entry-meta{
+.entry-meta-bottom{
   .fa-folder-open-o,
   .fa-tags{
-    color: #333;
+    color: @base-color;
   }
-
+  
   .fa-user,
   .fa-clock-o,
   .fa-comment{
@@ -958,6 +1059,8 @@ li.author-profile{
   background-color: #f2f2f2;
   border: 1px solid darken(#f2f2f2, 5%);
   padding: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
   margin-bottom: 20px;
   .border-radius(5px);
 
@@ -1019,27 +1122,21 @@ li.author-profile{
 
 /* ARCHIVE CSS */
 
-.archive-article{
-  .bookmark-text{
-    display: none;
-  }
+.archive-wrapper{
+  width: 75%;
+  float: left;
 }
 
 .sticky{
   padding-top: 0;
-
-  .bookmark-text{
-    text-align: center;
-    display: block;
-    padding: 10px 0;
-    font-weight: bold;
-    background-color: @base-color;
-    color: #fff;
-  }
+  position: relative;
+  border: 1px solid @base-color;
+  border-top-width: 5px;
 }
 
 .archive-content{
-  width: 55%
+  width: 70%;
+  float: right;
 }
 
 .archive-title{
@@ -1137,56 +1234,72 @@ body.error404{
 /* FOOTER */
 
 footer{
-  background-color: @base-color;
-  color: #fff;
-  padding: 10px 0;
+  background-color: #fff;
+  padding-top: 20px;
+  .box-shadow (@x: 0, @y: -3px, @blur: 5px, @alpha: 0.3);
 }
 
-.footer-columns{
-  width: 32%;
+footer.no-footer-widgets{
+  padding-top: 0;
+}
+
+div.no-footer-widgets{
+  margin-top: 0;
+  background: transparent;
+  border: 0;
+}
+
+.footer-widgets{
   float: left;
+  width: 32%;
   margin-right: 2%;
+  .box-shadow(0,0,0,0) !important;
 
-  h4{
-    font-size: 20*@toRem;
-    margin-bottom: 10px;
+  &:last-child{
+    float: right;
+    margin-right: 0;
   }
-}
 
-.footer-col-left{
-}
+  .widget-title{
+    color: darken(@base-color, 30%);
+    border-bottom-color: #ccc;
+  }
 
-.footer-col-right{
-  float: right;
-  margin-right: 0;
+  table{
+    tr:nth-child(odd),
+    tr:nth-child(even){
+      background: transparent;
+    }
+
+    th{
+      background: transparent;
+    }
+  }
 }
 
 .developer-info{
-  border-top: 1px solid lighten(@base-color, 20%);
-  margin-top: 10px;
-  padding-top: 10px;
-  font-size: 14*@toRem;
-
-  a{
-    color: #fff;
-  }
-}
-
-.scroll-area{
-  padding: 10px 0;
+  border-top: 1px solid #ccc;
   background-color: #ededed;
+  margin-top: 5px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  font-size: 14*@toRem;
 }
 
 a.scroll-to-top{
   color: #666;
   text-shadow: 0 2px 1px #fff;
   display: block;
-  //line-height: 1; creating problem for Bangla strings
   font-weight: bold;
   font-size: 14*@toRem;
+  padding-bottom: 10px;
+  .transition (@prop: all, @time: 0.5s, @ease: ease);
+
+  &:hover{
+    background-color: #ededed;
+    .transition (@prop: all, @time: 0.5s, @ease: ease);
+  }
 }
-
-
 
 
 
@@ -1260,7 +1373,7 @@ div.comments-area{
     font-size: 12*@toRem;
     background-color: @base-color;
     padding: 0 0.5%;
-    color: @bg-color;
+    color: #fff;
   }
 
   header.comment-author{
@@ -1360,10 +1473,6 @@ div#respond{
     height: 93px;
   }
 
-  #site-head{
-    text-align: center;
-  }
-
   .logo,
   #site-title,
   #site-description{
@@ -1397,7 +1506,11 @@ div#respond{
   }
 
   .content,
-  #right-sidebar{
+  .archive-wrapper,
+  #left-sidebar,
+  #right-sidebar,
+  .footer-widgets,
+  .post-columns{
     clear: both;
     float: left;
     width: 100%;
@@ -1405,10 +1518,17 @@ div#respond{
 
   .content{
     padding-right: 0;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
   }
 
   .sidebar-head{
     display: block;
+    text-align: center;
+    background-color: @base-color;
+    color: #fff;
+    margin-bottom: 10px;
+    text-transform: uppercase;
   }
 
 
