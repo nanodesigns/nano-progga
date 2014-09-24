@@ -4,7 +4,7 @@ if ( post_password_required() )
 ?>
 <?php $comments_status = ( comments_open() ? ' post-comments-open' : ' post-comments-closed'); ?>
 
-<?php if ( have_comments() ) { ?>
+<?php if ( comments_open() ) { ?>
 
 <div id="comments" class="comments-area<?php echo $comments_status; ?>">
 
