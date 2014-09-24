@@ -440,17 +440,6 @@ function options_page_capability( $capability ) {
 add_filter( 'option_page_capability_site_options', 'options_page_capability' );
 
 
-
-/**
-*   GET ALL THE REQUIRED FILES AND FRAMEWORKS
-*   - Helpers
-*   - ShortCodes
-*/
-
-require_once ( get_template_directory() .'/inc/framework/helpers.php' );
-require_once ( get_template_directory() .'/inc/framework/shortcodes.php' );
-
-
 /**
 *   BANGLA SUPPORT TO THE THEME
 */
