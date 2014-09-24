@@ -2,7 +2,9 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(array('archive-article row h-entry') ); ?>>
     
-    <div class="bookmark-text sr-only"><?php _e('Featured Post', 'nano-progga'); ?></div>
+    <?php if( is_sticky() ) { ?>
+        <div class="bookmark-text sr-only"><?php _e('Featured Post', 'nano-progga'); ?></div>
+    <?php } ?>
 
     <?php if( has_post_thumbnail() ) { ?>
         <div class="featured-image">

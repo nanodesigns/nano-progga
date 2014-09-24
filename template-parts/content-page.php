@@ -1,39 +1,26 @@
-<?php global $authordata; ?>
+<?php global $authordata;
 
-<?php
 /**
 *   CHECK WHETHER THE POST IS IN CERTAIN POST FORMAT
+*   then set certain Font Awesome icon for certain Post Format
 */
-$ps_gallery = has_post_format( 'gallery' );
-$ps_image = has_post_format( 'image' );
-$ps_video = has_post_format( 'video' );
-$ps_audio = has_post_format( 'audio' );
-$ps_quote = has_post_format( 'quote' );
-$ps_link = has_post_format( 'link' );
-$ps_aside = has_post_format( 'aside' );
-$ps_status = has_post_format( 'status' );
-$ps_chat = has_post_format( 'chat' );
-?>
-
-<?php
-// Set certain Font Awesome icon for certain Post Format
-if( $ps_gallery ) {
+if( has_post_format( 'gallery' ) ) {
     $ps_class = 'fa-th-large';
-} else if( $ps_image ) {
+} else if( has_post_format( 'image' ) ) {
     $ps_class = 'fa-image';
-} else if( $ps_video ) {
+} else if( has_post_format( 'video' ) ) {
     $ps_class = 'fa-play-circle';
-} else if( $ps_audio ) {
+} else if( has_post_format( 'audio' ) ) {
     $ps_class = 'fa-volume-up';
-} else if( $ps_quote ) {
+} else if( has_post_format( 'quote' ) ) {
     $ps_class = 'fa-quote-left';
-} else if( $ps_link ) {
+} else if( has_post_format( 'link' ) ) {
     $ps_class = 'fa-link';
-} else if( $ps_aside ) {
+} else if( has_post_format( 'aside' ) ) {
     $ps_class = 'fa-align-left';
-} else if( $ps_status ) {
+} else if( has_post_format( 'status' ) ) {
     $ps_class = 'fa-paw';
-} else if( $ps_chat ) {
+} else if( has_post_format( 'chat' ) ) {
     $ps_class = 'fa-comments-o';
 } else {
     $ps_class = '';

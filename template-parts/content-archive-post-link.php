@@ -2,7 +2,9 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(array('archive-article row h-entry') ); ?>>
 
-    <div class="bookmark-text sr-only"><?php _e('Featured Post', 'nano-progga'); ?></div>
+    <?php if( is_sticky() ) { ?>
+        <div class="bookmark-text sr-only"><?php _e('Featured Post', 'nano-progga'); ?></div>
+    <?php } ?>
 
     <h2 class="entry-title row p-name">
         <span class="fa fa-link"></span>

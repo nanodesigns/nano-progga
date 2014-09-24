@@ -4,7 +4,7 @@ Theme URI: http://nanoprogga.nanodesignsbd.com/
 Description: nano progga is a search engine optimized blog framework, especially designed for blogging in Bengali (Bānglā) using WordPress. It supports custom header, custom menu, sidebar widget area (one specifically for archive pages), and unlimited plugins. It is optimized specially for Bengali (Bānglā) blogging, with speed and less weight. But the theme is completely translation-ready and can be translated into any locals.
 Author: Mayeenul Islam (@mayeenulislam)
 Author URI: http://nanodesignsbd.com/
-Version: 2.1.1
+Version: 2.2.1
 Tags: white, custom-header, threaded-comments, sticky-post, translation-ready, microformats, custom-menu, two-columns, three-columns, gray, light, right-sidebar, left-sidebar, fluid-layout, fixed-layout, featured-images
 .
 License: GNU General Public License v2.0
@@ -190,14 +190,27 @@ img{
     margin: 5px 0;
     li{
       margin-left: 50px;
+      list-style-position: inside;
     }
   }
 
   blockquote{
+    position: relative;
+    border-left: 0;
+    width: 80%;
+    margin: 10px auto;
     padding: 5px 10px;
-    margin: 10px 0 10px 20px;
-    border-left: 3px solid @link-color;
-    font-size: 15*@toRem;
+    font-size: 18*@toRem;
+
+    &:before{
+      font-family: 'FontAwesome';
+      font-size: 50*@toRem;
+      color: #ccc;
+      content: '\f10d';
+      float: left;
+      margin-top: -0.4em;
+      margin-right: 0.2em;
+    }
 
     p:last-of-type{
       margin-bottom: 0;
@@ -729,46 +742,10 @@ abbr.published{
 }
 
 
-// Post Format: Link
-
-.link-title{
-  text-align: center;
-}
-
-.link-content{
-  text-align: center;
-
-  a:first-child {
-    font-size: 20*@toRem;
-
-    &:before{
-      font-family: 'FontAwesome';
-      content: '\f08e';
-      margin: 0 10px 0 -15px;
-      color: @link-color;
-    }
-  }
-}
-
 // Post Format: Status
 
 article.archive-article.format-status{
-  background-color: @base-color;
-  color: #fff;
-  .box-shadow(0,0,3px,0.3);
-  position: relative;
-
-  a{
-    color: #fff;
-  }
-
-  .entry-link-icon{
-    background-color: darken(@base-color, 10%);
-
-    &:hover{
-      background-color: darken(@base-color, 20%);
-    }
-  }
+  background-color: #f2f2f2;
 
   .entry-content{
     padding-top: 0;
@@ -793,25 +770,6 @@ article.archive-article.format-status{
       content: "-";
       left: 10px;
       display: block;
-    }
-  }
-}
-
-
-// Post Format: Link
-
-article.archive-article.format-link{
-  .entry-content{
-    a{
-      margin-left: 25px;
-
-      &:before{
-        font-family: 'FontAwesome';
-        //font-size: 12*@toRem;
-        content: '\f08e';
-        margin: 0 10px 0 -15px;
-        color: @link-color;
-      }
     }
   }
 }
@@ -993,19 +951,10 @@ li.author-profile{
     }
   }
 
-  //Post Format : Link
-  &.format-link{
-    .entry-content{
-      a{
-        margin-left: 25px;
-
-        &:before{
-          font-family: 'FontAwesome';
-          content: '\f08e';
-          margin: 0 10px 0 -15px;
-          color: @link-color;
-        }
-      }
+  //Post Format : Quote
+  &.format-quote{
+    .entry-title{
+      text-align: center;
     }
   }
 }
@@ -1303,8 +1252,6 @@ a.scroll-to-top{
 
 
 
-
-
 /* Comments Form/ Comment CSS */
 @border: #e1e1e1;
 
@@ -1464,7 +1411,9 @@ div#respond{
     }
   }
 
-} //780px
+}/* /mediaquery*/
+
+/* 780px ends */
 
 
 @media only screen and (max-width:1000px){
@@ -1528,6 +1477,8 @@ div#respond{
     background-color: @base-color;
     color: #fff;
     margin-bottom: 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
     text-transform: uppercase;
   }
 
@@ -1543,7 +1494,9 @@ div#respond{
   }
 
 
-} //1000px
+}/* /mediaquery*/
+
+/* 1000px ends */
 
 
 @media only screen and (max-width:480px){
@@ -1563,4 +1516,6 @@ div#respond{
     clear: both;
   }
 
-} //480px
+}/* /mediaquery*/
+
+/* 480px ends */
