@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nano progga\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-30 23:53+0600\n"
-"PO-Revision-Date: 2014-08-30 23:55+0600\n"
+"POT-Creation-Date: 2014-09-24 15:15+0600\n"
+"PO-Revision-Date: 2014-09-24 15:17+0600\n"
 "Last-Translator: Mayeenul Islam <wz.islam@gmail.com>\n"
 "Language-Team: nanodesigns <info@nanodesignsbd.com>\n"
 "MIME-Version: 1.0\n"
@@ -136,11 +136,11 @@ msgid "GET TO TOP"
 msgstr "উপরে ফিরে চলো"
 
 #: ../footer.php:22
-msgid "Powered by <a href=\"http://wordpress.org/\" title=\"WordPress\" rel=\"generator\">WordPress</a> and the theme "
+msgid "Powered by <a href=\"http://wordpress.org/\" title=\"WordPress\">WordPress</a> and the theme "
 msgstr "<a href=\"http://wordpress.org/\" title=\"WordPress\" rel=\"generator\">ওয়ার্ডপ্রেস</a> দ্বারা নিয়ন্ত্রীত এবং "
 
 #: ../footer.php:24
-msgid " is developed by <a href=\"http://nanodesignsbd.com/\" title=\"Developed by nanodesigns, Bangladesh\" rel=\"designer\"><strong>nano</strong>designs</a>"
+msgid " is developed by <a href=\"http://nanodesignsbd.com/\" title=\"Developed by nanodesigns, Bangladesh\"><strong>nano</strong>designs</a>"
 msgstr "থিমটি তৈরি করেছেন <a href=\"http://nanodesignsbd.com/\" title=\"Developed by nanodesigns, Bangladesh\" rel=\"designer\"><strong>nano</strong>designs</a>"
 
 #: ../functions.php:44
@@ -151,92 +151,92 @@ msgstr "প্রধান মেনু"
 msgid "Footer Menu"
 msgstr "ফুটার মেনু"
 
-#: ../functions.php:113
+#: ../functions.php:116
 msgid "Pages "
 msgstr "পাতাসমূহ"
 
-#: ../functions.php:170
+#: ../functions.php:173
 msgid "Appears on the right portion of the site"
 msgstr "সাইটের ডানদিকে দেখা যাবে"
 
-#: ../functions.php:180
+#: ../functions.php:183
 msgid "Appears on the left portion of the site only on archive pages"
 msgstr "শুধুমাত্র আর্কাইভ পাতায় সাইটের বামদিকে দেখা যাবে"
 
-#: ../functions.php:190
+#: ../functions.php:193
 msgid "Appears on the footer portion of the site"
 msgstr "সাইটের ফুটার অংশে দেখা যাবে"
 
-#: ../functions.php:230
+#: ../functions.php:233
 msgid "Pingback:"
 msgstr "পিংব্যাক:"
 
-#: ../functions.php:230
+#: ../functions.php:233
 msgid "[ Edit ]"
 msgstr "[ সম্পাদনা ]"
 
-#: ../functions.php:252
+#: ../functions.php:255
 #, php-format
 msgid "%1$s : %2$s"
 msgstr "%1$s : %2$s"
 
-#: ../functions.php:255
+#: ../functions.php:258
 msgid "[ edit ]"
 msgstr "[ সম্পাদনা ]"
 
-#: ../functions.php:260
+#: ../functions.php:263
 msgid "Your comment is awaiting moderation."
 msgstr "আপনার মন্তব্যটি মডারেশনের অপেক্ষায় আছে"
 
-#: ../functions.php:268
+#: ../functions.php:271
 msgid "Reply"
 msgstr "প্রত্যুত্তর"
 
-#: ../functions.php:314
+#: ../functions.php:317
 msgid "Read More"
 msgstr "বিস্তারিত"
 
-#: ../functions.php:316
+#: ../functions.php:319
 msgid "See Details"
 msgstr "বিস্তারিত"
 
-#: ../functions.php:345
+#: ../functions.php:348
 msgid "<span class=\"meta-nav fa fa-chevron-left\"></span> Older Image"
 msgstr "<span class=\"meta-nav fa fa-chevron-left\"></span> পুরোন ছবি"
 
-#: ../functions.php:346
+#: ../functions.php:349
 msgid "Latest Image <span class=\"meta-nav fa fa-chevron-right\"></span>"
 msgstr "সাম্প্রতিক ছবি <span class=\"meta-nav fa fa-chevron-right\"></span>"
 
-#: ../functions.php:360
+#: ../functions.php:363
 msgid "<span class=\"meta-nav fa fa-chevron-left\"></span> Older"
 msgstr "<span class=\"meta-nav fa fa-chevron-left\"></span> পুরোন লেখা"
 
-#: ../functions.php:361
+#: ../functions.php:364
 msgid "Latest <span class=\"meta-nav fa fa-chevron-right\"></span>"
 msgstr "সাম্প্রতিক লেখা <span class=\"meta-nav fa fa-chevron-right\"></span>"
 
-#: ../functions.php:400
+#: ../functions.php:403
 msgid "Facebook Profile URL [np]"
 msgstr "ফেসবুক প্রোফাইল ইউআরএল [np]"
 
-#: ../functions.php:401
+#: ../functions.php:404
 msgid "Twitter URL [np]"
 msgstr "টুইটার ইউআরএল [np]"
 
-#: ../functions.php:402
+#: ../functions.php:405
 msgid "Google Plus URL [np]"
 msgstr "গুগল প্লাস ইউআরএল [np]"
 
-#: ../functions.php:403
+#: ../functions.php:406
 msgid "LinkedIn URL [np]"
 msgstr "লিংকেডইন ইউআরএল [np]"
 
-#: ../functions.php:404
+#: ../functions.php:407
 msgid "Pinterest URL [np]"
 msgstr "পিন্টারেস্ট ইউআরএল [np]"
 
-#: ../functions.php:405
+#: ../functions.php:408
 msgid "Tumblr URL [np]"
 msgstr "টাম্বলার ইউআরএল [np]"
 
@@ -286,7 +286,7 @@ msgstr "মন্তব্য"
 
 #: ../image.php:97
 msgid "% Comments"
-msgstr "%টি মন্তব্য"
+msgstr "% টি মন্তব্য"
 
 #: ../image.php:97
 msgid "Comment Closed"
@@ -402,55 +402,55 @@ msgstr "ইউটিউব চ্যানেল ইউআরএল"
 msgid "Save Options"
 msgstr "সংরক্ষণ করুন"
 
-#: ../template-parts/content-archive-post-aside.php:5
-#: ../template-parts/content-archive-post-audio.php:5
-#: ../template-parts/content-archive-post-chat.php:5
-#: ../template-parts/content-archive-post-gallery.php:5
-#: ../template-parts/content-archive-post-image.php:5
-#: ../template-parts/content-archive-post-link.php:5
-#: ../template-parts/content-archive-post-quote.php:5
-#: ../template-parts/content-archive-post-status.php:5
-#: ../template-parts/content-archive-post-video.php:5
-#: ../template-parts/content-archive-post.php:5
+#: ../template-parts/content-archive-post-aside.php:6
+#: ../template-parts/content-archive-post-audio.php:6
+#: ../template-parts/content-archive-post-chat.php:6
+#: ../template-parts/content-archive-post-gallery.php:6
+#: ../template-parts/content-archive-post-image.php:6
+#: ../template-parts/content-archive-post-link.php:6
+#: ../template-parts/content-archive-post-quote.php:6
+#: ../template-parts/content-archive-post-status.php:6
+#: ../template-parts/content-archive-post-video.php:6
+#: ../template-parts/content-archive-post.php:6
 msgid "Featured Post"
 msgstr "বিশেষ প্রকাশনা"
 
-#: ../template-parts/content-archive-post-aside.php:69
-#: ../template-parts/content-archive-post-audio.php:70
-#: ../template-parts/content-archive-post-chat.php:69
-#: ../template-parts/content-archive-post-gallery.php:70
-#: ../template-parts/content-archive-post-image.php:62
-#: ../template-parts/content-archive-post-link.php:21
-#: ../template-parts/content-archive-post-quote.php:62
-#: ../template-parts/content-archive-post-video.php:70
-#: ../template-parts/content-archive-post.php:68
-#: ../template-parts/content-page.php:63
+#: ../template-parts/content-archive-post-aside.php:71
+#: ../template-parts/content-archive-post-audio.php:72
+#: ../template-parts/content-archive-post-chat.php:71
+#: ../template-parts/content-archive-post-gallery.php:72
+#: ../template-parts/content-archive-post-image.php:64
+#: ../template-parts/content-archive-post-link.php:23
+#: ../template-parts/content-archive-post-quote.php:64
+#: ../template-parts/content-archive-post-video.php:72
+#: ../template-parts/content-archive-post.php:70
+#: ../template-parts/content-page.php:50
 msgid "Pages: "
 msgstr "পাতাসমূহ:"
 
-#: ../template-parts/content-archive-post-audio.php:65
-#: ../template-parts/content-archive-post-gallery.php:65
-#: ../template-parts/content-archive-post-image.php:57
-#: ../template-parts/content-archive-post-link.php:16
-#: ../template-parts/content-archive-post-quote.php:57
-#: ../template-parts/content-archive-post-status.php:17
-#: ../template-parts/content-archive-post-video.php:65
+#: ../template-parts/content-archive-post-audio.php:67
+#: ../template-parts/content-archive-post-gallery.php:67
+#: ../template-parts/content-archive-post-image.php:59
+#: ../template-parts/content-archive-post-link.php:18
+#: ../template-parts/content-archive-post-quote.php:59
+#: ../template-parts/content-archive-post-status.php:19
+#: ../template-parts/content-archive-post-video.php:67
 msgid "Read More <span class=\"meta-nav\">&rarr;</span>"
 msgstr "বিস্তারিত <span class=\"meta-nav\">&rarr;</span>"
 
-#: ../template-parts/content-page.php:114
+#: ../template-parts/content-page.php:101
 msgid "Categories"
 msgstr "ক্যাটাগরিসমূহ"
 
-#: ../template-parts/content-page.php:120
+#: ../template-parts/content-page.php:107
 msgid "Tags"
 msgstr "বিষয়বস্তু"
 
-#: ../template-parts/content-page.php:130
+#: ../template-parts/content-page.php:117
 msgid "[edit this page]"
 msgstr "[পাতাটি সম্পাদনা করুন]"
 
-#: ../template-parts/content-page.php:132
+#: ../template-parts/content-page.php:119
 msgid "[edit this post]"
 msgstr "[প্রকাশনাটি সম্পাদনা করুন]"
 
