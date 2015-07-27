@@ -1,128 +1,77 @@
-/*	-------------------------------
-	COMMON CSS
----------------------------------- */
-
-img{
-    border: none;
-    max-width: 100%;
-}
-
-
-hr{
-    border: 0;
-    margin-bottom: 10px;
-    background-color: #ededed;
-    height: 1px;
-}
-
-.text-center{
-    text-align: center;
-}
-
-.text-right{
-    text-align: right;
-}
-
-.text-justify{
-    text-align: justify;
-}
-
+/**
+*	Common CSS
+*	made for common CSS rules useful for all types of web development
+*
+*	@author Mayeenul Islam <wz.islam@gmail.com>
+*	revised for the package: GoromGorom
+*/
 .red{
-    color: red;
+  color: red;
 }
-
 .green{
-    color: green;
+  color: green;
 }
-
 .orange{
-    color: orange;
+  color: orange;
 }
-
-.grey,
-.wz-inactive{
-    color: #666;
+.grey{
+  color: #666;
 }
-
-.clearfix{
-    clear: both;
-}
-
-.no-padding{
-    padding: 0 !important;
-}
-
-.no-margin{
-    margin: 0 !important;
-}
-
-.go-left{
-    float: left;
-    position: relative;
-}
-
-.go-right{
-    float: right;
-    position: relative;
-}
-
-.no-border{
-    border: 0 !important;
-}
-
 .alt-border{
-    box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;
+	box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;
 }
-
-.alt-border22{
-    box-shadow: inset 1px -1px 1px red, inset -1px 1px 1px red;
+.alt-border-red{
+	box-shadow: inset 1px -1px 1px red, inset -1px 1px 1px red;
 }
-
-.row:before,
-.row:after{
-    content: "";
-    display: table;
+.js .hide-if-js{
+	display: none;
 }
-
-.row:after{
-    clear: both;
+.hide-if-no-js,
+.hide-if-no-js-db{
+	display: none;
 }
-
-.block-element{
-    display: block;
+.js .hide-if-no-js{
+	display: block;
 }
-
-/* Screen Reader Only */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
+.js .hide-if-no-js-db{
+	display: inline-block;
+}
+.behave-table{
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+.behave-table-cell{
+	display: table-cell;
+	vertical-align: middle;
+}
+img{
+  max-width: 100%;
+  height: auto;
   border: 0;
 }
+/**
+ * Emulating <blink> using WebKit CSS3 animation        
+ *   This code is part of John Smith's blog
+ *
+ * Copyright 2010 by John Smith, All Rights Reserved
+ *
+ * @link   http://www.john-smith.me/emulating--lt-blink-gt--using-webkit-css3-animation
+ * @date   18th October 2010 at 11:01 p.m.
+ * @author John Smith
+ */
+@-webkit-keyframes blinker { from {opacity:1.0;} to {opacity:0.0;} }
+        @keyframes blinker { from {opacity:1.0;} to {opacity:0.0;} }
 
+.blink {
+   text-decoration:blink;
 
-kbd{
-  background-color: #f2f2f2;
-  padding: 2px;
-  border-top: 1px solid #ccc;
-  border-right: 3px solid #999;
-  border-bottom: 4px solid #999;
-  border-left: 1px solid #ccc;
-  -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -khtml-border-radius: 5px;
-    border-radius: 5px;
-}
-
-code{
-  background-color: #f2f2f2;
-  padding: 2px;
-  -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -khtml-border-radius: 5px;
-    border-radius: 5px;
+  -webkit-animation-name:blinker;
+          animation-name:blinker;  
+  -webkit-animation-iteration-count:infinite;  
+          animation-iteration-count:infinite;  
+  -webkit-animation-timing-function:cubic-bezier(1.0,0,0,1.0);
+          animation-timing-function:cubic-bezier(1.0,0,0,1.0);
+  -webkit-animation-duration:1s; 
+          animation-duration:1s; 
 }

@@ -1,38 +1,41 @@
 <?php
 /**
- * FUNCTIONS specific to Bangla for the WordPress Theme
- * @theme: nano progga
- * @developer: Mayeenul Islam (@mayeenulislam)
+ * Functions specific to Bengali (Bangla)
+ *
+ * @package nano proga
  */
 
 
-
 /**
- * CHANGE THE 'WPLANG' IN wp-config.php TO bn_BD ON THEME SWITCHING
- * Thanks: toscho
- * Source: http://wordpress.stackexchange.com/a/121136/22728
-*/
-
-add_filter( 'locale', 'toscho_change_language' );
-
+ * Change the 'WPLANG' in wp-config.php to bn_BD on theme activation
+ *
+ * @author toscho
+ * @link http://wordpress.stackexchange.com/a/121136/22728
+ * 
+ * @param  string $locale default locale settings.
+ * @return string         Bengali locale settings.
+ */
 function toscho_change_language( $locale ) {
     return 'bn_BD';
 }
+add_filter( 'locale', 'toscho_change_language' );
 
 
 /**
 * BANGLA NUMBERS, DATES, DAYS AND MONTHS
 * i.e. ২৮ নভেম্বর ১৯৮৬
-* Source: http://tareq.wedevs.com/2010/09/translate-wordpress-date-time-comment-number-to-bangla-digit/
+* Source: 
 */
 
 /**
-* Bangla Date translate class for WordPress
+* Bangla Numbers, Dates, Days, and Months translation class for WordPress
 *
 * Converts English months, dates to equivalent Bangla digits
 * and month names.
+* i.e. ২৮ নভেম্বর ১৯৮৬
 *
 * @author Tareq Hasan <tareq@wedevs.com>
+* @link http://tareq.wedevs.com/2010/09/translate-wordpress-date-time-comment-number-to-bangla-digit/
 */
 
 class WP_BanglaDate {
@@ -56,11 +59,11 @@ class WP_BanglaDate {
     }
  
     /**
-* Main function that handles the string
-*
-* @param string $str
-* @return string
-*/
+    * Main function that handles the string
+    *
+    * @param string $str
+    * @return string
+    */
     function translate( $str ) {
         if ( !$str ) {
             return;
@@ -74,11 +77,11 @@ class WP_BanglaDate {
     }
  
     /**
-* Translate numbers only
-*
-* @param string $str
-* @return string
-*/
+    * Translate numbers only
+    *
+    * @param string $str
+    * @return string
+    */
     function translate_number( $str ) {
         $en = array( 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 );
         $bn = array( '০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯' );
@@ -89,11 +92,11 @@ class WP_BanglaDate {
     }
  
     /**
-* Translate months only
-*
-* @param string $str
-* @return string
-*/
+    * Translate months only
+    *
+    * @param string $str
+    * @return string
+    */
     function translate_day( $str ) {
         $en = array( 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' );
         $en_short = array( 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' );
@@ -106,11 +109,11 @@ class WP_BanglaDate {
     }
  
     /**
-* Translate AM and PM
-*
-* @param string $str
-* @return string
-*/
+    * Translate AM and PM
+    *
+    * @param string $str
+    * @return string
+    */
     function translate_am( $str ) {
         $en = array( 'am', 'pm' );
         $bn = array( 'পূর্বাহ্ন', 'অপরাহ্ন' );

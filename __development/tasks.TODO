@@ -1,0 +1,51 @@
+#Project: nano progga
+
+Notes:
+  ☐ Icons
+    ☐ Post Formats
+      ✔ Aside:       fa-align-left  (Replaced with Glyphicons - glyphicon-align-left) @done (15-07-06 23:21)
+      ✔ Audio:       fa-volume-up (Replaced with Glyphicons - glyphicon-volume-up) @done (15-07-06 23:21)
+      ✔ Chat:        fa-comments-o (Replaced with Glyphicons - glyphicon-random) @done (15-07-06 23:21)
+      ✔ Gallery:     fa-th-large (Replaced with Glyphicons - glyphicon-th-large) @done (15-07-06 23:30)
+      ✔ Image:       fa-image (Replaced with Glyphicons - glyphicon-picture) @done (15-07-06 23:29)
+      ✔ Link:        fa-link (Replaced with Glyphicons - glyphicon-link) @done (15-07-06 23:29)
+      ✔ Quote:       fa-quote-left (Replaced with Glyphicons - glyphicon-heart) @done (15-07-06 23:22)
+      ✔ Status:      fa-paw (Replaced with Glyphicons - glyphicon-eye-open) feather @done (15-07-06 23:43)
+      ✔ Video:       fa-play-circle (Replaced with Glyphicons - glyphicon-play-circle) @done (15-07-06 23:29)
+    ☐ UI
+      ✔ To top:      glyphicon-chevron-up @done (15-07-06 23:22)
+      ✔ To content:  glyphicon-chevron-down @done (15-07-06 23:22)
+      ✔ Links:       glyphicon-link @done (15-07-06 23:22)
+      ✔ Search:      glyphicon-search @done (15-07-06 23:22)
+      ✔ Archive:     glyphicon-inbox @done (15-07-06 23:22)
+      ✔ Post Date:   glyphicon-time @done (15-07-06 23:22)
+      ✔ Author:      glyphicon-user @done (15-07-06 23:22)
+      ✔ Category:    glyphicon-folder-open @done (15-07-06 23:22)
+      ✔ Tags:        glyphicon-tags @done (15-07-06 23:22)
+      ✔ Comment:     glyphicon-comment @done (15-07-06 23:22)
+      ✔ Next Posts:  glyphicon-chevron-left @done (15-07-06 23:22)
+      ✔ Prev Posts:  glyphicon-chevron-right @done (15-07-06 23:22)
+    ☐ Notices & Boxes
+      ✔ Notice:      glyphicon-bell @done (15-07-06 23:27)
+      ✔ Info:        glyphicon-info-sign @done (15-07-06 23:27)
+      ✔ GPS:         glyphicon-map-marker @done (15-07-06 23:27)
+      ☐ 
+
+
+TODO:
+ ☐ index.php   - dynamic count choice for widgets
+               - dyanamic background color choice for widgets
+               - dynamic text color choice for widgets
+               - widgets on first page only, or on all the pages
+ ☐ comments.php
+ ☐ 404.php
+ ☐ footer.php
+ ☐ page-templates/full-width
+ ☐ page-templates/blog
+ ☐ admin-panel/
+ ☐ github theme updater
+ ☐ TGM Activation plugin - popular posts
+ ☐ tabbed widget
+ ☐ series
+ ☐ series featured on index.php
+ ☐ shortcodes

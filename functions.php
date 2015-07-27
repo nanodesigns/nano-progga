@@ -1,469 +1,546 @@
 <?php
 /**
- * FUNCTIONS for the WordPress Theme
- * @theme: nano progga
- * @developer: Mayeenul Islam (@mayeenulislam)
+ * nano-progga functions and definitions
+ *
+ * @package nano-progga
  */
 
 /**
-*   LOAD ALL THE NECESSARY THINGS WITH A SINGLE HOOK
-*/
-  
-add_action('after_setup_theme', 'nano_progga_setup');
-  
-function nano_progga_setup(){
-    /**
-    *   MAKE THE THEME TRANSLATION-READY
-    *   Thanks: Konstantinos Kouratoras & Robert Treacy
-    *   Source:
-    *    1. http://wp.smashingmagazine.com/2011/12/29/internationalizing-localizing-wordpress-theme/
-    *    2. http://wp.tutsplus.com/tutorials/theme-development/translating-your-theme/
-    */
-    load_theme_textdomain( 'nano-progga', get_template_directory() . '/lang' );
-  
-  
-    // ADD RSS LINK ON <head> TAG
-    add_theme_support( 'automatic-feed-links' );
+ * Set some basic globals
+ */
+define( 'PREFIX', 'np_');
+define( 'THEME_VERSION', '3.0');
 
-    // LOAD EDITOR STYLES - Load visual editor styles from editor-style.css to match the theme style
-    //add_editor_style();
+/**
+ * Enable only when developing the site.
+ * nanodesigns
+ * @author  Mayeenul Islam <wz.islam@gmail.com>
+ */
+if( WP_DEBUG === true ) {
+	require get_template_directory() .'/__development/development.php';	
+}
 
 
-    // SUPPORT FOR POST FORMATS
-    add_theme_support( 'post-formats', array(
-        'aside', 'audio', 'chat', 'gallery', 'image', 'link', 'quote', 'status', 'video',
-    ) );
-  
-  
-    // ENABLE FEATURED IMAGE FEATURE
-    add_theme_support( 'post-thumbnails' );
-  
-    // REGISTER DYNAMIC MENUS
-    register_nav_menus(
-        array(
-            'main-menu'=>__('Main Menu'),
-            'footer-menu'=>__('Footer Menu')
-        )
+/**
+ * Bengali Support to the Theme.
+ * @package nano progga
+ */
+$option = get_option( 'np_settings' ); //retrieve theme options settings
+
+if( $option['bangla'] == 1 )
+	require get_template_directory() . '/inc/functions-bangla.php';
+
+
+
+if ( ! function_exists( 'nano_progga_setup' ) ) :
+/**
+ * Sets up theme defaults and registers support for various WordPress features.
+ *
+ * Note that this function is hooked into the after_setup_theme hook, which
+ * runs before the init hook. The init hook is too late for some features, such
+ * as indicating support for post thumbnails.
+ * ------------------------------------------------------------------------------
+ */
+function nano_progga_setup() {
+	/*
+	 * Make theme available for translation.
+	 * Translations can be filed in the /languages/ directory.
+	 * If you're building a theme based on nano-progga, use a find and replace
+	 * to change 'nano-progga' to the name of your theme in all the template files
+	 */
+	load_theme_textdomain( 'nano-progga', get_template_directory() . '/languages' );
+
+	// Add default posts and comments RSS feed links to head.
+	add_theme_support( 'automatic-feed-links' );
+
+	/*
+	 * Let WordPress manage the document title.
+	 * By adding theme support, we declare that this theme does not use a
+	 * hard-coded <title> tag in the document head, and expect WordPress to
+	 * provide it for us.
+	 */
+	add_theme_support( 'title-tag' );
+
+	/*
+	 * Enable support for Post Thumbnails on posts and pages.
+	 *
+	 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
+	 */
+	add_theme_support( 'post-thumbnails' );
+
+	// This theme uses wp_nav_menu() in one location.
+	register_nav_menus( array( 'main_menu' => esc_html__( 'Main Menu', 'nano-progga' ) ) );
+
+	/*
+	 * Switch default core markup for search form, comment form, and comments
+	 * to output valid HTML5.
+	 */
+	add_theme_support( 'html5', array(
+		'search-form',
+		'comment-form',
+		'comment-list',
+		'gallery',
+		'caption',
+	) );
+
+	/*
+	 * Enable support for Post Formats.
+	 * See http://codex.wordpress.org/Post_Formats
+	 */
+	add_theme_support( 'post-formats', array(
+		'aside',
+		'image',
+		'video',
+		'quote',
+		'link',
+	) );
+
+	// Set up the WordPress core custom background feature.
+	add_theme_support( 'custom-background', apply_filters( 'nano_progga_custom_background_args', array(
+		'default-color' => 'ffffff',
+		'default-image' => '',
+	) ) );
+}
+endif; // nano_progga_setup
+add_action( 'after_setup_theme', 'nano_progga_setup' );
+
+/**
+ * Bootstrap Nav Walker Class
+ * @author  Edward McIntyre
+ * @link https://github.com/twittem/wp-bootstrap-navwalker
+ */
+require get_template_directory() .'/libs/wp-bootstrap-navwalker.php';
+
+/**
+ * Set the content width in pixels, based on the theme's design and stylesheet.
+ *
+ * Priority 0 to make it available to lower priority callbacks.
+ *
+ * @global int $content_width
+ * ------------------------------------------------------------------------------
+ */
+function nano_progga_content_width() {
+	$GLOBALS['content_width'] = apply_filters( 'nano_progga_content_width', 700 );
+}
+add_action( 'after_setup_theme', 'nano_progga_content_width', 0 );
+
+/**
+ * Register widget area.
+ *
+ * @link http://codex.wordpress.org/Function_Reference/register_sidebar
+ * ------------------------------------------------------------------------------
+ */
+function nano_progga_widgets_init() {
+	register_sidebar( array(
+		'name'          => esc_html__( 'Home Widget 1', 'nano-progga' ),
+		'id'            => 'home_widget_1',
+		'description'   => esc_html__( 'Appears on the home page within the grid', 'nano-progga' ),
+		'before_widget' => '<aside id="%1$s" class="grid-item widget-holder col-sm-4 %2$s"><div class="grid-widget home-widget-1">',
+		'after_widget'  => '</div></aside>',
+		'before_title'  => '<h1 class="widget-title">',
+		'after_title'   => '</h1>',
+	) );
+
+	register_sidebar( array(
+		'name'          => esc_html__( 'Home Widget 2', 'nano-progga' ),
+		'id'            => 'home_widget_2',
+		'description'   => esc_html__( 'Appears on the home page within the grid', 'nano-progga' ),
+		'before_widget' => '<aside id="%1$s" class="grid-item widget-holder col-sm-4 %2$s"><div class="grid-widget home-widget-2">',
+		'after_widget'  => '</div></aside>',
+		'before_title'  => '<h1 class="widget-title">',
+		'after_title'   => '</h1>',
+	) );
+
+	register_sidebar( array(
+		'name'          => esc_html__( 'Home Widget 3', 'nano-progga' ),
+		'id'            => 'home_widget_3',
+		'description'   => esc_html__( 'Appears on the home page within the grid', 'nano-progga' ),
+		'before_widget' => '<aside id="%1$s" class="grid-item widget-holder col-sm-4 %2$s"><div class="grid-widget home-widget-3">',
+		'after_widget'  => '</div></aside>',
+		'before_title'  => '<h1 class="widget-title">',
+		'after_title'   => '</h1>',
+	) );
+
+	register_sidebar( array(
+		'name'          => esc_html__( 'Home Widget 4', 'nano-progga' ),
+		'id'            => 'home_widget_4',
+		'description'   => esc_html__( 'Appears on the home page within the grid', 'nano-progga' ),
+		'before_widget' => '<aside id="%1$s" class="grid-item widget-holder col-sm-4 %2$s"><div class="grid-widget home-widget-4">',
+		'after_widget'  => '</div></aside>',
+		'before_title'  => '<h1 class="widget-title">',
+		'after_title'   => '</h1>',
+	) );
+
+	register_sidebar( array(
+		'name'          => esc_html__( 'Home Widget 5', 'nano-progga' ),
+		'id'            => 'home_widget_5',
+		'description'   => esc_html__( 'Appears on the home page within the grid', 'nano-progga' ),
+		'before_widget' => '<aside id="%1$s" class="grid-item widget-holder col-sm-4 %2$s"><div class="grid-widget home-widget-5">',
+		'after_widget'  => '</div></aside>',
+		'before_title'  => '<h1 class="widget-title">',
+		'after_title'   => '</h1>',
+	) );
+
+	register_sidebar( array(
+		'name'          => esc_html__( 'Right Sidebar', 'nano-progga' ),
+		'id'            => 'right_sidebar',
+		'description'   => esc_html__( 'Appears on the right portion of the site', 'nano-progga' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</aside>',
+		'before_title'  => '<h1 class="widget-title">',
+		'after_title'   => '</h1>',
+	) );
+
+	register_sidebar( array(
+		'name'          => esc_html__( 'Archive Left Sidebar', 'nano-progga' ),
+		'id'            => 'left_sidebar',
+		'description'   => esc_html__( 'Appears on the left portion of the site only on archive pages', 'nano-progga' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</aside>',
+		'before_title'  => '<h1 class="widget-title">',
+		'after_title'   => '</h1>',
+	) );
+
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer Sidebar', 'nano-progga' ),
+		'id'            => 'footer_sidebar',
+		'description'   => esc_html__( 'Appears on the footer portion of the site', 'nano-progga' ),
+		'before_widget' => '<div class="col-sm-4"><aside id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</aside></div>',
+		'before_title'  => '<h1 class="widget-title">',
+		'after_title'   => '</h1>',
+	) );
+}
+add_action( 'widgets_init', 'nano_progga_widgets_init' );
+
+/**
+ * Enqueue scripts and styles.
+ * ------------------------------------------------------------------------------
+ */
+function nano_progga_scripts() {
+	wp_enqueue_style( 'bootstrap-styles', get_template_directory_uri() .'/css/bootstrap.min.css' );
+	wp_enqueue_style( 'bootstrap-map', get_template_directory_uri() .'/css/bootstrap.css.map' );
+	wp_enqueue_style( 'nano-progga-style', get_stylesheet_uri() );
+
+	wp_enqueue_script( 'modernizr-js', get_template_directory_uri() .'/js/modernizr-2.8.3.min.js', array(), '2.8.3' ); //in head
+	wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() .'/js/bootstrap.min.js', array('jquery'), '3.3.4', true );
+	wp_enqueue_script( 'nano-progga-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
+	if( is_home() )
+		wp_enqueue_script( 'masonry-grid-js', get_template_directory_uri() .'/js/masonry.pkgd.min.js', array('jquery'), '3.3.1', true );
+
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )
+		wp_enqueue_script( 'comment-reply' );
+
+	wp_enqueue_script( 'nano-progga-js', get_template_directory_uri() .'/js/nano-progga.min.js', array('jquery'), THEME_VERSION, true );
+
+	//passing PHP var to JS
+	wp_localize_script(
+		'nano-progga-js',
+    	'np',		//the var key in JS
+    	array(
+    		'url'			=> site_url('/'),
+    		'theme_path'	=> get_template_directory_uri()
+    		)
     );
-
-    //ENABLING ARROW ON PARENT MENU
-    //Source: http://stackoverflow.com/a/3594567/1743124
-
-    class arrow_walker_nav_menu extends walker_nav_menu {
-        function display_element($element, &$children_elements, $max_depth, $depth=0, $args, &$output) {
-            $id_field = $this->db_fields['id'];
-            if ( !empty( $children_elements[$element->$id_field] ) ) { 
-                $element->classes[] = 'arrow'; //CSS classname here
-                $element->title .= '<span class="arrow fa fa-caret-down"></span>'; //append html here
-            }
-            walker_nav_menu::display_element($element, $children_elements, $max_depth, $depth, $args, $output);
-        }
-    } //end class
-  
 }
-
-
-
-
-
-/**
- * ENQUEUE ALL THE NECESSARY CSS
- * -------------------------------------------------------------------------------- */
-function nano_progga_styles(){  
-    wp_enqueue_style( 'main-style', get_template_directory_uri() . '/style.css', '', '', 'all' );
-}
-
-add_action( 'wp_enqueue_scripts', 'nano_progga_styles' );
-
-function nano_progga_styles_footer() {
-    wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/font-awesome.min.css' );
-    wp_enqueue_style( 'print-style', get_template_directory_uri() . '/print-style.css', '', '', 'print' );
-}
-
-add_action( 'wp_footer', 'nano_progga_styles_footer' );
-
-
+add_action( 'wp_enqueue_scripts', 'nano_progga_scripts' );
 
 
 /**
- * ENQUEUE ALL THE NECESSARY JS
- * -------------------------------------------------------------------------------- */
-function nano_progga_js(){
-    if( !is_admin() ) {
-        wp_enqueue_script( 'jquery' );
-    }
-
-    wp_enqueue_script( 'responsive-scripts', get_template_directory_uri() . '/js/respond.min.js' );
-    wp_enqueue_script( 'nanodesigns-custom', get_template_directory_uri() . '/js/nanoprogga.custom.min.js', '', '', true );
-}
-
-add_action( 'wp_enqueue_scripts', 'nano_progga_js' );
-
-
-/**
- * SET DEFAULT WIDTH OF THE SITE
- * -------------------------------------------------------------------------------- */
-if ( ! isset( $content_width ) ) $content_width = 900;
-
-
-
-/**
- * GET THE PAGE NUMBER
-* -------------------------------------------------------------------------------- */
-  
-function get_page_number() {
-    if (get_query_var('paged')) {
-        print ' | ' . __( 'Pages ' , 'nano-progga') . get_query_var('paged');
-    }
-} // end get_page_number
-  
-  
-/**
- * For category lists on category archives:
- * Returns other categories except the current one (redundant)
+ * Require Necessary Functions.
+ * ------------------------------------------------------------------------------
  */
-  
-function cats_meow($glue) {
-        $current_cat = single_cat_title( '', false );
-        $separator = "\n";
-        $cats = explode( $separator, get_the_category_list($separator) );
-        foreach ( $cats as $i => $str ) {
-                if ( strstr( $str, ">$current_cat<" ) ) {
-                        unset($cats[$i]);
-                        break;
-                }
-        }
-        if ( empty($cats) )
-                return false;
-  
-        return trim(join( $glue, $cats ));
-} // end cats_meow
-  
-  
+require get_template_directory() . '/inc/custom-header.php';		//custom header
+require get_template_directory() . '/inc/template-tags.php';		//template tags
+require get_template_directory() . '/inc/extras.php';				//theme extras
+require get_template_directory() . '/inc/customizer.php';			//WP Customizer API
+require get_template_directory() . '/inc/jetpack.php';				//Jetpack compatibility
+require get_template_directory() . '/inc/functions-series.php';		//Posts Series
+require get_template_directory() . '/inc/framework/helpers.php';	//Helper Functions
+require get_template_directory() . '/inc/framework/shortcodes.php';	//Shortcodes
+
+// Admin Panel Options
+require get_template_directory() . '/admin/nano-progga-settings.php';
+
+
 /**
- * For tag lists on tag archives:
- * Returns other tags except the current one (redundant)
- * -------------------------------------------------------------------------------- */
-  
-function tag_ur_it($glue) {
-        $current_tag = single_tag_title( '', '',  false );
-        $separator = "\n";
-        $tags = explode( $separator, get_the_tag_list( "", "$separator", "" ) );
-        foreach ( $tags as $i => $str ) {
-                if ( strstr( $str, ">$current_tag<" ) ) {
-                        unset($tags[$i]);
-                        break;
-                }
-        }
-        if ( empty($tags) )
-                return false;
-  
-        return trim(join( $glue, $tags ));
-} // end tag_ur_it
-  
-  
-/**
- * Register widgetized areas
- * -------------------------------------------------------------------------------- */
-  
-function theme_widgets_init() {
-    register_sidebar( array (
-        'name' => 'Right Sidebar',
-        'id' => 'right_sidebar',
-        'description' => __( 'Appears on the right portion of the site', 'nano-progga' ),
-        'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-        'after_widget' => "</li>",
-            'before_title' => '<h3 class="widget-title">',
-            'after_title' => '</h3>'
-    ) );
-
-    register_sidebar( array (
-        'name' => 'Archive Left Sidebar',
-        'id' => 'left_sidebar',
-        'description' => __( 'Appears on the left portion of the site only on archive pages', 'nano-progga' ),
-        'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-        'after_widget' => "</li>",
-            'before_title' => '<h3 class="widget-title">',
-            'after_title' => '</h3>'
-    ) );
-
-    register_sidebar( array (
-        'name' => 'Footer Sidebar',
-        'id' => 'footer_sidebar',
-        'description' => __( 'Appears on the footer portion of the site', 'nano-progga' ),
-        'before_widget' => '<li id="%1$s" class="widget-container footer-widgets %2$s">',
-        'after_widget' => "</li>",
-            'before_title' => '<h3 class="widget-title">',
-            'after_title' => '</h3>'
-    ) );
-  
-} // end theme_widgets_init
-  
-add_action( 'widgets_init', 'theme_widgets_init', 10 );
-  
-  
-// Produces an avatar image with the hCard-compliant photo class
-function commenter_link() {
-        $commenter = get_comment_author_link();
-        if ( ereg( '<a[^>]* class=[^>]+>', $commenter ) ) {
-                $commenter = ereg_replace( '(<a[^>]* class=[\'"]?)', '\\1url ' , $commenter );
-        } else {
-                $commenter = ereg_replace( '(<a )/', '\\1class="url "' , $commenter );
-        }
-        $avatar_email = get_comment_author_email();
-        $avatar = str_replace( "class='avatar", "class='photo avatar", get_avatar( $avatar_email, 80 ) );
-        echo $avatar . ' <span class="fn n">' . $commenter . '</span>';
-} // end commenter_link
-  
-  
-/**
- * TEMPLATE FOR COMMENTS AND PINGBACKS
-*/
-
-if ( ! function_exists( 'nano_comments' ) ) :
-
-    function nano_comments( $comment, $args, $depth ) {
-        $GLOBALS['comment'] = $comment;
-        switch ( $comment->comment_type ) :
-            case 'pingback' :
-            case 'trackback' :
-                // Display trackbacks differently than normal comments.
-                ?>
-                <li <?php comment_class(); ?> id="comment-<?php comment_ID(); ?>">
-                <p><?php _e( 'Pingback:', 'nano-progga' ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( __( '[ Edit ]', 'nano-progga' ), '<span class="edit-link">', '</span>' ); ?></p>
-                <?php
-                break;
-            default :
-                // Proceed with normal comments.
-                global $post;
-                ?>
-                <?php // If current post author is also comment author, make it known visually.
-                $author_class = ( $comment->user_id === $post->post_author ) ? ' bypostauthor' : ''; ?>
-                <li <?php comment_class( array( $author_class ) ); ?> id="li-comment-<?php comment_ID(); ?>">
-                    <article id="comment-<?php comment_ID(); ?>" class="comment hreview">
-                        <header class="comment-meta comment-author vcard row">
-                            <?php
-                            echo get_avatar( $comment, 80 );
-                            printf( '<cite class="fn">%1$s</cite>',
-                                get_comment_author_link()
-                            );
-                            echo '<br>';
-                            printf( '<a href="%1$s" class="dtreviewed"><time datetime="%2$s">%3$s</time></a>',
-                                esc_url( get_comment_link( $comment->comment_ID ) ),
-                                get_comment_time( 'c' ),
-                                /* translators: 1: date, 2: time */
-                                sprintf( __( '%1$s : %2$s', 'nano-progga' ), get_comment_date(), get_comment_time() )
-                            );
-                            echo '<br>';
-                            edit_comment_link( __( '[ edit ]', 'nano-progga' ) );
-                            ?>
-                        </header><!-- .comment-meta -->
-
-                        <?php if ( '0' == $comment->comment_approved ) : ?>
-                            <p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'nano-progga' ); ?></p>
-                        <?php endif; ?>
-
-                        <section class="comment-content comment description">
-                            <?php comment_text(); ?>
-                        </section><!-- .comment-content -->
-
-                        <div class="reply">
-                            <?php comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Reply', 'nano-progga' ), 'before' => '<span class="fa fa-arrow-down"></span> ', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
-                        </div><!-- .reply -->
-                    </article><!-- #comment-## -->
-                <?php
-                break;
-        endswitch; // end comment_type check
-    }
-endif;
-  
-  
-/**
-*   Filtering wp_title()
- * -------------------------------------------------------------------------------- */
-  
-function nano_progga_filter_wp_title( $title ) {
-    $site_name = get_bloginfo( 'name' );
-    $filtered_title =  $site_name . ' • ' . $title;
-    if ( is_front_page() ) {
-        $site_description = get_bloginfo( 'description' );
-        $filtered_title .= $site_description;
-    }
-    return $filtered_title;
+ * The excerpt filters
+ * @param  (string) $more
+ * @return (string)       ... instead of [...]
+ * ------------------------------------------------------------------------------
+ */
+function nano_progga_excerpt_more( $more ) {
+    return '...';
 }
-  
-add_filter( 'wp_title', 'nano_progga_filter_wp_title' );
-  
-  
-  
-  
-/**
- * THE EXCERPT FILTERS
- * 
- * This group of functions will make a new controllable excerpt
- *  called nano_excerpt()
- * 
- * Source: Codex - http://codex.wordpress.org/Function_Reference/the_excerpt
- * Secondary Source: WP Spring by Mayeenul Islam (https://github.com/mayeenulislam/WP-CodeSpring)
- * -------------------------------------------------------------------------------- */
-  
-function nano_excerpt( $limit = 75 ) {
-    $limited_excerpts = wp_trim_words( get_the_excerpt(), $limit );
-    echo $limited_excerpts;
-}
-
-function block_excerpt_more( $readmore = 'common' ) {
-    if( $readmore === 'common' ) {
-        $read_more = '<a class="read-more" href="'. get_permalink( get_the_ID() ) . '">'. __( 'Read More', 'nano-progga' ) .'</a>';
-    } else {
-        $read_more = '<a class="read-more" href="'. get_permalink( get_the_ID() ) . '">'. __( 'See Details', 'nano-progga' ) .'</a>';
-    }
-    
-    return $read_more;
-}
-  
-function custom_excerpt_length( $length ) {
-    return 200;
-}
-add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
-  
-  
-  
-  
-/**
- * PAGINATION FUCNTION
- * 
- * A common function to call pagination in archive and attachment/image templates
- * 
- * Thanks to: nanodesigns (http://nanodesignsbd.com) and Mayeenul Islam (@mayeenulislam)
- * Code taken from: nano progga (http://nanoprogga.nanodesignsbd.com)
- * -------------------------------------------------------------------------------- */
-  
-function nano_pagination() {
-  
-    if( is_attachment() ) { ?>
-  
-    <div id="nav-below" class="navigation row">
-  
-        <div class="nav-previous"><?php previous_image_link( false, __( '<span class="meta-nav fa fa-chevron-left"></span> Older Image', 'nano-progga' ) ) ?></div>
-        <div class="nav-next"><?php next_image_link( false, __( 'Latest Image <span class="meta-nav fa fa-chevron-right"></span>', 'nano-progga' ) ) ?></div>
-  
-        <div style="clear: both;"></div>
-  
-    </div><!-- #nav-below -->
-  
-    <?php } else {
-  
-        global $wp_query;
-        $total_pages = $wp_query->max_num_pages;
-        if ( $total_pages > 1 ) { ?>
-  
-            <div id="nav-below" class="navigation row">
-  
-                <div class="nav-previous"><?php next_posts_link(__( '<span class="meta-nav fa fa-chevron-left"></span> Older', 'nano-progga' )) ?></div>
-                <div class="nav-next"><?php previous_posts_link(__( 'Latest <span class="meta-nav fa fa-chevron-right"></span>', 'nano-progga' )) ?></div>
-  
-                <div style="clear: both;"></div>
-  
-            </div><!-- #nav-below -->
-  
-        <?php } //endif ( $total_pages > 1 )
-  
-    } //endif( is_attachment() )
-}
+add_filter( 'excerpt_more', 'nano_progga_excerpt_more' );
 
 
 /**
-*   REMOVE rel ATTRIBUTE FROM CATEGORY LIST
-*   Credit: Joseph Leedy
-*
-*   Source:
-*   http://josephleedy.me/blog/make-wordpress-category-list-valid-by-removing-rel-attribute/
-*/
+ * Dimox Breadcrumbs
+ * http://dimox.net/wordpress-breadcrumbs-without-a-plugin/
+ * Since ver 1.0
+ * Add this to any template file by calling nano_progga_breadcrumbs()
+ * Changes: MC added taxonomy support
+ */
+function nano_progga_breadcrumbs(){
+  	/* === OPTIONS === */
+	$text['home']     = __('Home', 'nano-progga'); // text for the 'Home' link
+	$text['category'] = __('Category: "%s"', 'nano-progga'); // text for a category page
+	$text['tax'] 	  = __('Archive: "%s"', 'nano-progga'); // text for a taxonomy page
+	$text['search']   = __('Search Results: "%s"', 'nano-progga'); // text for a search results page
+	$text['tag']      = __('Tagged: "%s"', 'nano-progga'); // text for a tag page
+	$text['author']   = __('Author: %s', 'nano-progga'); // text for an author page
+	$text['404']      = __('Error 404', 'nano-progga'); // text for the 404 page
 
-add_filter( 'wp_list_categories', 'nanodesigns_remove_category_list_rel' );
-add_filter( 'the_category', 'nanodesigns_remove_category_list_rel' );
+	$showCurrent = 1; // 1 - show current post/page title in breadcrumbs, 0 - don't show
+	$showOnHome  = 0; // 1 - show breadcrumbs on the homepage, 0 - don't show
+	$delimiter   = ' &raquo; '; // delimiter between crumbs
+	$before      = '<span class="current">'; // tag before the current crumb
+	$after       = '</span>'; // tag after the current crumb
+	/* === END OF OPTIONS === */
 
-function nanodesigns_remove_category_list_rel( $output ) {
+	global $post;
+	$homeLink = get_bloginfo('url') . '/';
+	$linkBefore = '<span typeof="v:Breadcrumb">';
+	$linkAfter = '</span>';
+	$linkAttr = ' rel="v:url" property="v:title"';
+	$link = $linkBefore . '<a' . $linkAttr . ' href="%1$s">%2$s</a>' . $linkAfter;
 
-    // Remove rel attribute from the category list
-    return str_replace( ' rel="category tag"', '', $output );
+	if (is_home() || is_front_page()) {
 
-}
+		if ($showOnHome == 1) echo '<div id="breadcrumbs"><a href="' . $homeLink . '">' . $text['home'] . '</a></div>';
 
+	} else {
 
+		echo '<div id="breadcrumbs" xmlns:v="http://rdf.data-vocabulary.org/#">' . sprintf($link, $homeLink, $text['home']) . $delimiter;
+
+		
+		if ( is_category() ) {
+			$thisCat = get_category(get_query_var('cat'), false);
+			if ($thisCat->parent != 0) {
+				$cats = get_category_parents($thisCat->parent, TRUE, $delimiter);
+				$cats = str_replace('<a', $linkBefore . '<a' . $linkAttr, $cats);
+				$cats = str_replace('</a>', '</a>' . $linkAfter, $cats);
+				echo $cats;
+			}
+			echo $before . sprintf($text['category'], single_cat_title('', false)) . $after;
+
+		} elseif( is_tax() ){
+			$thisCat = get_category(get_query_var('cat'), false);
+			if ($thisCat->parent != 0) {
+				$cats = get_category_parents($thisCat->parent, TRUE, $delimiter);
+				$cats = str_replace('<a', $linkBefore . '<a' . $linkAttr, $cats);
+				$cats = str_replace('</a>', '</a>' . $linkAfter, $cats);
+				echo $cats;
+			}
+			echo $before . sprintf($text['tax'], single_cat_title('', false)) . $after;
+		
+		}elseif ( is_search() ) {
+			echo $before . sprintf($text['search'], get_search_query()) . $after;
+
+		} elseif ( is_day() ) {
+			echo sprintf($link, get_year_link(get_the_time('Y')), get_the_time('Y')) . $delimiter;
+			echo sprintf($link, get_month_link(get_the_time('Y'),get_the_time('m')), get_the_time('F')) . $delimiter;
+			echo $before . get_the_time('d') . $after;
+
+		} elseif ( is_month() ) {
+			echo sprintf($link, get_year_link(get_the_time('Y')), get_the_time('Y')) . $delimiter;
+			echo $before . get_the_time('F') . $after;
+
+		} elseif ( is_year() ) {
+			echo $before . get_the_time('Y') . $after;
+
+		} elseif ( is_single() && !is_attachment() ) {
+			if ( get_post_type() != 'post' ) {
+				$post_type = get_post_type_object(get_post_type());
+				$slug = $post_type->rewrite;
+				printf($link, $homeLink . '/' . $slug['slug'] . '/', $post_type->labels->singular_name);
+				if ($showCurrent == 1) echo $delimiter . $before . get_the_title() . $after;
+			} else {
+				//$cat = get_the_category(); $cat = $cat[0];
+				//$cats = get_category_parents($cat, TRUE, $delimiter);
+				//if ($showCurrent == 0) $cats = preg_replace("#^(.+)$delimiter$#", "$1", $cats);
+				//$cats = str_replace('<a', $linkBefore . '<a' . $linkAttr, $cats);
+				//$cats = str_replace('</a>', '</a>' . $linkAfter, $cats);
+				//echo $cats;
+				if ($showCurrent == 1) echo $before . get_the_title() . $after;
+			}
+
+		} elseif ( !is_single() && !is_page() && get_post_type() != 'post' && !is_404() ) {
+			$post_type = get_post_type_object(get_post_type());
+			echo $before . $post_type->labels->singular_name . $after;
+
+		} elseif ( is_attachment() ) {
+			$parent = get_post($post->post_parent);
+			printf($link, get_permalink($parent), $parent->post_title);
+			if ($showCurrent == 1) echo $delimiter . $before . get_the_title() . $after;
+
+		} elseif ( is_page() && !$post->post_parent ) {
+			if ($showCurrent == 1) echo $before . get_the_title() . $after;
+
+		} elseif ( is_page() && $post->post_parent ) {
+			$parent_id  = $post->post_parent;
+			$breadcrumbs = array();
+			while ($parent_id) {
+				$page = get_page($parent_id);
+				$breadcrumbs[] = sprintf($link, get_permalink($page->ID), get_the_title($page->ID));
+				$parent_id  = $page->post_parent;
+			}
+			$breadcrumbs = array_reverse($breadcrumbs);
+			for ($i = 0; $i < count($breadcrumbs); $i++) {
+				echo $breadcrumbs[$i];
+				if ($i != count($breadcrumbs)-1) echo $delimiter;
+			}
+			if ($showCurrent == 1) echo $delimiter . $before . get_the_title() . $after;
+
+		} elseif ( is_tag() ) {
+			echo $before . sprintf($text['tag'], single_tag_title('', false)) . $after;
+
+		} elseif ( is_author() ) {
+	 		global $author;
+			$userdata = get_userdata($author);
+			echo $before . sprintf($text['author'], $userdata->display_name) . $after;
+
+		} elseif ( is_404() ) {
+			echo $before . $text['404'] . $after;
+		}
+
+		if ( get_query_var('paged') ) {
+			if ( is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author() ) echo ' (';
+			echo __('Page') . ' ' . get_query_var('paged');
+			if ( is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author() ) echo ')';
+		}
+
+		echo '</div> <!-- #breadcrumbs -->';
+
+	}
+} // end nano_progga_breadcrumbs()
 
 
 /**
-*   AUTHOR META FIELDS
-*/
-
+ * Show user meta fields.
+ * @param  array $methods default user contact methods.
+ * @return array          nano progga contact methods.
+ */
 function nano_progga_author_meta_fields( $methods ) {
-
-    $methods['nano_facebook'] = __('Facebook Profile URL [np]', 'nano-progga');
-    $methods['nano_twitter'] = __('Twitter URL [np]', 'nano-progga');
-    $methods['nano_google_plus'] = __('Google Plus URL [np]', 'nano-progga');
-    $methods['nano_linkedin'] = __('LinkedIn URL [np]', 'nano-progga');
-    $methods['nano_pinterest'] = __('Pinterest URL [np]', 'nano-progga');
-    $methods['nano_tumblr'] = __('Tumblr URL [np]', 'nano-progga');
+    $methods['nano_facebook']		= __('Facebook Profile URL [np]', 'nano-progga');
+    $methods['nano_twitter']		= __('Twitter URL [np]', 'nano-progga');
+    $methods['nano_google_plus']	= __('Google+ Profile URL [np]', 'nano-progga');
+    $methods['nano_linkedin']		= __('LinkedIn URL [np]', 'nano-progga');
+    $methods['nano_pinterest']		= __('Pinterest URL [np]', 'nano-progga');
+    $methods['nano_tumblr']			= __('Tumblr URL [np]', 'nano-progga');
 
     return $methods;
 }
-
-add_filter( 'user_contactmethods', 'nano_progga_author_meta_fields' );
-
+if( $option['author_bio'] == 1 )
+	add_filter( 'user_contactmethods', 'nano_progga_author_meta_fields' );
 
 
 /**
- * ADMIN PANEL - THEME OPTIONS
- * to make the site's feature dynamic for the user
+ * Get Related Posts
+ * @param  integer  $post_id
+ * @param  integer $numberposts default is set to 3
+ * @return void
+ * --------------------------------------------------------------------------
  */
-  
-require_once ( get_template_directory() . '/admin-panel/theme-options.php' );
+function nano_progga_get_related_posts( $post_id = null, $numberposts = 3 ) {
+	if( is_single() ) {
 
-function styles_for_admin(){
+		$post_id = ( null === $post_id ) ? get_the_ID() : $post_id;
 
-    wp_enqueue_style( 'admin-style', get_template_directory_uri() . '/css/admin-style.css', '', '', 'screen' ); // stylesheet for admin panel
+		$total_fetched = 0;
+
+		echo '<div class="related-posts">';
+			echo '<h3 class="page-title inner-title"><span>'. __( 'Related Posts', 'nano-progga' ) .'</span></h3>';
+			echo '<div class="row">';
+
+			$categories = wp_get_post_categories( $post_id );
+		    $args = array(
+	    		'post_type' 			=> 'post',
+	    		'post_status'			=> 'publish',
+	    		'posts_per_page'		=> $numberposts, //default 3
+	    		'post__not_in'			=> array( $post_id ),
+	    		'orderby'				=> 'rand',
+	    		'category__in'			=> $categories,
+	    		'ignore_sticky_posts'	=> 1
+	    	);
+			$related_posts_per_categories = new WP_Query( $args );
+
+			while( $related_posts_per_categories->have_posts() ) :
+				$related_posts_per_categories->the_post(); ?>
+
+				<div class="col-xs-4 related-post-col">
+					<div class="related-post related-post-<?php the_ID(); ?>">
+						<?php if( has_post_thumbnail() ) : ?>
+							<div class="featured-image">
+								<a href="<?php the_permalink(); ?>">
+									<?php the_post_thumbnail(); ?>
+								</a>
+							</div>
+							<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+						<?php else : ?>
+							<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+							<div class="entry-excerpt"><?php echo wp_trim_words(get_the_excerpt(), 10); ?></div>
+						<?php endif; ?>
+					</div>
+				</div> <!-- /.col-xs-4 related-post-col -->
+				
+				<?php
+				$total_fetched++; //update total fetched count on each found posts
+
+			endwhile;
+			wp_reset_postdata();
+
+
+			//alternative if necessary
+			if( $total_fetched < $numberposts ) {
+				$get_total = $numberposts - $total_fetched;
+
+				$tags = wp_get_post_tags( $post_id );
+				$tag_ids = array();
+				foreach( $tags as $indv_tag ) :
+					$tag_ids[] = $indv_tag->term_id;
+				endforeach;
+
+			    $args = array(
+			    		'post_type' 			=> 'post',
+			    		'post_status'			=> 'publish',
+			    		'posts_per_page'		=> $get_total, //only the remaining
+			    		'post__not_in'			=> array( $post_id ),
+			    		'orderby'				=> 'rand',
+			    		'tag__in'				=> $tag_ids,
+			    		'ignore_sticky_posts'	=> 1
+			    	);
+				$related_posts_per_tags = new WP_Query( $args );
+
+				while( $related_posts_per_tags->have_posts() ) :
+					$related_posts_per_tags->the_post(); ?>
+
+					<div class="col-xs-4 related-post-col">
+						<div class="related-post related-post-<?php the_ID(); ?>">
+							<?php if( has_post_thumbnail() ) : ?>
+								<div class="featured-image">
+									<a href="<?php the_permalink(); ?>">
+										<?php the_post_thumbnail(); ?>
+									</a>
+								</div>
+								<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+							<?php else : ?>
+								<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+								<div class="entry-excerpt"><?php echo wp_trim_words(get_the_excerpt(), 10); ?></div>
+							<?php endif; ?>
+						</div>
+					</div> <!-- /.col-xs-4 related-post-col -->
+
+					<?php
+					$total_fetched++; //update total fetched count on each found posts
+
+				endwhile;
+				wp_reset_postdata();
+			}
+
+			echo '</div> <!-- .row -->';
+		echo '</div> <!-- .related-posts -->';
+
+	} //endif( is_single() )
 }
-
-add_action( 'admin_enqueue_scripts', 'styles_for_admin' );
-  
-  
-/**
- *  ADD SITE OPTIONS PAGE CAPABILITY TO 'Editor'
- *  Source: http://tuts.nanodesignsbd.com/editors-to-access-and-save-theme-options/
- */
-  
-function options_page_capability( $capability ) {
-    return 'edit_theme_options';
-}
-add_filter( 'option_page_capability_site_options', 'options_page_capability' );
-
-
-/**
-*   BANGLA SUPPORT TO THE THEME
-*/
-
-// Retrive Data from Theme Options page
-$option = get_option('site_options');
-
-if( $option['bangla'] == 1 ) {
-    require_once ( get_template_directory() .'/inc/functions-bangla.php' );
-}
-  
-  
-  
-/**
- * DEVELOPER TOOLS
- */
-  
-/* function my_var_dump( $variable ) {
-    echo '<pre>';
-        print_r( $variable );
-    echo '</pre>';
-}
-
-function dequeue_devicepx() {
-wp_dequeue_script( 'devicepx' );
-}
-add_action( 'wp_enqueue_scripts', 'dequeue_devicepx', 20 ); */

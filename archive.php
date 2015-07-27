@@ -1,55 +1,66 @@
-<?php get_header(); ?>
-        	
-			<div class="wrapper">
+<?php
+/**
+ * The template for displaying archive pages.
+ *
+ * Learn more: http://codex.wordpress.org/Template_Hierarchy
+ *
+ * @package nano-progga
+ */
 
-                <?php the_post(); ?>
+get_header(); ?>
 
-                <div class="archive-wrapper">
+	<section id="primary" class="content-area col-sm-9">
+		<div class="row">
+			<main id="main" class="site-main col-sm-9 pull-right" role="main">
 
-                    <div class="content archive-content hfeed">
-                        <h2 class="entry-title archive-title row">
-                        <?php if ( is_day() ) : ?>
-                            <span class="fa fa-archive" title="<?php _e( 'Daily Archives', 'nano-progga' ); ?>"></span> <?php echo get_the_time(get_option('date_format') ); ?>
-                        <?php elseif ( is_month() ) : ?>
-                            <span class="fa fa-archive" title="<?php _e( 'Monthly Archives', 'nano-progga' ); ?>"></span> <?php echo get_the_time(get_the_time('F Y')); ?>
-                        <?php elseif ( is_year() ) : ?>
-                            <span class="fa fa-archive" title="<?php _e( 'Yearly Archives', 'nano-progga' ); ?>"></span> <?php echo get_the_time(get_the_time('Y')); ?>
-                        <?php elseif ( is_category() ) : ?>
-                             <span class="fa fa-folder-open-o" title="<?php _e( 'Categories Archive', 'nano-progga' ); ?>"></span> <?php single_cat_title(); ?>
-                             <?php $categorydesc = category_description();
-                            if ( !empty($categorydesc) )
-                                echo apply_filters( 'archive_meta', '<span class="archive-meta">' . $categorydesc . '</span>' ); ?>
-                        <?php elseif ( is_tag() ) : ?>
-                            <span class="fa fa-tags" title="<?php _e( 'Tags Archive', 'nano-progga' ); ?>"></span> <?php single_tag_title(); ?>
-                                 <?php $tagdesc = tag_description();
-                                if ( !empty($tagdesc) )
-                                    echo apply_filters( 'archive_meta', '<span class="archive-meta">' . $tagdesc . '</span>' ); ?>
-                        <?php elseif ( is_author() ) : ?>
-                            <span class="fa fa-user" title="<?php _e( 'User Archive', 'nano-progga' ); ?>"></span> <?php printf( __( '<span class="vcard">%s</span>', 'nano-progga' ), "<a class='url fn n' href='$authordata->user_url' title='$authordata->display_name' rel='me'>$authordata->display_name</a>" ); ?>
-                        <?php elseif ( isset($_GET['paged']) && !empty($_GET['paged']) ) : ?>
-                            <?php _e( 'Blog Archives', 'nano-progga' ); ?>
-                        <?php endif; ?>
-                        </h2>
+			<?php if ( have_posts() ) : ?>
 
-                        <?php rewind_posts(); ?>
+				<header class="page-header">
+					<?php
+						the_archive_title( '<h1 class="page-title archive-title">', '</h1>' );
+						the_archive_description( '<div class="taxonomy-description">', '</div>' );
+					?>
+				</header><!-- .page-header -->
+				
+				<div class="row">
+				<?php /* Start the Loop */ ?>
+				<?php while ( have_posts() ) : the_post(); ?>
 
-                            <?php while( have_posts() ) : the_post(); ?>
-                    
-                                <?php get_template_part( 'template-parts/content-archive-post', get_post_format() ); ?>
-                    
-                            <?php endwhile; ?>
-                        
-                        <?php nano_pagination(); ?>
-                    </div> <!-- .content -->
+					<div class="article-holder col-md-12">
+						<div class="article-area">
 
-                    <?php get_sidebar( 'left' ); ?>
+						<?php
 
-                </div> <!-- .archive-wrapper -->
+							/*
+							 * Include the Post-Format-specific template for the content.
+							 * If you want to override this in a child theme, then include a file
+							 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+							 */
+							get_template_part( 'template-parts/content', get_post_format() );
+						?>
+						</div> <!-- /.article-area -->
 
-                <?php get_sidebar(); ?>
+					</div> <!-- /.article-holder col-md-12 -->
 
-                <div class="clearfix"></div>
+				<?php endwhile; ?>
 
-            </div> <!-- .wrapper -->
+				<?php nano_progga_pagination(); ?>
 
+			<?php else : ?>
+
+				<div class="row">
+					<?php get_template_part( 'template-parts/content', 'archive-none' ); ?>
+				</div> <!-- /.row -->
+
+			<?php endif; ?>
+
+			</main><!-- #main -->
+
+			<?php get_sidebar( 'left' ); ?>
+
+		</div> <!-- .row -->
+		
+	</section><!-- #primary -->
+
+<?php get_sidebar(); ?>
 <?php get_footer(); ?>

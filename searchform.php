@@ -1,13 +1,12 @@
 <?php
 /**
-*	Search Form
-*	@theme: nano progga
-*/
+ * Modifying the default searchform to match the design.
+ *
+ * @package nano-progga
+ */
 ?>
-<form method="get" id="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-	<label for="s" class="screen-reader-text sr-only"><?php _e( 'Search', 'nano-progga' ); ?></label>
-	<input type="text" class="field" name="s" id="s" placeholder="<?php esc_attr_e( 'Search', 'nano-progga' ); ?>" value="<?php the_search_query(); ?>" />
-	<button type="submit" class="submit" id="searchsubmit">
-		<span class="fa fa-search"></span>
-	</button>
+<form role="search" method="get" class="search-form form-group" action="<?php echo home_url( '/' ); ?>">
+	<label for="search-field" class="sr-only"><?php echo _x( 'Search for:', 'label', 'nano-progga' ) ?></label>
+	<input type="search" id="search-field" class="search-field form-control" placeholder="<?php echo esc_attr_x( 'Search...', 'placeholder' ) ?>" value="<?php echo get_search_query() ?>" name="s" title="<?php echo esc_attr_x( 'Search for:', 'label', 'nano-progga' ) ?>" />
+	<button class="btn btn-link search-btn"><span class="np-search"></span></button>
 </form>
