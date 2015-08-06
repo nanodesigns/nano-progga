@@ -131,13 +131,29 @@ add_action( 'after_setup_theme', 'nano_progga_content_width', 0 );
  * ------------------------------------------------------------------------------
  */
 function nano_progga_widgets_init() {
+	$options = get_option('np_settings');
+	$widget_1_bg = $options['widget_1_bg'] ? $options['widget_1_bg'] : '#049372';
+	$widget_1_txt = $options['widget_1_text'] ? $options['widget_1_text'] : '#fff';
+
+	$widget_2_bg = $options['widget_2_bg'] ? $options['widget_2_bg'] : '#F5C810';
+	$widget_2_txt = $options['widget_2_text'] ? $options['widget_2_text'] : '#333';
+
+	$widget_3_bg = $options['widget_3_bg'] ? $options['widget_3_bg'] : '#38B4E5';
+	$widget_3_txt = $options['widget_3_text'] ? $options['widget_3_text'] : '#333';
+
+	$widget_4_bg = $options['widget_4_bg'] ? $options['widget_4_bg'] : '#F8575A';
+	$widget_4_txt = $options['widget_4_text'] ? $options['widget_4_text'] : '#333';
+
+	$widget_5_bg = $options['widget_5_bg'] ? $options['widget_5_bg'] : '#4CB849';
+	$widget_5_txt = $options['widget_5_text'] ? $options['widget_5_text'] : '#333';
+
 	register_sidebar( array(
 		'name'          => esc_html__( 'Home Widget 1', 'nano-progga' ),
 		'id'            => 'home_widget_1',
 		'description'   => esc_html__( 'Appears on the home page within the grid', 'nano-progga' ),
-		'before_widget' => '<aside id="%1$s" class="grid-item widget-holder col-sm-4 %2$s"><div class="grid-widget home-widget-1">',
+		'before_widget' => '<aside id="%1$s" class="grid-item widget-holder col-sm-4 %2$s"><div class="grid-widget home-widget-1" style="background-color: '. $widget_1_bg .'; color: '. $widget_1_txt .'">',
 		'after_widget'  => '</div></aside>',
-		'before_title'  => '<h1 class="widget-title">',
+		'before_title'  => '<h1 class="widget-title" style="border-bottom-color: '. $widget_1_txt .'">',
 		'after_title'   => '</h1>',
 	) );
 
@@ -145,9 +161,9 @@ function nano_progga_widgets_init() {
 		'name'          => esc_html__( 'Home Widget 2', 'nano-progga' ),
 		'id'            => 'home_widget_2',
 		'description'   => esc_html__( 'Appears on the home page within the grid', 'nano-progga' ),
-		'before_widget' => '<aside id="%1$s" class="grid-item widget-holder col-sm-4 %2$s"><div class="grid-widget home-widget-2">',
+		'before_widget' => '<aside id="%1$s" class="grid-item widget-holder col-sm-4 %2$s"><div class="grid-widget home-widget-2" style="background-color: '. $widget_2_bg .'; color: '. $widget_2_txt .'">',
 		'after_widget'  => '</div></aside>',
-		'before_title'  => '<h1 class="widget-title">',
+		'before_title'  => '<h1 class="widget-title" style="border-bottom-color: '. $widget_2_txt .'">',
 		'after_title'   => '</h1>',
 	) );
 
@@ -155,9 +171,9 @@ function nano_progga_widgets_init() {
 		'name'          => esc_html__( 'Home Widget 3', 'nano-progga' ),
 		'id'            => 'home_widget_3',
 		'description'   => esc_html__( 'Appears on the home page within the grid', 'nano-progga' ),
-		'before_widget' => '<aside id="%1$s" class="grid-item widget-holder col-sm-4 %2$s"><div class="grid-widget home-widget-3">',
+		'before_widget' => '<aside id="%1$s" class="grid-item widget-holder col-sm-4 %2$s"><div class="grid-widget home-widget-3" style="background-color: '. $widget_3_bg .'; color: '. $widget_3_txt .'">',
 		'after_widget'  => '</div></aside>',
-		'before_title'  => '<h1 class="widget-title">',
+		'before_title'  => '<h1 class="widget-title" style="border-bottom-color: '. $widget_3_txt .'">',
 		'after_title'   => '</h1>',
 	) );
 
@@ -165,9 +181,9 @@ function nano_progga_widgets_init() {
 		'name'          => esc_html__( 'Home Widget 4', 'nano-progga' ),
 		'id'            => 'home_widget_4',
 		'description'   => esc_html__( 'Appears on the home page within the grid', 'nano-progga' ),
-		'before_widget' => '<aside id="%1$s" class="grid-item widget-holder col-sm-4 %2$s"><div class="grid-widget home-widget-4">',
+		'before_widget' => '<aside id="%1$s" class="grid-item widget-holder col-sm-4 %2$s"><div class="grid-widget home-widget-4" style="background-color: '. $widget_4_bg .'; color: '. $widget_4_txt .'">',
 		'after_widget'  => '</div></aside>',
-		'before_title'  => '<h1 class="widget-title">',
+		'before_title'  => '<h1 class="widget-title" style="border-bottom-color: '. $widget_4_txt .'">',
 		'after_title'   => '</h1>',
 	) );
 
@@ -175,9 +191,9 @@ function nano_progga_widgets_init() {
 		'name'          => esc_html__( 'Home Widget 5', 'nano-progga' ),
 		'id'            => 'home_widget_5',
 		'description'   => esc_html__( 'Appears on the home page within the grid', 'nano-progga' ),
-		'before_widget' => '<aside id="%1$s" class="grid-item widget-holder col-sm-4 %2$s"><div class="grid-widget home-widget-5">',
+		'before_widget' => '<aside id="%1$s" class="grid-item widget-holder col-sm-4 %2$s"><div class="grid-widget home-widget-5" style="background-color: '. $widget_5_bg .'; color: '. $widget_5_txt .'">',
 		'after_widget'  => '</div></aside>',
-		'before_title'  => '<h1 class="widget-title">',
+		'before_title'  => '<h1 class="widget-title" style="border-bottom-color: '. $widget_5_txt .'">',
 		'after_title'   => '</h1>',
 	) );
 
@@ -225,7 +241,7 @@ function nano_progga_scripts() {
 	wp_enqueue_script( 'modernizr-js', get_template_directory_uri() .'/js/modernizr-2.8.3.min.js', array(), '2.8.3' ); //in head
 	wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() .'/js/bootstrap.min.js', array('jquery'), '3.3.4', true );
 	wp_enqueue_script( 'nano-progga-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
-	if( is_home() )
+	if( is_home() || is_page_template('page-templates/blog.php') )
 		wp_enqueue_script( 'masonry-grid-js', get_template_directory_uri() .'/js/masonry.pkgd.min.js', array('jquery'), '3.3.1', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )
@@ -543,4 +559,21 @@ function nano_progga_get_related_posts( $post_id = null, $numberposts = 3 ) {
 		echo '</div> <!-- .related-posts -->';
 
 	} //endif( is_single() )
+}
+
+function alter_brightness($colourstr, $steps) {
+	$colourstr = str_replace('#','',$colourstr);
+	$rhex = substr($colourstr,0,2);
+	$ghex = substr($colourstr,2,2);
+	$bhex = substr($colourstr,4,2);
+
+	$r = hexdec($rhex);
+	$g = hexdec($ghex);
+	$b = hexdec($bhex);
+
+	$r = max(0,min(255,$r + $steps));
+	$g = max(0,min(255,$g + $steps));  
+	$b = max(0,min(255,$b + $steps));
+
+	return '#'.dechex($r).dechex($g).dechex($b);
 }

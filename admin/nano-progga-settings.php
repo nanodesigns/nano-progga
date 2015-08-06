@@ -14,10 +14,72 @@
  * --------------------------------------------------------------------------
  */
 function nano_progga_admin_scripts() {
-	wp_enqueue_style(
-		'np-admin-styles',
-		get_template_directory_uri() .'/admin/css/np-admin-styles.css'
-	);
+	global $current_screen;
+	if( $current_screen->id === 'toplevel_page_np-settings' ) :
+
+		wp_enqueue_style(
+			'np-admin-styles',
+			get_template_directory_uri() .'/admin/css/np-admin-styles.css'
+		);
+
+		// Load WordPress media uploader to the front-end with backward compatibility
+		if ( get_bloginfo('version') >= 3.5 )
+			wp_enqueue_media();
+		else {
+			wp_enqueue_style('thickbox');
+			wp_enqueue_script('thickbox');
+		}
+
+		/**
+		 * Tiny jQuery colorPicker
+		 * @author Peter Dematté
+		 * @link https://github.com/PitPik/tinyColorPicker
+		 */
+		/*wp_enqueue_script(
+			'tiny-color-picker',
+			get_template_directory_uri() .'/admin/js/jqColorPicker.min.js',
+			array('jquery'),
+			'1.0.0',
+			true
+		);*/
+
+		/**
+		 * jQuery MiniColors 2.1
+		 * @author claviska
+		 * @link http://labs.abeautifulsite.net/jquery-minicolors/
+		 */
+		wp_enqueue_script(
+			'minicolors',
+			get_template_directory_uri() .'/admin/js/jquery.minicolors.min.js',
+			array('jquery'),
+			'2.1',
+			true
+		);
+		wp_enqueue_style(
+			'minicolors-styles',
+			get_template_directory_uri() .'/admin/css/jquery.minicolors.css'
+		);
+
+		//nano progga custom script
+		wp_enqueue_script(
+			'np-admin-js',
+			get_template_directory_uri() .'/admin/js/np-admin-js.js',
+			array('jquery'),
+			THEME_VERSION,
+			true
+		);
+
+		//passing PHP var to JS
+		wp_localize_script(
+			'np-admin-js',
+	    	'np',		//the var key in JS
+	    	array(
+	    		'url'			=> site_url('/'),
+	    		'theme_path'	=> get_template_directory_uri()
+	    		)
+	    );
+
+	endif;
 }
 add_action( 'admin_enqueue_scripts', 'nano_progga_admin_scripts' );
 
@@ -101,6 +163,23 @@ function nano_progga_settings() {
 			<?php settings_fields( 'np_settings' ); ?>
 			<?php $options = get_option( 'np_settings' ); ?>
 
+			<!-- CONTROL SITE LOGO -->
+			<section class="np-section logo">
+				<h3><?php _e( 'Site Logo <small>set a site logo to show on the header of the site</small>', 'nano-progga' ); ?></h3>
+				<div class="np-left-column">
+					<strong><label for="logo"><?php _e( 'Site Logo', 'nano-progga' ); ?></label></strong><br>
+					<input type="text" class="np-file-item" id="np-logo" name="np_settings[logo]" value="<?php echo $options['logo']; ?>" autocomplete="off">
+					<button id="site-logo" class="button"><?php _e( 'Upload', 'nano-progga' ); ?></button>
+				</div> <!-- /.np-left-column -->
+				<div class="np-right-column">
+					<div class="np-logo-preview">
+						<div class="np-close">&times;</div>
+						<img id="logo-preview" src="<?php echo $options['logo'] ? $options['logo'] : get_template_directory_uri() .'/images/placeholder.png'; ?>" alt="nano progga theme - site logo" width="60" height="60">
+					</div>
+				</div> <!-- /.np-right-column -->
+				<div class="clearfix"></div>
+			</section> <!-- /.np-section logo -->
+
 			<!-- FEATURED SERIES GALLERY -->
 			<section class="np-section featured-series">
 				<div class="np-left-column">
@@ -124,6 +203,75 @@ function nano_progga_settings() {
 				</div> <!-- /.np-right-column -->
 				<div class="clearfix"></div>
 			</section> <!-- /.np-section featured-series -->
+
+			<!-- CONTROL HOME PAGE WIDGETS -->
+			<section class="np-section home-widgets">
+				<h3><?php _e( "Home Page Widgets Control <small>control home page widgets' properties</small>", "nano-progga" ); ?></h3>
+				<div class="np-two-third">
+					<strong><label><?php _e( 'Home Widget 1', 'nano-progga' ); ?></label></strong><br>
+					<label><?php _e( 'Position:', 'nano-progga' ); ?> <input type="number" class="np-color-item" id="widget-1-pos" name="np_settings[widget_1]" value="<?php echo $options['widget_1'] ? $options['widget_1'] : 3; ?>" autocomplete="off"></label>
+					<label><?php _e( 'Background Color:', 'nano-progga' ); ?> <input type="text" class="np-color-item" id="widget-1" name="np_settings[widget_1_bg]" value="<?php echo $options['widget_1_bg'] ? $options['widget_1_bg'] : '#049372'; ?>" autocomplete="off"></label>
+					<label><?php _e( 'Text Color:', 'nano-progga' ); ?> <input type="text" class="np-color-item" id="txt-widget-1" name="np_settings[widget_1_text]" value="<?php echo $options['widget_1_text'] ? $options['widget_1_text'] : '#ffffff'; ?>" autocomplete="off"></label><br>
+					<br>
+
+					<strong><label><?php _e( 'Home Widget 2', 'nano-progga' ); ?></label></strong><br>
+					<label><?php _e( 'Position:', 'nano-progga' ); ?> <input type="number" class="np-color-item" id="widget-2-pos" name="np_settings[widget_2]" value="<?php echo $options['widget_2'] ? $options['widget_2'] : 4; ?>" autocomplete="off"></label>
+					<label><?php _e( 'Background Color:', 'nano-progga' ); ?> <input type="text" class="np-color-item" id="widget-2" name="np_settings[widget_2_bg]" value="<?php echo $options['widget_2_bg'] ? $options['widget_2_bg'] : '#F5C810'; ?>" autocomplete="off"></label>
+					<label><?php _e( 'Text Color:', 'nano-progga' ); ?> <input type="text" class="np-color-item" id="txt-widget-2" name="np_settings[widget_2_text]" value="<?php echo $options['widget_2_text'] ? $options['widget_2_text'] : '#333333'; ?>" autocomplete="off"></label><br>
+					<br>
+
+					<strong><label><?php _e( 'Home Widget 3', 'nano-progga' ); ?></label></strong><br>
+					<label><?php _e( 'Position:', 'nano-progga' ); ?> <input type="number" class="np-color-item" id="widget-3-pos" name="np_settings[widget_3]" value="<?php echo $options['widget_3'] ? $options['widget_3'] : 6; ?>" autocomplete="off"></label>
+					<label><?php _e( 'Background Color:', 'nano-progga' ); ?> <input type="text" class="np-color-item" id="widget-3" name="np_settings[widget_3_bg]" value="<?php echo $options['widget_3_bg'] ? $options['widget_3_bg'] : '#38B4E5'; ?>" autocomplete="off"></label>
+					<label><?php _e( 'Text Color:', 'nano-progga' ); ?> <input type="text" class="np-color-item" id="txt-widget-3" name="np_settings[widget_3_text]" value="<?php echo $options['widget_3_text'] ? $options['widget_3_text'] : '#333333'; ?>" autocomplete="off"></label><br>
+					<br>
+
+					<strong><label><?php _e( 'Home Widget 4', 'nano-progga' ); ?></label></strong><br>
+					<label><?php _e( 'Position:', 'nano-progga' ); ?> <input type="number" class="np-color-item" id="widget-4-pos" name="np_settings[widget_4]" value="<?php echo $options['widget_4'] ? $options['widget_4'] : 8; ?>" autocomplete="off"></label>
+					<label><?php _e( 'Background Color:', 'nano-progga' ); ?> <input type="text" class="np-color-item" id="widget-4" name="np_settings[widget_4_bg]" value="<?php echo $options['widget_4_bg'] ? $options['widget_4_bg'] : '#F8575A'; ?>" autocomplete="off"></label>
+					<label><?php _e( 'Text Color:', 'nano-progga' ); ?> <input type="text" class="np-color-item" id="txt-widget-4" name="np_settings[widget_4_text]" value="<?php echo $options['widget_4_text'] ? $options['widget_4_text'] : '#333333'; ?>" autocomplete="off"></label><br>
+					<br>
+
+					<strong><label><?php _e( 'Home Widget 5', 'nano-progga' ); ?></label></strong><br>
+					<label><?php _e( 'Position:', 'nano-progga' ); ?> <input type="number" class="np-color-item" id="widget-5-pos" name="np_settings[widget_5]" value="<?php echo $options['widget_5'] ? $options['widget_5'] : 9; ?>" autocomplete="off"></label>
+					<label><?php _e( 'Background Color:', 'nano-progga' ); ?> <input type="text" class="np-color-item" id="widget-5" name="np_settings[widget_5_bg]" value="<?php echo $options['widget_5_bg'] ? $options['widget_5_bg'] : '#4CB849'; ?>" autocomplete="off"></label>
+					<label><?php _e( 'Text Color:', 'nano-progga' ); ?> <input type="text" class="np-color-item" id="txt-widget-5" name="np_settings[widget_5_text]" value="<?php echo $options['widget_5_text'] ? $options['widget_5_text'] : '#333333'; ?>" autocomplete="off"></label><br>
+					<br>
+				</div> <!-- /.np-two-third -->
+				<div class="np-one-third text-left">
+					<div class="widget-preview" id="widget-1-preview" style="background-color: <?php echo $options['widget_1_bg'] ? $options['widget_1_bg'] : '#049372'; ?>">
+						<div id="txt-widget-1-preview" style="color: <?php echo $options['widget_1_text'] ? $options['widget_1_text'] : '#ffffff'; ?>">
+							<h4 style="border-bottom-color: <?php echo $options['widget_1_text'] ? $options['widget_1_text'] : '#ffffff'; ?>">Widget Title 1</h4>
+							Widget texts with <a href="#">a link</a> for preview.
+						</div>
+					</div>
+					<div class="widget-preview" id="widget-2-preview" style="background-color: <?php echo $options['widget_2_bg'] ? $options['widget_2_bg'] : '#F5C810'; ?>">
+						<div id="txt-widget-2-preview" style="color: <?php echo $options['widget_2_text'] ? $options['widget_2_text'] : '#333333'; ?>">
+							<h4 style="border-bottom-color: <?php echo $options['widget_2_text'] ? $options['widget_2_text'] : '#333333'; ?>">Widget Title 2</h4>
+							Widget texts with <a href="#">a link</a> for preview.
+						</div>
+					</div>
+					<div class="widget-preview" id="widget-3-preview" style="background-color: <?php echo $options['widget_3_bg'] ? $options['widget_3_bg'] : '#38B4E5'; ?>">
+						<div id="txt-widget-3-preview" style="color: <?php echo $options['widget_3_text'] ? $options['widget_3_text'] : '#333333'; ?>">
+							<h4 style="border-bottom-color: <?php echo $options['widget_3_text'] ? $options['widget_3_text'] : '#333333'; ?>">Widget Title 3</h4>
+							Widget texts with <a href="#">a link</a> for preview.
+						</div>
+					</div>
+					<div class="widget-preview" id="widget-4-preview" style="background-color: <?php echo $options['widget_4_bg'] ? $options['widget_4_bg'] : '#F8575A'; ?>">
+						<div id="txt-widget-4-preview" style="color: <?php echo $options['widget_4_text'] ? $options['widget_4_text'] : '#333333'; ?>">
+							<h4 style="border-bottom-color: <?php echo $options['widget_4_text'] ? $options['widget_4_text'] : '#333333'; ?>">Widget Title 4</h4>
+							Widget texts with <a href="#">a link</a> for preview.
+						</div>
+					</div>
+					<div class="widget-preview" id="widget-5-preview" style="background-color: <?php echo $options['widget_5_bg'] ? $options['widget_5_bg'] : '#4CB849'; ?>">
+						<div id="txt-widget-5-preview" style="color: <?php echo $options['widget_5_text'] ? $options['widget_5_text'] : '#333333'; ?>">
+							<h4 style="border-bottom-color: <?php echo $options['widget_5_text'] ? $options['widget_5_text'] : '#333333'; ?>">Widget Title 5</h4>
+							Widget texts with <a href="#">a link</a> for preview.
+						</div>
+					</div>
+				</div> <!-- /.np-one-third -->
+				<div class="clearfix"></div>
+			</section> <!-- /.np-section home-widgets -->
 
 			<!-- CONTROL SOCIAL ICONS -->
 			<section class="np-section social">
@@ -192,6 +340,8 @@ function np_settings_validate( $input ) {
 	$serieschoice 			= array( $input['serieschoice'] );
 
 	//textbox
+	$input['logo']		= wp_filter_post_kses( $input['logo'] );
+
 	$input['facebook']		= wp_filter_post_kses( $input['facebook'] );
 	$input['twitter']		= wp_filter_post_kses( $input['twitter'] );
 	$input['linkedin']		= wp_filter_post_kses( $input['linkedin'] );

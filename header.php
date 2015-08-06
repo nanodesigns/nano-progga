@@ -41,9 +41,13 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="navbar-brand" rel="home">
-                        	<img src="<?php echo get_template_directory_uri(); ?>/images/logo-nano-progga.jpg" alt="<?php bloginfo( 'name' ); ?>" width="40" height="40">
-                        </a>
+						<?php
+						$option = get_option('np_settings');
+                        if( $option['logo'] ): ?>
+	                        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="navbar-brand" rel="home">
+	                        	<img src="<?php echo get_template_directory_uri(); ?>/images/logo-nano-progga.jpg" alt="<?php bloginfo( 'name' ); ?>" width="40" height="40">
+	                        </a>
+                    	<?php endif; ?>
                     </div> <!-- /.navbar-header -->
                     <div id="navbar-nano-progga-collapse" class="collapse navbar-collapse">
                     	<h1 class="site-title navbar-text"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
@@ -78,7 +82,6 @@
 							 * Featured Series
 							 * @since  3.0.0
 							 */
-							$option = get_option('np_settings');
 						    if( $option['showseries'] == 1 ) :
 							?>
 							<section id="series-showcase">
@@ -93,7 +96,7 @@
 										<?php
 										foreach ($series_ids as $series_id) :
 											$featured_series = get_term_by( 'id', (int) $series_id, 'series' );
-											$img_url = nano_progga_series_image_url( (int) $series_id, 'post-thumbnail', false );
+											$img_url = nano_progga_series_image_url( (int) $series_id, 'medium', false );
 											$series_link = get_term_link( (int) $series_id, 'series' ); ?>
 											<div class="col-sm-3 col-xs-6 series-block">
 												<a href="<?php echo esc_url( $series_link ); ?>">

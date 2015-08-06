@@ -14,7 +14,7 @@
  * @return string
  */
 function nano_dump( $array ) {
-    echo '<pre>';
+    echo '<pre style="z-index:9999999999; position: relative;">';
         print_r( $array );
     echo '</pre><br>';
 }

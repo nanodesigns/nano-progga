@@ -26,6 +26,9 @@ nano progga is distributed under the terms of the GNU GPL V2.0
 .grey{
 	color: #ccc;
 }
+.text-left{
+	text-align: left;
+}
 
 .np-section{
 	background-color: #f8f8f8;
@@ -50,6 +53,9 @@ nano progga is distributed under the terms of the GNU GPL V2.0
 			text-transform: none;
 		}
 	}
+	.np-file-item{
+		width: 70%;
+	}
 	.np-field-item{
 		width: 100%;
 	}
@@ -62,19 +68,59 @@ nano progga is distributed under the terms of the GNU GPL V2.0
 	float: right;
 	width: 48%;
 }
+.np-two-third{
+	float: left;
+	width: 70%;
+}
+.np-one-third{
+	float: left;
+	width: 30%;
+}
 @media (max-width:768px){
 	.np-left-column,
-	.np-right-column{
+	.np-right-column,
+	.np-two-third,
+	.np-one-third{
 		clear: both;
 		float: left;
 		width: 100%;	}
-	.np-left-column{
+	.np-left-column,
+	.np-two-third{
 		padding-bottom: 10px;
 		border-bottom: 1px solid #ccc;
 	}
-	.np-right-column{
+	.np-right-column,
+	.np-one-third{
 		margin-top: 20px;
 	}
+}
+.np-logo-preview{
+	width: 60px;
+	height: 60px;
+	position: relative;
+}
+.np-close{
+	background-color: #fff;
+	border: 2px solid #999;
+	position: absolute;
+	font-weight: bold;
+	top: -3px;
+	right: -3px;
+	line-height: 0.9;
+	.border-radius(100%);
+	font-size: 20px;
+	cursor: pointer;
+	color: #999;
+	.box-shadow(0,0,3px,0.5);
+	padding: 1px 6px;
+
+	&:hover{
+		border-color: #333;
+		color: #333;
+	}
+}
+#logo-preview{
+	.border-radius(100%);
 }
 .settings-preview{
 	.border-box();
@@ -85,6 +131,17 @@ nano progga is distributed under the terms of the GNU GPL V2.0
 	text-align: center;
 	padding: 10px;
 	.border-radius(4px);
+}
+.widget-preview{
+	padding: 10px;
+	width: 150px;
+	.box-shadow(0,0,2px,0.3);
+	margin-bottom: 10px;
+	
+	h4{
+		margin: 0;
+		border-bottom: 1px solid #ccc;
+	}
 }
 #phone-preview{
 	font-size: 20px;

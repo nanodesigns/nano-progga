@@ -368,6 +368,10 @@ body.page,
 body.single{
   #main{
     background-color: #fff;
+
+    &.blog-main{
+      background-color: transparent;
+    }
   }
   .entry-title{ font-size: 30px; }
   .site-main{
@@ -452,6 +456,9 @@ body.page{
     border-bottom: 2px solid #ccc;
     padding-bottom: 5px;
   }
+}
+body.page .blog-main article.hentry{
+  padding: 0;
 }
 .entry-content,
 .comment-content{

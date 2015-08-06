@@ -37,15 +37,14 @@ TODO:
                - dyanamic background color choice for widgets
                - dynamic text color choice for widgets
                - widgets on first page only, or on all the pages
- ☐ comments.php
+ ✔ comments.php @done (15-07-31 17:58)
  ☐ 404.php
- ☐ footer.php
+ ✔ footer.php @done (15-07-31 17:58)
  ☐ page-templates/full-width
  ☐ page-templates/blog
- ☐ admin-panel/
+ ✔ admin-panel/ @done (15-07-31 17:59)
  ☐ github theme updater
  ☐ TGM Activation plugin - popular posts
- ☐ tabbed widget
- ☐ series
- ☐ series featured on index.php
- ☐ shortcodes
+ ✔ series @done (15-07-31 17:59)
+ ✔ series featured on index.php @done (15-07-31 17:59)
+ ✔ shortcodes @done (15-07-31 17:59)
