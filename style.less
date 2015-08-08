@@ -31,19 +31,6 @@ nano progga is distributed under the terms of the GNU GPL V2.0
   font-style: normal;
 }
 
-@font-face {
-  font-family:'ShaldaOMJ-Regular';
-  src: url('fonts/ShaldaOMJ.eot');
-  src: url('fonts/ShaldaOMJ.eot?#iefix') format('embedded-opentype'),
-    url('fonts/ShaldaOMJ.woff') format('woff'),
-    url('fonts/ShaldaOMJ.ttf') format('truetype'),
-    url('fonts/ShaldaOMJ.svg#ShaldaOMJ-Regular') format('svg');
-  font-weight: 400;
-  font-style: normal;
-  font-stretch: normal;
-  unicode-range: U+0020-25CC;
-}
-
 /* Icon Font */
 @font-face {
   font-family: "nano-progga";
@@ -880,8 +867,8 @@ ul.series-list{
   border: 0;
   background: transparent;
   color: @base-color;
-  margin-top: 2px;
   outline: none;
+  line-height: 1;
 }
 
 
@@ -1011,7 +998,7 @@ section.error-404{
 
 /**
  * SHORTCODES
- * @package nanodesigns
+ * @package nano-progga
  */
 
 // PROGRESS BAR
@@ -1042,7 +1029,7 @@ section.error-404{
   cursor: pointer;
   background-color: #ededed;
   padding: 10px;
-  font-size: 0.9rem;
+  font-size: 14px;
   border: 1px solid darken(#ededed, 10%);
   .border-radius(8px);
   margin-bottom: 0;
@@ -1062,43 +1049,6 @@ section.error-404{
 .accordion-content.active{
   border-top: 0;
   .border-radius-custom (@topleft: 0, @topright: 0, @bottomright: 8px, @bottomleft: 8px);
-}
-
-// BUTTONS
-.nano-button{
-  display: inline-block;
-  padding: 6px 12px;
-  margin: 2px;
-  border-style: solid;  
-    border-width: 1px;
-    .border-radius(4px);
-    border-color: #ccc;
-  color: #333;
-  background-color: #fff;
-  text-align: center;
-  font-weight: 400;
-  white-space: nowrap;
-  vertical-align: middle;
-  -ms-touch-action: manipulation;
-      touch-action: manipulation;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  font-size: 0.9rem;
-  text-decoration: none;
-  
-  &:hover{
-    background-color: #ededed;
-    text-decoration: none;
-  }
-}
-.btn-large{
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-.btn-small{
-  font-size: 0.7rem;
 }
 
 // INFO
@@ -1167,7 +1117,7 @@ section.error-404{
   margin-bottom: 0px;
   margin-left: 2px;
   float: left;
-  font-size: 3rem;
+  font-size: 30px;
   min-width: 50px;
   height: 50px;
   line-height: 50px;
@@ -1176,7 +1126,7 @@ section.error-404{
 }
 .dropcap-circle{
   .border-radius(50%);
-  font-size: 2rem;
+  font-size: 25px;
   padding-left: 6px;
   padding-right: 6px;
 }
@@ -1187,7 +1137,7 @@ section.error-404{
   display: block;
   background-color: #e1e1e1;
   padding: 10px;
-  font-size: 0.9rem;
+  font-size: 14px;
   .border-radius(3px);
 }
 
@@ -1218,7 +1168,7 @@ section.error-404{
   .border-radius(3px);
 
   .notice-icon{
-    font-size: 3rem;
+    font-size: 30px;
     line-height: 1.2;
     text-shadow: 0 1px 1px #fff;
     float: left;
@@ -1226,11 +1176,11 @@ section.error-404{
   }
   .notice-head{
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 16px;
     margin-bottom: 5px;
   }
   .notice-body{
-    font-size: 14*@toRem;
+    font-size: 14px;
   }
 }
 .notice-normal{
@@ -1304,15 +1254,16 @@ section.error-404{
   margin-right: 3%;
   .border-box();
 
-  .ion-quote{
-    font-size: 30px;
+  .np-quote-left{
+    font-size: 25px;
     color: #999;
+    line-height: 10px;
   }
 }
 .quotation-body{
   float: right;
   width: 90%;
-  font-size: 1.25rem;
+  font-size: 14px;
   line-height: 1.2;
 }
 .quote-left{
@@ -1371,6 +1322,14 @@ section.error-404{
   display: inline-block;
   width: 25px;
   height: 24px;
+}
+
+//notes
+.nano-notes{
+  position: relative;
+  width: 90%;
+  margin: 10px auto;
+  font-size: 14px;
 }
 
 

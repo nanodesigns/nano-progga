@@ -135,6 +135,7 @@ jQuery(document).ready(function($) {
 
 	/* ----------------------------------------------------------- */
 	/*  03. Series Post Name collapse
+	/* 		@scope: inc/functions-series.php
 	/* ----------------------------------------------------------- */
 
 	$('.posts-series h4').append('<button class="series-handle np-circle-up pull-right"></button>');
@@ -156,11 +157,22 @@ jQuery(document).ready(function($) {
 
 	/*----------------------------------------------------------*/
 	/*	04. Social Media Control on Footer
+	/* 		@scope: footer.php
 	/*----------------------------------------------------------*/
 	var social_handle = $( '.social-handle' );
 	social_handle.css( 'display', 'inline-block' );
 	social_handle.click(function() {
 	  $( ".socials" ).toggle( "slow" );
 	});
+
+
+	/*----------------------------------------------------------*/
+	/*	05. Equal Height
+	/* 		@scope: header.php
+	/*----------------------------------------------------------*/
+	var series_imgs = $( '.series-block img' );
+	if( series_imgs.length > 0 ) {
+		series_imgs.matchHeight();
+	}
 
 });

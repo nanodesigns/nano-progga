@@ -19,12 +19,13 @@ get_header(); ?>
 			<?php if ( have_posts() ) : ?>
 
 				<div id="infinite-scroll-holder" class="row grid">
-				<div style="width:500px; height: 500px; background-color:#F5C810 ; color: <?php echo alter_brightness( '#F5C810', 500); ?>">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, sequi sed molestias dolorum eum unde alias praesentium porro nesciunt! Harum.</div>
 				<?php
+				//get the nano progga theme settings
+				$options = get_option( 'np_settings' );
+
 				/* Start the Loop */
-				$_counter = 0;
-				$option = get_option('np_settings');
-				//nano_dump($option);
+				$_counter = 0;				
+
 				while ( have_posts() ) : the_post(); ?>
 
 					<?php
@@ -32,25 +33,32 @@ get_header(); ?>
 					$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
 					//Show widgets only on the first page
-					if( 1 === $paged ) :
+					$widgets_in_pages = isset($options['widgets_in_pages']) ? $options['widgets_in_pages'] : '';
+					if( $widgets_in_pages || 1 === $paged ) :
 
 						//First Widget
-						if( $_counter === 3 && is_active_sidebar( 'home_widget_1' ) )
+						$widget_1_pos = $options['widget_1'] ? (int) $options['widget_1'] : 3;
+						if( $_counter === $widget_1_pos && is_active_sidebar( 'home_widget_1' ) )
 							dynamic_sidebar( 'home_widget_1' );
 
-						if( $_counter === 4 && is_active_sidebar( 'home_widget_2' ) )
+						//Second Widget
+						$widget_2_pos = $options['widget_2'] ? (int) $options['widget_2'] : 4;
+						if( $_counter === $widget_2_pos && is_active_sidebar( 'home_widget_2' ) )
 							dynamic_sidebar( 'home_widget_2' );
 
 						//Third Widget
-						if( $_counter === 6 && is_active_sidebar( 'home_widget_3' ) )
+						$widget_3_pos = $options['widget_3'] ? (int) $options['widget_3'] : 6;
+						if( $_counter === $widget_3_pos && is_active_sidebar( 'home_widget_3' ) )
 							dynamic_sidebar( 'home_widget_3' );
 
 						//Fourth Widget
-						if( $_counter === 8 && is_active_sidebar( 'home_widget_4' ) )
+						$widget_4_pos = $options['widget_4'] ? (int) $options['widget_4'] : 8;
+						if( $_counter === $widget_4_pos && is_active_sidebar( 'home_widget_4' ) )
 							dynamic_sidebar( 'home_widget_4' );
 
 						//Fifth Widget
-						if( $_counter === 9 && is_active_sidebar( 'home_widget_5' ) )
+						$widget_5_pos = $options['widget_5'] ? (int) $options['widget_5'] : 9;
+						if( $_counter === $widget_5_pos && is_active_sidebar( 'home_widget_5' ) )
 							dynamic_sidebar( 'home_widget_5' );
 
 					endif;

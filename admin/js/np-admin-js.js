@@ -42,27 +42,5 @@ jQuery(document).ready(function($) {
         $('#logo-preview').attr( 'src', np.theme_path +'/images/placeholder.png' );
         $('#np-logo').val('').attr( 'value', '' );
     });
-
-
-    /* ----------------------------------------------------------- */
-    /*  1. ColorPicker by Iris
-    /*  @scope: admin/nano-progga-settings.php
-    /* ----------------------------------------------------------- */
-    var color_selectors_bg = $('#widget-1, #widget-2, #widget-3, #widget-4, #widget-5'),
-        color_sel_txt = $('#txt-widget-1, #txt-widget-2, #txt-widget-3, #txt-widget-4, #txt-widget-5');
-
-    color_selectors_bg.minicolors({
-        change: function(hex, opacity) {
-            var item_id = $(this).attr('id');
-            $('#'+item_id +'-preview').css("background-color", hex);
-        }
-    });
-    color_sel_txt.minicolors({
-        change: function(hex, opacity) {
-            var itm_id = $(this).attr('id');
-            $('#'+itm_id +'-preview').css("color", hex);
-            $('#'+itm_id +'-preview h4').css("border-bottom-color", hex);
-        }
-    });
     
 });

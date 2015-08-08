@@ -33,18 +33,17 @@ Notes:
 
 
 TODO:
- ☐ index.php   - dynamic count choice for widgets
-               - dyanamic background color choice for widgets
-               - dynamic text color choice for widgets
-               - widgets on first page only, or on all the pages
+ ✔ index.php   - dynamic count choice for widgets @done (15-08-08 23:28)
+               - dyanamic background color choice for widgets (x)
+               - dynamic text color choice for widgets (x)
+               ✔ widgets on first page only, or on all the pages @done (15-08-08 23:29)
  ✔ comments.php @done (15-07-31 17:58)
  ☐ 404.php
  ✔ footer.php @done (15-07-31 17:58)
- ☐ page-templates/full-width
- ☐ page-templates/blog
+ ✔ page-templates/full-width @done (15-08-08 23:29)
+ ✔ page-templates/blog @done (15-08-08 23:29)
  ✔ admin-panel/ @done (15-07-31 17:59)
  ☐ github theme updater
- ☐ TGM Activation plugin - popular posts
  ✔ series @done (15-07-31 17:59)
  ✔ series featured on index.php @done (15-07-31 17:59)
  ✔ shortcodes @done (15-07-31 17:59)

@@ -54,7 +54,7 @@ function nanodesigns_accordion_item( $atts, $content ) {
 			), $atts );
 	ob_start(); ?>
 		<h3 class="accordion-title">
-			<span class="accordion-icon ion-android-arrow-dropright"></span>
+			<span class="accordion-icon np-right"></span>
 			<?php echo $atts['title'] ?>
 		</h3>
 		<div class="accordion-content"><?php echo $content; ?></div>		
@@ -71,10 +71,10 @@ function nanodesigns_accordion( $atts, $content ) {
 		</div> <!-- .nano-accordion -->
 		<script type="text/javascript">
 		jQuery('.nano-accordion h3').click(function() {
-		    jQuery(this).toggleClass('active').find('span').toggleClass('ion-android-arrow-dropright ion-android-arrow-dropdown')
+		    jQuery(this).toggleClass('active').find('span').toggleClass('np-right np-down')
 		           .closest('h3').siblings('h3')
 		           .removeClass('active').find('span')
-		           .removeClass('ion-android-arrow-dropdown').addClass('ion-android-arrow-dropright');
+		           .removeClass('np-down').addClass('np-right');
 
 		    jQuery(this).next('.accordion-content').slideToggle().removeClass('inactive').addClass('active')
 		                .siblings('.accordion-content').slideUp();  
@@ -95,41 +95,45 @@ add_shortcode( 'accordion', 'nanodesigns_accordion' );
 *	 [button size="" link="#" color="#333" background="#ededed" window=""]Button Text[/button]
 *-------------------------------------------------------------------------------------*/
 
-function nanodesigns_buttons( $atts, $content ) {	
+function bs_buttons( $atts, $content ) {
 	$atts = shortcode_atts( array(
-				'color' => '',
-				'background' => '',
-				'size' => '',	// '', 'large', 'small'
-				'link' => '#',	// http://example.com or #
-				'window' => '_self', //only 'new' or EMPTY
+				'type'		=> 'default',
+				'size'		=> 'md',
+				'link'		=> '#',
+				'target'	=> '_self',
+				'inactive'	=> 'no'
 			), $atts );
 
-	if( $atts['window'] == 'new' ) {
-		$target = '_blank';
-	} else {
-		$target = '_self';
+	if( $atts['size'] === 'md' ) {
+		$size = '';
+	} elseif( $atts['size'] === 'sm' ) {
+		$size = ' btn-sm';
+	} elseif( $atts['size'] === 'lg' ) {
+		$size = ' btn-lg';
+	} elseif( $atts['size'] === 'xs' ) {
+		$size = ' btn-xs';
 	}
 
-	if( $atts['size'] === 'large' ) {
-		$class = 'btn-large';
-	} else if( $atts['size'] === 'small' ) {
-		$class = 'btn-small';
-	} else {
-		$class = '';
+	if( $atts['type'] === 'default' ) {
+		$type = ' btn-default';
+	} elseif( $atts['type'] === 'primary' ) {
+		$type = ' btn-primary';
+	} elseif( $atts['type'] === 'warning' ) {
+		$type = ' btn-warning';
+	} elseif( $atts['type'] === 'danger' ) {
+		$type = ' btn-danger';
+	} elseif( $atts['type'] === 'info' ) {
+		$type = ' btn-info';
+	} elseif( $atts['type'] === 'success' ) {
+		$type = ' btn-success';
 	}
-
-	$color 		= $atts['color'];
-	$background = $atts['background'];
 
 	ob_start(); ?>
-		<a href="<?php echo $atts['link']; ?>" target="<?php echo $target; ?>" class="nano-button <?php echo $class; ?>" style="<?php echo !empty($color) ? 'color: '. $color .';' : ''; echo !empty($background) ? 'background-color: '. $background .';' : ''; echo !empty($background) ? 'border-color: '. nanodesigns_hex_darker($background, 10) .';' : ''; ?>">
-			<?php echo $content; ?>
-		</a>
+		<a href="<?php echo $atts['link']; ?>" target="<?php echo $atts['target']; ?>" class="btn <?php echo $type, $size; ?>" <?php if( $atts['inactive'] == 'yes' ) echo 'disabled="disabled"'; ?> ><?php echo $content; ?></a>
 	<?php
 	return ob_get_clean();
 }
-add_shortcode( 'button', 'nanodesigns_buttons' );
-
+add_shortcode( 'button', 'bs_buttons' );
 
 /**-------------------------------------------------------------------------------------
 *	INFO BOX
@@ -275,11 +279,11 @@ function nanodesigns_notice( $atts, $content ) {
 		<div class="notice <?php echo 'notice-'. $atts['type']; ?>">
 				<?php
 				if( $atts['type'] == 'alert' ) {
-					echo '<span class="notice-icon ion-help-circled"></span>';
+					echo '<span class="notice-icon np-unlike"></span>';
 				} else if( $atts['type'] == 'green' ) {
-					echo '<span class="notice-icon ion-android-checkmark-circle"></span>';
+					echo '<span class="notice-icon np-like"></span>';
 				} else {
-					echo '<span class="notice-icon ion-ios-information"></span>';
+					echo '<span class="notice-icon np-info"></span>';
 				}
 				?>
 				<?php if( $atts['title'] != '' ) { ?>
@@ -318,7 +322,7 @@ function nanodesigns_quotation( $atts, $content ) {
 
 	ob_start();	?>
 		<div class="quotation<?php echo $class !== '' ? $class : ''; ?>">
-			<div class="quotation-icon-left"><span class="ion-quote"></span></div>
+			<div class="quotation-icon-left"><span class="np-quote-left"></span></div>
 			<div class="quotation-body"><?php echo $content; ?></div>
 			<div class="clearfix"></div>
 		</div> <!-- .quotation -->
@@ -457,3 +461,25 @@ function nanodesigns_inner_title( $atts, $content ) {
 	return $output;
 }
 add_shortcode( 'inner_title', 'nanodesigns_inner_title' );
+
+
+
+/**-------------------------------------------------------------------------------------
+*	NOTES
+*	to show some special notes within texts
+*	
+*	Usage:
+*	 [notes]Text to show as a note[/notes]
+*-------------------------------------------------------------------------------------*/
+
+function nanodesigns_note( $atts, $content ) {	
+	$atts = shortcode_atts( array(), $atts );
+
+	ob_start();	?>
+		<div class="nano-notes">
+			<?php echo $content; ?>
+		</div>
+	<?php
+	return ob_get_clean();
+}
+add_shortcode( 'notes', 'nanodesigns_note' );

@@ -30,35 +30,6 @@ function nano_progga_admin_scripts() {
 			wp_enqueue_script('thickbox');
 		}
 
-		/**
-		 * Tiny jQuery colorPicker
-		 * @author Peter Dematté
-		 * @link https://github.com/PitPik/tinyColorPicker
-		 */
-		/*wp_enqueue_script(
-			'tiny-color-picker',
-			get_template_directory_uri() .'/admin/js/jqColorPicker.min.js',
-			array('jquery'),
-			'1.0.0',
-			true
-		);*/
-
-		/**
-		 * jQuery MiniColors 2.1
-		 * @author claviska
-		 * @link http://labs.abeautifulsite.net/jquery-minicolors/
-		 */
-		wp_enqueue_script(
-			'minicolors',
-			get_template_directory_uri() .'/admin/js/jquery.minicolors.min.js',
-			array('jquery'),
-			'2.1',
-			true
-		);
-		wp_enqueue_style(
-			'minicolors-styles',
-			get_template_directory_uri() .'/admin/css/jquery.minicolors.css'
-		);
 
 		//nano progga custom script
 		wp_enqueue_script(
@@ -126,12 +97,12 @@ add_action( 'admin_init', 'nano_progga_theme_options_fields_init' );
  */
 function nano_progga_theme_options_add_page() {
 	add_menu_page(
-		__( '[np] Settings', 'nano-progga' ),		// page title
-		__( '[np] Settings', 'nano-progga' ),		// menu title
+		__( 'Options', 'nano-progga' ),		// page title
+		__( 'Options', 'nano-progga' ),		// menu title
 		'edit_theme_options',					// capability
 		'np-settings',							// page slug
 		'nano_progga_settings',					// callback function
-		'dashicons-admin-generic',				// icon
+		get_template_directory_uri() .'/images/nano-progga-icon.svg', // icon
 		66 										// position
 	);
 }
@@ -150,7 +121,7 @@ function nano_progga_settings() {
 
 	?>
 	<div class="wrap">
-		<h2><?php echo wp_get_theme(), '&nbsp;', __( '&mdash; Settings', 'nano-progga' ); ?></h2>
+		<h2><?php echo '<img src="'. get_template_directory_uri() .'/images/nano-progga-icon.svg" alt="nano progga">&nbsp;', wp_get_theme(), '&nbsp;', __( '&mdash; Settings', 'nano-progga' ); ?></h2>
 		<p><?php printf( __( "Maintain %s's static part from this options page.", 'nano-progga' ), get_bloginfo( 'name' ) ); ?></p>
 
 		<?php if ( false !== $_REQUEST['settings-updated'] ) : ?>
@@ -207,70 +178,60 @@ function nano_progga_settings() {
 			<!-- CONTROL HOME PAGE WIDGETS -->
 			<section class="np-section home-widgets">
 				<h3><?php _e( "Home Page Widgets Control <small>control home page widgets' properties</small>", "nano-progga" ); ?></h3>
-				<div class="np-two-third">
-					<strong><label><?php _e( 'Home Widget 1', 'nano-progga' ); ?></label></strong><br>
-					<label><?php _e( 'Position:', 'nano-progga' ); ?> <input type="number" class="np-color-item" id="widget-1-pos" name="np_settings[widget_1]" value="<?php echo $options['widget_1'] ? $options['widget_1'] : 3; ?>" autocomplete="off"></label>
-					<label><?php _e( 'Background Color:', 'nano-progga' ); ?> <input type="text" class="np-color-item" id="widget-1" name="np_settings[widget_1_bg]" value="<?php echo $options['widget_1_bg'] ? $options['widget_1_bg'] : '#049372'; ?>" autocomplete="off"></label>
-					<label><?php _e( 'Text Color:', 'nano-progga' ); ?> <input type="text" class="np-color-item" id="txt-widget-1" name="np_settings[widget_1_text]" value="<?php echo $options['widget_1_text'] ? $options['widget_1_text'] : '#ffffff'; ?>" autocomplete="off"></label><br>
-					<br>
 
-					<strong><label><?php _e( 'Home Widget 2', 'nano-progga' ); ?></label></strong><br>
-					<label><?php _e( 'Position:', 'nano-progga' ); ?> <input type="number" class="np-color-item" id="widget-2-pos" name="np_settings[widget_2]" value="<?php echo $options['widget_2'] ? $options['widget_2'] : 4; ?>" autocomplete="off"></label>
-					<label><?php _e( 'Background Color:', 'nano-progga' ); ?> <input type="text" class="np-color-item" id="widget-2" name="np_settings[widget_2_bg]" value="<?php echo $options['widget_2_bg'] ? $options['widget_2_bg'] : '#F5C810'; ?>" autocomplete="off"></label>
-					<label><?php _e( 'Text Color:', 'nano-progga' ); ?> <input type="text" class="np-color-item" id="txt-widget-2" name="np_settings[widget_2_text]" value="<?php echo $options['widget_2_text'] ? $options['widget_2_text'] : '#333333'; ?>" autocomplete="off"></label><br>
-					<br>
+				<h3><label><input id="np_settings[widgets_in_pages]" name="np_settings[widgets_in_pages]" type="checkbox" value="1" <?php checked( '1', $options['widgets_in_pages'] ); ?> /> <?php _e( 'Show widgets in paginated pages too <small>home widgets are visible only on the first paginated page of home page. If you want to show them in other pages too, check here</small>', 'nano-progga' ); ?></label></h3>
 
-					<strong><label><?php _e( 'Home Widget 3', 'nano-progga' ); ?></label></strong><br>
-					<label><?php _e( 'Position:', 'nano-progga' ); ?> <input type="number" class="np-color-item" id="widget-3-pos" name="np_settings[widget_3]" value="<?php echo $options['widget_3'] ? $options['widget_3'] : 6; ?>" autocomplete="off"></label>
-					<label><?php _e( 'Background Color:', 'nano-progga' ); ?> <input type="text" class="np-color-item" id="widget-3" name="np_settings[widget_3_bg]" value="<?php echo $options['widget_3_bg'] ? $options['widget_3_bg'] : '#38B4E5'; ?>" autocomplete="off"></label>
-					<label><?php _e( 'Text Color:', 'nano-progga' ); ?> <input type="text" class="np-color-item" id="txt-widget-3" name="np_settings[widget_3_text]" value="<?php echo $options['widget_3_text'] ? $options['widget_3_text'] : '#333333'; ?>" autocomplete="off"></label><br>
-					<br>
-
-					<strong><label><?php _e( 'Home Widget 4', 'nano-progga' ); ?></label></strong><br>
-					<label><?php _e( 'Position:', 'nano-progga' ); ?> <input type="number" class="np-color-item" id="widget-4-pos" name="np_settings[widget_4]" value="<?php echo $options['widget_4'] ? $options['widget_4'] : 8; ?>" autocomplete="off"></label>
-					<label><?php _e( 'Background Color:', 'nano-progga' ); ?> <input type="text" class="np-color-item" id="widget-4" name="np_settings[widget_4_bg]" value="<?php echo $options['widget_4_bg'] ? $options['widget_4_bg'] : '#F8575A'; ?>" autocomplete="off"></label>
-					<label><?php _e( 'Text Color:', 'nano-progga' ); ?> <input type="text" class="np-color-item" id="txt-widget-4" name="np_settings[widget_4_text]" value="<?php echo $options['widget_4_text'] ? $options['widget_4_text'] : '#333333'; ?>" autocomplete="off"></label><br>
-					<br>
-
-					<strong><label><?php _e( 'Home Widget 5', 'nano-progga' ); ?></label></strong><br>
-					<label><?php _e( 'Position:', 'nano-progga' ); ?> <input type="number" class="np-color-item" id="widget-5-pos" name="np_settings[widget_5]" value="<?php echo $options['widget_5'] ? $options['widget_5'] : 9; ?>" autocomplete="off"></label>
-					<label><?php _e( 'Background Color:', 'nano-progga' ); ?> <input type="text" class="np-color-item" id="widget-5" name="np_settings[widget_5_bg]" value="<?php echo $options['widget_5_bg'] ? $options['widget_5_bg'] : '#4CB849'; ?>" autocomplete="off"></label>
-					<label><?php _e( 'Text Color:', 'nano-progga' ); ?> <input type="text" class="np-color-item" id="txt-widget-5" name="np_settings[widget_5_text]" value="<?php echo $options['widget_5_text'] ? $options['widget_5_text'] : '#333333'; ?>" autocomplete="off"></label><br>
-					<br>
-				</div> <!-- /.np-two-third -->
-				<div class="np-one-third text-left">
-					<div class="widget-preview" id="widget-1-preview" style="background-color: <?php echo $options['widget_1_bg'] ? $options['widget_1_bg'] : '#049372'; ?>">
-						<div id="txt-widget-1-preview" style="color: <?php echo $options['widget_1_text'] ? $options['widget_1_text'] : '#ffffff'; ?>">
-							<h4 style="border-bottom-color: <?php echo $options['widget_1_text'] ? $options['widget_1_text'] : '#ffffff'; ?>">Widget Title 1</h4>
-							Widget texts with <a href="#">a link</a> for preview.
-						</div>
+				<div>
+					<p><?php
+					$posts_per_page = get_option('posts_per_page');
+					printf( __( "You can alter the placement of home page widgets by setting their individual values from below, and you can set places within %s", "nano-progga" ), $posts_per_page ); ?></p>
+					<div class="col-2">
+						<strong><label for="widget-1-pos"><?php _e( 'Home Widget 1: Position', 'nano-progga' ); ?></label></strong><br>
+						<select name="np_settings[widget_1]" id="widget-1-pos">
+							<option value="">---</option>
+							<?php for( $it = 1; $it <= $posts_per_page; $it++ ) :
+								echo '<option value="'. $it .'" '. selected( $it, $options['widget_1'], false ) .'>'. $it .'</option>';
+							endfor; ?>
+						</select>
 					</div>
-					<div class="widget-preview" id="widget-2-preview" style="background-color: <?php echo $options['widget_2_bg'] ? $options['widget_2_bg'] : '#F5C810'; ?>">
-						<div id="txt-widget-2-preview" style="color: <?php echo $options['widget_2_text'] ? $options['widget_2_text'] : '#333333'; ?>">
-							<h4 style="border-bottom-color: <?php echo $options['widget_2_text'] ? $options['widget_2_text'] : '#333333'; ?>">Widget Title 2</h4>
-							Widget texts with <a href="#">a link</a> for preview.
-						</div>
+					<div class="col-2">
+						<strong><label for="widget-2-pos"><?php _e( 'Home Widget 2: Position', 'nano-progga' ); ?></label></strong><br>
+						<select name="np_settings[widget_2]" id="widget-2-pos">
+							<option value="">---</option>
+							<?php for( $it = 1; $it <= $posts_per_page; $it++ ) :
+								echo '<option value="'. $it .'" '. selected( $it, $options['widget_2'], false ) .'>'. $it .'</option>';
+							endfor; ?>
+						</select>
 					</div>
-					<div class="widget-preview" id="widget-3-preview" style="background-color: <?php echo $options['widget_3_bg'] ? $options['widget_3_bg'] : '#38B4E5'; ?>">
-						<div id="txt-widget-3-preview" style="color: <?php echo $options['widget_3_text'] ? $options['widget_3_text'] : '#333333'; ?>">
-							<h4 style="border-bottom-color: <?php echo $options['widget_3_text'] ? $options['widget_3_text'] : '#333333'; ?>">Widget Title 3</h4>
-							Widget texts with <a href="#">a link</a> for preview.
-						</div>
+					<div class="col-2">
+						<strong><label for="widget-3-pos"><?php _e( 'Home Widget 3: Position', 'nano-progga' ); ?></label></strong><br>
+						<select name="np_settings[widget_3]" id="widget-3-pos">
+							<option value="">---</option>
+							<?php for( $it = 1; $it <= $posts_per_page; $it++ ) :
+								echo '<option value="'. $it .'" '. selected( $it, $options['widget_3'], false ) .'>'. $it .'</option>';
+							endfor; ?>
+						</select>
 					</div>
-					<div class="widget-preview" id="widget-4-preview" style="background-color: <?php echo $options['widget_4_bg'] ? $options['widget_4_bg'] : '#F8575A'; ?>">
-						<div id="txt-widget-4-preview" style="color: <?php echo $options['widget_4_text'] ? $options['widget_4_text'] : '#333333'; ?>">
-							<h4 style="border-bottom-color: <?php echo $options['widget_4_text'] ? $options['widget_4_text'] : '#333333'; ?>">Widget Title 4</h4>
-							Widget texts with <a href="#">a link</a> for preview.
-						</div>
+					<div class="col-2">
+						<strong><label for="widget-4-pos"><?php _e( 'Home Widget 4: Position', 'nano-progga' ); ?></label></strong><br>
+						<select name="np_settings[widget_4]" id="widget-4-pos">
+							<option value="">---</option>
+							<?php for( $it = 1; $it <= $posts_per_page; $it++ ) :
+								echo '<option value="'. $it .'" '. selected( $it, $options['widget_4'], false ) .'>'. $it .'</option>';
+							endfor; ?>
+						</select>
 					</div>
-					<div class="widget-preview" id="widget-5-preview" style="background-color: <?php echo $options['widget_5_bg'] ? $options['widget_5_bg'] : '#4CB849'; ?>">
-						<div id="txt-widget-5-preview" style="color: <?php echo $options['widget_5_text'] ? $options['widget_5_text'] : '#333333'; ?>">
-							<h4 style="border-bottom-color: <?php echo $options['widget_5_text'] ? $options['widget_5_text'] : '#333333'; ?>">Widget Title 5</h4>
-							Widget texts with <a href="#">a link</a> for preview.
-						</div>
+					<div class="col-2">
+						<strong><label for="widget-5-pos"><?php _e( 'Home Widget 5: Position', 'nano-progga' ); ?></label></strong><br>
+						<select name="np_settings[widget_5]" id="widget-5-pos">
+							<option value="">---</option>
+							<?php for( $it = 1; $it <= $posts_per_page; $it++ ) :
+								echo '<option value="'. $it .'" '. selected( $it, $options['widget_5'], false ) .'>'. $it .'</option>';
+							endfor; ?>
+						</select>
 					</div>
-				</div> <!-- /.np-one-third -->
-				<div class="clearfix"></div>
+					<div class="clearfix"></div>
+				</div>
 			</section> <!-- /.np-section home-widgets -->
 
 			<!-- CONTROL SOCIAL ICONS -->
@@ -305,6 +266,11 @@ function nano_progga_settings() {
 				<div class="clearfix"></div>
 			</section> <!-- /.np-section social -->
 
+			<!-- NOFOLLOW CONTENTS -->
+			<section class="np-section nofollow">
+				<h3><label><input id="np_settings[nofollow]" name="np_settings[nofollow]" type="checkbox" value="1" <?php checked( '1', $options['nofollow'] ); ?> /> <?php _e( 'NoFollow External Links<br><small>control whether to show <code>rel="nofollow"</code> in external links in post/page content</small>', 'nano-progga' ); ?></label></h3>
+			</section> <!-- /.np-section nofollow -->
+
 			<p class="submit">
 				<input type="submit" class="button-primary" value="<?php _e( 'Save Options', 'nano-progga' ); ?>" />
 			</p>
@@ -336,11 +302,19 @@ function np_settings_validate( $input ) {
 		$input['related_posts'] = null;
 	$input['related_posts']	= ( $input['related_posts'] == 1 ? 1 : 0 );
 
+	if ( ! isset( $input['widgets_in_pages'] ) )
+		$input['widgets_in_pages'] = null;
+	$input['widgets_in_pages']	= ( $input['widgets_in_pages'] == 1 ? 1 : 0 );
+
+	if ( ! isset( $input['nofollow'] ) )
+		$input['nofollow'] = null;
+	$input['nofollow']	= ( $input['nofollow'] == 1 ? 1 : 0 );
+
 	//array
 	$serieschoice 			= array( $input['serieschoice'] );
 
 	//textbox
-	$input['logo']		= wp_filter_post_kses( $input['logo'] );
+	$input['logo']			= wp_filter_post_kses( $input['logo'] );
 
 	$input['facebook']		= wp_filter_post_kses( $input['facebook'] );
 	$input['twitter']		= wp_filter_post_kses( $input['twitter'] );

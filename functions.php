@@ -131,29 +131,14 @@ add_action( 'after_setup_theme', 'nano_progga_content_width', 0 );
  * ------------------------------------------------------------------------------
  */
 function nano_progga_widgets_init() {
-	$options = get_option('np_settings');
-	$widget_1_bg = $options['widget_1_bg'] ? $options['widget_1_bg'] : '#049372';
-	$widget_1_txt = $options['widget_1_text'] ? $options['widget_1_text'] : '#fff';
-
-	$widget_2_bg = $options['widget_2_bg'] ? $options['widget_2_bg'] : '#F5C810';
-	$widget_2_txt = $options['widget_2_text'] ? $options['widget_2_text'] : '#333';
-
-	$widget_3_bg = $options['widget_3_bg'] ? $options['widget_3_bg'] : '#38B4E5';
-	$widget_3_txt = $options['widget_3_text'] ? $options['widget_3_text'] : '#333';
-
-	$widget_4_bg = $options['widget_4_bg'] ? $options['widget_4_bg'] : '#F8575A';
-	$widget_4_txt = $options['widget_4_text'] ? $options['widget_4_text'] : '#333';
-
-	$widget_5_bg = $options['widget_5_bg'] ? $options['widget_5_bg'] : '#4CB849';
-	$widget_5_txt = $options['widget_5_text'] ? $options['widget_5_text'] : '#333';
 
 	register_sidebar( array(
 		'name'          => esc_html__( 'Home Widget 1', 'nano-progga' ),
 		'id'            => 'home_widget_1',
 		'description'   => esc_html__( 'Appears on the home page within the grid', 'nano-progga' ),
-		'before_widget' => '<aside id="%1$s" class="grid-item widget-holder col-sm-4 %2$s"><div class="grid-widget home-widget-1" style="background-color: '. $widget_1_bg .'; color: '. $widget_1_txt .'">',
+		'before_widget' => '<aside id="%1$s" class="grid-item widget-holder col-sm-4 %2$s"><div class="grid-widget home-widget-1">',
 		'after_widget'  => '</div></aside>',
-		'before_title'  => '<h1 class="widget-title" style="border-bottom-color: '. $widget_1_txt .'">',
+		'before_title'  => '<h1 class="widget-title">',
 		'after_title'   => '</h1>',
 	) );
 
@@ -161,9 +146,9 @@ function nano_progga_widgets_init() {
 		'name'          => esc_html__( 'Home Widget 2', 'nano-progga' ),
 		'id'            => 'home_widget_2',
 		'description'   => esc_html__( 'Appears on the home page within the grid', 'nano-progga' ),
-		'before_widget' => '<aside id="%1$s" class="grid-item widget-holder col-sm-4 %2$s"><div class="grid-widget home-widget-2" style="background-color: '. $widget_2_bg .'; color: '. $widget_2_txt .'">',
+		'before_widget' => '<aside id="%1$s" class="grid-item widget-holder col-sm-4 %2$s"><div class="grid-widget home-widget-2">',
 		'after_widget'  => '</div></aside>',
-		'before_title'  => '<h1 class="widget-title" style="border-bottom-color: '. $widget_2_txt .'">',
+		'before_title'  => '<h1 class="widget-title">',
 		'after_title'   => '</h1>',
 	) );
 
@@ -171,9 +156,9 @@ function nano_progga_widgets_init() {
 		'name'          => esc_html__( 'Home Widget 3', 'nano-progga' ),
 		'id'            => 'home_widget_3',
 		'description'   => esc_html__( 'Appears on the home page within the grid', 'nano-progga' ),
-		'before_widget' => '<aside id="%1$s" class="grid-item widget-holder col-sm-4 %2$s"><div class="grid-widget home-widget-3" style="background-color: '. $widget_3_bg .'; color: '. $widget_3_txt .'">',
+		'before_widget' => '<aside id="%1$s" class="grid-item widget-holder col-sm-4 %2$s"><div class="grid-widget home-widget-3">',
 		'after_widget'  => '</div></aside>',
-		'before_title'  => '<h1 class="widget-title" style="border-bottom-color: '. $widget_3_txt .'">',
+		'before_title'  => '<h1 class="widget-title">',
 		'after_title'   => '</h1>',
 	) );
 
@@ -181,9 +166,9 @@ function nano_progga_widgets_init() {
 		'name'          => esc_html__( 'Home Widget 4', 'nano-progga' ),
 		'id'            => 'home_widget_4',
 		'description'   => esc_html__( 'Appears on the home page within the grid', 'nano-progga' ),
-		'before_widget' => '<aside id="%1$s" class="grid-item widget-holder col-sm-4 %2$s"><div class="grid-widget home-widget-4" style="background-color: '. $widget_4_bg .'; color: '. $widget_4_txt .'">',
+		'before_widget' => '<aside id="%1$s" class="grid-item widget-holder col-sm-4 %2$s"><div class="grid-widget home-widget-4">',
 		'after_widget'  => '</div></aside>',
-		'before_title'  => '<h1 class="widget-title" style="border-bottom-color: '. $widget_4_txt .'">',
+		'before_title'  => '<h1 class="widget-title">',
 		'after_title'   => '</h1>',
 	) );
 
@@ -191,9 +176,9 @@ function nano_progga_widgets_init() {
 		'name'          => esc_html__( 'Home Widget 5', 'nano-progga' ),
 		'id'            => 'home_widget_5',
 		'description'   => esc_html__( 'Appears on the home page within the grid', 'nano-progga' ),
-		'before_widget' => '<aside id="%1$s" class="grid-item widget-holder col-sm-4 %2$s"><div class="grid-widget home-widget-5" style="background-color: '. $widget_5_bg .'; color: '. $widget_5_txt .'">',
+		'before_widget' => '<aside id="%1$s" class="grid-item widget-holder col-sm-4 %2$s"><div class="grid-widget home-widget-5">',
 		'after_widget'  => '</div></aside>',
-		'before_title'  => '<h1 class="widget-title" style="border-bottom-color: '. $widget_5_txt .'">',
+		'before_title'  => '<h1 class="widget-title">',
 		'after_title'   => '</h1>',
 	) );
 
@@ -235,7 +220,7 @@ add_action( 'widgets_init', 'nano_progga_widgets_init' );
  */
 function nano_progga_scripts() {
 	wp_enqueue_style( 'bootstrap-styles', get_template_directory_uri() .'/css/bootstrap.min.css' );
-	wp_enqueue_style( 'bootstrap-map', get_template_directory_uri() .'/css/bootstrap.css.map' );
+	//wp_enqueue_style( 'bootstrap-map', get_template_directory_uri() .'/css/bootstrap.css.map' );
 	wp_enqueue_style( 'nano-progga-style', get_stylesheet_uri() );
 
 	wp_enqueue_script( 'modernizr-js', get_template_directory_uri() .'/js/modernizr-2.8.3.min.js', array(), '2.8.3' ); //in head
@@ -247,6 +232,8 @@ function nano_progga_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )
 		wp_enqueue_script( 'comment-reply' );
 
+	wp_enqueue_script( 'jQuery-matchHeight-js', get_template_directory_uri() .'/js/jquery.matchHeight.min.js', array('jquery'), '0.6.0', true );
+	
 	wp_enqueue_script( 'nano-progga-js', get_template_directory_uri() .'/js/nano-progga.min.js', array('jquery'), THEME_VERSION, true );
 
 	//passing PHP var to JS
@@ -561,19 +548,55 @@ function nano_progga_get_related_posts( $post_id = null, $numberposts = 3 ) {
 	} //endif( is_single() )
 }
 
-function alter_brightness($colourstr, $steps) {
-	$colourstr = str_replace('#','',$colourstr);
-	$rhex = substr($colourstr,0,2);
-	$ghex = substr($colourstr,2,2);
-	$bhex = substr($colourstr,4,2);
 
-	$r = hexdec($rhex);
-	$g = hexdec($ghex);
-	$b = hexdec($bhex);
 
-	$r = max(0,min(255,$r + $steps));
-	$g = max(0,min(255,$g + $steps));  
-	$b = max(0,min(255,$b + $steps));
+/**
+ * Nofollow External Links.
+ * Modifying post_content where <a rel="nofollow"> is added to all the external links only.
+ *
+ * @author  Christine Cooper
+ * @link http://wordpress.stackexchange.com/a/169029
+ * 
+ * @param  string $content post_content.
+ * @return string          post_content modified.
+ */
+function nano_progga_nofollow_enternal_links( $content ) {
 
-	return '#'.dechex($r).dechex($g).dechex($b);
+    $regexp = "<a\s[^>]*href=(\"??)([^\" >]*?)\\1[^>]*>";
+    if(preg_match_all("/$regexp/siU", $content, $matches, PREG_SET_ORDER)) {
+        if( !empty($matches) ) {
+
+            $srcUrl = get_option('home');
+            for ($i=0; $i < count($matches); $i++)
+            {
+
+                $tag = $matches[$i][0];
+                $tag2 = $matches[$i][0];
+                $url = $matches[$i][0];
+
+                $noFollow = '';
+
+                $pattern = '/rel\s*=\s*"\s*[n|d]ofollow\s*"/';
+                preg_match($pattern, $tag2, $match, PREG_OFFSET_CAPTURE);
+                if( count($match) < 1 )
+                    $noFollow .= ' rel="nofollow" ';
+
+                $pos = strpos($url,$srcUrl);
+                if ($pos === false) {
+                    $tag = rtrim ($tag,'>');
+                    $tag .= $noFollow.'>';
+                    $content = str_replace($tag2,$tag,$content);
+                }
+            }
+        }
+    }
+
+    $content = str_replace(']]>', ']]&gt;', $content);
+    return $content;
+
 }
+
+$options = get_option('np_settings');
+
+if( $options['nofollow'] == '1' )
+	add_filter( 'the_content', 'nano_progga_nofollow_enternal_links');
