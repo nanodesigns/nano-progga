@@ -45,7 +45,7 @@
 						$option = get_option('np_settings');
                         if( $option['logo'] ): ?>
 	                        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="navbar-brand" rel="home">
-	                        	<img src="<?php echo get_template_directory_uri(); ?>/images/logo-nano-progga.jpg" alt="<?php bloginfo( 'name' ); ?>" width="40" height="40">
+	                        	<img src="<?php echo $option['logo']; ?>" alt="<?php bloginfo( 'name' ); ?>" width="40" height="40">
 	                        </a>
                     	<?php endif; ?>
                     </div> <!-- /.navbar-header -->

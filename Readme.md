@@ -1,64 +1,131 @@
-[![Build Status](https://travis-ci.org/Automattic/_s.svg?branch=master)](https://travis-ci.org/Automattic/_s)
+<img src="http://nanoprogga.nanodesignsbd.com/images/slider.jpg" alt="nano progga - search engine optimized blog framework, especially for blogging in Bengali">
 
 nano progga
 ===========
 
-Contributors: Mayeenul Islam (@mayeenulislam)
-Thanks to: automattic
-Tags: white, custom-header, threaded-comments, sticky-post, translation-ready, microformats, custom-menu, two-columns, three-columns, gray, light, right-sidebar, left-sidebar, fluid-layout, fixed-layout, featured-images
+**Contributors**<br>
+[Mayeenul Islam](http://nanodesignsbd.com/mayeenulislam/) (@mayeenulislam)
 
-Requires at least: 4.0
-Tested up to: 4.2.2
-Stable tag: 3.0
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+**Requires at least:** 4.0<br>
+**Tested up to:** 4.3<br>
+**Stable tag:** 3.0<br>
 
-###INTRODUCTION
+###Introduction
 
-nano progga is a search engine optimized blog framework, especially designed for blogging in Bengali (Bānglā) using WordPress, based on underscores starter theme.
+nano progga is a search engine optimized blog framework, especially designed for blogging in Bengali (*Bānglā*) using WordPress, based on underscores starter theme.
 
-###DESCRIPTION
+###Description
 
-nano progga is a search engine optimized blog framework, especially designed for blogging in Bengali (Bānglā) using WordPress. It supports custom header, custom menu, sidebar widget area (one specifically for archive pages), and unlimited plugins. It is optimized specially for Bengali (Bānglā) blogging, with speed and less weight. But the theme is completely translation-ready and can be translated into any locals.
+nano progga is a search engine optimized blog framework, especially designed for blogging in Bengali (*Bānglā*) using WordPress. It supports custom header, custom menu, sidebar widget area (one specifically for archive pages), and unlimited plugins. It is optimized specially for Bengali (*Bānglā*) blogging, with speed and less weight. But the theme is completely translation-ready and can be translated into any locals.
 
-nano progga theme is specially made for blogging in Bengali (Bānglā). A complete responsive theme. With sticky post facility user can stick a post or a couple of posts at the top of all the posts.
+nano progga theme is specially made for blogging in Bengali (*Bānglā*). A complete responsive theme. With sticky post facility user can stick a post or a couple of posts at the top of all the posts.
 
-###LICENSES
+###Licenses
 
-__CODE LICENSE__
-I always respect my first WordPress theme teacher Ian Stewart (http://themeshaper.com/author/superuser/) for his excellent brief on my first theme. I then tried many and learn more with the help of WordPress developers at http://wordpress.stackexchange.com. But with their assistance and guidance, the theme was completely developed by nanodesigns
+####Code License
+I always respect my first WordPress theme teacher [Ian Stewart](http://themeshaper.com/author/superuser/) for his excellent brief on my first theme. I then tried many and learn more with the help of WordPress developers at [WordPress Development community](http://wordpress.stackexchange.com). But with their assistance and guidance, the theme was completely developed by **nano**designs
 
-__DESIGN LICENSE__
-The layout design was totally made by nanodesigns. The license for the design is as same as the theme itself.
+Third party libraries are used:
 
-__FONT LICENSE__
-The nano progga theme used two fonts for the layout: (1) Siyam Rupali, and (2) Font Awesome for icon fonts. The fonts are embeded with the theme so that they will not be loaded from any third party resources.
+* Bootstrap 3.3.4
+* _s Starter Theme
+* `wp_bootstrap_navwalker` class by *Edward McIntyre*
+* Modernizr
+* Masonry
 
-* Siyam Rupali is an Open Source Font available in Github.com (https://github.com/potasiyam/Siyam-Rupali‎)
-* Font Awesome is another Open Source Icon Font available in Github.com (fortawesome.github.io/Font-Awesome)
+####Design License
+The layout design was totally made by **nano**designs. The license for the design is as same as the theme itself.
 
-###INSTALLATION
+####Font License
+The nano progga theme used Siyam Rupali for Bengali. The font is embeded with the theme so it won't load from any third party sources.
+
+* Siyam Rupali is an Open Source Font [available in Github](https://github.com/potasiyam/Siyam-Rupali‎)
+
+nano progga icon font is generated combining various fonts using online app: [Fontastic.me](http://fontastic.me/).
+
+###Installation
 	
-1. In your admin panel, go to Appearance > Themes and click the Add New button.
-2. Click Upload and Choose File, then select the theme's .zip file. Click Install Now.
-3. Click Activate to use your new theme right away.
+1. In your admin panel, go to `Appearance` &raquo; `Themes` and click the <kbd>Add New</kbd> button.
+2. Click `Upload` and Choose File, then select the theme's `.zip` file. Click Install Now.
+3. Click <kbd>Activate</kbd> to use your new theme right away.
 
-###CHANGELOG
+###Till to come
+* Print style
+* Infinite Scroll support
+* Featured Series Slider
 
+###Change log
+####3.0
+* A huge leap in the design
+* Initiated Bootstrap 3.3.4
+* Based on underscores (`_s`) starter theme by Automattic
+* Modernizr
+* Post Series implemented in a featured way by fixing its bugs
+* Site image/logo
+* Code revised to secure most
+* Option to add `rel="nofollow"` to external links without plugins
+* Option to show Related Posts below post content
+* 3 Column index page with colorful widgets within
+* Masonry grid on index page
+* Social Accounts' links are taken to the bottom
+* Cleaner and larger typography
+* Robust featured image
+* Fallback featured image
+* Beautifully rendered text area to ensure easy readability
+* Breadcrumbs added
+* "Go to Top" button added
+* Own icon font using Fontastic.me
+* Support for post formats reduced to aside, image, video, quote, link
+* New 404 template
+* Cambria Font is deducted
+* TinyNav.js is deducted
+* FontAwesome Icons are deducted to deduct site load
+* Footer menu is deprecated
+* nanodesigns shortcodes library added
+* HTML5 support to search form, comment form, comment list, gallery and captions
+* Page Templates added - Blog, Full Width page
+* Custom header support is no longer available
+* Basic Customizer support
 
+####2.2.1
+* Comments Template visibility fixed
+* Fixed some minor bugs
+* Support to post series
 
-###CREDITS
+####2.1
+* Post Formats Support (aside, audio, chat, gallery, image, link, quote, status, video)
+* Organizing files
+
+####1.0
+* Basic theme with support to Bengali
+* Sprite-based icon implementations
+* TinyNav.js for mobile navigation
+* Microformats
+* Translation-ready, and available Bengali translation
+* Fluid layout
+* Fixed layout
+* Two Custom Menu areas
+* Sticky Post
+* Threaded Comments
+* Custom header
+* Right sidebar layout
+* Left and Right sidebar layout for archive pages
+
+###Development
+Developers are requested to consult the `__development` directory and the directions mentioned in `__development/directions.md`.
+
+###Credits
 
 * [Based on Underscores](http://underscores.me/), (C) 2012-2015 Automattic, Inc., [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)
 * [Bootstrap](http://getbootstrap.com/), (C) 2012-2015 Nicolas Gallagher and Jonathan Neal, [MIT](http://opensource.org/licenses/MIT)
 
-All the credits goes to the God - ALLAH, the most benevolent, the most forgiving. Thanks to Ian Stewart, my theme guru. And obviously my thanks goes to the developers and mentors at http://wordpress.stackexchange.com community. Thanks to my wife Hafsa Islam for her support even I's busy with this theme development for so long period. :) (Thanks Hafsa! I love you.)
+All the credits goes to the God - ALLAH, the most benevolent, the most forgiving. Thanks to Ian Stewart, my theme guru. And obviously my thanks goes to the developers and mentors at [WordPress Development Community](http://wordpress.stackexchange.com). Thanks to my wife Hafsa for her support even I's busy with this theme development for so long. :)
 
 
 ______________________________________
-nanodesigns<br>
-[http://nanodesignsbd.com/](http://nanodesignsbd.com/)
+**nano**designs<br>
+*web technology with better designs*<br>
+[http://nanodesignsbd.com/](nanodesignsbd.com)
 
-
-We thee have not taken the world from our ancestors by law or will, but as a lend from our descendants<br>
-Love the Nature
+---
+We thee have not taken the world from our ancestors by law or will, but as a lend from our descendants &mdash; Respect Nature

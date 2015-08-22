@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nano progga\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-08 09:54+0600\n"
-"PO-Revision-Date: 2015-08-08 17:19+0600\n"
+"POT-Creation-Date: 2015-08-09 08:28+0600\n"
+"PO-Revision-Date: 2015-08-22 23:20+0600\n"
 "Last-Translator: Mayeenul Islam <wz.islam@gmail.com>\n"
 "Language-Team: nanodesigns <info@nanodesignsbd.com>\n"
 "Language: bn_BD\n"
@@ -14,6 +14,8 @@ msgstr ""
 "esc_attr__;esc_attr_e;esc_attr_x:1,2c;_ex;__ngettext;__ngettext_noop;_n_noop;_c;_nc;_nx_noop\n"
 "X-Poedit-Basepath: .\n"
 "X-Generator: Poedit 1.8.2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../404.php:26
@@ -29,8 +31,8 @@ msgid "Database Queries"
 msgstr "ডাটাবেজ কুয়েরি"
 
 #: ../admin/nano-progga-settings.php:100 ../admin/nano-progga-settings.php:101
-msgid "[np] Settings"
-msgstr "[np] সেটিংসমূহ"
+msgid "Options"
+msgstr "অপশনসমূহ"
 
 #: ../admin/nano-progga-settings.php:124
 msgid "&mdash; Settings"
@@ -161,7 +163,15 @@ msgstr "টাম্বলার"
 msgid "YouTube"
 msgstr "ইউটিউব"
 
-#: ../admin/nano-progga-settings.php:270
+#: ../admin/nano-progga-settings.php:271
+msgid ""
+"NoFollow External Links<br><small>control whether to show <code>rel=\"nofollow\"</code> in external "
+"links in post/page content</small>"
+msgstr ""
+"বহির্গামী লিংকগুলোকে noFollow করুন<br><small>প্রকাশনা/পাতার বিষয়বস্তুর মধ্যকার বহির্গামী লিংকগুলোকে "
+"<code>rel=\"nofollow\"</code> করবেন কিনা নিয়ন্ত্রণ করুন</small>"
+
+#: ../admin/nano-progga-settings.php:275
 msgid "Save Options"
 msgstr "সংরক্ষণ করুন"
 
@@ -297,68 +307,68 @@ msgstr "ফাটার সাইডবার"
 msgid "Appears on the footer portion of the site"
 msgstr "সাইটের ফুটার অংশে দেখা যাবে"
 
-#: ../functions.php:288
+#: ../functions.php:290
 msgid "Home"
 msgstr "নীড়পাতা"
 
-#: ../functions.php:289
+#: ../functions.php:291
 #, php-format
 msgid "Category: \"%s\""
 msgstr "বিভাগ: \"%s\""
 
-#: ../functions.php:290
+#: ../functions.php:292
 #, php-format
 msgid "Archive: \"%s\""
 msgstr "সংকলন: \"%s\""
 
-#: ../functions.php:291
+#: ../functions.php:293
 #, php-format
 msgid "Search Results: \"%s\""
 msgstr "অনুসন্ধানের ফলাফল: \"%s\""
 
-#: ../functions.php:292
+#: ../functions.php:294
 #, php-format
 msgid "Tagged: \"%s\""
 msgstr "বিষয়বস্তু: \"%s\""
 
-#: ../functions.php:293 ../inc/template-tags.php:218
+#: ../functions.php:295 ../inc/template-tags.php:218
 #, php-format
 msgid "Author: %s"
 msgstr "লেখক: %s"
 
-#: ../functions.php:294
+#: ../functions.php:296
 msgid "Error 404"
 msgstr "ত্রুটি ৪০৪"
 
-#: ../functions.php:411
+#: ../functions.php:413
 msgid "Page"
 msgstr "পাতা"
 
-#: ../functions.php:427
+#: ../functions.php:429
 msgid "Facebook Profile URL [np]"
 msgstr "ফেসবুক প্রোফাইল ইউআরএল [np]"
 
-#: ../functions.php:428
+#: ../functions.php:430
 msgid "Twitter URL [np]"
 msgstr "টুইটার ইউআরএল [np]"
 
-#: ../functions.php:429
+#: ../functions.php:431
 msgid "Google+ Profile URL [np]"
 msgstr "গুগল+ প্রোফাইল ইউআরএল [np]"
 
-#: ../functions.php:430
+#: ../functions.php:432
 msgid "LinkedIn URL [np]"
 msgstr "লিংকেডইন ইউআরএল [np]"
 
-#: ../functions.php:431
+#: ../functions.php:433
 msgid "Pinterest URL [np]"
 msgstr "পিন্টারেস্ট ইউআরএল [np]"
 
-#: ../functions.php:432
+#: ../functions.php:434
 msgid "Tumblr URL [np]"
 msgstr "টাম্বলার ইউআরএল [np]"
 
-#: ../functions.php:455
+#: ../functions.php:457
 msgid "Related Posts"
 msgstr "সম্পূরক প্রকাশনা"
 
@@ -653,6 +663,9 @@ msgstr "বিস্তারিত"
 #, php-format
 msgid "Continue reading %s <span class=\"meta-nav\">&rarr;</span>"
 msgstr "বিস্তারিত %s <span class=\"meta-nav\">&rarr;</span>"
+
+#~ msgid "[np] Settings"
+#~ msgstr "[np] সেটিংসমূহ"
 
 #~ msgid ""
 #~ "Show widgets in paginated pages too <small>home widgets are visible only on the first paginated "

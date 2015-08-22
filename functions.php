@@ -16,9 +16,8 @@ define( 'THEME_VERSION', '3.0');
  * nanodesigns
  * @author  Mayeenul Islam <wz.islam@gmail.com>
  */
-if( WP_DEBUG === true ) {
-	require get_template_directory() .'/__development/development.php';	
-}
+if( WP_DEBUG === true )
+	require get_template_directory() .'/__development/development.php';
 
 
 /**
@@ -257,7 +256,6 @@ require get_template_directory() . '/inc/custom-header.php';		//custom header
 require get_template_directory() . '/inc/template-tags.php';		//template tags
 require get_template_directory() . '/inc/extras.php';				//theme extras
 require get_template_directory() . '/inc/customizer.php';			//WP Customizer API
-require get_template_directory() . '/inc/jetpack.php';				//Jetpack compatibility
 require get_template_directory() . '/inc/functions-series.php';		//Posts Series
 require get_template_directory() . '/inc/framework/helpers.php';	//Helper Functions
 require get_template_directory() . '/inc/framework/shortcodes.php';	//Shortcodes
