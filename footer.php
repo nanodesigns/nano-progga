@@ -34,21 +34,21 @@
 <!-- SOCIAL LINKS ON THE BOTTOM -->
 <div class="social-footer-bar">
 	<?php
-	$option = get_option('np_settings');
-	
-	$facebook	= $option['facebook'];
-	$twitter	= $option['twitter'];
-	$linkedin	= $option['linkedin'];
-	$gplus		= $option['gplus'];
-	$flickr		= $option['flickr'];
-	$pinterest	= $option['pinterest'];
-	$tumblr		= $option['tumblr'];
-	$youtube	= $option['youtube'];
+	//dynamic values from the Theme Options page.	
+	$rss		= cs_get_option( 'rss' );
+	$facebook	= cs_get_option( 'facebook' );
+	$twitter	= cs_get_option( 'twitter' );
+	$linkedin	= cs_get_option( 'linkedin' );
+	$gplus		= cs_get_option( 'googleplus' );
+	$flickr		= cs_get_option( 'flickr' );
+	$pinterest	= cs_get_option( 'pinterest' );
+	$tumblr		= cs_get_option( 'tumblr' );
+	$youtube	= cs_get_option( 'youtube' );
 	?>
 	<div class="social-handle"><span class="np-toggle"></span></div>
 	<div class="socials">
-	    <a href="<?php bloginfo('rss_url'); ?>" class="social-icons s-rss" target="_blank"><span class="np-rss"></span></a>
 	    <?php
+	    echo $rss ? '<a href="'. $rss .'" class="social-icons s-rss" target="_blank"><span class="np-rss"></span></a>' : '';
 	    echo $facebook ? '<a href="'. $facebook .'" class="social-icons s-facebook" target="_blank"><span class="np-facebook"></span></a>' : '';
 	    echo $twitter ? '<a href="'. $twitter .'" class="social-icons s-twitter" target="_blank"><span class="np-twitter"></span></a>' : '';
 	    echo $linkedin ? '<a href="'. $linkedin .'" class="social-icons s-linkedin" target="_blank"><span class="np-linkedin"></span></a>' : '';

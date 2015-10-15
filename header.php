@@ -42,8 +42,7 @@
                             <span class="icon-bar"></span>
                         </button>
 						<?php
-						$option = get_option('np_settings');
-                        if( $option['logo'] ): ?>
+                        if( $cs_get_option('logo') ): ?>
 	                        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="navbar-brand" rel="home">
 	                        	<img src="<?php echo $option['logo']; ?>" alt="<?php bloginfo( 'name' ); ?>" width="40" height="40">
 	                        </a>

@@ -6,27 +6,34 @@
  */
 
 /**
- * Set some basic globals
+ * Set some basic settings
+ * --------------------------------------------------------------------------
  */
-define( 'PREFIX', 'np_');
 define( 'THEME_VERSION', '3.0');
+$project_prefix = 'np_';
 
 /**
  * Enable only when developing the site.
  * nanodesigns
  * @author  Mayeenul Islam <wz.islam@gmail.com>
+ * --------------------------------------------------------------------------
  */
-if( WP_DEBUG === true )
-	require get_template_directory() .'/__development/development.php';
+if( WP_DEBUG )
+	require get_template_directory() .'/__development/__development.php';
 
+/**
+ * Codestar Admin Framework.
+ * @since  3.0.0
+ * --------------------------------------------------------------------------
+ */
+require_once dirname( __FILE__ ) .'/libs/cs-framework/cs-framework.php';
 
 /**
  * Bengali Support to the Theme.
- * @package nano progga
+ * Controlled from the Theme Options page.
+ * --------------------------------------------------------------------------
  */
-$option = get_option( 'np_settings' ); //retrieve theme options settings
-
-if( $option['bangla'] == 1 )
+if( cs_get_option( 'bangla' ) )
 	require get_template_directory() . '/inc/functions-bangla.php';
 
 
@@ -62,8 +69,6 @@ function nano_progga_setup() {
 
 	/*
 	 * Enable support for Post Thumbnails on posts and pages.
-	 *
-	 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
 	 */
 	add_theme_support( 'post-thumbnails' );
 
@@ -107,6 +112,7 @@ add_action( 'after_setup_theme', 'nano_progga_setup' );
  * Bootstrap Nav Walker Class
  * @author  Edward McIntyre
  * @link https://github.com/twittem/wp-bootstrap-navwalker
+ * --------------------------------------------------------------------------
  */
 require get_template_directory() .'/libs/wp-bootstrap-navwalker.php';
 
@@ -125,8 +131,6 @@ add_action( 'after_setup_theme', 'nano_progga_content_width', 0 );
 
 /**
  * Register widget area.
- *
- * @link http://codex.wordpress.org/Function_Reference/register_sidebar
  * ------------------------------------------------------------------------------
  */
 function nano_progga_widgets_init() {
@@ -219,19 +223,19 @@ add_action( 'widgets_init', 'nano_progga_widgets_init' );
  */
 function nano_progga_scripts() {
 	wp_enqueue_style( 'bootstrap-styles', get_template_directory_uri() .'/css/bootstrap.min.css' );
-	//wp_enqueue_style( 'bootstrap-map', get_template_directory_uri() .'/css/bootstrap.css.map' );
 	wp_enqueue_style( 'nano-progga-style', get_stylesheet_uri() );
 
 	wp_enqueue_script( 'modernizr-js', get_template_directory_uri() .'/js/modernizr-2.8.3.min.js', array(), '2.8.3' ); //in head
 	wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() .'/js/bootstrap.min.js', array('jquery'), '3.3.4', true );
-	wp_enqueue_script( 'nano-progga-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
-	if( is_home() || is_page_template('page-templates/blog.php') )
+
+	if( is_home() || is_page_template('page-templates/blog.php') ) {
+		wp_enqueue_script( 'imagesLoaded-js', get_template_directory_uri() .'/js/imagesloaded.pkgd.min.js', array('jquery'), '3.1.8', true );
 		wp_enqueue_script( 'masonry-grid-js', get_template_directory_uri() .'/js/masonry.pkgd.min.js', array('jquery'), '3.3.1', true );
+		wp_enqueue_script( 'jQuery-matchHeight-js', get_template_directory_uri() .'/js/jquery.matchHeight.min.js', array('jquery'), '0.6.0', true );
+	}
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )
 		wp_enqueue_script( 'comment-reply' );
-
-	wp_enqueue_script( 'jQuery-matchHeight-js', get_template_directory_uri() .'/js/jquery.matchHeight.min.js', array('jquery'), '0.6.0', true );
 	
 	wp_enqueue_script( 'nano-progga-js', get_template_directory_uri() .'/js/nano-progga.min.js', array('jquery'), THEME_VERSION, true );
 
@@ -260,15 +264,15 @@ require get_template_directory() . '/inc/functions-series.php';		//Posts Series
 require get_template_directory() . '/inc/framework/helpers.php';	//Helper Functions
 require get_template_directory() . '/inc/framework/shortcodes.php';	//Shortcodes
 
-// Admin Panel Options
+// Theme Options Page (Filters on the Codestar Framework)
 require get_template_directory() . '/admin/nano-progga-settings.php';
 
 
 /**
- * The excerpt filters
- * @param  (string) $more
- * @return (string)       ... instead of [...]
- * ------------------------------------------------------------------------------
+ * The excerpt filters.
+ * @param  string $more Default string [...]
+ * @return string       Modified string ...
+ * --------------------------------------------------------------------------
  */
 function nano_progga_excerpt_more( $more ) {
     return '...';
@@ -277,11 +281,12 @@ add_filter( 'excerpt_more', 'nano_progga_excerpt_more' );
 
 
 /**
- * Dimox Breadcrumbs
- * http://dimox.net/wordpress-breadcrumbs-without-a-plugin/
- * Since ver 1.0
- * Add this to any template file by calling nano_progga_breadcrumbs()
- * Changes: MC added taxonomy support
+ * nano progga Breadcrumbs.
+ * Based on Dimox Breadcrumbs.
+ * @link http://dimox.net/wordpress-breadcrumbs-without-a-plugin/
+ *
+ * @since 3.0.0
+ * --------------------------------------------------------------------------
  */
 function nano_progga_breadcrumbs(){
   	/* === OPTIONS === */
@@ -301,7 +306,7 @@ function nano_progga_breadcrumbs(){
 	/* === END OF OPTIONS === */
 
 	global $post;
-	$homeLink = get_bloginfo('url') . '/';
+	$homeLink = home_url() .'/';
 	$linkBefore = '<span typeof="v:Breadcrumb">';
 	$linkAfter = '</span>';
 	$linkAttr = ' rel="v:url" property="v:title"';
@@ -422,6 +427,7 @@ function nano_progga_breadcrumbs(){
  * Show user meta fields.
  * @param  array $methods default user contact methods.
  * @return array          nano progga contact methods.
+ * --------------------------------------------------------------------------
  */
 function nano_progga_author_meta_fields( $methods ) {
     $methods['nano_facebook']		= __('Facebook Profile URL [np]', 'nano-progga');
@@ -433,42 +439,90 @@ function nano_progga_author_meta_fields( $methods ) {
 
     return $methods;
 }
-if( $option['author_bio'] == 1 )
+if( cs_get_option('author_bio') )
 	add_filter( 'user_contactmethods', 'nano_progga_author_meta_fields' );
 
 
 /**
- * Get Related Posts
+ * Get Related Posts.
+ * Only on single.php.
  * @param  integer  $post_id
  * @param  integer $numberposts default is set to 3
- * @return void
  * --------------------------------------------------------------------------
  */
 function nano_progga_get_related_posts( $post_id = null, $numberposts = 3 ) {
-	if( is_single() ) {
+	if( !is_single() )
+		return;
 
-		$post_id = ( null === $post_id ) ? get_the_ID() : $post_id;
+	$post_id = ( null === $post_id ) ? get_the_ID() : $post_id;
 
-		$total_fetched = 0;
+	$total_fetched = 0;
 
-		echo '<div class="related-posts">';
-			echo '<h3 class="page-title inner-title"><span>'. __( 'Related Posts', 'nano-progga' ) .'</span></h3>';
-			echo '<div class="row">';
+	echo '<div class="related-posts">';
+		echo '<h3 class="page-title inner-title"><span>'. __( 'Related Posts', 'nano-progga' ) .'</span></h3>';
+		echo '<div class="row">';
 
-			$categories = wp_get_post_categories( $post_id );
+		$categories = wp_get_post_categories( $post_id );
+	    $args = array(
+    		'post_type' 			=> 'post',
+    		'post_status'			=> 'publish',
+    		'posts_per_page'		=> $numberposts, //default 3
+    		'post__not_in'			=> array( $post_id ),
+    		'orderby'				=> 'rand',
+    		'category__in'			=> $categories,
+    		'ignore_sticky_posts'	=> 1
+    	);
+		$related_posts_per_categories = new WP_Query( $args );
+
+		while( $related_posts_per_categories->have_posts() ) :
+			$related_posts_per_categories->the_post(); ?>
+
+			<div class="col-xs-4 related-post-col">
+				<div class="related-post related-post-<?php the_ID(); ?>">
+					<?php if( has_post_thumbnail() ) : ?>
+						<div class="featured-image">
+							<a href="<?php the_permalink(); ?>">
+								<?php the_post_thumbnail(); ?>
+							</a>
+						</div>
+						<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+					<?php else : ?>
+						<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+						<div class="entry-excerpt"><?php echo wp_trim_words(get_the_excerpt(), 10); ?></div>
+					<?php endif; ?>
+				</div>
+			</div> <!-- /.col-xs-4 related-post-col -->
+			
+			<?php
+			$total_fetched++; //update total fetched count on each found posts
+
+		endwhile;
+		wp_reset_postdata();
+
+
+		//alternative if necessary
+		if( $total_fetched < $numberposts ) {
+			$get_total = $numberposts - $total_fetched;
+
+			$tags = wp_get_post_tags( $post_id );
+			$tag_ids = array();
+			foreach( $tags as $indv_tag ) :
+				$tag_ids[] = $indv_tag->term_id;
+			endforeach;
+
 		    $args = array(
-	    		'post_type' 			=> 'post',
-	    		'post_status'			=> 'publish',
-	    		'posts_per_page'		=> $numberposts, //default 3
-	    		'post__not_in'			=> array( $post_id ),
-	    		'orderby'				=> 'rand',
-	    		'category__in'			=> $categories,
-	    		'ignore_sticky_posts'	=> 1
-	    	);
-			$related_posts_per_categories = new WP_Query( $args );
+		    		'post_type' 			=> 'post',
+		    		'post_status'			=> 'publish',
+		    		'posts_per_page'		=> $get_total, //only the remaining
+		    		'post__not_in'			=> array( $post_id ),
+		    		'orderby'				=> 'rand',
+		    		'tag__in'				=> $tag_ids,
+		    		'ignore_sticky_posts'	=> 1
+		    	);
+			$related_posts_per_tags = new WP_Query( $args );
 
-			while( $related_posts_per_categories->have_posts() ) :
-				$related_posts_per_categories->the_post(); ?>
+			while( $related_posts_per_tags->have_posts() ) :
+				$related_posts_per_tags->the_post(); ?>
 
 				<div class="col-xs-4 related-post-col">
 					<div class="related-post related-post-<?php the_ID(); ?>">
@@ -485,65 +539,16 @@ function nano_progga_get_related_posts( $post_id = null, $numberposts = 3 ) {
 						<?php endif; ?>
 					</div>
 				</div> <!-- /.col-xs-4 related-post-col -->
-				
+
 				<?php
 				$total_fetched++; //update total fetched count on each found posts
 
 			endwhile;
 			wp_reset_postdata();
+		}
 
-
-			//alternative if necessary
-			if( $total_fetched < $numberposts ) {
-				$get_total = $numberposts - $total_fetched;
-
-				$tags = wp_get_post_tags( $post_id );
-				$tag_ids = array();
-				foreach( $tags as $indv_tag ) :
-					$tag_ids[] = $indv_tag->term_id;
-				endforeach;
-
-			    $args = array(
-			    		'post_type' 			=> 'post',
-			    		'post_status'			=> 'publish',
-			    		'posts_per_page'		=> $get_total, //only the remaining
-			    		'post__not_in'			=> array( $post_id ),
-			    		'orderby'				=> 'rand',
-			    		'tag__in'				=> $tag_ids,
-			    		'ignore_sticky_posts'	=> 1
-			    	);
-				$related_posts_per_tags = new WP_Query( $args );
-
-				while( $related_posts_per_tags->have_posts() ) :
-					$related_posts_per_tags->the_post(); ?>
-
-					<div class="col-xs-4 related-post-col">
-						<div class="related-post related-post-<?php the_ID(); ?>">
-							<?php if( has_post_thumbnail() ) : ?>
-								<div class="featured-image">
-									<a href="<?php the_permalink(); ?>">
-										<?php the_post_thumbnail(); ?>
-									</a>
-								</div>
-								<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
-							<?php else : ?>
-								<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
-								<div class="entry-excerpt"><?php echo wp_trim_words(get_the_excerpt(), 10); ?></div>
-							<?php endif; ?>
-						</div>
-					</div> <!-- /.col-xs-4 related-post-col -->
-
-					<?php
-					$total_fetched++; //update total fetched count on each found posts
-
-				endwhile;
-				wp_reset_postdata();
-			}
-
-			echo '</div> <!-- .row -->';
-		echo '</div> <!-- .related-posts -->';
-
-	} //endif( is_single() )
+		echo '</div> <!-- .row -->';
+	echo '</div> <!-- .related-posts -->';
 }
 
 
@@ -557,6 +562,7 @@ function nano_progga_get_related_posts( $post_id = null, $numberposts = 3 ) {
  * 
  * @param  string $content post_content.
  * @return string          post_content modified.
+ * --------------------------------------------------------------------------
  */
 function nano_progga_nofollow_enternal_links( $content ) {
 
@@ -564,7 +570,7 @@ function nano_progga_nofollow_enternal_links( $content ) {
     if(preg_match_all("/$regexp/siU", $content, $matches, PREG_SET_ORDER)) {
         if( !empty($matches) ) {
 
-            $srcUrl = get_option('home');
+            $srcUrl = home_url();
             for ($i=0; $i < count($matches); $i++)
             {
 
@@ -594,7 +600,5 @@ function nano_progga_nofollow_enternal_links( $content ) {
 
 }
 
-$options = get_option('np_settings');
-
-if( $options['nofollow'] == '1' )
+if( cs_get_option('nofollow') )
 	add_filter( 'the_content', 'nano_progga_nofollow_enternal_links');

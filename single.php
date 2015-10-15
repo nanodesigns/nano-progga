@@ -17,10 +17,14 @@ get_header(); ?>
 			<?php nano_progga_pagination(); ?>
 
 			<?php
-			//Show related posts if enabled
-			$option = get_option('np_settings');
-			if( $option['related_posts'] == 1 )
-				echo nano_progga_get_related_posts( get_the_ID() ); ?>
+			/**
+			 * Show related posts.
+			 * If enabled in Theme Options Page.
+			 * -------------------------------------------
+			 */
+			if( cs_get_option('related_posts') )
+				echo nano_progga_get_related_posts( get_the_ID() );
+			?>
 
 			<?php
 				// If comments are open or we have at least one comment, load up the comment template.

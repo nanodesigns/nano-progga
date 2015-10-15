@@ -20,8 +20,8 @@ get_header(); ?>
 
 				<div id="infinite-scroll-holder" class="row grid">
 				<?php
-				//get the nano progga theme settings
-				$options = get_option( 'np_settings' );
+				//get the nano progga theme settings from Theme Options page.
+				$widgets_positioning = cs_get_option('widgets_positioning');
 
 				/* Start the Loop */
 				$_counter = 0;				
@@ -32,32 +32,31 @@ get_header(); ?>
 					//Determine the pagination
 					$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
-					//Show widgets only on the first page
-					$widgets_in_pages = isset($options['widgets_in_pages']) ? $options['widgets_in_pages'] : '';
-					if( $widgets_in_pages || 1 === $paged ) :
+					//Show widgets only on the first page or not
+					if( cs_get_option( 'widgets_in_pages' ) || 1 === $paged ) :
 
 						//First Widget
-						$widget_1_pos = $options['widget_1'] ? (int) $options['widget_1'] : 3;
+						$widget_1_pos = $widgets_positioning['home_widget_1'] ? (int) $widgets_positioning['home_widget_1'] : 3;
 						if( $_counter === $widget_1_pos && is_active_sidebar( 'home_widget_1' ) )
 							dynamic_sidebar( 'home_widget_1' );
 
 						//Second Widget
-						$widget_2_pos = $options['widget_2'] ? (int) $options['widget_2'] : 4;
+						$widget_2_pos = $widgets_positioning['home_widget_2'] ? (int) $widgets_positioning['home_widget_2'] : 4;
 						if( $_counter === $widget_2_pos && is_active_sidebar( 'home_widget_2' ) )
 							dynamic_sidebar( 'home_widget_2' );
 
 						//Third Widget
-						$widget_3_pos = $options['widget_3'] ? (int) $options['widget_3'] : 6;
+						$widget_3_pos = $widgets_positioning['home_widget_3'] ? (int) $widgets_positioning['home_widget_3'] : 6;
 						if( $_counter === $widget_3_pos && is_active_sidebar( 'home_widget_3' ) )
 							dynamic_sidebar( 'home_widget_3' );
 
 						//Fourth Widget
-						$widget_4_pos = $options['widget_4'] ? (int) $options['widget_4'] : 8;
+						$widget_4_pos = $widgets_positioning['home_widget_4'] ? (int) $widgets_positioning['home_widget_4'] : 8;
 						if( $_counter === $widget_4_pos && is_active_sidebar( 'home_widget_4' ) )
 							dynamic_sidebar( 'home_widget_4' );
 
 						//Fifth Widget
-						$widget_5_pos = $options['widget_5'] ? (int) $options['widget_5'] : 9;
+						$widget_5_pos = $widgets_positioning['home_widget_5'] ? (int) $widgets_positioning['home_widget_5'] : 9;
 						if( $_counter === $widget_5_pos && is_active_sidebar( 'home_widget_5' ) )
 							dynamic_sidebar( 'home_widget_5' );
 
