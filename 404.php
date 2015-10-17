@@ -15,10 +15,6 @@
 
 	<body <?php body_class(); ?>>
 
-		<!--[if lt IE 8]>
-	        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-	    <![endif]-->
-
 		<h1 class="site-title sr-only"><?php bloginfo( 'name' ); ?></h1>
 		<h2 class="site-description sr-only"><?php bloginfo( 'description' ); ?></h2>
 

@@ -76,9 +76,10 @@
 						 * @since 3.0.0
 						 */
 						nano_progga_breadcrumbs(); ?>
+						
+						<?php
+						if( ( cs_get_option('showseriesblog') && is_page_template('page-templates/blog.php') ) || is_home() ) :
 
-						<?php if( is_home() ) : ?>
-							<?php
 							/**
 							 * Featured Series
 							 * @since  3.0.0

@@ -8,7 +8,7 @@ nano progga
 
 **Requires at least:** 4.0<br>
 **Tested up to:** 4.3<br>
-**Stable tag:** 3.0<br>
+**Stable tag:** 3.0.0<br>
 
 ###Introduction
 
@@ -16,9 +16,9 @@ nano progga is a search engine optimized blog framework, especially designed for
 
 ###Description
 
-nano progga is a search engine optimized blog framework, especially designed for blogging in Bengali (*Bānglā*) using WordPress. It supports custom header, custom menu, sidebar widget area (one specifically for archive pages), and unlimited plugins. It is optimized specially for Bengali (*Bānglā*) blogging, with speed and less weight. But the theme is completely translation-ready and can be translated into any locals.
+nano progga is a search engine optimized blog framework, especially designed for blogging in Bengali (*Bānglā*) using WordPress. It supports custom header, custom menu, sidebar widget area (one specifically for archive pages), and unlimited plugins. It is optimized specially for Bengali (*Bānglā*) blogging, with speed and less weight. But the theme is completely translation-ready and can be translated into any locale.
 
-nano progga theme is specially made for blogging in Bengali (*Bānglā*). A complete responsive theme. With sticky post facility user can stick a post or a couple of posts at the top of all the posts.
+theme nano progga is specially made for blogging in Bengali (*Bānglā*). A complete responsive theme. With sticky post facility user can stick a post or a couple of posts at the top of all the posts.
 
 ###Licenses
 
@@ -32,6 +32,7 @@ Third party libraries are used:
 * `wp_bootstrap_navwalker` class by *Edward McIntyre*
 * Modernizr
 * Masonry
+* Codestar Framework by Codestar
 
 ####Design License
 The layout design was totally made by **nano**designs. The license for the design is as same as the theme itself.
@@ -51,8 +52,7 @@ nano progga icon font is generated combining various fonts using online app: [Fo
 
 ###Till to come
 * Print style
-* Infinite Scroll support
-* Featured Series Slider
+* Post format supported designs
 
 ###Change log
 ####3.0
@@ -86,6 +86,7 @@ nano progga icon font is generated combining various fonts using online app: [Fo
 * Page Templates added - Blog, Full Width page
 * Custom header support is no longer available
 * Basic Customizer support
+* Codestar Admin Framework added to provide ease in admin panel moderation
 
 ####2.2.1
 * Comments Template visibility fixed

@@ -104,6 +104,10 @@ function nano_progga_setup() {
 		'default-color' => 'ffffff',
 		'default-image' => '',
 	) ) );
+
+	// Force the editor styles to match the theme's UI.
+	add_editor_style( 'editor-style.css' );
+	
 }
 endif; // nano_progga_setup
 add_action( 'after_setup_theme', 'nano_progga_setup' );
@@ -413,7 +417,7 @@ function nano_progga_breadcrumbs(){
 
 		if ( get_query_var('paged') ) {
 			if ( is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author() ) echo ' (';
-			echo __('Page') . ' ' . get_query_var('paged');
+			echo __('Page', 'nano-progga') . ' ' . get_query_var('paged');
 			if ( is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author() ) echo ')';
 		}
 

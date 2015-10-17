@@ -7,13 +7,16 @@
 
 
 /**
- * Change the 'WPLANG' in wp-config.php to bn_BD on theme activation
+ * Change the 'WPLANG' in wp-config.php to bn_BD on theme activation.
  *
  * @author toscho
  * @link http://wordpress.stackexchange.com/a/121136/22728
+ *
+ * @since 1.0
  * 
- * @param  string $locale default locale settings.
+ * @param  string $locale Default locale settings.
  * @return string         Bengali locale settings.
+ * --------------------------------------------------------------------------
  */
 function toscho_change_language( $locale ) {
     return 'bn_BD';
@@ -22,20 +25,14 @@ add_filter( 'locale', 'toscho_change_language' );
 
 
 /**
-* BANGLA NUMBERS, DATES, DAYS AND MONTHS
-* i.e. ২৮ নভেম্বর ১৯৮৬
-* Source: 
-*/
-
-/**
-* Bangla Numbers, Dates, Days, and Months translation class for WordPress
+* Bangla Numbers, Dates, Days, and Months translation class for WordPress.
 *
 * Converts English months, dates to equivalent Bangla digits
 * and month names.
-* i.e. ২৮ নভেম্বর ১৯৮৬
 *
 * @author Tareq Hasan <tareq@wedevs.com>
 * @link http://tareq.wedevs.com/2010/09/translate-wordpress-date-time-comment-number-to-bangla-digit/
+* --------------------------------------------------------------------------
 */
 
 class WP_BanglaDate {

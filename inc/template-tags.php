@@ -118,8 +118,8 @@ function nano_progga_pagination( $query = null ) {
 						'format'	=> '?paged=%#%',
 						'show_all'	=> false,
 						'prev_next'	=> true,
-							'prev_text'	=> __('&laquo;'),
-							'next_text'	=> __('&raquo;'),
+							'prev_text'	=> '&laquo;',
+							'next_text'	=> '&raquo;',
 						'current'	=> max( 1, get_query_var('paged') ),
 						'total'		=> $total,
 						'type'		=> 'array'

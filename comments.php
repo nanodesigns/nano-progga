@@ -85,13 +85,13 @@ if ( post_password_required() ) {
 
         'must_log_in' => '<p class="must-log-in">' .
         sprintf(
-            __( 'You have to <a href="%s">login</a> to comment' ),
+            __( 'You have to <a href="%s">login</a> to comment', 'nano-progga' ),
             wp_login_url( apply_filters( 'the_permalink', get_permalink() ) )
         ) . '</p>',
 
         'logged_in_as' => '<p class="logged-in-as">' .
         sprintf(
-            __( 'Logged in as <a href="%1$s">%2$s</a>. <a href="%3$s" title="Log out from this account">Log out?</a>' ),
+            __( 'Logged in as <a href="%1$s">%2$s</a>. <a href="%3$s" title="Log out from this account">Log out?</a>', 'nano-progga' ),
             admin_url( 'profile.php' ),
             $user_identity,
             wp_logout_url( apply_filters( 'the_permalink', get_permalink( ) ) )
@@ -103,7 +103,7 @@ if ( post_password_required() ) {
 
         'comment_notes_after' => '<p class="form-allowed-tags">' .
         sprintf(
-            __( 'You can use these <abbr title="HyperText Markup Language">HTML</abbr> tags and markups: %s' ),
+            __( 'You can use these <abbr title="HyperText Markup Language">HTML</abbr> tags and markups: %s', 'nano-progga' ),
             ' <code>' . allowed_tags() . '</code>'
         ) . '</p>',
 

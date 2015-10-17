@@ -116,6 +116,18 @@ function nano_progga_theme_options( $options ) {
 								'class'      => 'chosen',
 							),
 							array(
+								'id'     		=> 'showseriesblog',
+								'type'   		=> 'switcher',
+								'title'  		=> __( 'Show series in Blog Template', 'nano-progga' ),
+								'default'		=> false,
+								'dependency' 	=> array(
+													'showseries',
+													'==',
+													'true'
+												), // dependent on switch
+								'label'			=> __( 'Control whether to show the featured series on the Blog Template page or not', 'nano-progga' ),
+							),
+							array(
 								'type'  		=> 'notice',
 								'class' 		=> 'info',
 								'content' 		=> sprintf( __( '<strong>Home Page Widgets</strong> You can alter the placement of home page widgets by setting their individual values from here, and you can set places within <strong>%s</strong>', 'nano-progga' ), get_option('posts_per_page') ),
