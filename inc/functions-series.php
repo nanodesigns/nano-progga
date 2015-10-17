@@ -2,7 +2,7 @@
 /**
  * Maintain a series of Posts
  *  with Custom Taxonomy
- *  and showing them before Single Template Content.
+ *  and showing them before Single Template the_content().
  *  
  * @package nano progga
  * ------------------------------------------------------------------------------
@@ -11,7 +11,8 @@
 
 /**
  * To maintain the Post Series declared a Custom Taxonomy (slug 'series').
- * @return void
+ *
+ * @since  2.0.1
  * ------------------------------------------------------------------------------
  */
 function nano_progga_post_series() {
@@ -46,11 +47,17 @@ add_action( 'init', 'nano_progga_post_series', 0 );
 
 /**
  * Showing the List of Series Posts before Content in Single Template only.
+ * 
+ * @since 2.0.1
+ * 
  * @param  string $content Post Content.
  * @return string          Series Content + Post Content.
  * ------------------------------------------------------------------------------
  */
 function nano_progga_show_series( $content ) {
+
+    if( !is_single() )
+        return $content;
 
     global $post;
 
@@ -66,18 +73,18 @@ function nano_progga_show_series( $content ) {
       }
 
       $series_args = array(
-        'post_type' => 'post',                                
-        'post_status' => 'publish',
-        'order' => 'ASC',
-        'orderby' => 'date',
-        'posts_per_page' => -1,
-        'tax_query' => array(
-            array(
-                'taxonomy' => 'series',
-                'terms' => $term_id
-            )
-        )
-      );
+        'post_type'         => 'post',                                
+        'post_status'       => 'publish',
+        'order'             => 'ASC',
+        'orderby'           => 'date',
+        'posts_per_page'    => -1,
+        'tax_query'         => array(
+                                array(
+                                    'taxonomy' => 'series',
+                                    'terms' => intval( $term_id )
+                                )
+                            )
+                        );
         
       $series_posts = get_posts( $series_args );
       if( !empty( $series_posts ) ) {
@@ -86,18 +93,21 @@ function nano_progga_show_series( $content ) {
           ?>
           <div class="posts-series">
             <h4>
-              <?php _e( 'Series: ', 'nano-progga' ); ?>
-              <a href="<?php echo get_term_link( $term_id, 'series' ); ?>" target="_blank"><strong><?php echo $term_name; ?></strong></a>
-              <?php _e( '&mdash; a part of the series', 'nano-progga' ); ?>
+                <?php _e( 'Series:&nbsp;', 'nano-progga' ); ?>
+                <a href="<?php echo esc_url( get_term_link( (int) $term_id, 'series' ) ); ?>" target="_blank">
+                    <strong><?php echo $term_name; ?></strong>
+                </a>
+                <?php _e( '&mdash; a part of the series', 'nano-progga' ); ?>
             </h4>
-            <ul class="series-list"><?php
-            foreach ($series_posts as $posts) {
-                if( $posts->ID == get_the_id() ) {
-                  echo '<li>'. $posts->post_title .'</li>';
-                } else {
-                  echo '<li><a href="'. get_the_permalink( $posts->ID ) .'">'. $posts->post_title .'</a></li>';
-                }
-            } ?>
+            <ul class="series-list">
+                <?php
+                foreach( $series_posts as $posts ) :
+                    if( $posts->ID == get_the_id() )
+                        echo '<li>'. esc_html( $posts->post_title ) .'</li>';
+                    else
+                        echo '<li><a href="'. esc_url( get_the_permalink( $posts->ID ) ) .'">'. esc_html( $posts->post_title ) .'</a></li>';
+                endforeach;
+                ?>
             </ul>
           </div> <!-- .posts-series -->
           <?php
@@ -105,14 +115,12 @@ function nano_progga_show_series( $content ) {
       }
     } //endif( $post_terms )
 
-    if( is_single() && !empty( $the_series_content ) ) {
-      return $the_series_content . $content;
-    } else {
-      return $content;
-    }
+    if( !empty( $the_series_content ) )
+        return $the_series_content . $content;
+    else
+        return $content;
 
 }
-
 add_filter( 'the_content', 'nano_progga_show_series', 10 );
 
 function nano_progga_remove_hooks() {
@@ -124,272 +132,245 @@ add_action( 'loop_end', 'nano_progga_remove_hooks' );
 
 
 /**
- * ADDING IMAGES TO SERIES TAXONOMY
+ * Adding images to series taxonomy.
  *
- * @inspired from "Category Images" plugin
- * @author Muhammad Said El Zahlan
- * @link http://zahlan.net/blog/2012/06/categories-images/
+ * @since 3.0.0
+ *
+ * @link http://tuts.nanodesignsbd.com/wordpress-taxonomy-meta-complete-guide/
  * ------------------------------------------------------------------------------
  */
 
-define('NP_IMAGE_PLACEHOLDER', get_template_directory_uri() ."/images/placeholder.png");
-
-
-
-function nano_progga_add_style() {
-    echo '<style type="text/css" media="screen">
-        th.column-thumb {width:60px;}
-        .form-field img.taxonomy-image {border:1px solid #eee;max-width:300px;max-height:300px;}
-        .inline-edit-row fieldset .thumb label span.title {width:48px;height:48px;border:1px solid #eee;display:inline-block;}
-        .column-thumb span {width:48px;height:48px;border:1px solid #eee;display:inline-block;}
-        .inline-edit-row fieldset .thumb img,.column-thumb img {width:48px;height:48px;}
-    </style>';
-}
-
-// add image field in add form
-function nano_progga_add_taxonomy_field() {
-    if (get_bloginfo('version') >= 3.5)
-        wp_enqueue_media();
-    else {
-        wp_enqueue_style('thickbox');
-        wp_enqueue_script('thickbox');
-    }
+function enqueue_scripts_for_series() {
+    $current_screen = get_current_screen();
     
-    echo '<div class="form-field">
-        <label for="taxonomy_image">' . __('Image', 'nano-progga') . '</label>
-        <input type="text" name="taxonomy_image" id="taxonomy_image" value="" />
-        <br/>
-        <button class="np_upload_image_button button">' . __('Upload/Add image', 'nano-progga') . '</button>
-    </div>'.nano_progga_script();
-}
+   if( $current_screen->base === 'edit-tags' && $current_screen->id === 'edit-series' ) {
 
-add_action('series_add_form_fields', 'nano_progga_add_taxonomy_field');
+        wp_enqueue_style( 'admin-styles', get_template_directory_uri() .'/admin/css/np-admin.css' );
 
+        // Load WordPress media uploader to the back-end with backward compatibility
+        if ( get_bloginfo('version') >= 3.5 )
+            wp_enqueue_media();
+        else {
+            wp_enqueue_style('thickbox');
+            wp_enqueue_script('thickbox');
+        }
 
-// add image field in edit form
-function nano_progga_edit_taxonomy_field( $taxonomy ) {
-    if (get_bloginfo('version') >= 3.5)
-        wp_enqueue_media();
-    else {
-        wp_enqueue_style('thickbox');
-        wp_enqueue_script('thickbox');
+        wp_enqueue_script( 'admin-scripts', get_template_directory_uri() .'/admin/js/np-admin.js', array('jquery'), THEME_VERSION, true );
     }
-    
-    if (nano_progga_series_image_url( $taxonomy->term_id, null, true ) == NP_IMAGE_PLACEHOLDER) 
-        $image_text = "";
-    else
-        $image_text = nano_progga_series_image_url( $taxonomy->term_id, null, true );
-    echo '<tr class="form-field">
-        <th scope="row" valign="top"><label for="taxonomy_image">' . __('Image', 'nano-progga') . '</label></th>
-        <td><img class="taxonomy-image" src="' . nano_progga_series_image_url( $taxonomy->term_id, null, true ) . '"/><br/><input type="text" name="taxonomy_image" id="taxonomy_image" value="'.$image_text.'" /><br />
-        <button class="np_upload_image_button button">' . __('Upload/Add image', 'nano-progga') . '</button>
-        <button class="np_remove_image_button button">' . __('Remove image', 'nano-progga') . '</button>
-        </td>
-    </tr>'.nano_progga_script();
 }
+add_action( 'admin_enqueue_scripts', 'enqueue_scripts_for_series' );
 
-add_action('series_edit_form_fields', 'nano_progga_edit_taxonomy_field');
-
-
-// upload using wordpress upload
-function nano_progga_script() {
-    return '<script type="text/javascript">
-        jQuery(document).ready(function($) {
-            var wordpress_ver = "'.get_bloginfo("version").'", upload_button;
-            $(".np_upload_image_button").click(function(event) {
-                upload_button = $(this);
-                var frame;
-                if (wordpress_ver >= "3.5") {
-                    event.preventDefault();
-                    if (frame) {
-                        frame.open();
-                        return;
-                    }
-                    frame = wp.media();
-                    frame.on( "select", function() {
-                        // Grab the selected attachment.
-                        var attachment = frame.state().get("selection").first();
-                        frame.close();
-                        if (upload_button.parent().prev().children().hasClass("tax_list")) {
-                            upload_button.parent().prev().children().val(attachment.attributes.url);
-                            upload_button.parent().prev().prev().children().attr("src", attachment.attributes.url);
-                        }
-                        else
-                            $("#taxonomy_image").val(attachment.attributes.url);
-                    });
-                    frame.open();
-                }
-                else {
-                    tb_show("", "media-upload.php?type=image&amp;TB_iframe=true");
-                    return false;
-                }
-            });
-            
-            $(".np_remove_image_button").click(function() {
-                $("#taxonomy_image").val("");
-                $(this).parent().siblings(".title").children("img").attr("src","' . NP_IMAGE_PLACEHOLDER . '");
-                $(".inline-edit-col :input[name=\'taxonomy_image\']").val("");
-                return false;
-            });
-            
-            if (wordpress_ver < "3.5") {
-                window.send_to_editor = function(html) {
-                    imgurl = $("img",html).attr("src");
-                    if (upload_button.parent().prev().children().hasClass("tax_list")) {
-                        upload_button.parent().prev().children().val(imgurl);
-                        upload_button.parent().prev().prev().children().attr("src", imgurl);
-                    }
-                    else
-                        $("#taxonomy_image").val(imgurl);
-                    tb_remove();
-                }
-            }
-            
-            $(".editinline").live("click", function(){  
-                var tax_id = $(this).parents("tr").attr("id").substr(4);
-                var thumb = $("#tag-"+tax_id+" .thumb img").attr("src");
-                if (thumb != "' . NP_IMAGE_PLACEHOLDER . '") {
-                    $(".inline-edit-col :input[name=\'taxonomy_image\']").val(thumb);
-                } else {
-                    $(".inline-edit-col :input[name=\'taxonomy_image\']").val("");
-                }
-                $(".inline-edit-col .title img").attr("src",thumb);
-                return false;  
-            });  
-        });
-    </script>';
-}
-
-// save our taxonomy image while edit or save term
-
-function nano_progga_save_taxonomy_image( $term_id ) {
-    if(isset($_POST['taxonomy_image']))
-        update_option('nano_progga_series_image'.$term_id, $_POST['taxonomy_image']);
-}
-
-add_action('edit_term','nano_progga_save_taxonomy_image');
-add_action('create_term','nano_progga_save_taxonomy_image');
 
 /**
- * Get image ID from full source path.
+ * Get Taxonomy Meta Field.
+ *
+ * @since 3.0.0
+ * 
+ * @param  mixed  $term_id  Term ID or Term Object.
+ * @param  string $meta_key Meta Key to retrieve its data.
+ * @return mixed            Meta value as string or as array.
+ * ------------------------------------------------------------------------------
+ */
+function nano_get_tax_meta( $term_id, $meta_key = false ){
+    $_term_id = ( is_object( $term_id ) ) ? $term_id->term_id : $term_id;
+    $saved_meta = get_option( "tax_meta{$_term_id}" );
+    if( $meta_key ) {
+        if( isset( $saved_meta[$meta_key] ) )
+            return $saved_meta[$meta_key];
+        else
+            return '';
+    } else {
+        return $saved_meta;
+    }
+}
+
+/**
+ * Get taxonomy meta data.
+ *
+ * @since 3.0.0
+ * 
+ * @param  mixed $term_id   Term ID or Term Object.
+ * @param  string $meta_key Meta Key to retrieve its data.
+ * @param  string $size     Image size: medium, thumbnail, large, full or custom size.
+ * @return string           Image URL only.
+ * ------------------------------------------------------------------------------
+ */
+function nano_get_tax_meta_img_src( $term_id, $meta_key, $size = 'thumbnail' ) {
+    $img_meta = nano_get_tax_meta( $term_id, $meta_key );
+    if( !empty($img_meta) )
+        $img_url = wp_get_attachment_image_src( absint( $img_meta ), $size );
+    if( $img_url )
+        return $img_url[0];
+    else
+        return '';
+}
+
+
+/**
+ * Series Cover Image Field (add form).
+ *
+ * @since 3.0.0
+ * 
+ * @param string $taxonomy Taxonomy slug.
+ * ------------------------------------------------------------------------------
+ */
+function taxonomy_series_add_cover_image_field( $taxonomy ) { ?>
+
+    <div class="form-field series-cover-input-wrap">
+        <label for="text"><?php _e( 'Series Cover Image', 'nano-progga' ); ?></label>
+        <div id="series-cover-preview" class="img-holder">
+            <i><span class="dashicons dashicons-no"></span></i>
+            <img src="" alt="<?php esc_attr_e( 'Series cover image', 'nano-progga' ); ?>" width="auto" height="60">
+        </div>
+        <input type="hidden" name="series_cover" id="series-cover" size="40"><br>
+        <button id="series-cover-btn" class="button"><?php _e('Upload Image', 'nano-progga'); ?></button>
+        <p><?php _e( 'Add/Choose an image for the cover of the Series term', 'nano-progga' ); ?></p>
+    </div>
+
+<?php
+}
+add_action( 'series_add_form_fields', 'taxonomy_series_add_cover_image_field' );
+
+
+/**
+ * Series Cover Image Field (edit form).
+ * 
+ * @since 3.0.0
+ * 
+ * @param  object $taxonomy Taxonomy object.
+ * ------------------------------------------------------------------------------
+ */
+function taxonomy_series_edit_cover_image_field( $taxonomy ) { ?>
+
+    <tr class="form-field">
+        <th valign="top" scope="row">
+            <label for="series-cover"><?php _e( 'Series Cover Image', 'nano-progga' ); ?></label>
+        </th>
+        <td class="series-cover-edit-wrap">
+            <?php $show = empty($saved_meta['series_cover']) ? 'hide-item' : 'show-item'; ?>
+            <div id="series-cover-preview" class="img-holder <?php echo $show; ?>">
+                <i><span class="dashicons dashicons-no"></span></i>
+                <?php
+                $db_value = nano_get_tax_meta( $taxonomy->term_id, $meta_key = 'series_cover' );
+                $img_src = nano_get_tax_meta_img_src( $taxonomy->term_id, 'series_cover', $size = 'large' );
+                $img_src = $img_src ? $img_src : get_template_directory_uri() .'/images/no-image.jpg';
+                ?>
+                <img src="<?php echo esc_url($img_src); ?>" alt="Series cover image" width="auto" height="60">
+            </div>
+            <input type="hidden" name="series_cover" id="series-cover" size="40" value="<?php if( $db_value ) echo $db_value; ?>"><br>
+            <button id="series-cover-btn" class="button"><?php _e('Upload Image', 'nano-progga'); ?></button>
+            <p class="description"><?php _e( 'Add/Choose an image for the cover of the Series term', 'nano-progga' ); ?></p>
+        </td>
+    </tr>
+
+<?php
+}
+add_action( 'series_edit_form_fields', 'taxonomy_series_edit_cover_image_field' );
+
+
+/**
+ * Get image ID from full URL.
+ *
+ * @since 3.0.0
+ * 
  * @link https://pippinsplugins.com/retrieve-attachment-id-from-image-url/
  * @link http://codex.wordpress.org/Function_Reference/url_to_postid
  * 
- * @param  string $image_src full source path of an image
- * @return integer            attachment ID of the image
- * --------------------------------------------------------------------------
+ * @param  string $image_url Full URL of an image.
+ * @return integer           Attachment ID of the image.
+ * ------------------------------------------------------------------------------
  */
-function nano_progga_get_attachment_id_by_url( $image_src ) {
-  global $wpdb;
-  if( $image_src ) {
-    $attachment = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid='%s';", $image_src ));
-    return $attachment[0];
-  } else {
-    return null;
-  }
-}
-
-// get taxonomy image url for the given term_id (Place holder image by default)
-function nano_progga_series_image_url($term_id = null, $size = null, $return_placeholder = false) {
-    if (!$term_id) {
-        if (is_category())
-            $term_id = get_query_var('cat');
-        elseif (is_tax()) {
-            $current_term = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy'));
-            $term_id = $current_term->term_id;
-        }
+function nanodesigns_get_image_id( $image_url ) {
+    global $wpdb;
+    if( $image_url ) {
+        $attachment = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid='%s';", $image_url ));
+        return $attachment[0];
+    } else {
+        return '';
     }
-    
-    $taxonomy_image_url = get_option('nano_progga_series_image'.$term_id);
-
-    if(!empty($taxonomy_image_url)) {
-        $attachment_id = nano_progga_get_attachment_id_by_url($taxonomy_image_url);
-        if(!empty($attachment_id)) {
-            if (empty($size))
-                $size = 'full';
-            $taxonomy_image_url = wp_get_attachment_image_src($attachment_id, $size);
-            $taxonomy_image_url = $taxonomy_image_url[0];
-        }
-    }
-
-    if ($return_placeholder)
-        return ($taxonomy_image_url != '') ? $taxonomy_image_url : NP_IMAGE_PLACEHOLDER;
-    else
-        return $taxonomy_image_url;
 }
 
-function nano_progga_quick_edit_custom_box($column_name, $screen, $name) {
-    if ($column_name == 'thumb') 
-        echo '<fieldset>
-        <div class="thumb inline-edit-col">
-            <label>
-                <span class="title"><img src="" alt="Thumbnail"/></span>
-                <span class="input-text-wrap"><input type="text" name="taxonomy_image" value="" class="tax_list" /></span>
-                <span class="input-text-wrap">
-                    <button class="np_upload_image_button button">' . __('Upload/Add image', 'nano-progga') . '</button>
-                    <button class="np_remove_image_button button">' . __('Remove image', 'nano-progga') . '</button>
-                </span>
-            </label>
-        </div>
-    </fieldset>';
-}
 
 /**
- * Thumbnail column added to category admin.
+ * Saving Series Cover Image Field.
  *
- * @access public
- * @param mixed $columns
- * @return void
+ * @since 3.0.0
+ * 
+ * @param  integer $term_id  Term ID.
+ * @param  integer $tt_id    Term Taxonomy ID.
+ * @param  string  $taxonomy Taxonomy slug.
+ * ------------------------------------------------------------------------------
  */
-function nano_progga_taxonomy_columns( $columns ) {
+function taxonomy_series_save_cover_image_field( $term_id, $tt_id, $taxonomy ) {
+    if( $taxonomy === 'series' ) {
+        $series_meta_array = array();
+        if( isset($_POST['series_cover']) ) {
+            $cover_img_id = nanodesigns_get_image_id( sanitize_text_field( $_POST['series_cover'] ) );
+            $series_meta_array['series_cover'] = absint( $cover_img_id );
+        }
+        update_option( "tax_meta{$term_id}", $series_meta_array );
+    }
+}
+add_action( 'edit_term',    'taxonomy_series_save_cover_image_field', 10, 3 );
+add_action( 'create_term',  'taxonomy_series_save_cover_image_field', 10, 3 );
+
+
+
+/**
+ * Cover Image column added to Series.
+ *
+ * @since 3.0.0
+ * 
+ * @param  array $columns Default columns.
+ * @return array          New columns.
+ * ------------------------------------------------------------------------------
+ */
+function taxonomy_series_columns( $columns ) {
     $new_columns = array();
     $new_columns['cb'] = $columns['cb'];
-    $new_columns['thumb'] = __('Image', 'nano-progga');
+    $new_columns['cover'] = __('Cover', 'nano-progga');
 
     unset( $columns['cb'] );
 
     return array_merge( $new_columns, $columns );
 }
-add_filter( 'manage_edit-series_columns', 'nano_progga_taxonomy_columns' );
-add_filter( 'manage_series_custom_column', 'nano_progga_taxonomy_column', 10, 3 );
+add_filter( 'manage_edit-series_columns', 'taxonomy_series_columns' );
+
 
 /**
- * Thumbnail column value added to category admin.
+ * Cover Image column content.
  *
- * @access public
- * @param mixed $columns
- * @param mixed $column
- * @param mixed $id
- * @return void
+ * @since 3.0.0
+ * 
+ * @param  array $columns  Default columns.
+ * @param  string $column  Individual column.
+ * @param  integer $id     Term ID.
+ * @return array           Column content.
+ * ------------------------------------------------------------------------------
  */
-function nano_progga_taxonomy_column( $columns, $column, $id ) {
-    if ( $column == 'thumb' )
-        $columns = '<span><img src="' . nano_progga_series_image_url($id, null, true) . '" alt="' . __('Thumbnail', 'nano-progga') . '" class="wp-post-image" /></span>';
+function taxonomy_series_column_content( $columns, $column, $id ) {
+    if ( $column == 'cover' ) {
+        $img_src = nano_get_tax_meta_img_src( $id, 'series_cover', $size = 'thumbnail' );
+        $img_src = $img_src ? $img_src : get_template_directory_uri() .'/images/no-image.jpg';
+        $columns = '<span><img src="'. esc_url($img_src) .'" alt="'. esc_attr__( 'Cover Image', 'nano-progga' ) .'" class="wp-post-image" width="50" height="50"></span>';
+    }
     
     return $columns;
 }
-
-// change 'insert into post' to 'use this image'
-function nano_progga_change_insert_button_text($safe_text, $text) {
-    return str_replace("Insert into Post", "Use this image", $text);
-}
-
-// style the image in category list
-if ( strpos( $_SERVER['SCRIPT_NAME'], 'edit-tags.php' ) > 0 ) {
-    add_action( 'admin_head', 'nano_progga_add_style' );
-    add_action( 'quick_edit_custom_box', 'nano_progga_quick_edit_custom_box', 10, 3);
-    add_filter( 'attribute_escape', 'nano_progga_change_insert_button_text', 10, 2);
-}
+add_filter( 'manage_series_custom_column', 'taxonomy_series_column_content', 10, 3 );
 
 
 /**
- * Making the Series ASCending order for good UX
+ * Making the Series ASCending order for good UX.
+ * 
+ * @since  3.0.0
+ * 
  * @param  object $query WordPress' default query object.
  * @return object        modified as per design.
+ * ------------------------------------------------------------------------------
  */
 function nano_progga_series_archive_order( $query ) {
-    if( $query->is_main_query() && !is_admin() && is_tax('series') ) {
+    if( $query->is_main_query() && !is_admin() && is_tax('series') )
         $query->set('order', 'ASC');
-    }
 }
 add_action( 'pre_get_posts', 'nano_progga_series_archive_order' );

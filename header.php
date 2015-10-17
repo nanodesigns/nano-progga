@@ -42,9 +42,11 @@
                             <span class="icon-bar"></span>
                         </button>
 						<?php
-                        if( $cs_get_option('logo') ): ?>
+						$img_id = cs_get_option('logo');
+                        if( $img_id ): ?>
 	                        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="navbar-brand" rel="home">
-	                        	<img src="<?php echo $option['logo']; ?>" alt="<?php bloginfo( 'name' ); ?>" width="40" height="40">
+	                        	<?php $img_src = wp_get_attachment_image_src( $img_id, 'full' ); ?>
+	                        	<img src="<?php echo esc_url( $img_src[0] ); ?>" alt="<?php bloginfo( 'name' ); ?>" width="40" height="40">
 	                        </a>
                     	<?php endif; ?>
                     </div> <!-- /.navbar-header -->
@@ -81,32 +83,36 @@
 							 * Featured Series
 							 * @since  3.0.0
 							 */
-						    if( $option['showseries'] == 1 ) :
+						    if( cs_get_option('showseries') ) :
 							?>
 							<section id="series-showcase">
 								<?php
 								$series_ids = array(); //default
-							    $series_ids = $option['serieschoice'];
+							    $series_ids = cs_get_option('serieschoice');
 								if( $series_ids ) : ?>
 									<div class="row">
 										<div class="col-md-12">
 											<h2 class="inner-title"><span><?php _e( 'Popular Series', 'nano-progga' ); ?></span></h2>
 										</div> <!-- /.col-md-12 -->
 										<?php
-										foreach ($series_ids as $series_id) :
+										foreach ( $series_ids as $series_id ) :
 											$featured_series = get_term_by( 'id', (int) $series_id, 'series' );
-											$img_url = nano_progga_series_image_url( (int) $series_id, 'medium', false );
+											$img_src = nano_get_tax_meta_img_src( $series_id, 'series_cover', $size = 'medium' );
 											$series_link = get_term_link( (int) $series_id, 'series' ); ?>
 											<div class="col-sm-3 col-xs-6 series-block">
 												<a href="<?php echo esc_url( $series_link ); ?>">
-													<img src="<?php echo $img_url; ?>" alt="<?php echo esc_attr($featured_series->name); ?>">
-													<div class="image-hover">
-														<div class="behave-table">
-															<div class="behave-table-cell expand-icon">
-																<h3><?php echo esc_html($featured_series->name); ?></h3>			
+													<?php if( $img_src ) : ?>
+														<img src="<?php echo esc_url( $img_src ); ?>" alt="<?php echo esc_attr( $featured_series->name ); ?>">
+														<div class="image-hover">
+															<div class="behave-table">
+																<div class="behave-table-cell expand-icon">
+																	<h3><?php echo esc_html( $featured_series->name ); ?></h3>
+																</div>
 															</div>
 														</div>
-													</div>
+													<?php else : ?>
+														<h3 class="text-center"><?php echo esc_html( $featured_series->name ); ?></h3>
+													<?php endif; ?>
 												</a>
 											</div> <!-- /.col-sm-3 col-xs-6 -->
 										<?php

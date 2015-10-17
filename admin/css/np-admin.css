@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+.series-cover-edit-wrap .img-holder,
+.series-cover-input-wrap .img-holder{
+	position: relative;
+	display: inline-block;
+	padding: 3px;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	-webkit-border-radius: 2px;
+			border-radius: 2px;
+	overflow: hidden;
+}
+.series-cover-input-wrap .img-holder{
+	display: none;
+}
+.series-cover-edit-wrap #series-cover-preview img,
+.series-cover-input-wrap #series-cover-preview img{
+	vertical-align: middle;
+}
+.series-cover-edit-wrap .img-holder i,
+.series-cover-input-wrap .img-holder i{
+	position: absolute;
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	background-color: #fff;
+	color: red;
+	-webkit-border-radius: 2px;
+			border-radius: 2px;
+	top: 0;
+	left: 0;
+	z-index: 8;
+	text-align: center;
+	cursor: pointer;	
+}
+.series-cover-edit-wrap .img-holder span,
+.series-cover-input-wrap .img-holder span{
+	font-size: 19px;
+}
