@@ -8,12 +8,14 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<?php if( has_post_thumbnail() ) : ?>
-		<div class="featured-image">
-			<?php the_post_thumbnail(); ?>
-		</div>
-	<?php else : ?>
-		<div class="default-featured-image"></div>
+	<?php if( get_post_format() !== 'image' && get_post_format() !== 'status' ) : ?>
+		<?php if( has_post_thumbnail() ) : ?>
+			<div class="featured-image">
+				<?php the_post_thumbnail(); ?>
+			</div>
+		<?php else : ?>
+			<div class="default-featured-image"></div>
+		<?php endif; ?>
 	<?php endif; ?>
 	<div class="article-inner">
 		<header class="entry-header">

@@ -94,9 +94,11 @@ function nano_progga_setup() {
 	add_theme_support( 'post-formats', array(
 		'aside',
 		'image',
+		'gallery',
 		'video',
 		'quote',
 		'link',
+		'audio'
 	) );
 
 	// Set up the WordPress core custom background feature.

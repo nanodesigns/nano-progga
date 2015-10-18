@@ -180,24 +180,28 @@ hr.dark{
   background-color: #F5C810;
   color: #333;
 
+  h1.widget-title{ border-bottom-color: #333; }
   a{ color: #333; }
 }
 .home-widget-3{
   background-color: #38B4E5;
   color: #333;
 
+  h1.widget-title{ border-bottom-color: #333; }
   a{ color: #333; }
 }
 .home-widget-4{
   background-color: #F8575A;
   color: #333;
 
+  h1.widget-title{ border-bottom-color: #333; }
   a{ color: #333; }
 }
 .home-widget-5{
   background-color: #4CB849;
   color: #333;
 
+  h1.widget-title{ border-bottom-color: #333; }
   a{ color: #333; }
 }
 
@@ -247,7 +251,7 @@ hr.dark{
 }
 .entry-meta,
 .entry-footer{
-  font-size: 14px;
+  font-size: 13px;
   color: #666;
   padding: 5px 0;
   border-top: 1px solid #ccc;
@@ -262,9 +266,7 @@ hr.dark{
 }
 
 .featured-image{
-  img{
-    width: 100%;
-  }
+  img{ width: 100%; }
 }
 .default-featured-image{
   min-height: 200px;
@@ -401,6 +403,7 @@ body.search{
     }
   }
 }
+body.home,
 body.archive,
 body.search,
 body.single,
@@ -410,7 +413,76 @@ body.page{
     width: 85%;
     margin-top: -105px;
   }
+  article.format-status .article-inner,
+  article.format-image .article-inner{
+    margin-top: 0;
+  }
+
+  //Post Format-specific icons
+  article.format-status,
+  article.format-video,
+  article.format-audio,
+  article.format-aside,
+  article.format-image,
+  article.format-gallery,
+  article.format-chat,
+  article.format-quote,
+  article.format-link{
+    .article-inner{
+      &:before{
+        content: "";
+        font-family: 'nano-progga';
+        text-align: center;
+        vertical-align: middle;
+        line-height: 1;
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        display: inline-block;
+        left: 45%;
+        top: -15px;
+        font-size: 15px;
+        background-color: #fff;
+        border-radius: 100%;
+        padding: 8px;
+        color: #333;
+        box-shadow: 0 0 5px rgba(0,0,0,0.5);
+      }
+    }
+  }
+  article.format-status .article-inner:before{ content: "Z" }
+  article.format-video .article-inner:before{ content: "W" }
+  article.format-audio .article-inner:before{ content: "b" }
+  article.format-aside .article-inner:before{ content: "a" }
+  article.format-image .article-inner:before{ content: "V" }
+  article.format-gallery .article-inner:before{ content: "d" }
+  article.format-chat .article-inner:before{ content: "Y" }
+  article.format-quote .article-inner:before{ content: "L" }
+  article.format-link .article-inner:before{ content: "j" }
 }
+body.archive,
+body.search
+body.home{
+  article.format-status{
+    background-color: #ccc;
+    
+    .entry-meta{
+      margin-top: 10px;
+      border-top-color: #999;
+      border-bottom-color: #999;
+    }
+    .article-inner{
+      background-color: #ccc;      
+    }
+  }
+}
+body.single article.format-image, .article-inner,
+body.single article.format-status{
+  .article-inner{
+    padding-top: 50px;
+  }
+}
+
 @media (max-width:500px){
   body.archive,
   body.search,
