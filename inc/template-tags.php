@@ -71,7 +71,7 @@ function nano_progga_pagination( $query = null ) {
 	  
     if( is_attachment() ) { ?>
 
-	    <nav class="navigation post-navigation small" role="navigation">
+	    <nav class="navigation post-navigation small hidden-print" role="navigation">
 	        <div class="nav-previous"><?php previous_image_link( false, __( '<span class="meta-nav np-left"></span> Older Image', 'nano-progga' ) ) ?></div>
 	        <div class="nav-next"><?php next_image_link( false, __( 'Latest Image <span class="meta-nav np-right"></span>', 'nano-progga' ) ) ?></div>  
 	        <div class="clearfix"></div>  
@@ -87,7 +87,7 @@ function nano_progga_pagination( $query = null ) {
 		}
 		?>
 
-		<nav class="navigation post-navigation small" role="navigation">
+		<nav class="navigation post-navigation small hidden-print" role="navigation">
 			<h2 class="screen-reader-text"><?php esc_html_e( 'Post navigation', 'nano-progga' ); ?></h2>
 			<?php
 				previous_post_link( '<div class="nav-previous"><span class="np-left"></span> %link</div>', '%title' );
@@ -109,7 +109,7 @@ function nano_progga_pagination( $query = null ) {
         global $wp_query;
 		$query = $query ? $query : $wp_query;
 
-        echo '<nav class="nano-progga-pagination">';
+        echo '<nav class="nano-progga-pagination hidden-print">';
 			$big = 999999999; // need an unlikely integer
 			$total = $query->max_num_pages;
 			if( $total > 1 ) {

@@ -320,11 +320,11 @@ function nano_progga_breadcrumbs(){
 
 	if (is_home() || is_front_page()) {
 
-		if ($showOnHome == 1) echo '<div id="breadcrumbs"><a href="' . $homeLink . '">' . $text['home'] . '</a></div>';
+		if ($showOnHome == 1) echo '<div id="breadcrumbs" class="hidden-print"><a href="' . $homeLink . '">' . $text['home'] . '</a></div>';
 
 	} else {
 
-		echo '<div id="breadcrumbs" xmlns:v="http://rdf.data-vocabulary.org/#">' . sprintf($link, $homeLink, $text['home']) . $delimiter;
+		echo '<div id="breadcrumbs" class="hidden-print" xmlns:v="http://rdf.data-vocabulary.org/#">' . sprintf($link, $homeLink, $text['home']) . $delimiter;
 
 		
 		if ( is_category() ) {
@@ -464,7 +464,7 @@ function nano_progga_get_related_posts( $post_id = null, $numberposts = 3 ) {
 
 	$total_fetched = 0;
 
-	echo '<div class="related-posts">';
+	echo '<div class="related-posts hidden-print">';
 		echo '<h3 class="page-title inner-title"><span>'. __( 'Related Posts', 'nano-progga' ) .'</span></h3>';
 		echo '<div class="row">';
 

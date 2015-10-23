@@ -358,7 +358,7 @@ class CSFramework extends CSFramework_Abstract {
       settings_fields( $this->unique. '_group' );
 
       echo '<header class="cs-header">';
-      echo '<h1>Theme Options &ndash; nano progga <small>based on Codestar Framwork by Codestar</small></h1>';
+      echo '<h1>'. __( 'Theme Options', 'nano-progga' ) .' &ndash; nano progga '. __( '<small>based on Codestar Framwork by Codestar</small>', 'nano-progga' ) .'</h1>';
       echo '<fieldset>';
       echo ( $this->settings['ajax_save'] === true ) ? '<span id="cs-save-ajax">'. __( 'Settings saved.', 'cs-framework' ) .'</span>' : '';
       submit_button( __( 'Save', 'cs-framework' ), 'primary', 'save', false, array( 'data-ajax' => $this->settings['ajax_save'], 'data-save' => __( 'Saving...', 'cs-framework' ) ) );

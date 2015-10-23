@@ -105,6 +105,11 @@ a{
 hr.dark{
   border-top-color: #ccc;
 }
+.browserupgrade{
+  text-align: center;
+  font-size: 20px;
+  color: @red-color;
+}
 
 
 /* -------------------- Menu CSS ------------------ */
@@ -141,7 +146,7 @@ hr.dark{
 .site-branding{
     padding-top: 10px;
     padding-bottom: 10px;
-  }
+}
 .navbar-brand{
   padding: 5px 15px;
 
@@ -276,12 +281,9 @@ article.hentry{
   background-color: #fff;
 }
 .article-inner{
-  padding: 10px;
-}
-.article-inner{
   position: relative;
   margin-top: -50px;
-  padding-top: 5px;
+  padding: 5px 10px 10px 10px;
   background-color: #fff;
   width: 90%;
   margin-left: auto;
@@ -408,14 +410,39 @@ body.archive,
 body.search,
 body.single,
 body.page{
+  article.format-status .article-inner,
+  article.format-image .article-inner{
+    margin-top: 0;
+  }
+}
+body.single,
+body.page{
   .article-inner{
     padding: 20px;
     width: 85%;
     margin-top: -105px;
   }
-  article.format-status .article-inner,
-  article.format-image .article-inner{
-    margin-top: 0;
+}
+body.archive,
+body.search,
+body.home{
+  article.format-status{
+    background-color: #ccc;
+    
+    .entry-meta{
+      margin-top: 10px;
+      border-top-color: #999;
+      border-bottom-color: #999;
+    }
+    .article-inner{
+      background-color: #ccc;      
+    }
+  }
+  article.format-quote{
+    blockquote{
+      border-left: 0;
+      margin-left: 0;
+    }
   }
 
   //Post Format-specific icons
@@ -459,22 +486,6 @@ body.page{
   article.format-chat .article-inner:before{ content: "Y" }
   article.format-quote .article-inner:before{ content: "L" }
   article.format-link .article-inner:before{ content: "j" }
-}
-body.archive,
-body.search
-body.home{
-  article.format-status{
-    background-color: #ccc;
-    
-    .entry-meta{
-      margin-top: 10px;
-      border-top-color: #999;
-      border-bottom-color: #999;
-    }
-    .article-inner{
-      background-color: #ccc;      
-    }
-  }
 }
 body.single article.format-image, .article-inner,
 body.single article.format-status{
@@ -1713,4 +1724,51 @@ aside.widget.jetpack_subscription_widget input[type="submit"]{
 }
 .np-toggle:before {
   content: "2";
+}
+
+
+@media print {
+
+  body{
+    background-color: #fff;
+    color: #333;
+  }
+  body.home .article-inner,
+  body.archive .article-inner,
+  body.search .article-inner,
+  body.single .article-inner{
+    margin-top: 0;
+  }
+  #primary{
+    width: 100%;
+  }
+  [class*="home-widget-"],
+  .default-featured-image,
+  #respond,
+  .series-handle{
+    display: none;
+  }
+  a[href]:after {
+    content: "";
+  }
+  .entry-title a[href]:after{
+    content: " (" attr(href) ")";
+  }
+  footer.site-footer{
+    border-top: 1px solid #ccc;
+  }
+  nav.nano-progga-nav{
+    .site-title{
+      display: block;
+    }
+  }
+
+  #infinite-scroll-holder .grid-item{
+    position: relative !important;
+    display: block !important;
+    left: 0 !important;
+    top: auto !important;
+    float: left;
+  }
+
 }

@@ -86,7 +86,7 @@
 							 */
 						    if( cs_get_option('showseries') ) :
 							?>
-							<section id="series-showcase">
+							<section id="series-showcase" class="hidden-print">
 								<?php
 								$series_ids = array(); //default
 							    $series_ids = cs_get_option('serieschoice');

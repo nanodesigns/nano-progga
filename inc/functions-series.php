@@ -99,7 +99,7 @@ function nano_progga_show_series( $content ) {
                 </a>
                 <?php _e( '&mdash; a part of the series', 'nano-progga' ); ?>
             </h4>
-            <ul class="series-list">
+            <ul class="series-list hidden-print">
                 <?php
                 foreach( $series_posts as $posts ) :
                     if( $posts->ID == get_the_id() )
@@ -197,8 +197,10 @@ function nano_get_tax_meta( $term_id, $meta_key = false ){
  */
 function nano_get_tax_meta_img_src( $term_id, $meta_key, $size = 'thumbnail' ) {
     $img_meta = nano_get_tax_meta( $term_id, $meta_key );
+    $img_url = false;
     if( !empty($img_meta) )
         $img_url = wp_get_attachment_image_src( absint( $img_meta ), $size );
+    
     if( $img_url )
         return $img_url[0];
     else

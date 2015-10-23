@@ -15,7 +15,7 @@
 
 	<?php $footer_class = !is_active_sidebar('footer_sidebar') ? 'no-footer-widgets' : ''; ?>
 
-	<footer id="colophon" class="site-footer text-center <?php echo $footer_class; ?>" role="contentinfo">
+	<footer id="colophon" class="site-footer text-center <?php echo esc_attr($footer_class); ?>" role="contentinfo">
 		<div class="container-fluid container1200">
 
 			<?php if ( is_active_sidebar( 'footer_sidebar' ) ) { ?>
@@ -32,7 +32,7 @@
 </div><!-- #page -->
 
 <!-- SOCIAL LINKS ON THE BOTTOM -->
-<div class="social-footer-bar">
+<div class="social-footer-bar hidden-print">
 	<?php
 	//dynamic values from the Theme Options page.	
 	$rss		= cs_get_option( 'rss' );
@@ -62,7 +62,7 @@
 </div> <!-- .social-footer-bar -->
 
 <!-- BACK TO TOP BUTTON -->
-<div id="backtotop">
+<div id="backtotop" class="hidden-print">
     <a id="to-top" href="#" onClick="return false" title="<?php esc_attr__( 'Back to Top', 'nano-progga' ); ?>">
         <span class="np-up"></span>
     </a>

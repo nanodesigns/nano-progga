@@ -39,7 +39,7 @@
 	</div> <!-- /.article-inner -->
 
 	<?php if ( 'post' == get_post_type() ) : ?>
-	<footer class="entry-footer">
+	<footer class="entry-footer hidden-print">
 		<?php nano_progga_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 	<?php endif; ?>

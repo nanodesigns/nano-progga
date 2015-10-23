@@ -48,7 +48,7 @@ function home_widgets_positioning_options() {
 function nano_progga_theme_options_settings( $settings ) {
 
 	$settings      = array(
-		'menu_title' => 'Theme Options',
+		'menu_title' => __( 'Theme Options', 'nano-progga' ),
 		'menu_type'  => 'add_theme_page',
 		'menu_slug'  => 'np-options',
 		'ajax_save'  => false,
@@ -70,7 +70,7 @@ function nano_progga_theme_options( $options ) {
 
 	$options[]    = array(
 		'name'      => 'basic_settings',
-		'title'     => 'Basic Settings',
+		'title'     => __( 'Basic Settings', 'nano-progga' ),
 		'icon'      => 'fa fa-cogs',
 		'fields'    => array(
 							array(
@@ -187,7 +187,7 @@ function nano_progga_theme_options( $options ) {
 
 	$options[]    = array(
 		'name'      => 'other_settings',
-		'title'     => 'Other Settings',
+		'title'     => __( 'Other Settings', 'nano-progga' ),
 		'icon'      => 'fa fa-wrench',
 		'fields'    => array(
 							array(
@@ -209,7 +209,7 @@ function nano_progga_theme_options( $options ) {
 
 	$options[]    = array(
 		'name'      => 'seo_settings',
-		'title'     => 'SEO Settings',
+		'title'     => __( 'SEO Settings', 'nano-progga' ),
 		'icon'      => 'fa fa-shield',
 		'fields'    => array(
 							array(
@@ -224,7 +224,7 @@ function nano_progga_theme_options( $options ) {
 
 	$options[]    = array(
 		'name'      => 'social_settings',
-		'title'     => 'Social Settings',
+		'title'     => __( 'Social Settings', 'nano-progga' ),
 		'icon'      => 'fa fa-share-square',
 		'fields'    => array(
 							array(

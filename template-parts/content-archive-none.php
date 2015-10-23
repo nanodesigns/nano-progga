@@ -12,7 +12,10 @@
 
 <section class="no-results not-found">
 	<header class="page-header">
-		<h1 class="page-title archive-title"><?php esc_html_e( 'Nothing Found', 'nano-progga' ); ?></h1>
+		<?php
+			the_archive_title( '<h1 class="page-title archive-title">', '</h1>' );
+			the_archive_description( '<div class="taxonomy-description">', '</div>' );
+		?>
 	</header><!-- .page-header -->
 
 	<div class="page-content">
@@ -24,7 +27,7 @@
 
 		<?php else : ?>
 
-			<p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'nano-progga' ); ?></p>
+			<p><?php esc_html_e( 'Sorry, the topic is here, but the content for the topic is absent now. Better try with some keywords to find something you desired.', 'nano-progga' ); ?></p>
 			<?php get_search_form(); ?>
 
 		<?php endif; ?>

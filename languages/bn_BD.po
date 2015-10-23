@@ -2,178 +2,219 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nano progga\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-09 08:28+0600\n"
-"PO-Revision-Date: 2015-08-22 23:20+0600\n"
+"POT-Creation-Date: 2015-10-24 01:11+0600\n"
+"PO-Revision-Date: 2015-10-24 01:12+0600\n"
 "Last-Translator: Mayeenul Islam <wz.islam@gmail.com>\n"
 "Language-Team: nanodesigns <info@nanodesignsbd.com>\n"
 "Language: bn_BD\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-KeywordsList: _;gettext;gettext_noop;_e;__;_x;_n;esc_html__;esc_html_x:1,2c;esc_html_e;"
-"esc_attr__;esc_attr_e;esc_attr_x:1,2c;_ex;__ngettext;__ngettext_noop;_n_noop;_c;_nc;_nx_noop\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;_e;__;_x;_n;esc_html__;esc_html_x:1,2c;"
+"esc_html_e;esc_attr__;esc_attr_e;esc_attr_x:1,2c;_ex;__ngettext;__ngettext_noop;_n_noop;"
+"_c;_nc;_nx_noop\n"
 "X-Poedit-Basepath: .\n"
 "X-Generator: Poedit 1.8.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../404.php:26
+#: ../404.php:22
 msgid "Lost in darkness!"
 msgstr "অন্ধকারে ডুবে গেলাম!"
 
-#: ../404.php:28
+#: ../404.php:24
 msgid "we are unable to find what you are looking for"
 msgstr "আপনি যা খুঁজছেন, তা আমরা পাইনি"
 
-#: ../__development/development.php:38
-msgid "Database Queries"
-msgstr "ডাটাবেজ কুয়েরি"
+#: ../admin/nano-progga-settings.php:51
+#: ../libs/cs-framework/classes/framework.class.php:361
+msgid "Theme Options"
+msgstr "থিম অপশন্‌স"
 
-#: ../admin/nano-progga-settings.php:100 ../admin/nano-progga-settings.php:101
-msgid "Options"
-msgstr "অপশনসমূহ"
+#: ../admin/nano-progga-settings.php:73
+msgid "Basic Settings"
+msgstr "প্রাথমিক সেটিংসমূহ"
 
-#: ../admin/nano-progga-settings.php:124
-msgid "&mdash; Settings"
-msgstr "&mdash; সেটিংসমূহ"
-
-#: ../admin/nano-progga-settings.php:125
-#, php-format
-msgid "Maintain %s's static part from this options page."
-msgstr "%s-এর স্থির অংশগুলো এই অপশন পাতা থেকে নিয়ন্ত্রণ করুন।"
-
-#: ../admin/nano-progga-settings.php:129
-msgid "Settings saved"
-msgstr "সেটিংস সংরক্ষিত"
-
-#: ../admin/nano-progga-settings.php:139
-msgid "Site Logo <small>set a site logo to show on the header of the site</small>"
-msgstr "সাইটের লগো <small>সাইটের হেডারে দেখানোর জন্য একটি লগো নির্ধারণ করুন</small>"
-
-#: ../admin/nano-progga-settings.php:141
+#: ../admin/nano-progga-settings.php:79
 msgid "Site Logo"
 msgstr "সাইটের লগো"
 
-#: ../admin/nano-progga-settings.php:143
-msgid "Upload"
-msgstr "আপলোড"
-
-#: ../admin/nano-progga-settings.php:157
+#: ../admin/nano-progga-settings.php:80
 msgid ""
-"Featured Series <small>control which <strong>4</strong> series to show on home page as featured. "
-"press <kbd>Ctrl</kbd> and select multiple series. To disable simply uncheck the checkbox</small>"
+"Set a site logo to show on the header of the site. Upload an image of minimum "
+"<code>40px</code> &times; <code>40px</code>"
 msgstr ""
-"সমাদৃত ধারাবাহিক <small>কোন <strong>৪টি</strong> ধারাবাহিক প্রথম পাতায় দেখাতে চান, বাছাই করুন। "
-"<kbd>Ctrl</kbd> চেপে রেখে একাধিক ধারাবাহিক বাছাই করুন। না দেখাতে চাইলে, টিকচিহ্ন উঠিয়ে দিন</small>"
+"সাইটের হেডারে লগো দেখাতে এখানে তা নির্বাচন করুন। সর্বনিম্ন <code>40px</code> &times; "
+"<code>40px</code>-এর একটি ছবি আপলোড করুন"
 
-#: ../admin/nano-progga-settings.php:169
-msgid ""
-"Enable Bengali<br><small>control whether to enable/disable Bengali (<em>Bangla</em>) support to "
-"your blog</small>"
-msgstr "বাংলা চালু করুন<br><small>ব্লগে বাংলা চালু করবেন কিনা নিয়ন্ত্রণ করুন</small>"
+#: ../admin/nano-progga-settings.php:86
+msgid "Enable Bengali"
+msgstr "বাংলা সক্রীয় করুন"
 
-#: ../admin/nano-progga-settings.php:171
-msgid ""
-"Show Author Bio<br><small>control whether to show/hide author bio in <em>Author archives</em></"
-"small>"
-msgstr ""
-"লেখক বৃত্তান্ত দেখান<br><small><em>লেখক আর্কাইভে</em> লেখক বৃত্তান্ত দেখাবেন কিনা নিয়ন্ত্রণ করুন</small>"
+#: ../admin/nano-progga-settings.php:88
+msgid "Control whether to enable/disable Bengali (<em>Bangla</em>) support to your blog"
+msgstr "আপনার ব্লগে বাংলার সুবিধাদি চালু করবেন কিনা তা নিয়ন্ত্রণ করুন"
 
-#: ../admin/nano-progga-settings.php:173
-msgid ""
-"Show Related Posts<br><small>control whether to show/hide related posts in post detail page</small>"
-msgstr ""
-"সম্পূরক প্রকাশনা দেখান<br><small>প্রকাশনার বিস্তারিত পাতায় সম্পূরক প্রকাশনা দেখাবেন কিনা নির্ধারণ করুন</small>"
+#: ../admin/nano-progga-settings.php:93
+msgid "<strong>Featured Post Series</strong> Control the Featured Post Series from here"
+msgstr "<strong>সমাদৃত ধারাবাহিক পর্ব</strong> সমাদৃত ধারাবাহিক পর্বগুলো এখান থেকে নিয়ন্ত্রণ করুন"
 
-#: ../admin/nano-progga-settings.php:180
-msgid "Home Page Widgets Control <small>control home page widgets' properties</small>"
-msgstr "নীড়পাতার উইজেট নিয়ন্ত্রণ <small>নীড়পাতার উইজেটসমূহ এখান থেকে নিয়ন্ত্রণ করুন</small>"
+#: ../admin/nano-progga-settings.php:98
+msgid "Show series"
+msgstr "ধারাবাহিক দেখান"
 
-#: ../admin/nano-progga-settings.php:182
-msgid ""
-"Show widgets in paginated pages too <small>home widgets are visible only on the first paginated "
-"page of home page. If you want to show them in other pages too, check here</small>"
-msgstr ""
-"উইজেটসমূহ ভিতরের পাতাগুলোতেও দেখান <small>নীড়পাতার উইজেটসমূহ শুধু প্রথম পাতাতেই দৃশ্যমান। আপনি যদি "
-"পেজিনেটেড পাতাসমূহেও দেখাতে আগ্রহী হোন, এখানে টিকচিহ্ন দিন</small>"
+#: ../admin/nano-progga-settings.php:100
+msgid "Control whether to show the featured series on the Home page or not"
+msgstr "সমাদৃত ধারাবাহিক কি নীড়পাতায় দেখাতে চান কিনা নিয়ন্ত্রণ করুন"
 
-#: ../admin/nano-progga-settings.php:187
+#: ../admin/nano-progga-settings.php:105
+msgid "Choice Featured Series"
+msgstr "সমাদৃত ধারাবাহিক বাছাই করুন"
+
+#: ../admin/nano-progga-settings.php:106
+msgid "Control which 4 series to show on home page as featured (Select multiple)"
+msgstr "কোন ৪টি ধারাবাহিককে নীড়পাতায় দেখাতে চান নিয়ন্ত্রণ করুন (একাধিক বাছাই করুন)"
+
+#: ../admin/nano-progga-settings.php:121
+msgid "Show series in Blog Template"
+msgstr "ব্লগ টেমপ্লেট পাতায় সমাদৃত ধারাবাহিক দেখান"
+
+#: ../admin/nano-progga-settings.php:128
+msgid "Control whether to show the featured series on the Blog Template page or not"
+msgstr "ব্লগ টেমপ্লেট পাতায় সমাদৃত ধারাবাহিকসমূহ দেখাবেন কিনা নিয়ন্ত্রণ করুন"
+
+#: ../admin/nano-progga-settings.php:133
 #, php-format
 msgid ""
-"You can alter the placement of home page widgets by setting their individual values from below, and "
-"you can set places within %s"
+"<strong>Home Page Widgets</strong> You can alter the placement of home page widgets by "
+"setting their individual values from here, and you can set places within <strong>%s</"
+"strong>"
 msgstr ""
-"আপনি চাইলে নীড়পাতার উইজেটসমূহের অবস্থানের মান পরিবর্তন করে তাদের অবস্থান পরিবর্তন করতে পারেন, এবং আপনি "
-"%s-এর মধ্যে স্থান-মান নির্ধারণ করতে পারবেন"
+"<strong>নীড়পাতা উইজেটসমূহ</strong> আপনি নীড়পাতার উইজেটসমূহের অবস্থান, তাদের প্রত্যেকের নিজস্ব "
+"মান এখান থেকে পরিবর্তন করে বদলে নিতে পারেন, এবং এই মান সর্বোচ্চ <strong>%s</strong> পর্যন্ত "
+"হতে পারে"
 
-#: ../admin/nano-progga-settings.php:189
-msgid "Home Widget 1: Position"
-msgstr "নীড় উইজেট ১: অবস্থান"
+#: ../admin/nano-progga-settings.php:138
+msgid "Widgets' Positioning"
+msgstr "উইজেটসমূহের অবস্থিতি"
+
+#: ../admin/nano-progga-settings.php:143
+msgid "Home Widget 1 : Position"
+msgstr "নীড়পাতা উইজেট ১ : অবস্থান"
+
+#: ../admin/nano-progga-settings.php:150
+msgid "Home Widget 2 : Position"
+msgstr "নীড়পাতা উইজেট ২ : অবস্থান"
+
+#: ../admin/nano-progga-settings.php:157
+msgid "Home Widget 3 : Position"
+msgstr "নীড়পাতা উইজেট ৩ : অবস্থান"
+
+#: ../admin/nano-progga-settings.php:164
+msgid "Home Widget 4 : Position"
+msgstr "নীড়পাতা উইজেট ৪ : অবস্থান"
+
+#: ../admin/nano-progga-settings.php:171
+msgid "Home Widget 5 : Position"
+msgstr "নীড়পাতা উইজেট ৫ : অবস্থান"
+
+#: ../admin/nano-progga-settings.php:180
+msgid "Show widgets in paginated pages too"
+msgstr "উইজেটসমূহ অন্যান্য পৃষ্ঠায়ও দেখান"
+
+#: ../admin/nano-progga-settings.php:182
+msgid "Home widgets are visible only on the first paginated page of home page."
+msgstr "নীড়পাতার উইজেটসমূহ শুধুমাত্র নীড়পাতার প্রথম পৃষ্ঠায় দেখা যাবে"
+
+#: ../admin/nano-progga-settings.php:183
+msgid "If you want to show them in other pages too, enable here"
+msgstr "আপনি যদি অন্যান্য পাতায়ও দেখাতে চান, এখানে সক্রীয় করুন"
+
+#: ../admin/nano-progga-settings.php:190
+msgid "Other Settings"
+msgstr "অন্যান্য সেটিংসমূহ"
+
+#: ../admin/nano-progga-settings.php:196
+msgid "Show Author Bio"
+msgstr "লেখক পরিচিতি দেখান"
 
 #: ../admin/nano-progga-settings.php:198
-msgid "Home Widget 2: Position"
-msgstr "নীড় উইজেট ২: অবস্থান"
+msgid "Control whether to show/hide author bio in <em>Author</em> archives"
+msgstr "<em>লেখক</em> আর্কাইভ-এ লেখক-বৃত্তান্ত দেখাবেন কিনা নিয়ন্ত্রণ করুন"
 
-#: ../admin/nano-progga-settings.php:207
-msgid "Home Widget 3: Position"
-msgstr "নীড় উইজেট ৩: অবস্থান"
+#: ../admin/nano-progga-settings.php:203
+msgid "Show Related Posts"
+msgstr "সম্পূরক প্রকাশনা দেখান"
 
-#: ../admin/nano-progga-settings.php:216
-msgid "Home Widget 4: Position"
-msgstr "নীড় উইজেট ৪: অবস্থান"
+#: ../admin/nano-progga-settings.php:205
+msgid "Control whether to show/hide related posts in post detail page"
+msgstr "প্রকাশনার বিস্তারিত পাতায় সম্পূরক প্রকাশনা দেখাবেন কিনা নিয়ন্ত্রণ করুন"
 
-#: ../admin/nano-progga-settings.php:225
-msgid "Home Widget 5: Position"
-msgstr "নীড় উইজেট ৫: অবস্থান"
+#: ../admin/nano-progga-settings.php:212
+msgid "SEO Settings"
+msgstr "এসইও সেটিংসমূহ"
+
+#: ../admin/nano-progga-settings.php:218
+msgid "NoFollow External Links"
+msgstr "বহিঃস্থ লিংকসমূহকে noFollow করুন"
+
+#: ../admin/nano-progga-settings.php:220
+msgid ""
+"Control whether to show <code>rel=\"nofollow\"</code> in external links in post/page "
+"content"
+msgstr ""
+"প্রকাশনা/পাতার বিবরণ অংশে থাকা বহিঃস্থ লিংকসমূহে <code>rel=\"nofollow\"</code> দেখাবেন "
+"কিনা নিয়ন্ত্রণ করুন"
+
+#: ../admin/nano-progga-settings.php:227
+msgid "Social Settings"
+msgstr "সামাজিক সেটিংসমূহ"
+
+#: ../admin/nano-progga-settings.php:233
+#, php-format
+msgid "%s RSS Feed URL"
+msgstr "%s আরএসএস ফিড ইউআরএল"
 
 #: ../admin/nano-progga-settings.php:239
-msgid "Social Control <small>control each of the social link from here</small>"
-msgstr "সামাজিক যোগাযোগ <small>সামাজিক যোগাযোগ লিংকগুলোর প্রতিটি এখান থেকে নিয়ন্ত্রণ করুন</small>"
-
-#: ../admin/nano-progga-settings.php:241
-msgid "Facebook"
-msgstr "ফেসবুক"
-
-#: ../admin/nano-progga-settings.php:244
-msgid "Twitter"
-msgstr "টুইটার"
+#, php-format
+msgid "%s Facebook URL"
+msgstr "%s ফেসবুক ইউআরএল"
 
 #: ../admin/nano-progga-settings.php:247
-msgid "LinkedIn"
-msgstr "লিংকেডইন"
+#, php-format
+msgid "%s Twitter URL"
+msgstr "%s টুইটার ইউআরএল"
 
-#: ../admin/nano-progga-settings.php:250
-msgid "Google+"
-msgstr "গুগল+"
-
-#: ../admin/nano-progga-settings.php:254
-msgid "Flickr"
-msgstr "ফ্লিকার"
-
-#: ../admin/nano-progga-settings.php:257
-msgid "Pinterest"
-msgstr "পিন্টারেস্ট"
-
-#: ../admin/nano-progga-settings.php:260
-msgid "Tumblr"
-msgstr "টাম্বলার"
+#: ../admin/nano-progga-settings.php:255
+#, php-format
+msgid "%s LinkedIn Page URL"
+msgstr "%s লিংকেডইন পাতার ইউআরএল"
 
 #: ../admin/nano-progga-settings.php:263
-msgid "YouTube"
-msgstr "ইউটিউব"
+#, php-format
+msgid "%s Google+ Page URL"
+msgstr "%s গুগল+ পাতার ইউআরএল"
 
 #: ../admin/nano-progga-settings.php:271
-msgid ""
-"NoFollow External Links<br><small>control whether to show <code>rel=\"nofollow\"</code> in external "
-"links in post/page content</small>"
-msgstr ""
-"বহির্গামী লিংকগুলোকে noFollow করুন<br><small>প্রকাশনা/পাতার বিষয়বস্তুর মধ্যকার বহির্গামী লিংকগুলোকে "
-"<code>rel=\"nofollow\"</code> করবেন কিনা নিয়ন্ত্রণ করুন</small>"
+#, php-format
+msgid "%s Flickr URL"
+msgstr "%s ফ্লিকার ইউআরএল"
 
-#: ../admin/nano-progga-settings.php:275
-msgid "Save Options"
-msgstr "সংরক্ষণ করুন"
+#: ../admin/nano-progga-settings.php:279
+#, php-format
+msgid "%s Pinterest Profile URL"
+msgstr "%s পিন্টারেস্ট প্রোফাইল ইউআরএল"
+
+#: ../admin/nano-progga-settings.php:287
+#, php-format
+msgid "%s Tumblr Blog URL"
+msgstr "%s টাম্বলার ব্লগ ইউআরএল"
+
+#: ../admin/nano-progga-settings.php:295
+#, php-format
+msgid "%s YouTube Channel URL"
+msgstr "%s ইউটিউব চ্যানেল ইউআরএল"
 
 #: ../comments.php:48
 msgid "Comment navigation"
@@ -216,11 +257,11 @@ msgstr "মন্তব্য করতে আপনাকে <a href=\"%s\">ল
 #: ../comments.php:94
 #, php-format
 msgid ""
-"Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out from this account\">Log "
-"out?</a>"
+"Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out from this "
+"account\">Log out?</a>"
 msgstr ""
-"<a href=\"%1$s\">%2$s</a> হিসেবে লগইন করেছেন। <a href=\"%3$s\" title=\"এই অ্যাকাউন্ট থেকে বেরিয়ে যান"
-"\">লগ আউট?</a>"
+"<a href=\"%1$s\">%2$s</a> হিসেবে লগইন করেছেন। <a href=\"%3$s\" title=\"এই অ্যাকাউন্ট থেকে "
+"বেরিয়ে যান\">লগ আউট?</a>"
 
 #: ../comments.php:101
 msgid "Your email won't be public"
@@ -228,10 +269,12 @@ msgstr "আপনার ইমেইল প্রকাশ করা হবে �
 
 #: ../comments.php:106
 #, php-format
-msgid "You can use these <abbr title=\"HyperText Markup Language\">HTML</abbr> tags and markups: %s"
+msgid ""
+"You can use these <abbr title=\"HyperText Markup Language\">HTML</abbr> tags and "
+"markups: %s"
 msgstr ""
-"আপনি এই <abbr title=\"HyperText Markup Language\">HTML</abbr> ট্যাগ এবং মার্কআপগুলো ব্যবহার করতে পারেন: "
-"%s"
+"আপনি এই <abbr title=\"HyperText Markup Language\">HTML</abbr> ট্যাগ এবং মার্কআপগুলো ব্যবহার "
+"করতে পারেন: %s"
 
 #: ../comments.php:114
 msgid "Name"
@@ -254,121 +297,121 @@ msgstr "%1s দ্বারা নিয়ন্ত্রীত এবং <strong>
 msgid "Back to Top"
 msgstr "উপরে চলো"
 
-#: ../functions.php:72
+#: ../functions.php:76
 msgid "Main Menu"
 msgstr "প্রধান মেনু"
 
-#: ../functions.php:136
+#: ../functions.php:145
 msgid "Home Widget 1"
 msgstr "নীড় উইজেট ১"
 
-#: ../functions.php:138 ../functions.php:148 ../functions.php:158 ../functions.php:168
-#: ../functions.php:178
+#: ../functions.php:147 ../functions.php:157 ../functions.php:167 ../functions.php:177
+#: ../functions.php:187
 msgid "Appears on the home page within the grid"
 msgstr "নীড়পাতায় গ্রিডের ফাঁকে ফাঁকে দেখা যাবে"
 
-#: ../functions.php:146
+#: ../functions.php:155
 msgid "Home Widget 2"
 msgstr "নীড় উইজেট ২"
 
-#: ../functions.php:156
+#: ../functions.php:165
 msgid "Home Widget 3"
 msgstr "নীড় উইজেট ৩"
 
-#: ../functions.php:166
+#: ../functions.php:175
 msgid "Home Widget 4"
 msgstr "নীড় উইজেট ৪"
 
-#: ../functions.php:176
+#: ../functions.php:185
 msgid "Home Widget 5"
 msgstr "নীড় উইজেট ৫"
 
-#: ../functions.php:186
+#: ../functions.php:195
 msgid "Right Sidebar"
 msgstr "ডানের সাইডবার"
 
-#: ../functions.php:188
+#: ../functions.php:197
 msgid "Appears on the right portion of the site"
 msgstr "সাইটের ডানদিকে দেখা যাবে"
 
-#: ../functions.php:196
+#: ../functions.php:205
 msgid "Archive Left Sidebar"
 msgstr "আর্কাইভের বামের সাইডবার"
 
-#: ../functions.php:198
+#: ../functions.php:207
 msgid "Appears on the left portion of the site only on archive pages"
 msgstr "শুধুমাত্র আর্কাইভ পাতায় সাইটের বামদিকে দেখা যাবে"
 
-#: ../functions.php:206
+#: ../functions.php:215
 msgid "Footer Sidebar"
 msgstr "ফাটার সাইডবার"
 
-#: ../functions.php:208
+#: ../functions.php:217
 msgid "Appears on the footer portion of the site"
 msgstr "সাইটের ফুটার অংশে দেখা যাবে"
 
-#: ../functions.php:290
+#: ../functions.php:299
 msgid "Home"
 msgstr "নীড়পাতা"
 
-#: ../functions.php:291
+#: ../functions.php:300
 #, php-format
 msgid "Category: \"%s\""
 msgstr "বিভাগ: \"%s\""
 
-#: ../functions.php:292
+#: ../functions.php:301
 #, php-format
 msgid "Archive: \"%s\""
 msgstr "সংকলন: \"%s\""
 
-#: ../functions.php:293
+#: ../functions.php:302
 #, php-format
 msgid "Search Results: \"%s\""
 msgstr "অনুসন্ধানের ফলাফল: \"%s\""
 
-#: ../functions.php:294
+#: ../functions.php:303
 #, php-format
 msgid "Tagged: \"%s\""
 msgstr "বিষয়বস্তু: \"%s\""
 
-#: ../functions.php:295 ../inc/template-tags.php:218
+#: ../functions.php:304 ../inc/template-tags.php:218
 #, php-format
 msgid "Author: %s"
 msgstr "লেখক: %s"
 
-#: ../functions.php:296
+#: ../functions.php:305
 msgid "Error 404"
 msgstr "ত্রুটি ৪০৪"
 
-#: ../functions.php:413
+#: ../functions.php:422
 msgid "Page"
 msgstr "পাতা"
 
-#: ../functions.php:429
+#: ../functions.php:439
 msgid "Facebook Profile URL [np]"
 msgstr "ফেসবুক প্রোফাইল ইউআরএল [np]"
 
-#: ../functions.php:430
+#: ../functions.php:440
 msgid "Twitter URL [np]"
 msgstr "টুইটার ইউআরএল [np]"
 
-#: ../functions.php:431
+#: ../functions.php:441
 msgid "Google+ Profile URL [np]"
 msgstr "গুগল+ প্রোফাইল ইউআরএল [np]"
 
-#: ../functions.php:432
+#: ../functions.php:442
 msgid "LinkedIn URL [np]"
 msgstr "লিংকেডইন ইউআরএল [np]"
 
-#: ../functions.php:433
+#: ../functions.php:443
 msgid "Pinterest URL [np]"
 msgstr "পিন্টারেস্ট ইউআরএল [np]"
 
-#: ../functions.php:434
+#: ../functions.php:444
 msgid "Tumblr URL [np]"
 msgstr "টাম্বলার ইউআরএল [np]"
 
-#: ../functions.php:457
+#: ../functions.php:468
 msgid "Related Posts"
 msgstr "সম্পূরক প্রকাশনা"
 
@@ -376,7 +419,7 @@ msgstr "সম্পূরক প্রকাশনা"
 msgid "Skip to content"
 msgstr "লেখায় চলে যাও"
 
-#: ../header.php:94
+#: ../header.php:96
 msgid "Popular Series"
 msgstr "সমাদৃত ধারাবাহিক"
 
@@ -388,7 +431,11 @@ msgstr "মূল লেখায় চলো"
 msgid "This is an image of an article"
 msgstr "এটি একটি প্রকাশনার ছবি"
 
-#: ../image.php:64 ../template-parts/content-page.php:19 ../template-parts/content-single.php:31
+#: ../image.php:64 ../template-parts/content-audio.php:39
+#: ../template-parts/content-gallery.php:39 ../template-parts/content-image.php:32
+#: ../template-parts/content-link.php:39 ../template-parts/content-page.php:19
+#: ../template-parts/content-quote.php:39 ../template-parts/content-single.php:33
+#: ../template-parts/content-status.php:26 ../template-parts/content-video.php:39
 #: ../template-parts/content.php:47
 msgid "Pages:"
 msgstr "পাতাসমূহ:"
@@ -398,65 +445,74 @@ msgstr "পাতাসমূহ:"
 msgid "Page %s"
 msgstr "পাতাসমূহ %s"
 
-#: ../inc/functions-series.php:19 ../inc/functions-series.php:20 ../inc/functions-series.php:29
+#: ../inc/functions-series.php:20 ../inc/functions-series.php:21
+#: ../inc/functions-series.php:30
 msgid "Series"
 msgstr "ধারাবাহিক"
 
-#: ../inc/functions-series.php:21
+#: ../inc/functions-series.php:22
 msgid "Search Series"
 msgstr "ধারাবাহিক অনুসন্ধান"
 
-#: ../inc/functions-series.php:22
+#: ../inc/functions-series.php:23
 msgid "All Series"
 msgstr "সকল ধারাবাহিক"
 
-#: ../inc/functions-series.php:23
+#: ../inc/functions-series.php:24
 msgid "Parent Series"
 msgstr "ধারাবাহিক পোস্ট আপডেট করুন"
 
-#: ../inc/functions-series.php:24
+#: ../inc/functions-series.php:25
 msgid "Parent Series:"
 msgstr "মূল ধারাবাহিক:"
 
-#: ../inc/functions-series.php:25
+#: ../inc/functions-series.php:26
 msgid "Edit Series"
 msgstr "ধারাবাহিক সম্পাদনা"
 
-#: ../inc/functions-series.php:26
+#: ../inc/functions-series.php:27
 msgid "Update Series"
 msgstr "ধারাবাহিক আপডেট"
 
-#: ../inc/functions-series.php:27
+#: ../inc/functions-series.php:28
 msgid "Add New Series"
 msgstr "নতুন ধারাবাহিক যোগ"
 
-#: ../inc/functions-series.php:28
+#: ../inc/functions-series.php:29
 msgid "New Series Name"
 msgstr "নতুন ধারাবাহিকের নাম"
 
-#: ../inc/functions-series.php:89
-msgid "Series: "
-msgstr "ধারাবাহিক: "
+#: ../inc/functions-series.php:96
+msgid "Series:&nbsp;"
+msgstr "ধারাবাহিক:&nbsp;"
 
-#: ../inc/functions-series.php:91
+#: ../inc/functions-series.php:100
 msgid "&mdash; a part of the series"
 msgstr "&mdash;এর একটি পর্ব"
 
-#: ../inc/functions-series.php:159 ../inc/functions-series.php:183 ../inc/functions-series.php:347
-msgid "Image"
-msgstr "ছবি"
+#: ../inc/functions-series.php:222 ../inc/functions-series.php:249
+msgid "Series Cover Image"
+msgstr "ধারাবাহিকের প্রচ্ছদের ছবি"
 
-#: ../inc/functions-series.php:162 ../inc/functions-series.php:185 ../inc/functions-series.php:329
-msgid "Upload/Add image"
-msgstr "ছবি আপলোড/যোগ"
+#: ../inc/functions-series.php:225
+msgid "Series cover image"
+msgstr "ধারাবাহিকের প্রচ্ছদের ছবি"
 
-#: ../inc/functions-series.php:186 ../inc/functions-series.php:330
-msgid "Remove image"
-msgstr "ছবি বাতিল"
+#: ../inc/functions-series.php:228 ../inc/functions-series.php:263
+msgid "Upload Image"
+msgstr "ছবি আপলোড করুন"
 
-#: ../inc/functions-series.php:367
-msgid "Thumbnail"
-msgstr "থাম্বনেইল"
+#: ../inc/functions-series.php:229 ../inc/functions-series.php:264
+msgid "Add/Choose an image for the cover of the Series term"
+msgstr "ধারাবাহিক-এর টার্মের জন্য প্রচ্ছদের ছবি যোগ/বাছাই করুন"
+
+#: ../inc/functions-series.php:333
+msgid "Cover"
+msgstr "প্রচ্ছদ"
+
+#: ../inc/functions-series.php:357
+msgid "Cover Image"
+msgstr "প্রচ্ছদের ছবি"
 
 #: ../inc/template-tags.php:23
 msgid "Posts navigation"
@@ -481,14 +537,6 @@ msgstr "<span class=\"meta-nav np-left\"></span> পুরোন ছবি"
 #: ../inc/template-tags.php:76
 msgid "Latest Image <span class=\"meta-nav np-right\"></span>"
 msgstr "সাম্প্রতিক ছবি <span class=\"meta-nav np-right\"></span>"
-
-#: ../inc/template-tags.php:121
-msgid "&laquo;"
-msgstr "&laquo;"
-
-#: ../inc/template-tags.php:122
-msgid "&raquo;"
-msgstr "&raquo;"
 
 #: ../inc/template-tags.php:169
 msgid "0"
@@ -610,6 +658,196 @@ msgstr "%1$s: %2$s"
 msgid "Archives"
 msgstr "আর্কাইভ"
 
+#: ../libs/cs-framework/classes/framework.class.php:176
+msgid "Success. Imported backup options."
+msgstr "সফল। ব্যাকআপ অপশনসমূহ আমদানী করা হয়েছে।"
+
+#: ../libs/cs-framework/classes/framework.class.php:181
+msgid "Default options restored."
+msgstr "ডিফল্ট অপশন পুনরুদ্ধার করা হয়েছে।"
+
+#: ../libs/cs-framework/classes/framework.class.php:200
+msgid "Default options restored for only this section."
+msgstr "শুধুমাত্র এই সেকশনের জন্য ডিফল্ট অপশনসমূহ পুণরুদ্ধার করা হয়েছে।"
+
+#: ../libs/cs-framework/classes/framework.class.php:361
+msgid "<small>based on Codestar Framwork by Codestar</small>"
+msgstr "<small>কোডস্টার-এর কোডস্টার ফ্রেমওয়ার্ক-এর ভিত্তিতে</small>"
+
+#: ../libs/cs-framework/classes/framework.class.php:363
+msgid "Settings saved."
+msgstr "সেটিংসমূহ সংরক্ষিত হয়েছে।"
+
+#: ../libs/cs-framework/classes/framework.class.php:364
+msgid "Save"
+msgstr "সংরক্ষণ"
+
+#: ../libs/cs-framework/classes/framework.class.php:364
+msgid "Saving..."
+msgstr "সংরক্ষিত হচ্ছে..."
+
+#: ../libs/cs-framework/classes/framework.class.php:365
+msgid "Restore"
+msgstr "পুণরুদ্ধার"
+
+#: ../libs/cs-framework/classes/framework.class.php:367
+msgid "show all options"
+msgstr "সকল অপশন দেখাও"
+
+#: ../libs/cs-framework/classes/options.class.php:125
+msgid "CONFIG"
+msgstr "কনফিগার"
+
+#: ../libs/cs-framework/classes/options.class.php:131
+msgid "USAGE"
+msgstr "ব্যবহারবিধি"
+
+#: ../libs/cs-framework/classes/options.class.php:137
+msgid "VALUE"
+msgstr "মান"
+
+#: ../libs/cs-framework/classes/options.class.php:213
+#, php-format
+msgid "You are editing language: ( <strong>%s</strong> )"
+msgstr "আপনি ভাষা সম্পাদনা করছেন: ( <strong>%s</strong> )"
+
+#: ../libs/cs-framework/classes/shortcode.class.php:82
+#: ../libs/cs-framework/classes/shortcode.class.php:90
+#: ../libs/cs-framework/fields/textarea/textarea.php:27
+msgid "Add Shortcode"
+msgstr "শর্টকোড যোগ করুন"
+
+#: ../libs/cs-framework/classes/shortcode.class.php:92
+msgid "Select a shortcode"
+msgstr "শর্টকোড বাছাই করুন"
+
+#: ../libs/cs-framework/classes/shortcode.class.php:108
+msgid "Insert Shortcode"
+msgstr "শর্টকোড যোগ করুন"
+
+#: ../libs/cs-framework/fields/background/background.php:31
+#: ../libs/cs-framework/fields/background/background.php:32
+#: ../libs/cs-framework/fields/upload/upload.php:23
+#: ../libs/cs-framework/fields/upload/upload.php:24
+msgid "Upload"
+msgstr "আপলোড"
+
+#: ../libs/cs-framework/fields/background/background.php:33
+#: ../libs/cs-framework/fields/upload/upload.php:25
+msgid "Use Image"
+msgstr "ছবি ব্যবহার করুন"
+
+#: ../libs/cs-framework/fields/backup/backup.php:21
+msgid "Import a Backup"
+msgstr "ব্যাকআপ আমদানি করুন"
+
+#: ../libs/cs-framework/fields/backup/backup.php:22
+msgid "copy-paste your backup string here"
+msgstr "আপনার ব্যাকআপ স্ট্রিং এখানে কপি-পেস্ট করুন"
+
+#: ../libs/cs-framework/fields/backup/backup.php:27
+msgid "Export and Download Backup"
+msgstr "রপ্তানি করুন এবং ব্যাকআপ ডাউনলোড করুন"
+
+#: ../libs/cs-framework/fields/backup/backup.php:28
+msgid "or"
+msgstr "কিংবা"
+
+#: ../libs/cs-framework/fields/backup/backup.php:29
+msgid "!!! Reset All Options !!!"
+msgstr "!!! সকল অপশন রিসেট করুন !!!"
+
+#: ../libs/cs-framework/fields/backup/backup.php:30
+msgid "Please be sure for reset all of framework options."
+msgstr "অনুগ্রহ করে ফ্রেমওয়ার্কের সকল অপশনসমূহ রিসেট নিশ্চিত করে নিন"
+
+#: ../libs/cs-framework/fields/gallery/gallery.php:21
+msgid "Add Gallery"
+msgstr "গ্যালারি যোগ"
+
+#: ../libs/cs-framework/fields/gallery/gallery.php:22
+msgid "Edit Gallery"
+msgstr "গ্যালারি সম্পাদনা"
+
+#: ../libs/cs-framework/fields/gallery/gallery.php:23
+msgid "Clear"
+msgstr "পরিষ্কার"
+
+#: ../libs/cs-framework/fields/group/group.php:21
+msgid "Adding"
+msgstr "যোগ হচ্ছে"
+
+#: ../libs/cs-framework/fields/group/group.php:43
+#: ../libs/cs-framework/fields/group/group.php:75
+msgid "Remove"
+msgstr "বাতিল"
+
+#: ../libs/cs-framework/fields/icon/icon.php:25
+#: ../libs/cs-framework/functions/actions.php:55
+msgid "Add Icon"
+msgstr "আইকন যোগ করুন"
+
+#: ../libs/cs-framework/fields/icon/icon.php:26
+msgid "Remove Icon"
+msgstr "আইকন বাদ দিন"
+
+#: ../libs/cs-framework/fields/image/image.php:22
+msgid "Add Image"
+msgstr "চিত্র যোগ করুন"
+
+#: ../libs/cs-framework/fields/sorter/sorter.php:24
+msgid "Enabled Modules"
+msgstr "সক্রীয় মড্যুলসমূহ"
+
+#: ../libs/cs-framework/fields/sorter/sorter.php:25
+msgid "Disabled Modules"
+msgstr "নিষ্ক্রীয় মড্যুলসমূহ"
+
+#: ../libs/cs-framework/fields/switcher/switcher.php:20
+msgid "on"
+msgstr "চালু"
+
+#: ../libs/cs-framework/fields/switcher/switcher.php:20
+msgid "off"
+msgstr "বন্ধ"
+
+#: ../libs/cs-framework/fields/typography/typography.php:73
+msgid "Web Safe Fonts"
+msgstr "ওয়েব-নিরাপদ ফন্টসমূহ"
+
+#: ../libs/cs-framework/fields/typography/typography.php:79
+msgid "Google Fonts"
+msgstr "গুগল ফন্টসমূহ"
+
+#: ../libs/cs-framework/fields/typography/typography.php:107
+#: ../libs/cs-framework/functions/actions.php:30
+msgid "Error! Can not load json file."
+msgstr "ত্রুটি! json ফাইল লোড করা গেল না।"
+
+#: ../libs/cs-framework/functions/actions.php:56
+msgid "Search a Icon..."
+msgstr "একটি আইকন অনুসন্ধান করুন"
+
+#: ../libs/cs-framework/functions/actions.php:57
+msgid "Loading..."
+msgstr "লোড হচ্ছে..."
+
+#: ../libs/cs-framework/functions/helpers.php:48
+msgid "This field class is not available!"
+msgstr "এই ফিল্ডের ক্লাস সহজলভ্য নয়"
+
+#: ../libs/cs-framework/functions/validate.php:14
+msgid "Please write a valid email address!"
+msgstr "অনুগ্রহ করে সঠিক ইমেইল ঠিকানা দিন!"
+
+#: ../libs/cs-framework/functions/validate.php:33
+msgid "Please write a numeric data!"
+msgstr "অনুগ্রহ করে সংখ্যাবাচক তথ্য দিন!"
+
+#: ../libs/cs-framework/functions/validate.php:51
+msgid "Fatal Error! This field is required!"
+msgstr "গুরুতর ত্রুটি! এই ফিল্ডটি আবশ্যিক!"
+
 #: ../search.php:17
 #, php-format
 msgid "Search Results for: %s"
@@ -634,58 +872,217 @@ msgctxt "label"
 msgid "Search for:"
 msgstr "অনুসন্ধান:"
 
-#: ../sidebar-left.php:37
+#: ../sidebar-left.php:30
 msgid "Author did not provide any public biography"
 msgstr "লেখক জনসমক্ষে কোনো জীবন-বৃত্তান্ত প্রকাশ করেননি"
 
-#: ../template-parts/content-archive-none.php:15 ../template-parts/content-none.php:14
+#: ../template-parts/content-archive-none.php:25
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some different "
+"keywords."
+msgstr ""
+"দুঃখিত, আপনার অনুসন্ধানকৃত বিষয়বস্তুর সাথে কিছুই মিলেনি। অনুগ্রহ করে অন্য কীওয়ার্ড দিয়ে আবার চেষ্টা "
+"করুন।"
+
+#: ../template-parts/content-archive-none.php:30
+msgid ""
+"Sorry, the topic is here, but the content for the topic is absent now. Better try with "
+"some keywords to find something you desired."
+msgstr ""
+"দুঃখিত, বিষয়টি ঠিক আছে, কিন্তু এর প্রকাশনা এই মুহূর্তে নেই। দারুণ হয়, যদি কোনো কীওয়ার্ড দিয়ে, যা "
+"চাচ্ছেন অনুসন্ধান করে নিতে পারেন।"
+
+#: ../template-parts/content-audio.php:32 ../template-parts/content-gallery.php:32
+#: ../template-parts/content-image.php:25 ../template-parts/content-link.php:32
+#: ../template-parts/content-quote.php:32 ../template-parts/content-status.php:19
+#: ../template-parts/content-video.php:32 ../template-parts/content.php:40
+#, php-format
+msgid "Continue reading %s <span class=\"meta-nav\">&rarr;</span>"
+msgstr "বিস্তারিত %s <span class=\"meta-nav\">&rarr;</span>"
+
+#: ../template-parts/content-audio.php:54 ../template-parts/content-gallery.php:54
+#: ../template-parts/content-image.php:47 ../template-parts/content-link.php:54
+#: ../template-parts/content-quote.php:54 ../template-parts/content-search.php:39
+#: ../template-parts/content-video.php:54 ../template-parts/content.php:64
+msgid "Details"
+msgstr "বিস্তারিত"
+
+#: ../template-parts/content-none.php:14
 msgid "Nothing Found"
 msgstr "কিছুই পাওয়া যায়নি"
-
-#: ../template-parts/content-archive-none.php:22
-msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
-msgstr "দুঃখিত, আপনার অনুসন্ধানকৃত বিষয়বস্তুর সাথে কিছুই মিলেনি। অনুগ্রহ করে অন্য কীওয়ার্ড দিয়ে আবার চেষ্টা করুন।"
-
-#: ../template-parts/content-archive-none.php:27 ../template-parts/content-none.php:24
-msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
-msgstr "মনে হচ্ছে, আপনি যা খুঁজছেন, তা খুঁজে পাওয়া যায়নি। হয়তো অনুসন্ধান আপনার কাজে লাগতে পারে।"
 
 #: ../template-parts/content-none.php:20
 #, php-format
 msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
 msgstr "আপনার প্রথম প্রকাশনা প্রকাশ করতে প্রস্তুত? <a href=\"%1$s\">এখানে শুরু করুন</a>।"
 
-#: ../template-parts/content-search.php:39 ../template-parts/content.php:64
-msgid "Details"
-msgstr "বিস্তারিত"
+#: ../template-parts/content-none.php:24
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr "মনে হচ্ছে, আপনি যা খুঁজছেন, তা খুঁজে পাওয়া যায়নি। হয়তো অনুসন্ধান আপনার কাজে লাগতে পারে।"
 
-#: ../template-parts/content.php:40
-#, php-format
-msgid "Continue reading %s <span class=\"meta-nav\">&rarr;</span>"
-msgstr "বিস্তারিত %s <span class=\"meta-nav\">&rarr;</span>"
+#~ msgid "Database Queries"
+#~ msgstr "ডাটাবেজ কুয়েরি"
+
+#~ msgid "Options"
+#~ msgstr "অপশনসমূহ"
+
+#~ msgid "&mdash; Settings"
+#~ msgstr "&mdash; সেটিংসমূহ"
+
+#~ msgid "Maintain %s's static part from this options page."
+#~ msgstr "%s-এর স্থির অংশগুলো এই অপশন পাতা থেকে নিয়ন্ত্রণ করুন।"
+
+#~ msgid "Settings saved"
+#~ msgstr "সেটিংস সংরক্ষিত"
+
+#~ msgid "Site Logo <small>set a site logo to show on the header of the site</small>"
+#~ msgstr "সাইটের লগো <small>সাইটের হেডারে দেখানোর জন্য একটি লগো নির্ধারণ করুন</small>"
+
+#~ msgid ""
+#~ "Featured Series <small>control which <strong>4</strong> series to show on home page "
+#~ "as featured. press <kbd>Ctrl</kbd> and select multiple series. To disable simply "
+#~ "uncheck the checkbox</small>"
+#~ msgstr ""
+#~ "সমাদৃত ধারাবাহিক <small>কোন <strong>৪টি</strong> ধারাবাহিক প্রথম পাতায় দেখাতে চান, "
+#~ "বাছাই করুন। <kbd>Ctrl</kbd> চেপে রেখে একাধিক ধারাবাহিক বাছাই করুন। না দেখাতে চাইলে, "
+#~ "টিকচিহ্ন উঠিয়ে দিন</small>"
+
+#~ msgid ""
+#~ "Enable Bengali<br><small>control whether to enable/disable Bengali (<em>Bangla</em>) "
+#~ "support to your blog</small>"
+#~ msgstr "বাংলা চালু করুন<br><small>ব্লগে বাংলা চালু করবেন কিনা নিয়ন্ত্রণ করুন</small>"
+
+#~ msgid ""
+#~ "Show Author Bio<br><small>control whether to show/hide author bio in <em>Author "
+#~ "archives</em></small>"
+#~ msgstr ""
+#~ "লেখক বৃত্তান্ত দেখান<br><small><em>লেখক আর্কাইভে</em> লেখক বৃত্তান্ত দেখাবেন কিনা নিয়ন্ত্রণ "
+#~ "করুন</small>"
+
+#~ msgid ""
+#~ "Show Related Posts<br><small>control whether to show/hide related posts in post "
+#~ "detail page</small>"
+#~ msgstr ""
+#~ "সম্পূরক প্রকাশনা দেখান<br><small>প্রকাশনার বিস্তারিত পাতায় সম্পূরক প্রকাশনা দেখাবেন কিনা "
+#~ "নির্ধারণ করুন</small>"
+
+#~ msgid "Home Page Widgets Control <small>control home page widgets' properties</small>"
+#~ msgstr "নীড়পাতার উইজেট নিয়ন্ত্রণ <small>নীড়পাতার উইজেটসমূহ এখান থেকে নিয়ন্ত্রণ করুন</small>"
+
+#~ msgid ""
+#~ "Show widgets in paginated pages too <small>home widgets are visible only on the "
+#~ "first paginated page of home page. If you want to show them in other pages too, "
+#~ "check here</small>"
+#~ msgstr ""
+#~ "উইজেটসমূহ ভিতরের পাতাগুলোতেও দেখান <small>নীড়পাতার উইজেটসমূহ শুধু প্রথম পাতাতেই দৃশ্যমান। "
+#~ "আপনি যদি পেজিনেটেড পাতাসমূহেও দেখাতে আগ্রহী হোন, এখানে টিকচিহ্ন দিন</small>"
+
+#~ msgid ""
+#~ "You can alter the placement of home page widgets by setting their individual values "
+#~ "from below, and you can set places within %s"
+#~ msgstr ""
+#~ "আপনি চাইলে নীড়পাতার উইজেটসমূহের অবস্থানের মান পরিবর্তন করে তাদের অবস্থান পরিবর্তন করতে "
+#~ "পারেন, এবং আপনি %s-এর মধ্যে স্থান-মান নির্ধারণ করতে পারবেন"
+
+#~ msgid "Home Widget 1: Position"
+#~ msgstr "নীড় উইজেট ১: অবস্থান"
+
+#~ msgid "Home Widget 2: Position"
+#~ msgstr "নীড় উইজেট ২: অবস্থান"
+
+#~ msgid "Home Widget 3: Position"
+#~ msgstr "নীড় উইজেট ৩: অবস্থান"
+
+#~ msgid "Home Widget 4: Position"
+#~ msgstr "নীড় উইজেট ৪: অবস্থান"
+
+#~ msgid "Home Widget 5: Position"
+#~ msgstr "নীড় উইজেট ৫: অবস্থান"
+
+#~ msgid "Social Control <small>control each of the social link from here</small>"
+#~ msgstr ""
+#~ "সামাজিক যোগাযোগ <small>সামাজিক যোগাযোগ লিংকগুলোর প্রতিটি এখান থেকে নিয়ন্ত্রণ করুন</small>"
+
+#~ msgid "Facebook"
+#~ msgstr "ফেসবুক"
+
+#~ msgid "Twitter"
+#~ msgstr "টুইটার"
+
+#~ msgid "LinkedIn"
+#~ msgstr "লিংকেডইন"
+
+#~ msgid "Google+"
+#~ msgstr "গুগল+"
+
+#~ msgid "Flickr"
+#~ msgstr "ফ্লিকার"
+
+#~ msgid "Pinterest"
+#~ msgstr "পিন্টারেস্ট"
+
+#~ msgid "Tumblr"
+#~ msgstr "টাম্বলার"
+
+#~ msgid "YouTube"
+#~ msgstr "ইউটিউব"
+
+#~ msgid ""
+#~ "NoFollow External Links<br><small>control whether to show <code>rel=\"nofollow\"</"
+#~ "code> in external links in post/page content</small>"
+#~ msgstr ""
+#~ "বহির্গামী লিংকগুলোকে noFollow করুন<br><small>প্রকাশনা/পাতার বিষয়বস্তুর মধ্যকার বহির্গামী "
+#~ "লিংকগুলোকে <code>rel=\"nofollow\"</code> করবেন কিনা নিয়ন্ত্রণ করুন</small>"
+
+#~ msgid "Save Options"
+#~ msgstr "সংরক্ষণ করুন"
+
+#~ msgid "Series: "
+#~ msgstr "ধারাবাহিক: "
+
+#~ msgid "Image"
+#~ msgstr "ছবি"
+
+#~ msgid "Upload/Add image"
+#~ msgstr "ছবি আপলোড/যোগ"
+
+#~ msgid "Remove image"
+#~ msgstr "ছবি বাতিল"
+
+#~ msgid "Thumbnail"
+#~ msgstr "থাম্বনেইল"
+
+#~ msgid "&laquo;"
+#~ msgstr "&laquo;"
+
+#~ msgid "&raquo;"
+#~ msgstr "&raquo;"
 
 #~ msgid "[np] Settings"
 #~ msgstr "[np] সেটিংসমূহ"
 
 #~ msgid ""
-#~ "Show widgets in paginated pages too <small>home widgets are visible only on the first paginated "
-#~ "page of home page. If you want to show them in other pages too, check here.</small>"
+#~ "Show widgets in paginated pages too <small>home widgets are visible only on the "
+#~ "first paginated page of home page. If you want to show them in other pages too, "
+#~ "check here.</small>"
 #~ msgstr ""
-#~ "উইজেটসমূহ ভিতরের পাতাগুলোতেও দেখান <small>নীড়পাতার উইজেটসমূহ শুধু প্রথম পাতাতেই দৃশ্যমান। আপনি যদি "
-#~ "পেজিনেটেড পাতাসমূহেও দেখাতে আগ্রহী হোন, এখানে টিকচিহ্ন দিন</small>"
+#~ "উইজেটসমূহ ভিতরের পাতাগুলোতেও দেখান <small>নীড়পাতার উইজেটসমূহ শুধু প্রথম পাতাতেই দৃশ্যমান। "
+#~ "আপনি যদি পেজিনেটেড পাতাসমূহেও দেখাতে আগ্রহী হোন, এখানে টিকচিহ্ন দিন</small>"
 
 #~ msgid "<span class=\"meta-nav glyphicon glyphicon-chevron-left\"></span> Older Image"
 #~ msgstr "<span class=\"meta-nav glyphicon glyphicon-chevron-left\"></span> পুরোন ছবি"
 
 #~ msgid "Latest Image <span class=\"meta-nav glyphicon glyphicon-chevron-right\"></span>"
-#~ msgstr "সাম্প্রতিক ছবি <span class=\"meta-nav glyphicon glyphicon-chevron-right\"></span>"
+#~ msgstr ""
+#~ "সাম্প্রতিক ছবি <span class=\"meta-nav glyphicon glyphicon-chevron-right\"></span>"
 
 #~ msgid ""
-#~ "Featured Series <small>control which <strong>4</strong> series to show on home page as featured. "
-#~ "press <kbd>Ctrl</kbd> and select multiple series</small>"
+#~ "Featured Series <small>control which <strong>4</strong> series to show on home page "
+#~ "as featured. press <kbd>Ctrl</kbd> and select multiple series</small>"
 #~ msgstr ""
-#~ "পাঠকসমাদৃত ধারাবাহিক <small>কোন <strong>৪</strong>টি ধারাবাহিক প্রথম পাতায় দেখাতে চান, বাছাই করুন। "
-#~ "<kbd>Ctrl</kbd> চেপে রেখে একাধিক ধারাবাহিক বাছাই করুন</small>"
+#~ "পাঠকসমাদৃত ধারাবাহিক <small>কোন <strong>৪</strong>টি ধারাবাহিক প্রথম পাতায় দেখাতে চান, "
+#~ "বাছাই করুন। <kbd>Ctrl</kbd> চেপে রেখে একাধিক ধারাবাহিক বাছাই করুন</small>"
 
 #~ msgid "Author did not provide any public biography content"
 #~ msgstr "লেখক পাবলিক কোনো পরিচিতির উল্লেখ করেননি"
@@ -781,15 +1178,18 @@ msgstr "বিস্তারিত %s <span class=\"meta-nav\">&rarr;</span>"
 #~ msgstr "উপরে ফিরে চলো"
 
 #~ msgid ""
-#~ "Powered by <a href=\"http://wordpress.org/\" title=\"WordPress\">WordPress</a> and the theme "
-#~ msgstr "<a href=\"http://wordpress.org/\" title=\"WordPress\">ওয়ার্ডপ্রেস</a> দ্বারা নিয়ন্ত্রীত এবং "
+#~ "Powered by <a href=\"http://wordpress.org/\" title=\"WordPress\">WordPress</a> and "
+#~ "the theme "
+#~ msgstr ""
+#~ "<a href=\"http://wordpress.org/\" title=\"WordPress\">ওয়ার্ডপ্রেস</a> দ্বারা নিয়ন্ত্রীত "
+#~ "এবং "
 
 #~ msgid ""
-#~ " is developed by <a href=\"http://nanodesignsbd.com/\" title=\"Developed by nanodesigns, "
-#~ "Bangladesh\"><strong>nano</strong>designs</a>"
+#~ " is developed by <a href=\"http://nanodesignsbd.com/\" title=\"Developed by "
+#~ "nanodesigns, Bangladesh\"><strong>nano</strong>designs</a>"
 #~ msgstr ""
-#~ "থিমটি তৈরি করেছেন <a href=\"http://nanodesignsbd.com/\" title=\"Developed by nanodesigns, "
-#~ "Bangladesh\"><strong>nano</strong>designs</a>"
+#~ "থিমটি তৈরি করেছেন <a href=\"http://nanodesignsbd.com/\" title=\"Developed by "
+#~ "nanodesigns, Bangladesh\"><strong>nano</strong>designs</a>"
 
 #~ msgid "Pingback:"
 #~ msgstr "পিংব্যাক:"
@@ -869,9 +1269,6 @@ msgstr "বিস্তারিত %s <span class=\"meta-nav\">&rarr;</span>"
 #~ msgid "Sidebar"
 #~ msgstr "সাইডবার"
 
-#~ msgid "Theme Options"
-#~ msgstr "থিম অপশন্‌স"
-
 #~ msgid " &mdash; Theme Options"
 #~ msgstr " &mdash; থিম অপশন্‌স"
 
@@ -880,12 +1277,6 @@ msgstr "বিস্তারিত %s <span class=\"meta-nav\">&rarr;</span>"
 
 #~ msgid "Enable Bengali (<em>Bangla</em>)"
 #~ msgstr "বাংলা দেখান"
-
-#~ msgid "Control whether to enable/disable Bengali (<em>Bangla</em>) support to your blog"
-#~ msgstr "আপনার ব্লগে বাংলার সুবিধাদি চালু করবেন কিনা তা নিয়ন্ত্রণ করুন"
-
-#~ msgid "Show Author Bio"
-#~ msgstr "লেখক পরিচিতি দেখান"
 
 #~ msgid "Control whether to show/hide author bio in <em>Author archives</em>"
 #~ msgstr "লেখক পাতায় লেখক বিবরণ দেখাবেন কিনা নিয়ন্ত্রণ করুন"
@@ -921,10 +1312,11 @@ msgstr "বিস্তারিত %s <span class=\"meta-nav\">&rarr;</span>"
 #~ msgstr "ইউটিউব চ্যানেল ইউআরএল"
 
 #~ msgid ""
-#~ "Sorry, but nothing matched your search criteria. Please try again with some different keywords."
+#~ "Sorry, but nothing matched your search criteria. Please try again with some "
+#~ "different keywords."
 #~ msgstr ""
-#~ "দুঃখিত, কিন্তু সত্যি বলতে কি আপনার অনুসন্ধান করা বিষয়বস্তু পাওয়া গেল না। অন্য কোনো শব্দ দিয়ে আবার চেষ্টা "
-#~ "করতে পারেন।"
+#~ "দুঃখিত, কিন্তু সত্যি বলতে কি আপনার অনুসন্ধান করা বিষয়বস্তু পাওয়া গেল না। অন্য কোনো শব্দ দিয়ে "
+#~ "আবার চেষ্টা করতে পারেন।"
 
 #~ msgid "Featured Post"
 #~ msgstr "বিশেষ প্রকাশনা"
