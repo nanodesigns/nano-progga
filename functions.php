@@ -142,6 +142,16 @@ add_action( 'after_setup_theme', 'nano_progga_content_width', 0 );
 function nano_progga_widgets_init() {
 
 	register_sidebar( array(
+		'name'          => esc_html__( 'Right Sidebar', 'nano-progga' ),
+		'id'            => 'right_sidebar',
+		'description'   => esc_html__( 'Appears on the right portion of the site', 'nano-progga' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</aside>',
+		'before_title'  => '<h1 class="widget-title">',
+		'after_title'   => '</h1>',
+	) );
+
+	register_sidebar( array(
 		'name'          => esc_html__( 'Home Widget 1', 'nano-progga' ),
 		'id'            => 'home_widget_1',
 		'description'   => esc_html__( 'Appears on the home page within the grid', 'nano-progga' ),
@@ -187,16 +197,6 @@ function nano_progga_widgets_init() {
 		'description'   => esc_html__( 'Appears on the home page within the grid', 'nano-progga' ),
 		'before_widget' => '<aside id="%1$s" class="grid-item widget-holder col-sm-4 %2$s"><div class="grid-widget home-widget-5">',
 		'after_widget'  => '</div></aside>',
-		'before_title'  => '<h1 class="widget-title">',
-		'after_title'   => '</h1>',
-	) );
-
-	register_sidebar( array(
-		'name'          => esc_html__( 'Right Sidebar', 'nano-progga' ),
-		'id'            => 'right_sidebar',
-		'description'   => esc_html__( 'Appears on the right portion of the site', 'nano-progga' ),
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
 		'before_title'  => '<h1 class="widget-title">',
 		'after_title'   => '</h1>',
 	) );
@@ -419,7 +419,7 @@ function nano_progga_breadcrumbs(){
 
 		if ( get_query_var('paged') ) {
 			if ( is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author() ) echo ' (';
-			echo __('Page', 'nano-progga') . ' ' . get_query_var('paged');
+			echo ' '. __('Page', 'nano-progga') . ' ' . get_query_var('paged');
 			if ( is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author() ) echo ')';
 		}
 
@@ -608,3 +608,68 @@ function nano_progga_nofollow_enternal_links( $content ) {
 
 if( cs_get_option('nofollow') )
 	add_filter( 'the_content', 'nano_progga_nofollow_enternal_links');
+
+/**
+ * No Self Ping.
+ * Keeps WordPress from sending pings to your own site.
+ *
+ * Adopted from: No Self Pings (v.0.2)
+ * @author  Michael D. Adams
+ * @link https://wordpress.org/plugins/no-self-ping/
+ * 
+ * @since  3.0.0
+ * 
+ * @param  string &$links Links.
+ * --------------------------------------------------------------------------
+ */
+function nano_progga_no_self_ping( &$links ) {
+	$home = get_option( 'home' );
+	foreach ( $links as $l => $link )
+		if ( 0 === strpos( $link, $home ) )
+			unset($links[$l]);
+}
+if( cs_get_option('noselfping') )
+	add_action( 'pre_ping', 'nano_progga_no_self_ping' );
+
+
+/**
+ * Add Featured Image column to the Post List.
+ *
+ * @since 3.0.0
+ * 
+ * @param  array $columns Default columns.
+ * @return array          Modified columns.
+ * --------------------------------------------------------------------------
+ */
+function nano_progga_post_thumbnail_columns( $columns ) {
+    
+    $new_columns = array(
+        'thumb'  => '<span class="dashicons dashicons-format-image" title="Featured Image"></span>'
+    );
+    return array_merge( $columns, $new_columns );
+}
+add_filter( 'manage_post_posts_columns', 'nano_progga_post_thumbnail_columns' );
+
+
+/**
+ * Populate the Post Thumbnail column with the respective data.
+ *
+ * @since 3.0.0
+ * 
+ * @param  array $column    Default columns.
+ * @param  integer $post_id That particular post_ID.
+ * --------------------------------------------------------------------------
+ */
+function nano_progga_post_thumbnail_table_columns_data( $column, $post_id ) {
+
+	switch ( $column ) {
+        case 'thumb':
+            if( has_post_thumbnail( $post_id ) )
+            	the_post_thumbnail( array(70,70), array('class'=>'post-thumb-preview') );
+            else
+            	echo '...';
+
+            break;
+	}
+}
+add_action( 'manage_post_posts_custom_column', 'nano_progga_post_thumbnail_table_columns_data', 10, 2 );

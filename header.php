@@ -2,17 +2,13 @@
 /**
  * The header for our theme.
  *
- * Displays all of the <head> section and everything up till <div id="content">
+ * Displays all of the <head> section and everything up till <div id="content">..<div class="row">
  *
  * @package nano-progga
  */
 
-?><!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" <?php language_attributes(); ?>> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" <?php language_attributes(); ?>> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" <?php language_attributes(); ?>> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" <?php language_attributes(); ?>> <!--<![endif]-->
-<html <?php language_attributes(); ?>>
+?><!DOCTYPE html>
+<html <?php language_attributes(); ?> class="no-js">
 	<head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -103,7 +99,7 @@
 											<div class="col-sm-3 col-xs-6 series-block">
 												<a href="<?php echo esc_url( $series_link ); ?>">
 													<?php if( $img_src ) : ?>
-														<img src="<?php echo esc_url( $img_src ); ?>" alt="<?php echo esc_attr( $featured_series->name ); ?>">
+														<img src="<?php echo esc_url( $img_src ); ?>" alt="<?php echo esc_attr( $featured_series->name ); ?>" width="270" height="118">
 														<div class="image-hover">
 															<div class="behave-table">
 																<div class="behave-table-cell expand-icon">

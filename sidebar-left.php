@@ -1,6 +1,6 @@
 <?php
 /**
- * The sidebar containing the main widget area.
+ * The sidebar containing the widget area that is visible only in the archive pages.
  *
  * @package nano-progga
  */

@@ -245,6 +245,13 @@ hr.dark{
   font-size: 25px;
   font-weight: bold;
   margin-top: 10px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
 
   a{
     color: #333;
@@ -425,7 +432,8 @@ body.page{
 }
 body.archive,
 body.search,
-body.home{
+body.home,
+body.page-template-blog{
   article.format-status{
     background-color: #ccc;
     
@@ -530,8 +538,24 @@ body.page{
 body.page .blog-main article.hentry{
   padding: 0;
 }
+body.attachment{
+  main.site-main{
+    padding-top: 20px;
+  }
+  article.attachment{
+    padding: 20px;
+  }
+}
 .entry-content,
 .comment-content{
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+
   blockquote{
     margin-left: 20px;
     border-left-color: #999;
@@ -544,7 +568,6 @@ body.page .blog-main article.hentry{
 .navigation.post-navigation{
   padding: 20px;
 }
-
 .wp-caption{
   font-size: 14px;
   border-bottom: 2px solid #ccc;
@@ -1419,10 +1442,10 @@ section.error-404{
 
 /* ------- Bootstraping WordPress' Defaults ------- */
 
-aside.widget.widget_archive select,
-aside.widget.widget_text select,
-aside.widget.widget_categories select,
-aside.widget.jetpack_subscription_widget input[type="email"]{
+aside.widget_archive select,
+aside.widget_text select,
+aside.widget_categories select,
+aside.jetpack_subscription_widget input[type="email"]{
   /* .form-control */
   display: block;
   width: 100%;

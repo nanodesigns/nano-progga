@@ -48,15 +48,15 @@
 	<div class="social-handle"><span class="np-toggle"></span></div>
 	<div class="socials">
 	    <?php
-	    echo $rss ? '<a href="'. $rss .'" class="social-icons s-rss" target="_blank"><span class="np-rss"></span></a>' : '';
-	    echo $facebook ? '<a href="'. $facebook .'" class="social-icons s-facebook" target="_blank"><span class="np-facebook"></span></a>' : '';
-	    echo $twitter ? '<a href="'. $twitter .'" class="social-icons s-twitter" target="_blank"><span class="np-twitter"></span></a>' : '';
-	    echo $linkedin ? '<a href="'. $linkedin .'" class="social-icons s-linkedin" target="_blank"><span class="np-linkedin"></span></a>' : '';
-	    echo $gplus ? '<a href="'. $gplus .'" class="social-icons s-gplus" target="_blank"><span class="np-google-plus"></span></a>' : '';
-	    echo $flickr ? '<a href="'. $flickr .'" class="social-icons s-flickr" target="_blank"><span class="np-flickr"></span></a>' : '';
-	    echo $pinterest ? '<a href="'. $pinterest .'" class="social-icons s-pinterest" target="_blank"><span class="np-pinterest"></span></a>' : '';
-	    echo $tumblr ? '<a href="'. $tumblr .'" class="social-icons s-tumblr" target="_blank"><span class="np-tumblr"></span></a>' : '';
-	    echo $youtube ? '<a href="'. $youtube .'" class="social-icons s-youtube" target="_blank"><span class="np-youtube"></span></a>' : '';
+	    echo $rss ? '<a href="'. esc_url($rss) .'" class="social-icons s-rss" target="_blank"><span class="np-rss"></span></a>' : '';
+	    echo $facebook ? '<a href="'. esc_url($facebook) .'" class="social-icons s-facebook" target="_blank"><span class="np-facebook"></span></a>' : '';
+	    echo $twitter ? '<a href="'. esc_url($twitter) .'" class="social-icons s-twitter" target="_blank"><span class="np-twitter"></span></a>' : '';
+	    echo $linkedin ? '<a href="'. esc_url($linkedin) .'" class="social-icons s-linkedin" target="_blank"><span class="np-linkedin"></span></a>' : '';
+	    echo $gplus ? '<a href="'. esc_url($gplus) .'" class="social-icons s-gplus" target="_blank"><span class="np-google-plus"></span></a>' : '';
+	    echo $flickr ? '<a href="'. esc_url($flickr) .'" class="social-icons s-flickr" target="_blank"><span class="np-flickr"></span></a>' : '';
+	    echo $pinterest ? '<a href="'. esc_url($pinterest) .'" class="social-icons s-pinterest" target="_blank"><span class="np-pinterest"></span></a>' : '';
+	    echo $tumblr ? '<a href="'. esc_url($tumblr) .'" class="social-icons s-tumblr" target="_blank"><span class="np-tumblr"></span></a>' : '';
+	    echo $youtube ? '<a href="'. esc_url($youtube) .'" class="social-icons s-youtube" target="_blank"><span class="np-youtube"></span></a>' : '';
 	    ?>
     </div>
 </div> <!-- .social-footer-bar -->

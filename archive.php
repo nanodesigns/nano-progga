@@ -2,16 +2,17 @@
 /**
  * The template for displaying archive pages.
  *
- * Learn more: http://codex.wordpress.org/Template_Hierarchy
- *
  * @package nano-progga
  */
 
 get_header(); ?>
 
-	<section id="primary" class="content-area col-sm-9">
+	<?php
+	$class = is_active_sidebar('right_sidebar') ? ' col-sm-9' : ' col-md-12'; ?>
+	<section id="primary" class="content-area <?php echo esc_attr( $class ); ?>">
 		<div class="row">
-			<main id="main" class="site-main col-sm-9 pull-right" role="main">
+			<?php $template_class = is_active_sidebar('left_sidebar') ? ' col-sm-9' : ' col-md-12'; ?>
+			<main id="main" class="site-main pull-right<?php echo esc_attr($template_class); ?>" role="main">
 
 			<?php if ( have_posts() ) : ?>
 

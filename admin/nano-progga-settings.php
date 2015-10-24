@@ -204,6 +204,13 @@ function nano_progga_theme_options( $options ) {
 								'default'		=> false,
 								'label'			=> __( 'Control whether to show/hide related posts in post detail page', 'nano-progga' ),
 							),
+							array(
+								'id'     		=> 'noselfping',
+								'type'   		=> 'switcher',
+								'title'  		=> __( "Don't Ping on Self Links", 'nano-progga' ),
+								'default'		=> false,
+								'label'			=> __( "Activating this will not notify you on self ping. Based on 'No Self Ping' WordPress Plugin", 'nano-progga' ),
+							),
 						)
 					);
 

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nano progga\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-24 01:11+0600\n"
-"PO-Revision-Date: 2015-10-24 01:12+0600\n"
+"POT-Creation-Date: 2015-10-24 15:18+0600\n"
+"PO-Revision-Date: 2015-10-24 15:19+0600\n"
 "Last-Translator: Mayeenul Islam <wz.islam@gmail.com>\n"
 "Language-Team: nanodesigns <info@nanodesignsbd.com>\n"
 "Language: bn_BD\n"
@@ -19,11 +19,11 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../404.php:22
+#: ../404.php:25
 msgid "Lost in darkness!"
 msgstr "অন্ধকারে ডুবে গেলাম!"
 
-#: ../404.php:24
+#: ../404.php:27
 msgid "we are unable to find what you are looking for"
 msgstr "আপনি যা খুঁজছেন, তা আমরা পাইনি"
 
@@ -151,15 +151,26 @@ msgstr "সম্পূরক প্রকাশনা দেখান"
 msgid "Control whether to show/hide related posts in post detail page"
 msgstr "প্রকাশনার বিস্তারিত পাতায় সম্পূরক প্রকাশনা দেখাবেন কিনা নিয়ন্ত্রণ করুন"
 
+#: ../admin/nano-progga-settings.php:210
+msgid "Don't Ping on Self Links"
+msgstr "নিজস্ব লিংকে পিং নয়"
+
 #: ../admin/nano-progga-settings.php:212
+msgid ""
+"Activating this will not notify you on self ping. Based on 'No Self Ping' WordPress "
+"Plugin"
+msgstr ""
+"এটি চালু করলে নিজের সাইটের পোস্টের পিংগুলো গণ্য করবে না। 'নো সেল্‌ফ পিং' প্লাগইন অবলম্বনে।"
+
+#: ../admin/nano-progga-settings.php:219
 msgid "SEO Settings"
 msgstr "এসইও সেটিংসমূহ"
 
-#: ../admin/nano-progga-settings.php:218
+#: ../admin/nano-progga-settings.php:225
 msgid "NoFollow External Links"
 msgstr "বহিঃস্থ লিংকসমূহকে noFollow করুন"
 
-#: ../admin/nano-progga-settings.php:220
+#: ../admin/nano-progga-settings.php:227
 msgid ""
 "Control whether to show <code>rel=\"nofollow\"</code> in external links in post/page "
 "content"
@@ -167,51 +178,51 @@ msgstr ""
 "প্রকাশনা/পাতার বিবরণ অংশে থাকা বহিঃস্থ লিংকসমূহে <code>rel=\"nofollow\"</code> দেখাবেন "
 "কিনা নিয়ন্ত্রণ করুন"
 
-#: ../admin/nano-progga-settings.php:227
+#: ../admin/nano-progga-settings.php:234
 msgid "Social Settings"
 msgstr "সামাজিক সেটিংসমূহ"
 
-#: ../admin/nano-progga-settings.php:233
+#: ../admin/nano-progga-settings.php:240
 #, php-format
 msgid "%s RSS Feed URL"
 msgstr "%s আরএসএস ফিড ইউআরএল"
 
-#: ../admin/nano-progga-settings.php:239
+#: ../admin/nano-progga-settings.php:246
 #, php-format
 msgid "%s Facebook URL"
 msgstr "%s ফেসবুক ইউআরএল"
 
-#: ../admin/nano-progga-settings.php:247
+#: ../admin/nano-progga-settings.php:254
 #, php-format
 msgid "%s Twitter URL"
 msgstr "%s টুইটার ইউআরএল"
 
-#: ../admin/nano-progga-settings.php:255
+#: ../admin/nano-progga-settings.php:262
 #, php-format
 msgid "%s LinkedIn Page URL"
 msgstr "%s লিংকেডইন পাতার ইউআরএল"
 
-#: ../admin/nano-progga-settings.php:263
+#: ../admin/nano-progga-settings.php:270
 #, php-format
 msgid "%s Google+ Page URL"
 msgstr "%s গুগল+ পাতার ইউআরএল"
 
-#: ../admin/nano-progga-settings.php:271
+#: ../admin/nano-progga-settings.php:278
 #, php-format
 msgid "%s Flickr URL"
 msgstr "%s ফ্লিকার ইউআরএল"
 
-#: ../admin/nano-progga-settings.php:279
+#: ../admin/nano-progga-settings.php:286
 #, php-format
 msgid "%s Pinterest Profile URL"
 msgstr "%s পিন্টারেস্ট প্রোফাইল ইউআরএল"
 
-#: ../admin/nano-progga-settings.php:287
+#: ../admin/nano-progga-settings.php:294
 #, php-format
 msgid "%s Tumblr Blog URL"
 msgstr "%s টাম্বলার ব্লগ ইউআরএল"
 
-#: ../admin/nano-progga-settings.php:295
+#: ../admin/nano-progga-settings.php:302
 #, php-format
 msgid "%s YouTube Channel URL"
 msgstr "%s ইউটিউব চ্যানেল ইউআরএল"
@@ -302,37 +313,37 @@ msgid "Main Menu"
 msgstr "প্রধান মেনু"
 
 #: ../functions.php:145
-msgid "Home Widget 1"
-msgstr "নীড় উইজেট ১"
-
-#: ../functions.php:147 ../functions.php:157 ../functions.php:167 ../functions.php:177
-#: ../functions.php:187
-msgid "Appears on the home page within the grid"
-msgstr "নীড়পাতায় গ্রিডের ফাঁকে ফাঁকে দেখা যাবে"
-
-#: ../functions.php:155
-msgid "Home Widget 2"
-msgstr "নীড় উইজেট ২"
-
-#: ../functions.php:165
-msgid "Home Widget 3"
-msgstr "নীড় উইজেট ৩"
-
-#: ../functions.php:175
-msgid "Home Widget 4"
-msgstr "নীড় উইজেট ৪"
-
-#: ../functions.php:185
-msgid "Home Widget 5"
-msgstr "নীড় উইজেট ৫"
-
-#: ../functions.php:195
 msgid "Right Sidebar"
 msgstr "ডানের সাইডবার"
 
-#: ../functions.php:197
+#: ../functions.php:147
 msgid "Appears on the right portion of the site"
 msgstr "সাইটের ডানদিকে দেখা যাবে"
+
+#: ../functions.php:155
+msgid "Home Widget 1"
+msgstr "নীড় উইজেট ১"
+
+#: ../functions.php:157 ../functions.php:167 ../functions.php:177 ../functions.php:187
+#: ../functions.php:197
+msgid "Appears on the home page within the grid"
+msgstr "নীড়পাতায় গ্রিডের ফাঁকে ফাঁকে দেখা যাবে"
+
+#: ../functions.php:165
+msgid "Home Widget 2"
+msgstr "নীড় উইজেট ২"
+
+#: ../functions.php:175
+msgid "Home Widget 3"
+msgstr "নীড় উইজেট ৩"
+
+#: ../functions.php:185
+msgid "Home Widget 4"
+msgstr "নীড় উইজেট ৪"
+
+#: ../functions.php:195
+msgid "Home Widget 5"
+msgstr "নীড় উইজেট ৫"
 
 #: ../functions.php:205
 msgid "Archive Left Sidebar"
@@ -344,7 +355,7 @@ msgstr "শুধুমাত্র আর্কাইভ পাতায় সা
 
 #: ../functions.php:215
 msgid "Footer Sidebar"
-msgstr "ফাটার সাইডবার"
+msgstr "ফুটার সাইডবার"
 
 #: ../functions.php:217
 msgid "Appears on the footer portion of the site"
@@ -415,23 +426,23 @@ msgstr "টাম্বলার ইউআরএল [np]"
 msgid "Related Posts"
 msgstr "সম্পূরক প্রকাশনা"
 
-#: ../header.php:32
+#: ../header.php:28
 msgid "Skip to content"
 msgstr "লেখায় চলে যাও"
 
-#: ../header.php:96
+#: ../header.php:92
 msgid "Popular Series"
 msgstr "সমাদৃত ধারাবাহিক"
 
-#: ../image.php:20
+#: ../image.php:21
 msgid "Get to Main Article"
 msgstr "মূল লেখায় চলো"
 
-#: ../image.php:25
+#: ../image.php:26
 msgid "This is an image of an article"
 msgstr "এটি একটি প্রকাশনার ছবি"
 
-#: ../image.php:64 ../template-parts/content-audio.php:39
+#: ../image.php:65 ../template-parts/content-audio.php:39
 #: ../template-parts/content-gallery.php:39 ../template-parts/content-image.php:32
 #: ../template-parts/content-link.php:39 ../template-parts/content-page.php:19
 #: ../template-parts/content-quote.php:39 ../template-parts/content-single.php:33
