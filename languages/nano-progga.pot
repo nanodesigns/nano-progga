@@ -1,0 +1,925 @@
+# Copyright (C) 2015 nanodesigns
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: nano progga 3.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-10-29 22:10+0600\n"
+"PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: 404.php:25
+msgid "Lost in darkness!"
+msgstr ""
+
+#: 404.php:27
+msgid "we are unable to find what you are looking for"
+msgstr ""
+
+#: comments.php:29
+#, php-format
+msgctxt "comments title"
+msgid "One thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] ""
+msgstr[1] ""
+
+#: comments.php:48
+msgid "Comment navigation"
+msgstr ""
+
+#: comments.php:51
+msgid "Older Comments"
+msgstr ""
+
+#: comments.php:52
+msgid "Newer Comments"
+msgstr ""
+
+#: comments.php:64
+msgid "Comments are closed."
+msgstr ""
+
+#: comments.php:76
+msgid "Comment Here"
+msgstr ""
+
+#: comments.php:77
+#, php-format
+msgid "Comment to %s"
+msgstr ""
+
+#: comments.php:78
+msgid "[ Cancel Reply ]"
+msgstr ""
+
+#: comments.php:79 comments.php:82
+msgid "Comment"
+msgstr ""
+
+#: comments.php:88
+#, php-format
+msgid "You have to <a href=\"%s\">login</a> to comment"
+msgstr ""
+
+#: comments.php:94
+#, php-format
+msgid ""
+"Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out "
+"from this account\">Log out?</a>"
+msgstr ""
+
+#: comments.php:101
+msgid "Your email won't be public"
+msgstr ""
+
+#: comments.php:106
+#, php-format
+msgid ""
+"You can use these <abbr title=\"HyperText Markup Language\">HTML</abbr> tags "
+"and markups: %s"
+msgstr ""
+
+#: comments.php:114
+msgid "Name"
+msgstr ""
+
+#: comments.php:120
+msgid "Email"
+msgstr ""
+
+#: comments.php:127
+msgid "Website"
+msgstr ""
+
+#: footer.php:28
+#, php-format
+msgid "Powered by %1s and the theme <strong>%2s</strong> is developed by %3s"
+msgstr ""
+
+#: footer.php:66
+msgid "Back to Top"
+msgstr ""
+
+#: functions.php:76
+msgid "Main Menu"
+msgstr ""
+
+#: functions.php:145
+msgid "Right Sidebar"
+msgstr ""
+
+#: functions.php:147
+msgid "Appears on the right portion of the site"
+msgstr ""
+
+#: functions.php:155
+msgid "Home Widget 1"
+msgstr ""
+
+#: functions.php:157 functions.php:167 functions.php:177 functions.php:187
+#: functions.php:197
+msgid "Appears on the home page within the grid"
+msgstr ""
+
+#: functions.php:165
+msgid "Home Widget 2"
+msgstr ""
+
+#: functions.php:175
+msgid "Home Widget 3"
+msgstr ""
+
+#: functions.php:185
+msgid "Home Widget 4"
+msgstr ""
+
+#: functions.php:195
+msgid "Home Widget 5"
+msgstr ""
+
+#: functions.php:205
+msgid "Archive Left Sidebar"
+msgstr ""
+
+#: functions.php:207
+msgid "Appears on the left portion of the site only on archive pages"
+msgstr ""
+
+#: functions.php:215
+msgid "Footer Sidebar"
+msgstr ""
+
+#: functions.php:217
+msgid "Appears on the footer portion of the site"
+msgstr ""
+
+#: functions.php:299
+msgid "Home"
+msgstr ""
+
+#: functions.php:300
+#, php-format
+msgid "Category: \"%s\""
+msgstr ""
+
+#: functions.php:301
+#, php-format
+msgid "Archive: \"%s\""
+msgstr ""
+
+#: functions.php:302
+#, php-format
+msgid "Search Results: \"%s\""
+msgstr ""
+
+#: functions.php:303
+#, php-format
+msgid "Tagged: \"%s\""
+msgstr ""
+
+#: functions.php:304 inc/template-tags.php:218
+#, php-format
+msgid "Author: %s"
+msgstr ""
+
+#: functions.php:305
+msgid "Error 404"
+msgstr ""
+
+#: functions.php:422
+msgid "Page"
+msgstr ""
+
+#: functions.php:439
+msgid "Facebook Profile URL [np]"
+msgstr ""
+
+#: functions.php:440
+msgid "Twitter URL [np]"
+msgstr ""
+
+#: functions.php:441
+msgid "Google+ Profile URL [np]"
+msgstr ""
+
+#: functions.php:442
+msgid "LinkedIn URL [np]"
+msgstr ""
+
+#: functions.php:443
+msgid "Pinterest URL [np]"
+msgstr ""
+
+#: functions.php:444
+msgid "Tumblr URL [np]"
+msgstr ""
+
+#: functions.php:468
+msgid "Related Posts"
+msgstr ""
+
+#: header.php:28
+msgid "Skip to content"
+msgstr ""
+
+#: header.php:92
+msgid "Popular Series"
+msgstr ""
+
+#: image.php:21
+msgid "Get to Main Article"
+msgstr ""
+
+#: image.php:26
+msgid "This is an image of an article"
+msgstr ""
+
+#: image.php:65 template-parts/content-audio.php:39
+#: template-parts/content-gallery.php:39 template-parts/content-image.php:32
+#: template-parts/content-link.php:39 template-parts/content-page.php:19
+#: template-parts/content-quote.php:39 template-parts/content-single.php:33
+#: template-parts/content-status.php:26 template-parts/content-video.php:39
+#: template-parts/content.php:47
+msgid "Pages:"
+msgstr ""
+
+#: search.php:17
+#, php-format
+msgid "Search Results for: %s"
+msgstr ""
+
+#: search.php:17
+#, php-format
+msgid " <small>(%s found)</small>"
+msgid_plural " <small>(%s found)</small>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: searchform.php:9 searchform.php:10
+msgctxt "label"
+msgid "Search for:"
+msgstr ""
+
+#: searchform.php:10
+msgctxt "placeholder"
+msgid "Search..."
+msgstr ""
+
+#: sidebar-left.php:30
+msgid "Author did not provide any public biography"
+msgstr ""
+
+#: admin/nano-progga-settings.php:51
+#: libs/cs-framework/classes/framework.class.php:361
+msgid "Theme Options"
+msgstr ""
+
+#: admin/nano-progga-settings.php:73
+msgid "Basic Settings"
+msgstr ""
+
+#: admin/nano-progga-settings.php:79
+msgid "Site Logo"
+msgstr ""
+
+#: admin/nano-progga-settings.php:80
+msgid ""
+"Set a site logo to show on the header of the site. Upload an image of "
+"minimum <code>40px</code> &times; <code>40px</code>"
+msgstr ""
+
+#: admin/nano-progga-settings.php:86
+msgid "Enable Bengali"
+msgstr ""
+
+#: admin/nano-progga-settings.php:88
+msgid ""
+"Control whether to enable/disable Bengali (<em>Bangla</em>) support to your "
+"blog"
+msgstr ""
+
+#: admin/nano-progga-settings.php:93
+msgid ""
+"<strong>Featured Post Series</strong> Control the Featured Post Series from "
+"here"
+msgstr ""
+
+#: admin/nano-progga-settings.php:98
+msgid "Show series"
+msgstr ""
+
+#: admin/nano-progga-settings.php:100
+msgid "Control whether to show the featured series on the Home page or not"
+msgstr ""
+
+#: admin/nano-progga-settings.php:105
+msgid "Choice Featured Series"
+msgstr ""
+
+#: admin/nano-progga-settings.php:106
+msgid ""
+"Control which 4 series to show on home page as featured (Select multiple)"
+msgstr ""
+
+#: admin/nano-progga-settings.php:121
+msgid "Show series in Blog Template"
+msgstr ""
+
+#: admin/nano-progga-settings.php:128
+msgid ""
+"Control whether to show the featured series on the Blog Template page or not"
+msgstr ""
+
+#: admin/nano-progga-settings.php:133
+#, php-format
+msgid ""
+"<strong>Home Page Widgets</strong> You can alter the placement of home page "
+"widgets by setting their individual values from here, and you can set places "
+"within <strong>%s</strong>"
+msgstr ""
+
+#: admin/nano-progga-settings.php:138
+msgid "Widgets' Positioning"
+msgstr ""
+
+#: admin/nano-progga-settings.php:143
+msgid "Home Widget 1 : Position"
+msgstr ""
+
+#: admin/nano-progga-settings.php:150
+msgid "Home Widget 2 : Position"
+msgstr ""
+
+#: admin/nano-progga-settings.php:157
+msgid "Home Widget 3 : Position"
+msgstr ""
+
+#: admin/nano-progga-settings.php:164
+msgid "Home Widget 4 : Position"
+msgstr ""
+
+#: admin/nano-progga-settings.php:171
+msgid "Home Widget 5 : Position"
+msgstr ""
+
+#: admin/nano-progga-settings.php:180
+msgid "Show widgets in paginated pages too"
+msgstr ""
+
+#: admin/nano-progga-settings.php:182
+msgid "Home widgets are visible only on the first paginated page of home page."
+msgstr ""
+
+#: admin/nano-progga-settings.php:183
+msgid "If you want to show them in other pages too, enable here"
+msgstr ""
+
+#: admin/nano-progga-settings.php:190
+msgid "Other Settings"
+msgstr ""
+
+#: admin/nano-progga-settings.php:196
+msgid "Show Author Bio"
+msgstr ""
+
+#: admin/nano-progga-settings.php:198
+msgid "Control whether to show/hide author bio in <em>Author</em> archives"
+msgstr ""
+
+#: admin/nano-progga-settings.php:203
+msgid "Show Related Posts"
+msgstr ""
+
+#: admin/nano-progga-settings.php:205
+msgid "Control whether to show/hide related posts in post detail page"
+msgstr ""
+
+#: admin/nano-progga-settings.php:210
+msgid "Don't Ping on Self Links"
+msgstr ""
+
+#: admin/nano-progga-settings.php:212
+msgid ""
+"Activating this will not notify you on self ping. Based on 'No Self Ping' "
+"WordPress Plugin"
+msgstr ""
+
+#: admin/nano-progga-settings.php:219
+msgid "SEO Settings"
+msgstr ""
+
+#: admin/nano-progga-settings.php:225
+msgid "NoFollow External Links"
+msgstr ""
+
+#: admin/nano-progga-settings.php:227
+msgid ""
+"Control whether to show <code>rel=\"nofollow\"</code> in external links in "
+"post/page content"
+msgstr ""
+
+#: admin/nano-progga-settings.php:234
+msgid "Social Settings"
+msgstr ""
+
+#: admin/nano-progga-settings.php:240
+#, php-format
+msgid "%s RSS Feed URL"
+msgstr ""
+
+#: admin/nano-progga-settings.php:246
+#, php-format
+msgid "%s Facebook URL"
+msgstr ""
+
+#: admin/nano-progga-settings.php:254
+#, php-format
+msgid "%s Twitter URL"
+msgstr ""
+
+#: admin/nano-progga-settings.php:262
+#, php-format
+msgid "%s LinkedIn Page URL"
+msgstr ""
+
+#: admin/nano-progga-settings.php:270
+#, php-format
+msgid "%s Google+ Page URL"
+msgstr ""
+
+#: admin/nano-progga-settings.php:278
+#, php-format
+msgid "%s Flickr URL"
+msgstr ""
+
+#: admin/nano-progga-settings.php:286
+#, php-format
+msgid "%s Pinterest Profile URL"
+msgstr ""
+
+#: admin/nano-progga-settings.php:294
+#, php-format
+msgid "%s Tumblr Blog URL"
+msgstr ""
+
+#: admin/nano-progga-settings.php:302
+#, php-format
+msgid "%s YouTube Channel URL"
+msgstr ""
+
+#: inc/extras.php:52
+#, php-format
+msgid "Page %s"
+msgstr ""
+
+#: inc/functions-series.php:20 inc/functions-series.php:21
+#: inc/functions-series.php:30
+msgid "Series"
+msgstr ""
+
+#: inc/functions-series.php:22
+msgid "Search Series"
+msgstr ""
+
+#: inc/functions-series.php:23
+msgid "All Series"
+msgstr ""
+
+#: inc/functions-series.php:24
+msgid "Parent Series"
+msgstr ""
+
+#: inc/functions-series.php:25
+msgid "Parent Series:"
+msgstr ""
+
+#: inc/functions-series.php:26
+msgid "Edit Series"
+msgstr ""
+
+#: inc/functions-series.php:27
+msgid "Update Series"
+msgstr ""
+
+#: inc/functions-series.php:28
+msgid "Add New Series"
+msgstr ""
+
+#: inc/functions-series.php:29
+msgid "New Series Name"
+msgstr ""
+
+#: inc/functions-series.php:96
+msgid "Series:&nbsp;"
+msgstr ""
+
+#: inc/functions-series.php:100
+msgid "&mdash; a part of the series"
+msgstr ""
+
+#: inc/functions-series.php:222 inc/functions-series.php:249
+msgid "Series Cover Image"
+msgstr ""
+
+#: inc/functions-series.php:225
+msgid "Series cover image"
+msgstr ""
+
+#: inc/functions-series.php:228 inc/functions-series.php:263
+msgid "Upload Image"
+msgstr ""
+
+#: inc/functions-series.php:229 inc/functions-series.php:264
+msgid "Add/Choose an image for the cover of the Series term"
+msgstr ""
+
+#: inc/functions-series.php:333
+msgid "Cover"
+msgstr ""
+
+#: inc/functions-series.php:357
+msgid "Cover Image"
+msgstr ""
+
+#: inc/template-tags.php:23
+msgid "Posts navigation"
+msgstr ""
+
+#: inc/template-tags.php:27
+msgid "Older posts"
+msgstr ""
+
+#: inc/template-tags.php:31
+msgid "Newer posts"
+msgstr ""
+
+#: inc/template-tags.php:56 inc/template-tags.php:91
+msgid "Post navigation"
+msgstr ""
+
+#: inc/template-tags.php:75
+msgid "<span class=\"meta-nav np-left\"></span> Older Image"
+msgstr ""
+
+#: inc/template-tags.php:76
+msgid "Latest Image <span class=\"meta-nav np-right\"></span>"
+msgstr ""
+
+#: inc/template-tags.php:169
+msgid "0"
+msgstr ""
+
+#: inc/template-tags.php:169
+msgid "1"
+msgstr ""
+
+#: inc/template-tags.php:169
+msgid "%"
+msgstr ""
+
+#: inc/template-tags.php:169
+msgid "Closed"
+msgstr ""
+
+#: inc/template-tags.php:174 template-parts/content-page.php:27
+msgid "Edit"
+msgstr ""
+
+#: inc/template-tags.php:214
+#, php-format
+msgid "Category: %s"
+msgstr ""
+
+#: inc/template-tags.php:216
+#, php-format
+msgid "Tag: %s"
+msgstr ""
+
+#: inc/template-tags.php:220
+#, php-format
+msgid "Year: %s"
+msgstr ""
+
+#: inc/template-tags.php:220
+msgctxt "yearly archives date format"
+msgid "Y"
+msgstr ""
+
+#: inc/template-tags.php:222
+#, php-format
+msgid "Month: %s"
+msgstr ""
+
+#: inc/template-tags.php:222
+msgctxt "monthly archives date format"
+msgid "F Y"
+msgstr ""
+
+#: inc/template-tags.php:224
+#, php-format
+msgid "Day: %s"
+msgstr ""
+
+#: inc/template-tags.php:224
+msgctxt "daily archives date format"
+msgid "F j, Y"
+msgstr ""
+
+#: inc/template-tags.php:227
+msgctxt "post format archive title"
+msgid "Asides"
+msgstr ""
+
+#: inc/template-tags.php:229
+msgctxt "post format archive title"
+msgid "Galleries"
+msgstr ""
+
+#: inc/template-tags.php:231
+msgctxt "post format archive title"
+msgid "Images"
+msgstr ""
+
+#: inc/template-tags.php:233
+msgctxt "post format archive title"
+msgid "Videos"
+msgstr ""
+
+#: inc/template-tags.php:235
+msgctxt "post format archive title"
+msgid "Quotes"
+msgstr ""
+
+#: inc/template-tags.php:237
+msgctxt "post format archive title"
+msgid "Links"
+msgstr ""
+
+#: inc/template-tags.php:239
+msgctxt "post format archive title"
+msgid "Statuses"
+msgstr ""
+
+#: inc/template-tags.php:241
+msgctxt "post format archive title"
+msgid "Audio"
+msgstr ""
+
+#: inc/template-tags.php:243
+msgctxt "post format archive title"
+msgid "Chats"
+msgstr ""
+
+#: inc/template-tags.php:246
+#, php-format
+msgid "Archives: %s"
+msgstr ""
+
+#: inc/template-tags.php:250
+#, php-format
+msgid "%1$s: %2$s"
+msgstr ""
+
+#: inc/template-tags.php:252
+msgid "Archives"
+msgstr ""
+
+#: libs/cs-framework/classes/framework.class.php:176
+msgid "Success. Imported backup options."
+msgstr ""
+
+#: libs/cs-framework/classes/framework.class.php:181
+msgid "Default options restored."
+msgstr ""
+
+#: libs/cs-framework/classes/framework.class.php:200
+msgid "Default options restored for only this section."
+msgstr ""
+
+#: libs/cs-framework/classes/framework.class.php:361
+msgid "<small>based on Codestar Framwork by Codestar</small>"
+msgstr ""
+
+#: libs/cs-framework/classes/framework.class.php:363
+msgid "Settings saved."
+msgstr ""
+
+#: libs/cs-framework/classes/framework.class.php:364
+msgid "Save"
+msgstr ""
+
+#: libs/cs-framework/classes/framework.class.php:364
+msgid "Saving..."
+msgstr ""
+
+#: libs/cs-framework/classes/framework.class.php:365
+msgid "Restore"
+msgstr ""
+
+#: libs/cs-framework/classes/framework.class.php:367
+msgid "show all options"
+msgstr ""
+
+#: libs/cs-framework/classes/options.class.php:125
+msgid "CONFIG"
+msgstr ""
+
+#: libs/cs-framework/classes/options.class.php:131
+msgid "USAGE"
+msgstr ""
+
+#: libs/cs-framework/classes/options.class.php:137
+msgid "VALUE"
+msgstr ""
+
+#: libs/cs-framework/classes/options.class.php:213
+#, php-format
+msgid "You are editing language: ( <strong>%s</strong> )"
+msgstr ""
+
+#: libs/cs-framework/classes/shortcode.class.php:82
+#: libs/cs-framework/classes/shortcode.class.php:90
+#: libs/cs-framework/fields/textarea/textarea.php:27
+msgid "Add Shortcode"
+msgstr ""
+
+#: libs/cs-framework/classes/shortcode.class.php:92
+msgid "Select a shortcode"
+msgstr ""
+
+#: libs/cs-framework/classes/shortcode.class.php:108
+msgid "Insert Shortcode"
+msgstr ""
+
+#: libs/cs-framework/fields/background/background.php:31
+#: libs/cs-framework/fields/background/background.php:32
+#: libs/cs-framework/fields/upload/upload.php:23
+#: libs/cs-framework/fields/upload/upload.php:24
+msgid "Upload"
+msgstr ""
+
+#: libs/cs-framework/fields/background/background.php:33
+#: libs/cs-framework/fields/upload/upload.php:25
+msgid "Use Image"
+msgstr ""
+
+#: libs/cs-framework/fields/backup/backup.php:21
+msgid "Import a Backup"
+msgstr ""
+
+#: libs/cs-framework/fields/backup/backup.php:22
+msgid "copy-paste your backup string here"
+msgstr ""
+
+#: libs/cs-framework/fields/backup/backup.php:27
+msgid "Export and Download Backup"
+msgstr ""
+
+#: libs/cs-framework/fields/backup/backup.php:28
+msgid "or"
+msgstr ""
+
+#: libs/cs-framework/fields/backup/backup.php:29
+msgid "!!! Reset All Options !!!"
+msgstr ""
+
+#: libs/cs-framework/fields/backup/backup.php:30
+msgid "Please be sure for reset all of framework options."
+msgstr ""
+
+#: libs/cs-framework/fields/gallery/gallery.php:21
+msgid "Add Gallery"
+msgstr ""
+
+#: libs/cs-framework/fields/gallery/gallery.php:22
+msgid "Edit Gallery"
+msgstr ""
+
+#: libs/cs-framework/fields/gallery/gallery.php:23
+msgid "Clear"
+msgstr ""
+
+#: libs/cs-framework/fields/group/group.php:21
+msgid "Adding"
+msgstr ""
+
+#: libs/cs-framework/fields/group/group.php:43
+#: libs/cs-framework/fields/group/group.php:75
+msgid "Remove"
+msgstr ""
+
+#: libs/cs-framework/fields/icon/icon.php:25
+#: libs/cs-framework/functions/actions.php:55
+msgid "Add Icon"
+msgstr ""
+
+#: libs/cs-framework/fields/icon/icon.php:26
+msgid "Remove Icon"
+msgstr ""
+
+#: libs/cs-framework/fields/image/image.php:22
+msgid "Add Image"
+msgstr ""
+
+#: libs/cs-framework/fields/sorter/sorter.php:24
+msgid "Enabled Modules"
+msgstr ""
+
+#: libs/cs-framework/fields/sorter/sorter.php:25
+msgid "Disabled Modules"
+msgstr ""
+
+#: libs/cs-framework/fields/switcher/switcher.php:20
+msgid "on"
+msgstr ""
+
+#: libs/cs-framework/fields/switcher/switcher.php:20
+msgid "off"
+msgstr ""
+
+#: libs/cs-framework/fields/typography/typography.php:73
+msgid "Web Safe Fonts"
+msgstr ""
+
+#: libs/cs-framework/fields/typography/typography.php:79
+msgid "Google Fonts"
+msgstr ""
+
+#: libs/cs-framework/fields/typography/typography.php:107
+#: libs/cs-framework/functions/actions.php:30
+msgid "Error! Can not load json file."
+msgstr ""
+
+#: libs/cs-framework/functions/actions.php:56
+msgid "Search a Icon..."
+msgstr ""
+
+#: libs/cs-framework/functions/actions.php:57
+msgid "Loading..."
+msgstr ""
+
+#: libs/cs-framework/functions/helpers.php:48
+msgid "This field class is not available!"
+msgstr ""
+
+#: libs/cs-framework/functions/validate.php:14
+msgid "Please write a valid email address!"
+msgstr ""
+
+#: libs/cs-framework/functions/validate.php:33
+msgid "Please write a numeric data!"
+msgstr ""
+
+#: libs/cs-framework/functions/validate.php:51
+msgid "Fatal Error! This field is required!"
+msgstr ""
+
+#: template-parts/content-archive-none.php:25
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+
+#: template-parts/content-archive-none.php:30
+msgid ""
+"Sorry, the topic is here, but the content for the topic is absent now. "
+"Better try with some keywords to find something you desired."
+msgstr ""
+
+#: template-parts/content-audio.php:32 template-parts/content-gallery.php:32
+#: template-parts/content-image.php:25 template-parts/content-link.php:32
+#: template-parts/content-quote.php:32 template-parts/content-status.php:19
+#: template-parts/content-video.php:32 template-parts/content.php:40
+#, php-format
+msgid "Continue reading %s <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: template-parts/content-audio.php:54 template-parts/content-gallery.php:54
+#: template-parts/content-image.php:47 template-parts/content-link.php:54
+#: template-parts/content-quote.php:54 template-parts/content-search.php:39
+#: template-parts/content-video.php:54 template-parts/content.php:64
+msgid "Details"
+msgstr ""
+
+#: template-parts/content-none.php:14
+msgid "Nothing Found"
+msgstr ""
+
+#: template-parts/content-none.php:20
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: template-parts/content-none.php:24
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""

@@ -1,5 +1,3 @@
-<img src="http://nanoprogga.nanodesignsbd.com/images/slider.jpg" alt="nano progga - search engine optimized blog framework, especially for blogging in Bengali">
-
 nano progga
 ===========
 
@@ -7,7 +5,7 @@ nano progga
 [Mayeenul Islam](http://nanodesignsbd.com/mayeenulislam/) (@mayeenulislam)
 
 **Requires at least:** 4.0<br>
-**Tested up to:** 4.3<br>
+**Tested up to:** 4.3.1<br>
 **Stable tag:** 3.0.0<br>
 
 ###Introduction
@@ -50,12 +48,8 @@ nano progga icon font is generated combining various fonts using online app: [Fo
 2. Click `Upload` and Choose File, then select the theme's `.zip` file. Click Install Now.
 3. Click <kbd>Activate</kbd> to use your new theme right away.
 
-###Till to come
-* Print style
-* Post format supported designs
-
 ###Change log
-####3.0
+####3.0.0
 * A huge leap in the design
 * Initiated Bootstrap 3.3.4
 * Based on underscores (`_s`) starter theme by Automattic
@@ -87,6 +81,8 @@ nano progga icon font is generated combining various fonts using online app: [Fo
 * Custom header support is no longer available
 * Basic Customizer support
 * Codestar Admin Framework added to provide ease in admin panel moderation
+* Post format supported designs
+* Print style
 
 ####2.2.1
 * Comments Template visibility fixed

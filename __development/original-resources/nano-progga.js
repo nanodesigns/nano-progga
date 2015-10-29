@@ -2,14 +2,14 @@
 jQuery(window).on('load', function($){
 	var grid_container = jQuery('#infinite-scroll-holder');
 	if( grid_container.length > 0 ) {
-		grid_container.masonry({
+		var g_cont = grid_container.masonry({
 			// options
 			itemSelector: '.col-sm-4',
 			columnWidth: '.col-sm-4',
 			//percentPosition: true
 		});
 
-		$container.imagesLoaded(function(){
+		g_cont.imagesLoaded(function(){
 			grid_container.masonry('layout');
 	    });
     

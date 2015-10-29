@@ -1,11 +1,11 @@
 ##Directions for Developers
 **package:** nano progga
 
-The theme provided LESS compiled and minified CSS and JS files to ensure site speed. Compiled CSS file is (in root directory):
+The theme provided LESS compiled and minified CSS, and minified JS files to ensure site speed. Compiled CSS file is (in root directory):
 
 * `style.css`
 
-and minified JavaScripts file is in `/js/` directory:
+and minified JavaScripts file is in `js/` directory:
 
 * `nano-progga.min.js`
 
