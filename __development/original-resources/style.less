@@ -4,7 +4,7 @@ Theme URI: http://nanoprogga.nanodesignsbd.com/
 Author: Mayeenul Islam (@mayeenulislam)
 Author URI: http://nanodesignsbd.com/
 Description: nano progga is a search engine optimized blog framework, especially designed for blogging in Bengali (Bānglā) using WordPress. It supports custom header, custom menu, sidebar widget area (one specifically for archive pages), and unlimited plugins. It is optimized specially for Bengali (Bānglā) blogging, with speed and less weight. But the theme is completely translation-ready and can be translated into any locals.
-Version: 3.0.0
+Version: 3.0.1
 Tags: white, custom-header, threaded-comments, sticky-post, translation-ready, microformats, custom-menu, two-columns, three-columns, gray, light, right-sidebar, left-sidebar, fluid-layout, fixed-layout, featured-images
 .
 License: GNU General Public License v2.0
@@ -43,9 +43,9 @@ nano progga is distributed under the terms of the GNU GPL V2.0
   font-style: normal;
 }
 
-@import "__development/lessmixins.less";  //mixins for nanodesigns
-@import (less) 'css/_s.css';              //_s CSS from underscores.me
-@import (less) 'css/common.css';          //Common CSS from nanodesigns
+@import "../lessmixins.less";  //mixins for nanodesigns
+@import (less) '../../css/_s.css';              //_s CSS from underscores.me
+@import (less) '../../css/common.css';          //Common CSS from nanodesigns
 
 
 /*--------------------------------------------------------------
@@ -798,6 +798,7 @@ aside.widget{
   overflow: hidden;
   padding: 3px;
 }
+aside.widget-holder.widget_top-posts.grid-item,
 aside.widget.popular-posts{
   ul li{
     &:before{ display: none; }

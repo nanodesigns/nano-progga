@@ -6,7 +6,7 @@ nano progga
 
 **Requires at least:** 4.0<br>
 **Tested up to:** 4.3.1<br>
-**Stable tag:** 3.0.0<br>
+**Stable tag:** 3.0.1<br>
 
 ###Introduction
 
