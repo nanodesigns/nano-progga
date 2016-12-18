@@ -1,0 +1,49 @@
+{
+    "name": "nanodesigns/nano-progga",
+    "description": "WordPress Theme",
+    "type": "wordpress-theme",
+    "keywords": [
+        "blog framework",
+        "theme for bloggin in bengali"
+    ],
+    "homepage": "http://nanoprogga.nanodesignsbd.com/",
+    "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "Mayeenul Islam",
+            "email": "wz.islam@gmail.com",
+            "homepage": "http://nishachor.com",
+            "role": "Designer and Developer"
+        }
+    ],
+    "archive": {
+        "exclude": [
+            ".gitignore",
+            "*.sublime-workspace",
+            "*.sublime-project",
+            "apigen.neon",
+            "composer.json",
+            "composer.lock",
+            "README.md",
+            "Gruntfile.js",
+            "package.json",
+            "/node_modules",
+            "/tests",
+            "!/vendor"
+        ]
+    },
+    "support": {
+        "email": "support@nanodesignsbd.com",
+        "issues": "https://github.com/nanodesigns/nano-progga/issues",
+        "wiki": "https://github.com/nanodesigns/nano-progga/wiki",
+        "source": "https://github.com/nanodesigns/nano-progga",
+        "docs": "https://github.com/nanodesigns/nano-progga/wiki"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "npm install",
+            "grunt"
+        ],
+        "pre-archive-cmd": "composer install"
+    }
+}
