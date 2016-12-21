@@ -1,0 +1,11 @@
+// Color variables
+@base-color: #049372; //my default #2A3744 (556FAA, )
+@secondary-color: #344454;
+@text-color: #333;
+@red-color: #9D0A0E;
+@link-color: #2F6BB3;
+@hover-color: darken( @link-color, 15% );
+
+// Font variables
+@site-font: 'Siyam Rupali', Vrinda, Cambria, Georgia, serif;
+@secondary-font: 'ShaldaOMJ-Regular', 'Siyam Rupali', Vrinda, Cambria, Georgia, serif;

@@ -4,6 +4,9 @@
     "homepage": "http://nanoprogga.nanodesignsbd.com/",
     "version": "4.0.0",
     "private": true,
+    "dependencies": {
+        "bootstrap-sass": "^3.3.7"
+    },
     "devDependencies": {
         "grunt": "~1.0.1",
         "grunt-autoprefixer": "~3.0.4",

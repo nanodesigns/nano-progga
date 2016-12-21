@@ -20,9 +20,9 @@ module.exports = function(grunt) {
         jshint: {
             all: [
                 'Gruntfile.js',
-                'assets/js/nanosupport.js',
-                'assets/js/nanosupport-admin.js',
-                'assets/js/nanosupport-dashboard.js'
+                'assets/js/nano-progga.js',
+                'assets/js/nano-progga-admin.js',
+                'assets/js/customizer.js'
             ]
         },
 
@@ -37,9 +37,8 @@ module.exports = function(grunt) {
                     preserveComments: /^!/ // Preserve comments that start with a bang.
                 },
                 files: {
-                    'assets/js/nanosupport.min.js': [ 'assets/js/nanosupport.js' ],
-                    'assets/js/nanosupport-admin.min.js': [ 'assets/js/nanosupport-admin.js' ],
-                    'assets/js/nanosupport-dashboard.min.js': [ 'assets/js/nanosupport-dashboard.js' ]
+                    'assets/js/nano-progga.min.js': [ 'assets/js/nano-progga.js' ],
+                    'assets/js/nano-progga-admin.min.js': [ 'assets/js/nano-progga-admin.js' ]
                 },
             }
         },
@@ -54,8 +53,8 @@ module.exports = function(grunt) {
                     sourceMap: false
                 },
                 files: {
-                    'assets/css/nanosupport.css': 'assets/sass/nanosupport.scss',
-                    'assets/css/nanosupport-admin.css': 'assets/sass/nanosupport-admin.scss'
+                    'style.css': 'assets/sass/nano-progga.scss',
+                    'assets/css/nano-progga-admin.css': 'assets/sass/nano-progga-admin.scss'
                 }
             }
         },
@@ -69,10 +68,10 @@ module.exports = function(grunt) {
                 cascade: false
             },
             npCSS: {
-                src: 'assets/css/nanosupport.css'
+                src: 'style.css'
             },
             adminCSS: {
-                src: 'themes/css/nanosupport-admin.css'
+                src: 'themes/css/nano-progga-admin.css'
             }
         },
 
@@ -83,8 +82,8 @@ module.exports = function(grunt) {
         cssmin: {
             minify: {
                 files: {
-                    'assets/css/nanosupport.css': 'assets/css/nanosupport.css',
-                    'assets/css/nanosupport-admin.css': 'assets/css/nanosupport-admin.css'
+                    'style.css': 'assets/css/nano-progga.css',
+                    'assets/css/nano-progga-admin.css': 'assets/css/nano-progga-admin.css'
                 },
                 options: {
                     report: 'min',
@@ -169,7 +168,7 @@ module.exports = function(grunt) {
                 }
             },
             js: {
-                files: ['assets/js/nanosupport.js', 'assets/js/nanosupport-admin.js', 'assets/js/nanosupport-dashboard.js'],
+                files: ['assets/js/nano-progga.js', 'assets/js/nano-progga-admin.js', 'assets/js/customizer.js'],
                 tasks: ['uglify']
             },
             css: {
