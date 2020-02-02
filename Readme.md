@@ -1,3 +1,9 @@
+----
+<h3 align="center">⛔️ THE PROJECT IS UNMAINTAINED ⛔️</h3>
+<p align="center">You can fork and change as per the license. You can use the theme as long as it's working. Good luck.</p>
+
+----
+
 nano progga
 ===========
 
